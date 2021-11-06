@@ -6,22 +6,12 @@
 
         <fieldset>
             <div class="joinfield">
-                <form class="form11" action="/watchtable/myinfo" method="get" id="join_form" name="f">
-                    <form action="">
-                        <span class="span11"><input type="checkbox" class="ch-box1" name="name" value="name">이름</span>
-                        <input class="input11" type="text" id="my_name" ><br>
+                <form class="form11" action="https://localhost:8080/member/myinfo" method="get" id="join_form" name="f">
+                    <span class="span11"><input type="checkbox" class="ch-box1" name="name" value="name">이름</span>
+                    <input class="input11" type="text" id="my_name" ><br>
 
-                        <span class="span11"><input type="checkbox" class="ch-box1" name="name" value="nick">닉네임</span>
-                        <input class="input11" type="text" name="memberId" id="my_id"
-                               placeholder="4~12자의 영문 대소문자와 숫자로만 입력" maxlength="12"><br>
-                    </form>
-<!--
-                    <span class="span11">현재아이디</span> <br>
-                    <span class="span11"></span> <br>
-                    <span class="span11">닉네임</span> <br>
-                    <input class="input11" type="text" name="memberId" id="my_id"
-                           placeholder="4~12자의 영문 대소문자와 숫자로만 입력" maxlength="12"><br>
--->
+                    <span class="span11"><input type="checkbox" class="ch-box1" name="name" value="nick">닉네임</span>
+                    <input class="input11" type="text" name="membernick" id="my_nick" ><br>
 
                     <span class="span11">변경할 비밀번호</span> <br>
                     <input class="input11" type="password" name="memberPw" id="my_Pw1"
@@ -37,13 +27,14 @@
                     <input class="input11" type="text" name="memberMobile" id="my_number"><br>
 
                     <button id = "coBtn"type="button" class="join_button btn11 colored-btn11">수정하기</button>
-                    <button type="reset" class="reset-btn btn11 uncolored-btn11">돌아가기</button>
+                    <button type="reset" class="reset-btn btn11 uncolored-btn11"
+                            onclick="location.href='/member/myinfo';">돌아가기</button>
 
                 </form>
-                <hr>
-                <h1 class="mt-4">My information correction</h1>
+<!--                <hr>
+                <h1>My information correction</h1>
                 <a href="/watchtable/myinfocorrect">/watchtable/myinfocorrect(All Members)[수정확인]</a><br>
-                <a href="/watchtable/myinfo">/watchtable/myinfo(All Members)[취소]</a><br>
+                <a href="/watchtable/myinfo">/watchtable/myinfo(All Members)[취소]</a><br>-->
             </div>
         </fieldset>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

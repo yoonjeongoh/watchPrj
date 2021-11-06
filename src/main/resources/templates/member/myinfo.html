@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div id="page-content-wrapper">
-
+                <form action="https://localhost:8080/watchtable/member/myinfo">
                 <span class="span11">이름</span><br>
                 <span class="input11" id="my_name"></span><br>
 
@@ -35,9 +35,10 @@
                 <span class="input11" name="memberMobile" id="my_number"></span><br>
 
                 <button type="button" class="join_button btn11 colored-btn11">수정하기</button>
-                <button type="button" class="btn11 uncolored-btn11">돌아가기</button>
-            </div>
+                <button type="button" class="btn11 uncolored-btn11"
+                        onclick="location.href='/member/myinfo';">돌아가기</button>
             </form>
+            </div>
         </div>
         </div>
         </div>
