@@ -28,7 +28,7 @@ public interface MemberService {
                 .memberMobile(member.getMemberMobile())
                 .memberPw(member.getMemberPw())
                 .modDate(member.getModDate())
-                .regDate(member.getRagDate())
+                .regDate(member.getRegDate())
                 .build();
         return memberDTO;
     }
