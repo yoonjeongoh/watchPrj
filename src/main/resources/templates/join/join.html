@@ -11,7 +11,7 @@
 <div>
 <fieldset>
     <div class="joinfield">
-        <form class="form11" action="http://localhost:8080/watchtable/member/myinfo" method="get" id="join_form" name="f">
+        <form class="form11" action="http://localhost:8080/watchtable/member/myinfo" method="post" id="join_form" name="f">
             <span class="span11">이름</span><br>
             <input class="input11" type="text" id="my_name" ><br>
 <!--                <span id="name1">이름을 입력하지 않았습니다.</span>-->
@@ -70,7 +70,6 @@
 </div>
         <!--    margin for end of page-->
         <div class="end-pg"></div>
-
 
         <!--  ---------------------------------------------------------------------------------------- -->
 
@@ -154,7 +153,11 @@
 
 
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous">
+
+</script>
 
      <script th:inline="javascript">
         var actionForm = $("form");

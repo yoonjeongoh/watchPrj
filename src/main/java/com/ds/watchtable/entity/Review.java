@@ -11,11 +11,14 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 @Table(name = "review")
-public class Review extends com.ds.watchtable.entity.BaseEntity {
+public class Review extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int reviewnum;
+    private Long reviewnum;
 
-    private int reviewname;
+    private String text;
 
+    /*@ManyToOne
+    private Store store;
+*/
 }

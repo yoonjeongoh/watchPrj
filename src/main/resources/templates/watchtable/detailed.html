@@ -4,7 +4,6 @@
     <th:block th:fragment="content">
         <link th:href="@{/css2/detail.css}" rel="stylesheet" />
 
-
         <div class="wrapper">
             <div class="detail-content">
             <!--        1열 상단 카드이미지-->
@@ -70,10 +69,10 @@
 
             <!--5열 리뷰작성칸-->
             <div id="review" class="rv-field">
-                <form class="form1" action="/watchtable/watchtable/detailed" method="post" name="frm">
+                <form class="form1" action="http://localhost:8080/watchtable/watchtable/detailed" method="post" name="frm">
                     <div class="rv-textarea">
                         <textarea name="ta" id="rv-ta" class="rv-ta" cols="80" rows="3"></textarea>
-                        <button type="button" name="button" id='rv-btn' class="btn11 colored-btn11">리뷰등록</button>
+                        <button type="button" name="button" id='rv-btn' class="add-review btn11 colored-btn11">리뷰등록</button>
                     </div>
                 </form>
             </div>
@@ -99,21 +98,14 @@
             <div class="end-pg"></div>
             </div>
         </div>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-<!--        <script th:inline="javascript">
-                window.onload = function() {
-                    alert("등록되었습니다");
-                    document.frm.submit();
-                 };
-
-        </script>-->
-
-        <!--        <h1 class="mt-4">Detailed Page</h1>-->
-        <!--        <a href="http://localhost:8080/watchtable/">/watchtable/main(All)</a><br>-->
-        <!--        <a href="/watchtable/watchtable/login">/watchtable/login(Guest)</a><br>-->
-        <!--        <a href="/watchtable/watchtable/myinfo">/watchtable/myinfo(Member)</a><br>-->
-        <!--        <a href="/watchtable/watchtable/manage">/watchtable/manage(Business member)</a><br>-->
-        <!--        <a href="/watchtable/watchtable/admin">/watchtable/admin(Admin)</a><br>-->
+        <script th:inline="javascript">
+            var actionForm = $("form");
+            $(".add-review").click(function(){
+                    actionForm.submit();
+            });
+        </script>
 
 
     </th:block>
