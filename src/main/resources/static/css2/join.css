@@ -1,0 +1,248 @@
+  * {
+     margin: 0px; padding: 0px;
+  }
+
+  input:focus, select:focus, option:focus, textarea:focus, button:focus{
+  	outline: none;
+  }
+
+  button {
+  border: 0;
+  }
+
+  .wrapper {
+      height: 100%;
+      width: 1200px;
+      margin: 0 auto;
+  }
+
+ .joinfield {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -250px;
+    margin-top: -350px;
+    line-height: middle;
+    width: 500px; height: 600px;
+    padding: 10px;
+  }
+
+   .mngfield {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -250px;
+      margin-top: -350px;
+      line-height: middle;
+      width: 500px; height: 1000px;
+      padding: 10px;
+    }
+
+ .mngfield2 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -250px;
+      margin-top: -350px;
+      line-height: middle;
+      width: 500px; height: 1000px;
+      padding: 10px;
+    }
+
+ .span11 {
+    width: 400px;
+    height: 40px;    text-align: left;
+    padding: 10px 0px 0px 10px;
+    //border: 1px solid #c7c4bf;
+    border-radius: 10px;
+    border-style: none;
+    display: inline-block;
+    //margin: 20px 0px 10px 0px;
+    color: #75736e;
+}
+
+.span13 {
+    width: 80px;
+    height: 40px;
+    text-align: left;
+    padding: 10px 0px 0px 10px;
+    //border: 1px solid #c7c4bf;
+    border-radius: 10px;
+    display: inline-block;
+    border-style: none;
+    //margin: 30px 10px 10px 0px;
+    color: #75736e;
+}
+
+.span14 {
+    width: 200px;
+    height: 40px;
+    text-align: left;
+    padding: 10px 0px 0px 10px;
+    //border: 1px solid #c7c4bf;
+    border-style: none;
+    border-radius: 10px;
+    display: inline-block;
+    //margin: 30px 0px 10px 0px;
+    color: #f75931;
+    font-size: 14px;
+}
+.span15 {
+    width: 10px;
+    height: 40px;
+    text-align: center;
+    border-style: none;
+    color: #75736e;
+}
+
+  .input11 {
+      width: 400px;
+      height: 50px;
+      display: inline-block;
+      border-radius: 10px; //이색기왜이래...보더 굵어짐...
+      border-style: none;
+      border: 1px solid #c7c4bf;
+      margin: 0px 0px 15px 0px;
+      text-align: left;
+      padding: 8px;
+      display: inline-block;
+    }
+
+  .input11::placeholder {
+      font-size: 12px; //rem으로 바꾸고싶다.....
+      text-align: left;
+      }
+
+  .btn11 {
+    width: 180px; height: 50px;
+    border-color: #c7c4bf;
+    text-align: center;
+    display: inline-block;
+    border-radius: 10px;
+  }
+
+  .colored-btn11 {
+      color: #f2f1ed;
+      background-color: #fdb53c;
+      box-shadow: #fdc63c;
+      margin: 10px 20px 0px 0px;
+
+  }
+
+    .uncolored-btn11 {
+        color: #75736e;
+        margin: 10px 0px 0px 20px;
+
+    }
+
+    .input12 {
+          width: 400px;
+          height: 50px;
+          display: inline-block;
+          border-style: none;
+          margin: 0px 0px 15px 0px;
+          text-align: left;
+          padding: 8px;
+          display: inline-block;
+        }
+
+  .input13 {
+      width: 190px;
+      height: 50px;
+      display: inline-block;
+      border-radius: 10px;
+      border-style: none;
+      border: 1px solid #c7c4bf;
+      margin: 0px 0px 15px 0px;
+      text-align: center;
+      padding: 8px;
+      display: inline-block;
+      color: #75736e;
+    }
+
+.input14 {
+      width: 120px;
+      height: 50px;
+      display: inline-block;
+      border-radius: 10px;
+      border-style: none;
+      border: 1px solid #c7c4bf;
+      margin: 0px 0px 15px 0px;
+      text-align: center;
+      padding: 8px;
+      display: inline-block;
+      color: #75736e;
+    }
+
+  .adr-btn {
+      width: 78px;
+      height: 35px;
+      border-color: #c7c4bf;
+      border-radius: 2px;
+      color: #75736e;
+      background-color: #f2f1ed;
+      padding: 5px 0px 5px 0px;
+    }
+
+.sel11, .op11 {
+      width: 122px;
+      height: 50px;
+      display: inline-block;
+      border-radius: 10px;
+      border-style: none;
+      border: 1px solid #c7c4bf;
+      margin: 0px 0px 15px 0px;
+      text-align: center;
+      padding: 8px;
+      display: inline-block;
+      color: #75736e;
+    }
+
+.ch-box1 {
+margin-right: 10px;
+}
+
+  .end-pg {
+      width: auto;
+      height: 20px;
+   }
+
+/*
+    .span12 {
+        width: 200px;
+        height: 40px;
+        text-align: left;
+        padding: 5px;
+        font-size: 12px; //수정하기
+        display: inline-block;
+        //margin: 30px 0px 10px 0px;
+        color: #75736e; //수정하기
+    }*/
+
+/*
+ .ip-btn11 {
+      width: 180px; height: 40px;
+      margin: 10px 0px 0px 20px; //위치 개색기야
+      border-color: #c7c4bf;
+      text-align: center;
+      color: #75736e;
+      background-color: #f2f1ed;
+      box-outline: none; //이거먼데 ㅅㅂ 미친놈아 왜이래...
+      display: inline-block;
+      border-radius: 10px;
+    }*/
+
+/*
+   .ip-btn12 {
+          width: 180px; height: 40px;
+          margin: 10px 0px 0px 20px; //위치 개색기야
+          border-color: #c7c4bf;
+          text-align: center;
+          color: #f2f1ed;
+          background-color: #fdb53c;
+          box-outline: none; //이거먼데 ㅅㅂ 미친놈아 왜이래...
+          display: inline-block;
+          border-radius: 10px;
+        }
+*/
+

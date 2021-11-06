@@ -1,0 +1,133 @@
+* {
+    margin: 0px; padding: 0px;
+    //background: #82817e;
+  }
+.wrapper {
+    height: 100%;
+    width: 1200px;
+    margin: 0 auto;
+
+}
+
+
+
+
+input:focus, select:focus, option:focus, textarea:focus, button:focus{
+	outline: none;
+}
+
+.top-card1 {
+    position: relative;
+    align-items: center;
+    display: flex;
+    background-color: #82817e;
+}
+
+.card1 {
+    width: 250px; height: 200px;
+    display: inline-block;
+    overflow: hidden;
+    float: center;
+    margin: 2px 2px 2px 2px;
+    background-color: #fdb53c;
+}
+
+.sec-col1 {
+    position: relative;
+    align-items: center;
+    display: flex;
+    width: auto;
+    height: 400px;
+    background-color: #82817e;
+}
+.sec1 {
+    display: inline-block;
+    float: center;
+    margin: 2px 2px 2px 2px;
+    background-color: #fdb53c;
+}
+
+.sec-left1 {
+    width: 250px;
+    height: 400px;
+}
+.sec-center1 {
+    width: 470px;
+    height: 400px;
+}
+.sec-right1 {
+    width: 440px;
+    height: 400px;
+}
+.thd-col1 {
+    position: relative;
+    display: inline-block;
+    float: center;
+    display: flex;
+    width: auto;
+    height: 400px;
+    background-color: #82817e;
+}
+
+.thd1 {
+    position: relative;
+    display: inline-block;
+    margin: 2px 2px 2px 2px;
+    background-color: #fdb53c;
+}
+.thd-left1 {
+    width: 590px;
+    height: 400px;
+}
+
+.thd-right1 {
+    width: 590px;
+    height: 400px;
+}
+
+.rv-grade {
+    height: 80px;
+    width: 1200px;
+    margin: 2px 2px 2px 2px;
+    display: flex;
+    background-color: #fdb53c;
+    position: relative;
+
+}
+
+.rv-field {
+    height: 100px;
+    width: 1200px;
+    margin: 2px 2px 2px 2px;
+    display: flex;
+    background-color: #fdb53c;
+    position: relative;
+}
+
+.rv-list {
+    height: 100px;
+    width: 1200px;
+    display: flex;
+    background-color: #fdb53c;
+    position: relative;
+}
+
+.end-pg {
+    width: auto;
+    height: 20px;
+ }
+
+/* div 공간 확인 이거안됨 ㅅㅂ왜안ㄶ도... */
+
+/*
+.card1, .sec1, .thd1, .rv-grade, .rv-field, .rv-list {
+    background-color: #fdb53c;
+}
+
+
+.top-card1, .sec-col1, .thd-col1 {
+    background-color: #82817e;
+}
+
+*/
+

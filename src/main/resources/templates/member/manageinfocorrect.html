@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
+    <th:block th:fragment="content">
+        <link th:href="@{/css2/join.css}" rel="stylesheet" />
+
+
+        <fieldset>
+            <div class="mngfield">
+                <form class="form11" action="/watchtable/watchtable/managemyinfo" method="post" name="f" onsubmit="return sendIt();">
+
+                    <span class="span11">가게 연락처</span> <br>
+                    <!--                    <input class="input11" type="text" name="st-tel" id="st-tel"><br>-->
+                    <select class="sel11" name="tel" id="sel-store-tel">
+                        <option class="op11" value="02">02</option>
+                        <option class="op11" value="051">051</option>
+                        <option class="op11" value="031">031</option>
+                    </select>
+                    - <input class="input14" type="text" name="st-tel1" id="st-tel1">
+                    - <input class="input14" type="text" name="st-tel2" id="st-tel2"><br>
+
+
+                    <span class="span11">가게 영업시간</span> <br>
+                    <input class="input13" type="time" value="00:00" name="st-bh" id="st-bh1"> ~
+                    <input class="input13" type="time" value="00:00" name="st-bh" id="st-bh2"><br>
+                    <!--                    <input class="input11" type="text" name="st-bh" id="st-bh"><br>-->
+
+                    <span class="span11">가게 소개</span> <br>
+                    <input class="input11" type="text" name="st-epl" id="st-epl"><br>
+
+                    <span class="span11">가게 이미지</span> <br>
+                    <input class="input12" type="file" name="store-img" id="store-img"><br>
+
+
+                    <button type="button" class="join_button btn11 colored-btn11">수정하기</button>
+                    <button type="button" class="reset-btn btn11 uncolored-btn11"
+                            onclick="location.href='/watchtable/joinselect';">취소</button>
+
+                </form>
+                <div class="end-pg"></div>
+
+            </div>
+        </fieldset>
+
+        <h1 class="mt-4">Business information correction</h1>
+        나는 이게 왜 자꾸 위로 올라가는지 모루겟다....
+        <a href="/watchtable/watchtable/myinfocorrect">/watchtable/managemyinfo(Member)[확인]</a><br>
+        <a href="/watchtable/watchtable/manage">/watchtable/manage(Business member)[취소]</a><br>
+    </th:block>
+</th:blotck>

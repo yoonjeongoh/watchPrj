@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
+    <th:block th:fragment="content">
+
+<!--        왼쪽 사이드바-->
+        <div>
+
+        </div>
+
+<!--        혼잡도현황-->
+        <div>
+
+        </div>
+
+<!--        대기손님 현황-->
+        <div>
+
+        </div>
+
+        <h1 class="mt-4">manage</h1>
+        <a href="http://localhost:8080/watchtable/">/watchtable/main(All)</a><br>
+        <a href="/watchtable/watchtable/checkpw">/watchtable/checkpw(All Members)[내정보수정]</a><br>
+        <a href="/watchtable/watchtable/checkpw">/watchtable/checkpw(Business Member)[사업자정보 수정]</a><br>
+        <a href="/watchtable/watchtable/detailed">/watchtable/detailed(All)</a><br>
+        <a href="/watchtable/watchtable/storereview">/watchtable/storereview(Business Member)</a><br>
+    </th:block>
+</th:blotck>

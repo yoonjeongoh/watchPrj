@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content})}">
+  <th:block th:fragment="content">
+    <link rel="stylesheet" href="/watchtable/css2/index.css"/>
+
+    <div class="map" id="map"></div>
+
+    <h3>실제 메인화면에 나와야 할 것들</h3>
+    <a href="http://localhost:8080/watchtable/">/watchtable/main(All)</a><br>
+    <a th:href="@{watchtable/detailed}">/watchtable/detailed(All)</a><br>
+    <a th:href="@{join/login}">/watchtable/login(Guest)</a><br>
+    <a th:href="@{member/myinfo}">/watchtable/myinfo(Member)</a><br>
+    <a th:href="@{member/manage}">/watchtable/manage(Business member)</a><br>
+    <a th:href="@{admin/admin}">/watchtable/admin(Admin)</a><br>
+    <hr>
+    <h3>비회원 항목들</h3>
+    <a th:href="@{join/join}">/watchtable/join(Guest)</a><br>
+    <a th:href="@{join/managerjoin}">/watchtable/managerjoin(Guest)</a><br>
+    <a th:href="@{join/managerjoin2}">/watchtable/managerjoin2(Guest)</a><br>
+    <a th:href="@{join/joinselect}">/watchtable/joinselect(Guest)</a><br>
+    <hr>
+    <h3>일반회원 항목들</h3>
+    <a th:href="@{member/myinfocorrect}">/watchtable/myinfocorrect(Member)</a><br>
+    <a th:href="@{join/checkpw}">/watchtable/checkpw(All Members)</a><br>
+    <a th:href="@{member/myinfo}">/watchtable/myinfo(All Members)</a><br>
+    <a th:href="@{review/myreview}">/watchtable/myreview(Member)</a><br>
+    <hr>
+    <h3>사업자 회원 항목들</h3>
+    <a th:href="@{member/manageinfocorrect}">/watchtable/manageinfocorrect(Business Member)</a><br>
+    <a th:href="@{member/manage}">/watchtable/manage(Business Member)</a><br>
+    <a th:href="@{member/managemyinfo}">/watchtable/managemyinfo(Business Member)</a><br>
+    <a th:href="@{review/storereview}">/watchtable/storereview(Business Member)</a><br>
+
+    <hr>
+    <h3>관리자 항목들</h3>
+    <a th:href="@{admin/admin}">/watchtable/admin(Admin)</a><br>
+    <a th:href="@{admin/approve}">/watchtable/approve(Admin)[사업자승인]</a><br>
+    <a th:href="@{admin/approvefiles}">/watchtable/approvefiles(Admin)[사업자증명서확인]</a><br>
+    <hr>
+    <h3>포스+주방</h3>
+    <a th:href="@{pos/loginmng}">/watchtable/loginmng[포스로그인]</a><br>
+    <a th:href="@{pos/possetting}">/watchtable/possetting[포스세팅]</a><br>
+    <a th:href="@{pos/kitchen}">/watchtable/kitchen[주방화면]</a><br>
+    <a th:href="@{pos/postable}">/watchtable/postable[포스테이블]</a><br>
+    <a th:href="@{pos/posorder}">/watchtable/posorder[포스주문]</a><br>
+
+    <hr>
+    <h3>대기등록</h3>
+    <a th:href="@{waiting/waiting1}">/watchtable/waiting1(Offline)[대기등록메인화면]</a><br>
+    <a th:href="@{waiting/waiting2}">/watchtable/waiting2(Offline)[대기등록정보입력화면]</a><br>
+    <a th:href="@{waiting/waiting3}">/watchtable/waiting3(Offline)[대기등록완료화면]</a><br>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c804c7f02459129ea465ac2bec99e513&libraries=services,clusterer,drawing"></script>
+
+    <script src="/watchtable/js/index.js"></script>
+    <script src="/watchtable/js/indexList.js"></script>
+
+  </th:block>
+</th:block>

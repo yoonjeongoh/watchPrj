@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/base :: setContent(~{this::content})}">
+    <th:block th:fragment="content">
+        <link th:href="@{/css2/detail.css}" rel="stylesheet" />
+
+
+        <div class="wrapper">
+            <div class="detail-content">
+            <!--        1열 상단 카드이미지-->
+            <div class="top-card1">
+                <div class="card1">1</div>
+                <div class="card1">2</div>
+                <div class="card1">3</div>
+                <div class="card1">4</div>
+                <div class="card1">5</div>
+            </div>
+
+            <!--        2열-->
+            <div class="sec-col1">
+                <!--        2열 좌측 가게이름, 임티-->
+                <div class="sec1 sec-left1">1
+                    <span>가게이름</span><br>
+                    <div>이모티콘</div>
+                    <div>대충 평가 그래프</div>
+                </div>
+
+                <!--        2열 중앙 혼잡도 그래프-->
+                <div class="sec1 sec-center1"> 2
+                    <span>잔여좌석 수 0/13</span>
+                    <button>♡</button>
+                    <br>
+                    <span>현재 대기 팀 0팀</span>
+                    <button>대기 등록하기</button>
+                    <br>
+                    <span>혼잡도가 80% 이상 일 때 가게 도착 시 만석이 될 수 있습니다</span><br>
+                    <div>그래프</div>
+
+                </div>
+
+                <!--        2열 우측 지도-->
+                <div class="sec1 sec-right1"> 3
+                    대충 지도라는 뜻
+                </div>
+            </div>
+
+            <!--        3열-->
+            <div class="thd-col1">
+                <!--        3열 좌측 가게메뉴-->
+                <div class="thd1 thd-left1"> 1
+                    <span>메뉴</span>
+                    <span></span>
+                </div>
+
+                <!--        3열 우측 가게정보-->
+                <div class="thd1 thd-right1"> 2
+                    <span>주소</span> <span>1</span><br>
+                    <span>전화번호</span> <span>2</span><br>
+                    <span>영업시간</span> <span>3</span><br>
+                    <span>기타</span> <span>4</span><br>
+                    <span>가게소개</span> <span>5</span>
+                </div>
+
+            </div>
+
+            <!--        4열 리뷰 점수-->
+            <div class="rv-grade"> 리뷰점수
+
+            </div>
+
+            <!--5열 리뷰작성칸-->
+            <div id="review" class="rv-field">
+                <form class="form1" action="/watchtable/watchtable/detailed" method="post" name="frm">
+                    <div class="rv-textarea">
+                        <textarea name="ta" id="rv-ta" class="rv-ta" cols="80" rows="3"></textarea>
+                        <button type="button" name="button" id='rv-btn' class="btn11 colored-btn11">리뷰등록</button>
+                    </div>
+                </form>
+            </div>
+
+            <!--        6열 리뷰 리스트-->
+            <div class="rv-list"> 리뷰리스트
+                <table class="table rv-table">
+                    <thead>
+                    <tr>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+
+<!--    margin for end of page-->
+            <div class="end-pg"></div>
+            </div>
+        </div>
+
+<!--        <script th:inline="javascript">
+                window.onload = function() {
+                    alert("등록되었습니다");
+                    document.frm.submit();
+                 };
+
+        </script>-->
+
+        <!--        <h1 class="mt-4">Detailed Page</h1>-->
+        <!--        <a href="http://localhost:8080/watchtable/">/watchtable/main(All)</a><br>-->
+        <!--        <a href="/watchtable/watchtable/login">/watchtable/login(Guest)</a><br>-->
+        <!--        <a href="/watchtable/watchtable/myinfo">/watchtable/myinfo(Member)</a><br>-->
+        <!--        <a href="/watchtable/watchtable/manage">/watchtable/manage(Business member)</a><br>-->
+        <!--        <a href="/watchtable/watchtable/admin">/watchtable/admin(Admin)</a><br>-->
+
+
+    </th:block>
+</th:block>

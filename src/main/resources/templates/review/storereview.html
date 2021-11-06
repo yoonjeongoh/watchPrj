@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
+    <th:block th:fragment="content">
+
+<!--        상세페이지에 리뷰 뜨는거 그대로 받아오면 되지 않을가..?-->
+        <table class="store-rv">
+            <thead>
+            <tr>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td></td>
+            </tr>
+            </tbody>
+
+        </table>
+
+        <hr>
+        <h1 class="mt-4">Store review</h1>
+        <a href="/watchtable/watchtable/manage">/watchtable/manage(Business Member)</a><br>
+        <a href="http://localhost:8080/watchtable/">/watchtable/main(All)</a><br>
+        <a href="/watchtable/watchtable/detailed">/watchtable/detailed(All)</a><br>
+    </th:block>
+</th:blotck>

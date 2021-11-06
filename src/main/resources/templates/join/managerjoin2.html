@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
+    <th:block th:fragment="content">
+        <link th:href="@{/css2/join.css}" rel="stylesheet" />
+
+        <fieldset>
+            <div class="mngfield2">
+                <form class="form11" action="http://localhost:8080/watchtable/watchtable/manage/" method="get" name="f">
+                    <span class="span11">상호명</span> <br>
+                    <input class="input11" type="text" name="shop_name" id="shop_name"><br>
+
+                    <span class="span11">사업자 등록번호</span> <br>
+                    <input class="input11" type="text" name="manager_num" id="manager_num"
+                           placeholder="11자의 숫자로만 입력" maxlength="11"><br>
+
+                    <span class="span11">사업장 주소 <button class="adr-btn">주소검색</button></span><br>
+                    <input class="input11" type="text" name="shop_add" id="shop_add"><br>
+
+                    <span class="span11">가게 연락처</span> <br>
+<!--                    <input class="input11" type="text" name="st-tel" id="st-tel"><br>-->
+                    <select class="sel11" name="tel" id="sel-store-tel">
+                        <option class="op11" value="02">02</option>
+                        <option class="op11" value="051">051</option>
+                        <option class="op11" value="031">031</option>
+                    </select>
+                    - <input class="input14" type="text" name="st-tel1" id="st-tel1">
+                    - <input class="input14" type="text" name="st-tel2" id="st-tel2"><br>
+
+
+                    <span class="span11">가게 영업시간</span> <br>
+                    <input class="input13" type="time" value="00:00" name="st-bh" id="st-bh1"> ~
+                    <input class="input13" type="time" value="00:00" name="st-bh" id="st-bh2"><br>
+<!--                    <input class="input11" type="text" name="st-bh" id="st-bh"><br>-->
+
+                    <span class="span11">가게 소개</span> <br>
+                    <input class="input11" type="text" name="st-epl" id="st-epl"><br>
+
+                    <span class="span11">사업자 등록증 파일 첨부</span> <br>
+                    <input class="input12" type="file" name="business_license" id="business_license"><br>
+
+
+                    <span class="span11">가게 이미지</span> <br>
+                    <input class="input12" type="file" name="store-img" id="store-img"><br>
+
+                    <button type="button" id="btn" class="join_button btn11 colored-btn11">회원가입</button>
+                    <button type="reset" class="reset-btn btn11 uncolored-btn11">다시입력</button>
+                </form>
+                <div class="end-pg"></div>
+
+            </div>
+        </fieldset>
+
+    <script th:inline="javascript">
+    window.onload = function() {
+        document.getElementById('btn').onclick = function() {
+
+        document.f.submit()
+     }
+    };
+
+    </script>
+
+<!--        function sendIt() {
+        var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+        var msg, ss, cc;
+        if (document.f.shop_name.value == "") {
+        alert("상호명을 입력하지 않았습니다.")
+        document.f.my_add.focus()
+        return false;
+        }
+        if (document.f.manager_num.value.length != 11) {
+        alert("사업자번호 길이가 맞지 않습니다.")
+        document.f.manager_num.focus()
+        return false;
+        }
+        if (!isNumeric(document.f.manager_num.value)) {
+        alert("사업자번호는 숫자로 입력하세요.");
+        document.f.manager_num.focus()
+        return false;
+        }
+        function isNumeric(s) {
+        for (i=0; i<s.length; i++) {
+        c = s.substr(i, 1);
+        if (c < "0" || c > "9") return false;
+        }
+        return true;
+        }
+
+        function isSSN(s1, s2) {
+        n = 2;
+        sum = 0;
+        for (i=0; i<s1.length; i++)
+        sum += parseInt(s1.substr(i, 1)) * n++;
+        for (i=0; i<s2.length-1; i++) {
+        sum += parseInt(s2.substr(i, 1)) * n++;
+        if (n == 10) n = 2;
+        }
+        }
+
+        c = 11 - sum % 11;
+        if (c == 11) c = 1;
+        if (c == 10) c = 0;
+        if (c != parseInt(s2.substr(6, 1))) return false;
+        else return true;
+
+        document.f.submit()
+        }-->
+
+
+    </th:block>
+</th:blotck>
+</html>

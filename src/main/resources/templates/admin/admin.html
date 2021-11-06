@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
+  <th:block th:fragment="content">
+
+
+
+    <h1 class="mt-4">Admin</h1>
+    <a th:href="@{watchtable/detailed}">/watchtable/detailed(All)</a><br>
+    <a href="http://localhost:8080/watchtable/">/watchtable/main(All)</a><br>
+    <a th:href="@{watchtable/approve}">/watchtable/approve(Admin)[사업자승인]</a><br>
+  </th:block>
+</th:blotck>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
+    <th:block th:fragment="content">
+        <link th:href="@{/css2/login.css}" rel="stylesheet" />
+
+
+        <fieldset>
+            <div class="field">
+                    <button type="button" name="button2" class="btn1 colored-btn1"
+                                        onclick="location.href='/watchtable/watchtable/join';">일반 회원가입</button> <br>
+                    <button type="button" name="button2" class="btn1 colored-btn1"
+                                        onclick="location.href='/watchtable/watchtable/managerjoin';">사업자 회원가입</button>
+            </div>
+        </fieldset>
+
+
+    </th:block>
+</th:blotck>

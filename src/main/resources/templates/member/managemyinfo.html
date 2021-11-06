@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
+    <th:block th:fragment="content">
+        <link th:href="@{/css2/join.css}" rel="stylesheet" />
+
+
+        <fieldset>
+            <div class="mngfield">
+                <form class="form11" action="/watchtable/watchtable/managemyinfo" method="post" name="f" onsubmit="return sendIt();">
+
+                    <span class="span11">가게 연락처</span> <br>
+                    <span class="input11" name="st-tel" id="st-tel"></span><br>
+
+
+
+                    <span class="span11">가게 영업시간</span> <br>
+                    <span class="input11" name="st-bh" id="st-bh"></span><br>
+
+                    <span class="span11">가게 소개</span> <br>
+                    <span class="input11" type="text" name="st-epl" id="st-epl"></span><br>
+
+                    <span class="span11">가게 이미지</span> <br>
+                    <span class="input12" type="file" name="store-img" id="store-img"></span><br>
+
+                    <button type="button" class="join_button btn11 colored-btn11">수정하기</button>
+                    <button type="button" class="reset-btn btn11 uncolored-btn11"
+                            onclick="location.href='/watchtable/joinselect';">돌아가기</button>
+
+                </form>
+                <div class="end-pg"></div>
+
+            </div>
+        </fieldset>
+
+        <h1 class="mt-4">My Business information</h1>
+        <a href="http://localhost:8080/watchtable/">/watchtable/main(All)[로고]</a><br>
+        <a href="/watchtable/watchtable/checkpw">/watchtable/checkpw(Business Member)[정보수정하기]</a><br>
+    </th:block>
+</th:blotck>

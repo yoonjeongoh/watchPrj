@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
+    <th:block th:fragment="content">
+        테이블 수 </br>
+        2인:
+        <form>
+            <input type=text name=table2 value=0>
+            <input type=button value="+" onClick="javascript:this.form.table2.value++;">
+            <input type=button value="-" onClick="javascript:this.form.table2.value--;">
+        </form>
+        4인:
+        <form>
+            <input type=text name=table4 value=0>
+            <input type=button value="+" onClick="javascript:this.form.table4.value++;">
+            <input type=button value="-" onClick="javascript:this.form.table4.value--;">
+        </form>
+        6인:
+        <form>
+            <input type=text name=table6 value=0>
+            <input type=button value="+" onClick="javascript:this.form.table6.value++;">
+            <input type=button value="-" onClick="javascript:this.form.table6.value--;">
+        </form>
+
+
+
+
+        <button id="combtn" onClick="location.href='/watchtable/watchtable/postable'">완료</button>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="/js/possetting.js"></script>
+    </th:block>
+</th:blotck>

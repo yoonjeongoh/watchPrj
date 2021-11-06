@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
+    <th:block th:fragment="content">
+        <link th:href="@{/css2/join.css}" rel="stylesheet" />
+
+        <fieldset>
+            <div class="joinfield">
+                <form class="form11" action="/watchtable/myinfo" method="get" id="join_form" name="f">
+                    <form action="">
+                        <span class="span11"><input type="checkbox" class="ch-box1" name="name" value="name">이름</span>
+                        <input class="input11" type="text" id="my_name" ><br>
+
+                        <span class="span11"><input type="checkbox" class="ch-box1" name="name" value="nick">닉네임</span>
+                        <input class="input11" type="text" name="memberId" id="my_id"
+                               placeholder="4~12자의 영문 대소문자와 숫자로만 입력" maxlength="12"><br>
+                    </form>
+<!--
+                    <span class="span11">현재아이디</span> <br>
+                    <span class="span11"></span> <br>
+                    <span class="span11">닉네임</span> <br>
+                    <input class="input11" type="text" name="memberId" id="my_id"
+                           placeholder="4~12자의 영문 대소문자와 숫자로만 입력" maxlength="12"><br>
+-->
+
+                    <span class="span11">변경할 비밀번호</span> <br>
+                    <input class="input11" type="password" name="memberPw" id="my_Pw1"
+                           placeholder="4~12자의 영문 대소문자와 숫자로만 입력" maxlength="12"><br>
+                    <span class="span11">변경할 비밀번호 재입력</span> <br>
+                    <input class="input11" type="password" name="memberPw2"  id = "my_Pw2" maxlength="12"><br>
+
+                    <span class="span11">변경할 이메일</span> <br>
+                    <input class="input11" type="text" name="memberEmail" id="my_Email"
+                           placeholder="예>id@domain.com" ><br>
+
+                    <span class="span11">변경할 연락처</span> <br>
+                    <input class="input11" type="text" name="memberMobile" id="my_number"><br>
+
+                    <button id = "coBtn"type="button" class="join_button btn11 colored-btn11">수정하기</button>
+                    <button type="reset" class="reset-btn btn11 uncolored-btn11">돌아가기</button>
+
+                </form>
+                <hr>
+                <h1 class="mt-4">My information correction</h1>
+                <a href="/watchtable/myinfocorrect">/watchtable/myinfocorrect(All Members)[수정확인]</a><br>
+                <a href="/watchtable/myinfo">/watchtable/myinfo(All Members)[취소]</a><br>
+            </div>
+        </fieldset>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+        <script>
+            window.onload = function () {
+                var actionForm = $("form");
+                var coBtn = document.getElementById('coBtn');
+
+
+                var IdCheck = document.getElementById("my_id")
+
+                var PwCheck1 = document.getElementById("my_Pw1")
+                var PwCheck2 = document.getElementById("my_Pw2")
+                var EmailCheck = document.getElementById("my_Email")
+                var MobileCheck = document.getElementById("my_number")
+                coBtn.onclick = function () {
+
+                if (IdCheck.value == "") {
+                alert("변경할 아이디를 입력해주세요.");
+                IdCheck.focus();
+                return;
+                }
+                if (PwCheck1.value == "") {
+                alert("변경할 비밀번호를 입력해주세요.");
+                PwCheck1.focus();
+                return;
+                }
+                if (PwCheck2.value == "") {
+                alert("변경할 비밀번호 재확인을 입력해주세요.");
+                PwCheck2.focus();
+                return;
+                }
+                if (EmailCheck.value == "") {
+                alert("변경할 이메일을 입력해주세요.");
+                EmailCheck.focus();
+                return;
+                }
+                if (MobileCheck.value == "") {
+                alert("변경할 연락처 입력해주세요.");
+                MobileCheck.focus();
+                return;
+                }
+                actionForm.submit();
+             }
+            }
+        </script>
+
+    </th:block>
+</th:blotck>

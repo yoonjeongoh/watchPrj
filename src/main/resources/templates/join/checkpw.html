@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/base :: setContent(~{this::content})}">
+    <th:block th:fragment="content">
+        <link th:href="@{/css2/login.css}" rel="stylesheet" />
+
+        <fieldset>
+            <div class="pw-field">
+                <form th:action="@{/watchtable/watchtable/myinfocorrect}" th:method="get">
+                    <span class="span3" >비밀번호를 확인해주세요</span><br>
+                    <input class="input1" type="password" id="pw" placeholder="비밀번호 입력"><br>
+                    <button type="button" name="button" id='btn' class="btn1 login-btn colored-btn1">비밀번호 확인</button><br>
+                </form>
+            </div>
+        </fieldset>
+
+<!--                <h1 class="mt-4">Check Password</h1>-->
+<!--                <a href="/watchtable/myinfocorrect">/watchtable/myinfocorrect(All Members)[내정보수정]</a><br>-->
+<!--                <a href="/watchtable/manageinfocorrect">/watchtable/manageinfocorrect(Business Member)[사업자정보수정]</a><br>-->
+<!--                <a href="/watchtable/myinfo">/watchtable/myinfo(All Members)[취소]</a><br>-->
+
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+        <script>
+            window.onload = function () {
+                var actionForm = $("form");
+                var checkBtn = document.getElementById('btn');
+                var pwcheck = document.getElementById("pw")
+                checkBtn.onclick = function () {
+                if (pwcheck.value == "") {
+                alert("비밀번호를 입력해주세요.");
+                pw.focus();
+                return;
+                }
+                actionForm.submit();
+             }
+            }
+        </script>
+
+    </th:block>
+</th:block>
