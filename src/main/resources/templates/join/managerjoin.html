@@ -166,19 +166,18 @@
                 element_layer.style.display = 'none';
             },
 
-            //테마변경..안돼..왜안돼ㅠㅠ박대가리야 ㅠㅠㅠㅠ
+            //테마변경.. 기본으로 갈지 말지 고민중 근데 전체 보더 없애고싶은데 또 못하는중못하는중
             theme : {
-               bgColor : "#ECECEC",
-               searchBgColor : "#FFFFFF",
-               contentBgColor : "#FFFFFF",
-               pageBgColor : "#FAFAFA",
-               textColor : "#333333",
-               queryTextColor : "#222222",
-               postcodeTextColor : "#FA4256",
-               emphTextColor : "#008BD3",
-               outlineColor : "#E0E0E0"
+                bgColor : "#fdb53c",
+                searchBgColor : "#FFFFFF",
+                contentBgColor : "#FFFFFF",
+                pageBgColor : "#FAFAFA",
+                textColor : "#333333",
+                queryTextColor : "#222222",
+                postcodeTextColor : "#FA4256",
+                emphTextColor : "#008BD3",
+                outlineColor : "#c7c4bf"
             },
-
             width : '100%',
             height : '100%',
             maxSuggestItems : 5
@@ -197,9 +196,9 @@
     // resize이벤트나, orientationchange이벤트를 이용하여 값이 변경될때마다 아래 함수를 실행 시켜 주시거나,
     // 직접 element_layer의 top,left값을 수정해 주시면 됩니다.
     function initLayerPosition(){
-        var width = 300; //우편번호서비스가 들어갈 element의 width
-        var height = 400; //우편번호서비스가 들어갈 element의 height
-        var borderWidth = 5; //샘플에서 사용하는 border의 두께
+        var width = 500; //우편번호서비스가 들어갈 element의 width
+        var height = 500; //우편번호서비스가 들어갈 element의 height
+        var borderWidth = 1; //샘플에서 사용하는 border의 두께
 
         // 위에서 선언한 값들을 실제 element에 넣는다.
         element_layer.style.width = width + 'px';
