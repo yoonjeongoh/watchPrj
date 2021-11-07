@@ -19,7 +19,10 @@ public class Member extends com.ds.watchtable.entity.BaseEntity {
     private String memberId;
 
     private String memberName;
+    private String memberNickname;
     private String memberPw;
     private String memberEmail;
     private String memberMobile;
+
+    private String type;
 }

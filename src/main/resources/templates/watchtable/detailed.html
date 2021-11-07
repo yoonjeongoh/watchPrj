@@ -72,7 +72,7 @@
                 <form class="form1" action="http://localhost:8080/watchtable/watchtable/detailed" method="post" name="frm">
                     <div class="rv-textarea">
                         <textarea name="text" id="rv-ta" class="rv-ta" cols="80" rows="3"></textarea>
-                        <button type="button" name="button" id='rv-btn' class="add-review btn11 colored-btn11">리뷰등록</button>
+                        <button type="button" name="button" id='rv-btn' class="add_review btn11 colored-btn11">리뷰등록</button>
                     </div>
                 </form>
             </div>
@@ -98,11 +98,14 @@
             <div class="end-pg"></div>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                crossorigin="anonymous">
+                </script>
 
         <script th:inline="javascript">
             var actionForm = $("form");
-            $(".add-review").click(function(){
+            $(".add_review").click(function(){
                     actionForm.submit();
             });
         </script>
