@@ -6,10 +6,11 @@ import com.ds.watchtable.entity.Store;
 
 public interface StoreService {
 
-    String storeRegister(StoreDTO storeDTO);
+    void storeRegister(StoreDTO storeDTO);
 
     default Store dtoToEntity(StoreDTO storeDTO){
         Store store = Store.builder()
+                .member(Member.builder().memberNum(storeDTO.getMemberNum()).build())
                 .storeNum(storeDTO.getStoreNum())
                 .storeName(storeDTO.getStoreName())
                 .storeMenu(storeDTO.getStoreMenu())
