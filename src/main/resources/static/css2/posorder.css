@@ -1,0 +1,37 @@
+  * {
+     margin: 0px; padding: 0px;
+  }
+
+  input:focus, select:focus, option:focus, textarea:focus, button:focus{
+  	outline: none;
+  }
+
+button {
+  border: 0;
+}
+
+table{
+    border: 1px solid black;
+    border-collapse: collapse;
+    width:500px;
+}
+
+.tb-title{
+border: 1px solid black;
+    border-collapse: collapse;
+}
+.tb-content{
+border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th{
+border: 1px solid black;
+    border-collapse: collapse;
+    }
+
+.tb-list{
+position:absolute;
+top:20px;
+right:20px;
+}

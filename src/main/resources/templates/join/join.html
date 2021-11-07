@@ -2,172 +2,75 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
-        <link th:href="@{/css2/join.css}" rel="stylesheet" />
-        <script>
-            src="https://code.jquery.com/jquery-3.4.1.js"
-            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-            crossorigin="anonymous"
-    </script>
-<div>
-<fieldset>
-    <div class="joinfield">
-        <form class="form11" th:action="@{/member/myinfo}" method="post" id="join_form" name="f">
-            <span class="span11">이름</span><br>
-            <input class="input11" type="text" id="my_name" name="memberName"><br>
-<!--                <span id="name1">이름을 입력하지 않았습니다.</span>-->
-<!--                <span id="name2">이름을 2자 이상 입력해주십시오.</span><br>-->
 
-            <span class="span11">아이디</span> <br>
-            <input class="input11" type="text" name="memberId" id="my_id"
-                   placeholder="4~12자의 영문 대소문자와 숫자로만 입력" maxlength="12"><br>
-<!--                <span id="id1">ID를 입력하지않으셨습니다.</span>-->
-<!--                <span id="id2">아이디는 대소문자, 숫자만 입력가능합니다.</span>-->
-<!--                <span id="id3">아이디에 공백을 사용할 수 없습니다.</span>-->
-<!--                <span id="id4">아이디를 4~12자까지 입력해주세요.</span>-->
+        <link th:href="@{/css2/join.css}" rel="stylesheet"/>
+        <script src="/watchtable/js2/joinCheck.js"></script>
 
-            <span class="span13">닉네임</span><br>
-            <input class="input11" type="text" name="memberNickname" id="my_nick"><br>
+        <div>
+            <fieldset>
+                <div class="joinfield">
+                    <form class="form11" action="http://localhost:8080/watchtable/member/myinfo" method="post"
+                          id="join_form" name="f">
+                        <span class="span11">이름</span><br>
+                        <input class="input11" type="text" name="memberName" id="my_name"><br>
+                        <div class='valid'>아이디를 입력하세요. (영문 소문자, 숫자만 입력 가능)</div>
 
-            <span class="span11">비밀번호</span> <br>
-            <input class="input11" type="password" name="memberPw" id="my_pwd"
-                   placeholder="4~12자의 영문 대소문자와 숫자로만 입력" maxlength="12"><br>
-<!--                <span id="pw1">비밀번호를 입력하지 않았습니다.</span>-->
-<!--                <span id="pw2">아이디와 비밀번호가 같습니다.</span>-->
-<!--                <span id="pw3">비밀번호를 4~12자까지 입력해주세요.</span>-->
+                        <span class="span11">아이디</span> <br>
+                        <input class="input11" type="text" name="memberId" id="my_id"
+                               placeholder="4~12자의 영문 대소문자와 숫자로만 입력" maxlength="12"><br>
 
-            <span class="span11">비밀번호 재입력</span> <br>
-            <input class="input11" type="password" name="memberPw2"  maxlength="12"><br>
-<!--                <span id="danger">비밀번호가 일치하지 않습니다.</span> <br>-->
+                        <span class="span13">닉네임</span><br>
+                        <input class="input11" type="text" name="membernick" id="my_nick"><br>
 
-            <span class="span11">이메일</span> <br>
-            <input class="input11" type="text" name="memberEmail" id="my_add"
-                   placeholder="예>id@domain.com" ><br>
-<!--                <span id="email1">이메일을 입력하지 않았습니다.</span>-->
-<!--                <span id="email2">잘못된 이메일 형식입니다.</span> <br>-->
+                        <span class="span11">비밀번호</span> <br>
+                        <input class="input11" type="password" name="memberPw" id="my_pwd"
+                               placeholder="4~12자의 영문 대소문자와 숫자로만 입력" maxlength="12"><br>
 
-            <span class="span11">연락처</span> <br>
-<!--            <input class="input11" type="text" name="memberMobile" id="my_number"><br>-->
-            <select class="sel11" name="memberMobile" id="sel-store-tel">
-                <option class="op11" value="02">02</option>
-                <option class="op11" value="051">051</option>
-                <option class="op11" value="031">031</option>
-                <option class="op11" value="010" selected>010</option>
-            </select>
-            - <input class="input14" type="text" name="memberMobile" id="st-tel1">
-            - <input class="input14" type="text" name="memberMobile" id="st-tel2"><br>
+                        <span class="span11">비밀번호 재입력</span> <br>
+                        <input class="input11" type="password" name="memberPw2" id="pwd_check" maxlength="12"><br>
+
+                        <span class="span11">이메일</span> <br>
+                        <input class="input11" type="text" name="memberEmail" id="my_add"
+                               placeholder="예>id@domain.com"><br>
+
+                        <span class="span11">연락처</span> <br>
+                        <select class="sel11" name="tel" id="sel-store-tel">
+                            <option class="op11" value="02">02</option>
+                            <option class="op11" value="051">051</option>
+                            <option class="op11" value="031">031</option>
+                            <option class="op11" value="010" selected>010</option>
+                        </select>
+                        - <input class="input14" type="text" name="st-tel1" id="st-tel1">
+                        - <input class="input14" type="text" name="st-tel2" id="st-tel2"><br>
+
+                        <button type="button" class="join_button btn11 colored-btn11">가입하기</button>
+                        <button type="reset" class="reset-btn btn11 uncolored-btn11">다시입력</button>
+
+                    </form>
+                </div>
+            </fieldset>
+        </div>
 
 
-            <!--                <span id="num1">전화번호를 입력하지 않았습니다.</span>-->
-<!--                <span id="num2">전화번호 길이가 맞지 않습니다.</span>-->
-<!--                <span id="num3">전화번호는 숫자로 입력하세요.</span>-->
-
-            <button type="button" class="join_button btn11 colored-btn11">가입하기</button>
-            <button type="reset" class="reset-btn btn11 uncolored-btn11">다시입력</button>
-
-        </form>
-    </div>
-</fieldset>
-</div>
         <!--    margin for end of page-->
         <div class="end-pg"></div>
-
-        <!--  ---------------------------------------------------------------------------------------- -->
-
-<!--        <head>-->
-<!--            <meta charset="UTF-8">-->
-<!--            <title>회원 가입 페이지</title>-->
-<!--            <style>-->
-<!--    #danger, #id1, #id2, #id3, #id4,-->
-<!--    #pw1, #pw2, #pw3, #email1, #email2,-->
-<!--    #name1, #name2, #num1, #num2, #num3{-->
-<!--        display:none;-->
-<!--        color:red;-->
-<!--    }-->
-<!--</style>-->
-<!--            <script-->
-<!--                    src="https://code.jquery.com/jquery-3.4.1.js"-->
-<!--                    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="-->
-<!--                    crossorigin="anonymous"></script>-->
-<!--        </head>-->
-
-<!--<body align="center" marginwidth="0" marginheight="10">-->
-<!--<form name="f" method="post" id="join_form" action="/watchtable/myinfo">-->
-<!--    <table width="800" height="250" border="1" align="center">-->
-<!--        <tr align="left">-->
-<!--            <td align="center" colspan="2" bgcolor="pink"><B>회원 기본 정보</B></td>-->
-<!--        </tr>-->
-<!--        <tr align="left">-->
-<!--            <td align="center" bgcolor="lightgreen"><b>이름</b></td>-->
-<!--            <td><input type="text" name="memberName" id="my_name" size="20"-->
-<!--                       maxlength="7">-->
-<!--                <span id="name1">이름을 입력하지 않았습니다.</span>-->
-<!--                <span id="name2">이름을 2자 이상 입력해주십시오.</span>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        <tr align="left">-->
-<!--            <td align="center" bgcolor="lightgreen"><b>아이디</b></td>-->
-<!--            <td><input type="text" name="memberId" id="my_id" size="20"-->
-<!--                       maxlength="12">4~12자의 영문 대소문자와 숫자로만 입력-->
-<!--                <span id="id1">ID를 입력하지않으셨습니다.</span>-->
-<!--                <span id="id2">아이디는 대소문자, 숫자만 입력가능합니다.</span>-->
-<!--                <span id="id3">아이디에 공백을 사용할 수 없습니다.</span>-->
-<!--                <span id="id4">아이디를 4~12자까지 입력해주세요.</span>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        <tr align="left">-->
-<!--            <td align="center" bgcolor="lightgreen"><b>비밀번호</b></td>-->
-<!--            <td><input type="password" name="memberPw" id="my_pwd" size="20"-->
-<!--                       maxlength="12">4~12자의 영문 대소문자와 숫자로만 입력-->
-<!--                <span id="pw1">비밀번호를 입력하지 않았습니다.</span>-->
-<!--                <span id="pw2">아이디와 비밀번호가 같습니다.</span>-->
-<!--                <span id="pw3">비밀번호를 4~12자까지 입력해주세요.</span>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        <tr align="left">-->
-<!--            <td align="center" bgcolor="lightgreen"><b>비밀번호 확인</b></td>-->
-<!--            <td><input type="password" name="memberPw2" size="20"-->
-<!--                       maxlength="12">-->
-<!--                <span id="danger">비밀번호가 일치하지 않습니다.</span></td>-->
-<!--        </tr>-->
-<!--        <tr align="left">-->
-<!--            <td align="center" bgcolor="lightgreen"><b>메일 주소</b></td>-->
-<!--            <td><input type="text" name="memberEmail" id="my_add" size="20">예>id@domain.com-->
-<!--                <span id="email1">이메일을 입력하지 않았습니다.</span>-->
-<!--                <span id="email2">잘못된 이메일 형식입니다.</span>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        <tr align="left">-->
-<!--            <td align="center" bgcolor="lightgreen"><b>전화번호</b></td>-->
-<!--            <td><input type="text" name="memberMobile" id="my_number" size="20">-->
-<!--                <span id="num1">전화번호를 입력하지 않았습니다.</span>-->
-<!--                <span id="num2">전화번호 길이가 맞지 않습니다.</span>-->
-<!--                <span id="num3">전화번호는 숫자로 입력하세요.</span>-->
-<!--            </td>-->
-<!--        </tr>-->
-
-<!--    </table>-->
-<!--    <br> <br>-->
-<!--    <button type="button" class="join_button">회원가입</button>-->
-<!--    <input type="reset" value="다시 입력">-->
-<!--</form>-->
-
 
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
         crossorigin="anonymous">
-
 </script>
 
      <script th:inline="javascript">
+
         var actionForm = $("form");
         //회원가입 버튼(회원가입 기능 작동)
         $(".join_button").click(function(){
                 actionForm.submit();
         });
-<!--
+
         //유효성 검사
-        $('.chk').on('keyup', function(){
+        $('.form11').on('keyup', function(){
            if($(this).attr('name') == 'id') {
               if(event.keyCode == 13) { id_check(); }
               else {
@@ -189,10 +92,8 @@
            div.removeClass();
            div.addClass(data.code)
         }
--->
-    </script>
 
-<!--</body>-->
+        </script>
 
-</th:block>
+    </th:block>
 </th:blotck>
