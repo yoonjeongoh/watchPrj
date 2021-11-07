@@ -14,10 +14,19 @@ import javax.persistence.*;
 public class Store extends com.ds.watchtable.entity.BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int storenum;
+    private int storeNum;
 
-    private String storename;
-    private String storemenu;
-    private String storeads;
-    private int storetel;
+    private String storeName;
+    private String storeMenu;
+    private String storeAds;
+    private String storeTel;
+    private String storeText;
+    private String storeBh;
+
+    private String bsNum;
+    private String bsImg;
+
+    @ManyToOne
+    Member member;
+
 }

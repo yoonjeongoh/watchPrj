@@ -11,18 +11,30 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class MemberDTO {
+public class StoreDTO {
     private int memberNum;
 
     private String memberName;
+    private String memberNickname;
     private String memberId;
     private String memberPw;
     private String memberEmail;
     private String memberMobile;
-    private String memberNickname;
     private String type;
 
 
     private LocalDateTime regDate;
     private LocalDateTime modDate;
+
+    private int storeNum;
+
+    private String storeName;
+    private String storeMenu;
+    private String storeAds;
+    private String storeTel;
+    private String storeText;
+    private String storeBh;
+
+    private String bsNum;
+    private String bsImg;
 }
