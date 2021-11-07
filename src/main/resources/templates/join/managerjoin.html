@@ -15,29 +15,66 @@
 
         <fieldset>
             <div class="mngfield">
-                <form class="form11" action="http://localhost:8080/watchtable/join/managerjoin2/" method="get" name="f">
+                <form class="form11" action="http://localhost:8080/watchtable" method="post" name="f">
                     <span class="span11">이름</span> <br>
-                    <input class="input11" type="text" id="my_name" name="my_name" axlength="7"><br>
+                    <input class="input11" type="text" id="my_name" name="memberName" axlength="7"><br>
 
                     <span class="span11">아이디</span> <br>
-                    <input class="input11" type="text" name="my_id" id="my_id"
+                    <input class="input11" type="text" name="memberId" id="my_id"
                            placeholder="4~12자의 영문 대소문자와 숫자로만 입력" maxlength="12"><br>
 
                     <span class="span11">비밀번호</span> <br>
-                    <input class="input11" type="password" name="my_pwd" id="my_pwd"
+                    <input class="input11" type="password" name="memberPw" id="my_pwd"
                            placeholder="4~12자의 영문 대소문자와 숫자로만 입력" maxlength="12"><br>
 
                     <span class="span11">비밀번호 재입력</span> <br>
-                    <input class="input11" type="password" name="my_pwd1" maxlength="12"><br>
+                    <input class="input11" type="password" name="memberPw2" maxlength="12"><br>
 
                     <span class="span11">이메일</span> <br>
-                    <input class="input11" type="text" name="my_add" id="my_add"
+                    <input class="input11" type="text" name="memberEmail" id="my_add"
                            placeholder="예>id@domain.com"><br>
 
                     <span class="span11">연락처</span> <br>
-                    <input class="input11" type="text" name="my_number" id="my_number"><br>
+                    <input class="input11" type="text" name="memberMobile" id="my_number"><br>
 
-                    <button type="button" id="btn" class="join_button btn11 colored-btn11">다음</button>
+                    <span class="span11">상호명</span> <br>
+                    <input class="input11" type="text" name="storeName" id="shop_name"><br>
+
+                    <span class="span11">사업자 등록번호</span> <br>
+                    <input class="input11" type="text" name="bsNum" id="manager_num"
+                           placeholder="11자의 숫자로만 입력" maxlength="11"><br>
+
+                    <span class="span11">사업장 주소 <button class="adr-btn">주소검색</button></span><br>
+                    <input class="input11" type="text" name="storeAds" id="shop_add"><br>
+
+                    <span class="span11">가게 연락처</span> <br>
+                    <!--                    <input class="input11" type="text" name="st-tel" id="st-tel"><br>-->
+                    <select class="sel11" name="storeTel" id="sel-store-tel">
+                        <option class="op11" value="02">02</option>
+                        <option class="op11" value="051">051</option>
+                        <option class="op11" value="031">031</option>
+                    </select>
+                    - <input class="input14" type="text" name="storeTel" id="st-tel1">
+                    - <input class="input14" type="text" name="storeTel" id="st-tel2"><br>
+
+
+                    <span class="span11">가게 영업시간</span> <br>
+                    <input class="input13" type="time" value="00:00" name="storeBh" id="st-bh1"> ~
+                    <input class="input13" type="time" value="00:00" name="storeBh" id="st-bh2"><br>
+                    <!--                    <input class="input11" type="text" name="st-bh" id="st-bh"><br>-->
+
+                    <span class="span11">가게 소개</span> <br>
+                    <input class="input11" type="text" name="storeText" id="st-epl"><br>
+
+                    <span class="span11">사업자 등록증 파일 첨부</span> <br>
+                    <input class="input12" type="file" name="bsImg" id="business_license"><br>
+
+
+                    <span class="span11">가게 이미지</span> <br>
+                    <input class="input12" type="file" name="storeMenu" id="store-img"><br>
+
+
+                    <button type="button" id="btn" class="join_button btn11 colored-btn11">회원가입</button>
                     <button type="reset" class="reset-btn btn11 uncolored-btn11">다시입력</button>
 
 <!--                    <input type="submit" value="회원가입" onclick="sendit()" class="ip-btn12">-->
@@ -52,8 +89,6 @@
     <script th:inline="javascript">
     window.onload = function() {
         document.getElementById('btn').onclick = function() {
-
-
         document.f.submit()
      }
     };

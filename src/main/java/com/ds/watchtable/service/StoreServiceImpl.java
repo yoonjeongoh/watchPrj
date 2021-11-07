@@ -1,9 +1,10 @@
 package com.ds.watchtable.service;
 
-import com.ds.watchtable.dto.MemberDTO;
 import com.ds.watchtable.dto.StoreDTO;
 import com.ds.watchtable.entity.Member;
+import com.ds.watchtable.entity.Store;
 import com.ds.watchtable.repository.MemberRepository;
+import com.ds.watchtable.repository.StoreRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
@@ -11,19 +12,16 @@ import org.springframework.stereotype.Service;
 @Service
 @Log4j2
 @RequiredArgsConstructor
-public class MemberServiceImpl implements MemberService {
+public class StoreServiceImpl implements StoreService{
+    final private StoreRepository storeRepository;
     final private MemberRepository memberRepository;
 
     @Override
-    public String register(MemberDTO memberDTO) {
-        Member member = dtoToEntity(memberDTO);
+    public String storeRegister(StoreDTO storeDTO) {
+        Store store = dtoToEntity(storeDTO);
+        Member member = dtoToEntity2(storeDTO);
+        storeRepository.save(store);
         memberRepository.save(member);
-        return member.getMemberName();
+        return member.getMemberId();
     }
-
-
-    //    @Override
-//    public User add(User user) throws Exception {
-//        return userRepository.save(user);
-//    }
 }
