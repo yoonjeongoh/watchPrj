@@ -11,23 +11,41 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.List;
+
 @Controller
-@RequestMapping
+@RequestMapping("/reviews")
 @Log4j2
 @RequiredArgsConstructor
 public class ReviewController {
 
     @Autowired
     final private ReviewService reviewService;
-
+/*
     @PostMapping("/watchtable/detailed")
     public ResponseEntity<Long> addReview(ReviewDTO reviewDTO){
-        log.info("--------------add MovieReview---------------");
-        log.info("reviewDTO: " + reviewDTO);
         Long reviewnum = reviewService.registerReview(reviewDTO);
         return new ResponseEntity<>( reviewnum, HttpStatus.OK);
-
     }
+*/
+
+/*
+    @GetMapping("/all")
+    public ResponseEntity<List<ReviewDTO>> getList(@PathVariable("mno") Long mno){
+        log.info("--------------list---------------");
+        log.info("MNO: " + mno);
+        List<ReviewDTO> reviewDTOList = reviewService.getListOfMovie(mno);
+        return new ResponseEntity<>(reviewDTOList, HttpStatus.OK);
+    }
+    */
+
+
+    @PostMapping("/all")
+    public ResponseEntity<Long> addReview(@RequestBody ReviewDTO reviewDTO){
+        Long reviewnum = reviewService.registerReview(reviewDTO);
+        return new ResponseEntity<>(reviewnum, HttpStatus.OK);
+    }
+
 
 
 }
