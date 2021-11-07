@@ -17,12 +17,14 @@ public interface StoreService {
                 .storeAds(storeDTO.getStoreAds())
                 .storeTel(storeDTO.getStoreTel())
                 .storeText(storeDTO.getStoreText())
-                .storeBh(storeDTO.getStoreBh())
+                .storeOpen(storeDTO.getStoreOpen())
+                .storeClose(storeDTO.getStoreClose())
                 .bsNum(storeDTO.getBsNum())
                 .bsImg(storeDTO.getBsImg())
                 .build();
         return store;
     }
+
     default Member dtoToEntity2(StoreDTO storeDTO){
         Member member = Member.builder()
                 .memberNum(storeDTO.getMemberNum())
@@ -36,6 +38,7 @@ public interface StoreService {
                 .build();
         return member;
     }
+
     default StoreDTO entityToDTO(Store store){
         StoreDTO storeDTO = StoreDTO.builder()
                 .storeNum(store.getStoreNum())
@@ -44,7 +47,8 @@ public interface StoreService {
                 .storeAds(store.getStoreAds())
                 .storeTel(store.getStoreTel())
                 .storeText(store.getStoreText())
-                .storeBh(store.getStoreBh())
+                .storeOpen(store.getStoreOpen())
+                .storeClose(store.getStoreClose())
                 .bsNum(store.getBsNum())
                 .bsImg(store.getBsImg())
                 .build();
