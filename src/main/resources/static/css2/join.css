@@ -1,3 +1,5 @@
+/*  css사용된 html: join, managerjoin, myinfocorrect, managerinfocorrect */
+
   * {
      margin: 0px; padding: 0px;
   }
@@ -7,7 +9,7 @@
   }
 
   button {
-  border: 0;
+    border: 0;
   }
 
   .wrapper {
@@ -68,19 +70,6 @@
     color: #75736e;
 }
 
-.span14 {
-    width: 200px;
-    height: 40px;
-    text-align: left;
-    padding: 10px 0px 0px 10px;
-    //border: 1px solid #c7c4bf;
-    border-style: none;
-    border-radius: 10px;
-    display: inline-block;
-    //margin: 30px 0px 10px 0px;
-    color: #f75931;
-    font-size: 14px;
-}
 .span15 {
     width: 10px;
     height: 40px;
@@ -98,8 +87,10 @@
       border: 1px solid #c7c4bf;
       margin: 0px 0px 15px 0px;
       text-align: left;
-      padding: 8px;
+      padding: 10px;
       display: inline-block;
+      font-size: 14px;
+      color: #75736e;
     }
 
   .input11::placeholder {
@@ -129,27 +120,44 @@
 
     }
 
-    .input12 {
-          width: 400px;
-          height: 50px;
-          display: inline-block;
-          border-style: none;
-          margin: 0px 0px 15px 0px;
-          text-align: left;
-          padding: 8px;
-          display: inline-block;
-        }
+.input12 {
+      width: 110px;
+      height: 50px;
+      border-radius: 10px;
+      border-style: none;
+      border: 1px solid #c7c4bf;
+      margin: 0px 0px 15px 0px;
+      text-align: center;
+      padding: 13px 10px 10px 10px;
+      display: inline-block;
+      font-size: 14px;
+      color: #75736e;
+      border-color: #c7c4bf;
+      background-color: #f2f1ed;
+}
+
+/* inpu14랑 같은건데 쓸일 없으면 추후삭제
+   .input12 {
+      width: 400px;
+      height: 50px;
+      display: inline-block;
+      border-style: none;
+      margin: 0px 0px 15px 0px;
+      text-align: left;
+      padding: 10px;
+      display: inline-block;
+    }*/
 
   .input13 {
       width: 190px;
-      height: 50px;
+      height: 49px;
       display: inline-block;
       border-radius: 10px;
       border-style: none;
       border: 1px solid #c7c4bf;
       margin: 0px 0px 15px 0px;
       text-align: center;
-      padding: 8px;
+      padding: 10px;
       display: inline-block;
       color: #75736e;
     }
@@ -163,20 +171,43 @@
       border: 1px solid #c7c4bf;
       margin: 0px 0px 15px 0px;
       text-align: center;
-      padding: 8px;
+      padding: 10px;
       display: inline-block;
       color: #75736e;
     }
 
-  .adr-btn {
+.input15 {
+    overflow: hidden;
+}
+
+ .adr-btn {
       width: 78px;
       height: 35px;
-      border-color: #c7c4bf;
       border-radius: 2px;
       color: #75736e;
+      border-color: #c7c4bf;
       background-color: #f2f1ed;
       padding: 5px 0px 5px 0px;
     }
+
+.find-zipcode {
+      width: 110px;
+      height: 49px;
+      border-radius: 10px;
+      border-style: none;
+      border: 1px solid #c7c4bf;
+      margin: 0px 0px 15px 0px;
+      text-align: center;
+      padding: 10px;
+      display: inline-block;
+      font-size: 14px;
+      color: #75736e;
+      border-color: #c7c4bf;
+      background-color: #f2f1ed;
+}
+.find-zipcode:hover, button:hover, input12:hover {
+      background-color: #fdad3c;
+}
 
 .sel11, .op11 {
       width: 122px;
@@ -187,13 +218,28 @@
       border: 1px solid #c7c4bf;
       margin: 0px 0px 15px 0px;
       text-align: center;
-      padding: 8px;
+      padding: 10px;
       display: inline-block;
+      font-size: 14px;
       color: #75736e;
     }
 
 .ch-box1 {
 margin-right: 10px;
+}
+
+.valid {
+    width: 400px;
+    height: 10px;
+    text-align: left;
+    font-size: 14px;
+    color: #f75931;
+    padding: 0px 0px 0px 10px;
+    margin: 0px 0px 15px 0px;
+    //border-style: none;
+    //border-radius: 10px;
+    //display: inline-block;
+    //border: 1px solid #c7c4bf;
 }
 
   .end-pg {
