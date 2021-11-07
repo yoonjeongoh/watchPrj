@@ -17,11 +17,10 @@ public class StoreServiceImpl implements StoreService{
     final private MemberRepository memberRepository;
 
     @Override
-    public String storeRegister(StoreDTO storeDTO) {
+    public void storeRegister(StoreDTO storeDTO) {
         Store store = dtoToEntity(storeDTO);
         Member member = dtoToEntity2(storeDTO);
         storeRepository.save(store);
         memberRepository.save(member);
-        return member.getMemberId();
     }
 }

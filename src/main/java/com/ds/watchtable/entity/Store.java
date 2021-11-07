@@ -26,7 +26,7 @@ public class Store extends com.ds.watchtable.entity.BaseEntity {
     private String bsNum;
     private String bsImg;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     Member member;
 
 }
