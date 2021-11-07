@@ -1,6 +1,7 @@
 package com.ds.watchtable.service;
 
 import com.ds.watchtable.dto.MemberDTO;
+import com.ds.watchtable.dto.StoreDTO;
 import com.ds.watchtable.entity.Member;
 
 public interface MemberService {
@@ -12,6 +13,8 @@ public interface MemberService {
         Member member = Member.builder()
                 .memberNum(memberDTO.getMemberNum())
                 .memberName(memberDTO.getMemberName())
+                .memberNickname(memberDTO.getMemberNickname())
+                .type(memberDTO.getType())
                 .memberId(memberDTO.getMemberId())
                 .memberEmail(memberDTO.getMemberEmail())
                 .memberMobile(memberDTO.getMemberMobile())
@@ -19,6 +22,7 @@ public interface MemberService {
                 .build();
         return member;
     }
+
     default MemberDTO entityToDTO(Member member){
         MemberDTO memberDTO = MemberDTO.builder()
                 .memberNum(member.getMemberNum())

@@ -3,11 +3,15 @@
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
         <link th:href="@{/css2/join.css}" rel="stylesheet" />
-
+        <script>
+            src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"
+    </script>
 <div>
 <fieldset>
     <div class="joinfield">
-        <form class="form11" action="/watchtable/member/myinfo" method="post" id="join_form" name="f">
+        <form class="form11" th:action="@{/member/myinfo}" method="post" id="join_form" name="f">
             <span class="span11">이름</span><br>
             <input class="input11" type="text" id="my_name" ><br>
 <!--                <span id="name1">이름을 입력하지 않았습니다.</span>-->
@@ -152,7 +156,6 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
         crossorigin="anonymous">
-
 </script>
 
      <script th:inline="javascript">

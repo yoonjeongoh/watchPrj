@@ -21,7 +21,7 @@ public class ReviewController {
     final private ReviewService reviewService;
 
     @PostMapping("/watchtable/detailed")
-    public ResponseEntity<Long> addReview(ReviewDTO reviewDTO){
+    public ResponseEntity<Long> addReview(@ModelAttribute ReviewDTO reviewDTO){
         log.info("--------------add MovieReview---------------");
         log.info("reviewDTO: " + reviewDTO);
         Long reviewnum = reviewService.registerReview(reviewDTO);
