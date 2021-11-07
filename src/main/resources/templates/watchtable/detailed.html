@@ -156,7 +156,6 @@
                 }
                 getReviews();
 
-<!--
                 var reviewnum;
 
                 $(".rv-list").on("click", ".card-body", function(){
@@ -167,10 +166,8 @@
                     reviewnum = targetReview.data("reviewnum");
                     console.log("reviewnum: " + reviewnum);
                     inputMid.val(targetReview.data("mid"));
-                    inputText.val(targetReview.find('.card-title').clone().children().
-                        remove().end().text());
+                    inputText.val(targetReview.find('.card-title').clone().children().text());
                });
--->
             });
 
         </script>
