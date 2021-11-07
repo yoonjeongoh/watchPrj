@@ -21,11 +21,13 @@ public class Store extends com.ds.watchtable.entity.BaseEntity {
     private String storeAds;
     private String storeTel;
     private String storeText;
-    private String storeBh;
+    private String storeOpen;
+    private String storeClose;
 
     private String bsNum;
     private String bsImg;
 
+    @JoinColumn(name = "memberNum")
     @ManyToOne(cascade = CascadeType.ALL)
     Member member;
 

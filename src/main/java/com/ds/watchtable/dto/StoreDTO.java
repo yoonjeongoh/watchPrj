@@ -20,7 +20,7 @@ public class StoreDTO {
     private String memberPw;
     private String memberEmail;
     private String memberMobile;
-    private String type;
+    private String type="MANAGER";
 
 
     private LocalDateTime regDate;
@@ -33,7 +33,8 @@ public class StoreDTO {
     private String storeAds;
     private String storeTel;
     private String storeText;
-    private String storeBh;
+    private String storeOpen;
+    private String storeClose;
 
     private String bsNum;
     private String bsImg;

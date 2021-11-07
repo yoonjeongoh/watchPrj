@@ -20,7 +20,7 @@ public class MemberDTO {
     private String memberEmail;
     private String memberMobile;
     private String memberNickname;
-    private String type;
+    private String type="USER";
 
 
     private LocalDateTime regDate;
