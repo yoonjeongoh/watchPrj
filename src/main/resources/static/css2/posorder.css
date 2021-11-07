@@ -10,16 +10,23 @@ button {
   border: 0;
 }
 
-table{
+.tb-list{
     border: 1px solid black;
     border-collapse: collapse;
-    width:500px;
+    width:300px;
+}
+
+.tb-order{
+    border: 1px solid black;
+    border-collapse: collapse;
+    width:400px;
 }
 
 .tb-title{
 border: 1px solid black;
     border-collapse: collapse;
 }
+
 .tb-content{
 border: 1px solid black;
     border-collapse: collapse;
@@ -30,8 +37,24 @@ border: 1px solid black;
     border-collapse: collapse;
     }
 
-.tb-list{
-position:absolute;
-top:20px;
-right:20px;
+.list{
+position:relative;
+left:1000px;
+bottom:280px;
+}
+
+#btn-ok{
+width:100px;
+height:50px;
+}
+
+#btn-no {
+width:100px;
+height:50px;
+}
+
+.btn{
+position:relative;
+left:50%;
+margin-left: -120px;
 }

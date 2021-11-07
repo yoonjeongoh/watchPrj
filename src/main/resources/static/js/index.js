@@ -10,7 +10,7 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 
 function locationLoadSuccess(pos){
 
-var blackImageSrc = 'https://w7.pngwing.com/pngs/641/28/png-transparent-icon-marker-map-black-black-map-thumbnail.png', // 마커이미지의 주소입니다
+var blackImageSrc = 'https://e7.pngegg.com/pngimages/417/307/png-clipart-computer-icons-google-map-maker-map-marker-angle-black-thumbnail.png', // 마커이미지의 주소입니다
     blackImageSize = new kakao.maps.Size(40, 35), // 마커이미지의 크기입니다
     blackImageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
 

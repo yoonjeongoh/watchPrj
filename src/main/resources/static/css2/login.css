@@ -81,11 +81,8 @@ border: 0;
   }
 
  .field1 {
-     /*position: absolute;
-     top: 50%;
-     left: 50%;
-     margin-left: -250px;
-     margin-top: -250px;*/
+     position:relative;
+         left:350px;
 
     text-align: center;
     line-height: middle;
@@ -154,3 +151,13 @@ outline: none; //이거 찾아봐야함... 안지워져..이름뭔데.. 경박�
       text-align: left;
   }
 
+.field2{
+position:relative;
+         left:460px;
+
+    text-align: center;
+    line-height: middle;
+    width: 500px; height: 500px;
+    padding: 10px;
+    background-color: #82817e;
+}

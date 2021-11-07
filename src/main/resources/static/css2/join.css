@@ -17,14 +17,8 @@
   }
 
  .joinfield {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -250px;
-    margin-top: -350px;
-    line-height: middle;
-    width: 500px; height: 600px;
-    padding: 10px;
+    position:relative;
+    left:500px;
   }
 
    .mngfield {
