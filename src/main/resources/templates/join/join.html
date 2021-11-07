@@ -4,7 +4,12 @@
     <th:block th:fragment="content">
 
         <link th:href="@{/css2/join.css}" rel="stylesheet"/>
-        <script src="/watchtable/js2/joinCheck.js"></script>
+        <style>
+<!--            .hide { display:none; color:red; font-size:11px; font-weight:bold; }-->
+            .valid, .invalid { font-size:11px; font-weight:bold; }
+            .valid { color : green; }
+            .invalid { color : red; }
+        </style>
 
         <div>
             <fieldset>
@@ -55,45 +60,39 @@
         <!--    margin for end of page-->
         <div class="end-pg"></div>
 
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-        crossorigin="anonymous">
-</script>
-
-     <script th:inline="javascript">
-
-        var actionForm = $("form");
-        //회원가입 버튼(회원가입 기능 작동)
-        $(".join_button").click(function(){
-                actionForm.submit();
-        });
-
-        //유효성 검사
-        $('.form11').on('keyup', function(){
-           if($(this).attr('name') == 'id') {
-              if(event.keyCode == 13) { id_check(); }
-              else {
-                 $(this).removeClass('chked');
-                 validate( $(this) );
-              }
-           } else {
-              validate($(this));
-           }
-        });
-
-        function validate(t) {
-           var data = join.tag_status(t);
-           display_status(t.siblings('div'), data);
-        }
-
-        function display_status(div, data) {
-           div.text(data.desc);
-           div.removeClass();
-           div.addClass(data.code)
-        }
-
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                crossorigin="anonymous">
         </script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script type="text/javascript"
+                src="/watchtable/js/joinCheck.js?v=<%=new java.util.Date().getTime()%>"></script>
 
+        <script th:inline="javascript">
+            $(document).ready(function() {
+                var actionForm = $("form");
+                //회원가입 버튼(회원가입 기능 작동)
+                $(".join_button").click(function(){
+                        actionForm.submit();
+                });
+
+                //유효성 검사
+                $('input11').keyup(function(){
+                   validate($(this));
+                });
+
+                function validate(t) {
+                   var data = join.tag_status(t);
+                   display_status(t.siblings('div'), data);
+                }
+
+                function display_status(div, data) {
+                   div.text(data.desc);
+                   div.removeClass();
+                   div.addClass(data.code)
+                }
+            });
+        </script>
     </th:block>
 </th:blotck>

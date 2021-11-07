@@ -11,21 +11,28 @@ var join = {
       max: {code: 'invalid', desc: '최대 10자 이내로 입력하세요.'}
    },
 
+    memberName: {
+        valid: { code:'valid', desc: '유효한 이름입니다.' }
+        invalid: { code:'invalid', desc: '한글로만 입력하세요.' }
+        min: {code: 'invalid', desc: '최소 2자 이상 입력하세요.' }
+    }
+
+    memberName_status: function(memberName) {
+        var reg = /^[가-힣]{2,10}$/;
+        title = $('[name=memberName]').attr('title');
+        if( memberName == '' ) return this.common.empty;
+        else if(memberName.match(space)) return this.common.space;
+        else if(memberName.length < 2) return this.memberName.min;
+        else if( reg.test(memberName) ) return this.memberName.valid;
+        else return this.memberName.invalid;
+    },
+
    id: {
       valid: { code:'valid', desc: '아이디를 중복확인하세요.' },
       invalid: { code:'invalid', desc: '아이디는 영문 소문자, 숫자만 입력하세요.' },
       usable: { code: 'valid', desc: '사용 가능한 아이디입니다.'},
       unusable: { code: 'invalid', desc: '이미 사용 중인 아이디입니다.' }
    },
-
-    name_status: function(name) {
-        var reg = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-        title = $('[name=memberName]').attr('title');
-        if( memberName == '' ) return this.common.empty;
-        else if(memberName.match(space)) return this.common.space;
-        else if( reg.test(memberName) ) return this.memberName.valid;
-        else return this.memberName.invalid;
-    },
 
    id_usable: function(data) {
       if(data) return this.memberId.usable;
@@ -39,7 +46,7 @@ var join = {
          return this.common.empty;
       } else if(memberId.match(space)) {
          return this.common.space;
-      } else if(reg.test(id)) {
+      } else if(reg.test(memberId)) {
          return this.id.invalid;
       } else if(memberId.length < 5) {
          return this.common.min;
