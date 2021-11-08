@@ -16,7 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class WatchtableController {
     @GetMapping({"/admin","/approve","/approvefiles","/checkpw","/detailed","/join","/joinselect",
             "/login","/manage","/manageinfocorrect","/managemyinfo","/managerjoin","/myinfo",
-    "/myinfocorrect","/myreview","/storereview","/wating1","/wating2","/wating3", "/managerjoin2",
+    "/myinfocorrect","/myreview","/storereview","/wating1","/wating2","/wating3",
             "/kitchen" , "/postable", "/posorder","/waiting1","/waiting2","/waiting3","/loginmng",
     "/possetting"})
 

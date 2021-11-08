@@ -10,7 +10,15 @@ public interface StoreService {
 
     default Store dtoToEntity(StoreDTO storeDTO){
         Store store = Store.builder()
-                .member(Member.builder().memberNum(storeDTO.getMemberNum()).build())
+                .member(Member.builder().memberNum(storeDTO.getMemberNum())
+                        .memberName(storeDTO.getMemberName())
+                        .memberNickname(storeDTO.getMemberNickname())
+                        .memberId(storeDTO.getMemberId())
+                        .memberEmail(storeDTO.getMemberEmail())
+                        .memberPw(storeDTO.getMemberPw())
+                        .type(storeDTO.getType())
+                        .memberMobile(storeDTO.getMemberMobile())
+                        .build())
                 .storeNum(storeDTO.getStoreNum())
                 .storeName(storeDTO.getStoreName())
                 .storeMenu(storeDTO.getStoreMenu())
@@ -25,19 +33,19 @@ public interface StoreService {
         return store;
     }
 
-    default Member dtoToEntity2(StoreDTO storeDTO){
-        Member member = Member.builder()
-                .memberNum(storeDTO.getMemberNum())
-                .memberName(storeDTO.getMemberName())
-                .memberId(storeDTO.getMemberId())
-                .memberEmail(storeDTO.getMemberEmail())
-                .memberNickname(storeDTO.getMemberNickname())
-                .memberPw(storeDTO.getMemberPw())
-                .type(storeDTO.getType())
-                .memberMobile(storeDTO.getMemberMobile())
-                .build();
-        return member;
-    }
+//    default Member dtoToEntity2(StoreDTO storeDTO){
+//        Member member = Member.builder()
+//                .memberNum(storeDTO.getMemberNum())
+//                .memberName(storeDTO.getMemberName())
+//                .memberId(storeDTO.getMemberId())
+//                .memberEmail(storeDTO.getMemberEmail())
+//                .memberNickname(storeDTO.getMemberNickname())
+//                .memberPw(storeDTO.getMemberPw())
+//                .type(storeDTO.getType())
+//                .memberMobile(storeDTO.getMemberMobile())
+//                .build();
+//        return member;
+//    }
 
     default StoreDTO entityToDTO(Store store){
         StoreDTO storeDTO = StoreDTO.builder()
@@ -51,6 +59,8 @@ public interface StoreService {
                 .storeClose(store.getStoreClose())
                 .bsNum(store.getBsNum())
                 .bsImg(store.getBsImg())
+                .regDate(store.getRegDate())
+                .modDate(store.getModDate())
                 .build();
         return storeDTO;
     }
