@@ -14,20 +14,19 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 @Controller
-@RequestMapping("/reviews")
 @Log4j2
 @RequiredArgsConstructor
 public class ReviewController {
 
     @Autowired
     final private ReviewService reviewService;
-/*
-    @PostMapping("/watchtable/detailed")
+
+//    제이쿼리를 이용한 db저장
+/*    @PostMapping("/watchtable/detailed")
     public ResponseEntity<Long> addReview(ReviewDTO reviewDTO){
         Long reviewnum = reviewService.registerReview(reviewDTO);
         return new ResponseEntity<>( reviewnum, HttpStatus.OK);
-    }
-*/
+    }*/
 
 /*
     @GetMapping("/all")
@@ -39,8 +38,8 @@ public class ReviewController {
     }
     */
 
-
-    @PostMapping("/all")
+//ajax를 이용한 데이터 저장
+    @PostMapping("/detailed")
     public ResponseEntity<Long> addReview(@RequestBody ReviewDTO reviewDTO){
         Long reviewnum = reviewService.registerReview(reviewDTO);
         return new ResponseEntity<>(reviewnum, HttpStatus.OK);

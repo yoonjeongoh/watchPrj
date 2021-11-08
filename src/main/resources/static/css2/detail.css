@@ -106,7 +106,7 @@ input:focus, select:focus, option:focus, textarea:focus, button:focus{
 }
 
 .rv-list {
-    height: 100px;
+    height: auto;
     width: 1200px;
     display: flex;
     background-color: #fdb53c;

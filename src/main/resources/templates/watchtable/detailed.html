@@ -3,6 +3,7 @@
 <th:block th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
         <link th:href="@{/css2/detail.css}" rel="stylesheet" />
+        <link id="contextPathHolder" th:data-contextPath="${#httpServletRequest.getContextPath()}"/>
 
         <div class="wrapper">
             <div class="detail-content">
@@ -68,109 +69,77 @@
             </div>
 
             <!--5열 리뷰작성칸-->
-            <div id="review" class="rv-field">
-                <form class="form1" action="http://localhost:8080/watchtable/watchtable/detailed" method="post" name="frm">
-                    <div class="rv-textarea">
-                        <textarea name="text" id="rv-ta" class="rv-ta" cols="80" rows="3"></textarea>
-                        <button type="button" name="button" id='rv-btn' class="add-review btn11 colored-btn11">리뷰등록</button>
-                    </div>
-                </form>
-            </div>
+                <div id="review" class="rv-field">
+                        <div class="rv-textarea">
+                            <textarea name="reviewText" id="rvInput" cols="80" rows="3"></textarea>
+                            <button type="button" name="button" id='rv-btn' class="add-review btn11 colored-btn11">리뷰등록</button>
+                        </div>
+                </div>
+
 
             <!--        6열 리뷰 리스트-->
-            <div class="rv-list"> 리뷰리스트
-<!--
-                <table class="table rv-table">
-                    <thead>
-                    <tr>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td></td>
-                    </tr>
-                    </tbody>
-
+           <div class="rv-list"> 리뷰리스트
+                <table>
                 </table>
--->
             </div>
 
 <!--    margin for end of page-->
             <div class="end-pg"></div>
             </div>
         </div>
-<!--
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-        <script th:inline="javascript">
-            var actionForm = $("form");
-            $(".add-review").click(function(){
-                    actionForm.submit();
-            });
-        </script>
--->
 
-        <link rel="stylesheet"
-              href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                crossorigin="anonymous"></script>
 
-        <script>
-            $(document).ready(function(e) {
+    <script>
+        $(document).ready(function(e){
+            var contextPath = $('#contextPathHolder').attr('data-contextPath') ? $('#contextPathHolder').attr('data-contextPath') : '';
 
-                $('.add-review').click(function() {
-                    var data = {text:inputText.val()};
-                console.log(data);
+            $("#rv-btn").click(function(){
+                var review = $('textarea[name="reviewText"]');
+                var data = {text: review.val()};
+
                 $.ajax({
-                    url: '/reviews/',
+                    url: contextPath+'/detailed',
                     type:"POST",
-                    data:JSON.stringify(data), //
+                    data:JSON.stringify(data),
                     contentType:"application/json; charset=utf-8",
                     dataType:"text",
                     success: function(result){
-                    console.log("result: "+result);
-                    self.location.reload();
-                    }
-                })
+                        console.log("result: "+result);
+                        self.location.reload();
+                     }
                 });
-                function getReviews() {
-                function formatTime(str) {
-                var date = new Date(str);
-                return date.getFullYear()+'/'+
-                (date.getMonth() + 1)+'/' +
-                date.getDate() + ' ' +
-                date.getHours()+':'+
-                date.getMinutes();
-                }
-                $.getJSON("/reviews/"+"/all", function(arr) {
-                var str = "";
-                $.each(arr, function(idx, review) {
-                console.log(review);
-
-                str += ' <div class="card-body" data-reviewnum='+review.reviewnum+'>';
-                str += ' <h5 class="card-title">'+review.text+'</h5>';
-                str += ' <p class="card-text">'+formatTime(review.regDate)+'</p>';
-                str += ' </div>';
-                });
-                $(".rv-list").html(str);
-                });
-                }
-                getReviews();
-
-                var reviewnum;
-
-                $(".rv-list").on("click", ".card-body", function(){
-                    $(".add-review").hide();
-
-                    var targetReview = $(this);
-
-                    reviewnum = targetReview.data("reviewnum");
-                    console.log("reviewnum: " + reviewnum);
-                    inputMid.val(targetReview.data("mid"));
-                    inputText.val(targetReview.find('.card-title').clone().children().text());
-               });
             });
+        });
+    </script>
 
-        </script>
+        <!--        그냥 스타일시트-->
+        <!--        <link rel="stylesheet"-->
+        <!--              href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">-->
+
+
+        <!--        제이쿼리로 데이터보내기-->
+        <!--        <script th:inline="javascript">-->
+        <!--            var actionForm = $("form");-->
+        <!--            $("#rv-btn").click(function(){-->
+        <!--                    actionForm.submit();-->
+        <!--            });-->
+        <!--        </script>-->
+
+        <!--        리뷰작성칸-->
+        <!--            <div id="review" class="rv-field">-->
+        <!--                <iframe name="iframe11" id="iframe11" style="display:none;"></iframe>-->
+        <!--                <form class="form1" target="iframe11" method="post" name="frm">-->
+        <!--                    <div class="rv-textarea">-->
+        <!--                        <input type="text" name="reviewText" id="rvInput" class="rvInput">-->
+        <!--                        <button type="button" name="button" id='rv-btn' class="add-review btn11 colored-btn11">리뷰등록</button>-->
+        <!--                    </div>-->
+        <!--                </form>-->
+        <!--            </div>-->
+
 
     </th:block>
 </th:block>
