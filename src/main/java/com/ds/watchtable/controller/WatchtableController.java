@@ -12,7 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Log4j2
 @Controller
 @RequiredArgsConstructor
-@RequestMapping({"/watchtable","/join","/member","/pos","/review","/admin"})
+@RequestMapping({"/watchtable","/join","/member","/pos","/review","/admin",})
 public class WatchtableController {
     @GetMapping({"/admin","/approve","/approvefiles","/checkpw","/detailed","/join","/joinselect",
             "/login","/manage","/manageinfocorrect","/managemyinfo","/managerjoin","/myinfo",

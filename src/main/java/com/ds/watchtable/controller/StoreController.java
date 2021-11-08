@@ -10,13 +10,12 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @Log4j2
-@RequestMapping
 @RequiredArgsConstructor
 public class StoreController {
     @Autowired
     private final StoreService storeService;
 
-    @PostMapping("/member/managemyinfo")
+    @RequestMapping("/member/managemyinfo")
     public void registerPost(StoreDTO storeDTO){
         log.info("Register............");
         storeService.storeRegister(storeDTO);
