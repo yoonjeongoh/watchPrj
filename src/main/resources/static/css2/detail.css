@@ -39,7 +39,7 @@ input:focus, select:focus, option:focus, textarea:focus, button:focus{
     display: flex;
     width: auto;
     height: 400px;
-    background-color: #82817e;
+    background-color: #f75931;
 }
 .sec1 {
     display: inline-block;
@@ -86,31 +86,42 @@ input:focus, select:focus, option:focus, textarea:focus, button:focus{
     height: 400px;
 }
 
-.rv-grade {
+.forth-col1 {
     height: 80px;
-    width: 1200px;
-    margin: 2px 2px 2px 2px;
+    width: auto;
     display: flex;
-    background-color: #fdb53c;
+    float: center;
+    background-color: #f75931;
     position: relative;
+}
 
+.rv-grade {
+    margin: 2px;
+    background-color: #fdb53c;
 }
 
 .rv-field {
     height: 100px;
-    width: 1200px;
-    margin: 2px 2px 2px 2px;
+    width: auto;
     display: flex;
-    background-color: #fdb53c;
+    background-color: #82817e;
     position: relative;
 }
 
-.rv-list {
-    height: auto;
-    width: 1200px;
-    display: flex;
+.rv-ta1 {
+    margin: 2px;
     background-color: #fdb53c;
+}
+
+.rv-list {
+    display: flex;
+    background-color: #f75931;
     position: relative;
+}
+
+.rv-list-table {
+    margin: 2px;
+    background-color: #fdb53c;
 }
 
 .end-pg {
