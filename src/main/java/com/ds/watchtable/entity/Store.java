@@ -24,6 +24,7 @@ public class Store extends BaseEntity {
     private String storeOpen;
     private String storeClose;
 
+
     private String bsNum;
     private String bsImg;
 
