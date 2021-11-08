@@ -1,14 +1,22 @@
 package com.ds.watchtable.service;
 
 import com.ds.watchtable.dto.StoreDTO;
+import com.ds.watchtable.dto.StoreImageDTO;
 import com.ds.watchtable.entity.Member;
 import com.ds.watchtable.entity.Store;
+import com.ds.watchtable.entity.StoreImage;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public interface StoreService {
 
-    void storeRegister(StoreDTO storeDTO);
+    int storeRegister(StoreDTO storeDTO);
 
-    default Store dtoToEntity(StoreDTO storeDTO){
+    default Map<String, Object> dtoToEntity(StoreDTO storeDTO) {
+        Map<String, Object> entityMap = new HashMap<>();
         Store store = Store.builder()
                 .member(Member.builder().memberNum(storeDTO.getMemberNum())
                         .memberName(storeDTO.getMemberName())
@@ -30,7 +38,22 @@ public interface StoreService {
                 .bsNum(storeDTO.getBsNum())
                 .bsImg(storeDTO.getBsImg())
                 .build();
-        return store;
+        entityMap.put("store", store);
+
+        List<StoreImageDTO> imageDTOList = storeDTO.getImageDTOList();
+        if (imageDTOList != null && imageDTOList.size() > 0) {
+            List<StoreImage> storeImageList = imageDTOList.stream().map(storeImageDTO -> {
+                StoreImage storeImage = StoreImage.builder()
+                        .path(storeImageDTO.getPath())
+                        .imgName(storeImageDTO.getImgName())
+                        .uuid(storeImageDTO.getUuid())
+                        .store(store)
+                        .build();
+                return storeImage;
+            }).collect(Collectors.toList());
+            entityMap.put("imgList",storeImageList);
+        }
+        return entityMap;
     }
 
 //    default Member dtoToEntity2(StoreDTO storeDTO){
@@ -47,7 +70,7 @@ public interface StoreService {
 //        return member;
 //    }
 
-    default StoreDTO entityToDTO(Store store){
+    default StoreDTO entityToDTO(Store store, List<StoreImage> storeImageList) {
         StoreDTO storeDTO = StoreDTO.builder()
                 .storeNum(store.getStoreNum())
                 .storeName(store.getStoreName())
@@ -62,6 +85,16 @@ public interface StoreService {
                 .regDate(store.getRegDate())
                 .modDate(store.getModDate())
                 .build();
+
+        List<StoreImageDTO> storeImageDTOList = storeImageList.stream()
+                .map(storeImage -> {
+                    return StoreImageDTO.builder().imgName(storeImage.getImgName())
+                            .path(storeImage.getPath())
+                            .uuid(storeImage.getUuid())
+                            .build();
+                }).collect(Collectors.toList());
+        storeDTO.setImageDTOList(storeImageDTOList);
+
         return storeDTO;
     }
 }

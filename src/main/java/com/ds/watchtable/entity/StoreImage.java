@@ -10,12 +10,14 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Getter
 @ToString(exclude = "store")
-public class StoreImage extends com.ds.watchtable.entity.BaseEntity {
+public class StoreImage extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int storenum;
+    private int inum;
 
-    private String menuImg;
+    private String uuid;
+    private String imgName;
+    private String path;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Store store;

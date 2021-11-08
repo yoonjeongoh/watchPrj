@@ -2,58 +2,25 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
-        <link th:href="@{/css2/join.css}" rel="stylesheet"/>
-        <link th:href="@{/css2/sidebar.css}" rel="stylesheet"/>
+        <header id="header">
+            <div class="d-flex flex-column">
 
-        <div class="wrapper">
-        <div class="d-flex" id="wrapper">
-
-            <!--사이드바-->
-            <div class="border-end" id="sidebar-wrapper">
-                <div class="sidebar-heading border-bottom">회원이름 나옴</div>
-                <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">내정보</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">내 대기 보기</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">내 예약 보기</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">내 리뷰 보기</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">도움말</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">공지사항</a>
+                <div class="profile">
+                    <img th:src="@{/assets/img/profile-img.jpg}" alt="" class="img-fluid rounded-circle">
+                    <h1 class="text-light"><a href="index.html">Alex Smith</a></h1>
                 </div>
+
+                <nav id="navbar" class="nav-menu navbar">
+                    <ul>
+                        <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+                        <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
+                        <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
+                        <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+                        <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
+                        <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+                    </ul>
+                </nav><!-- .nav-menu -->
             </div>
-            <div id="page-content-wrapper">
-                <form action="https://localhost:8080/watchtable/member/myinfo">
-                <span class="span11">이름</span><br>
-                <span class="input11" id="my_name"></span><br>
-
-                <span class="span13">닉네임</span><br>
-                <span class="input11" name="membernick" id="my_nick"></span><br>
-
-                <span class="span11">이메일</span> <br>
-                <span class="input11" type="text" name="memberEmail" id="my_add"></span><br>
-
-                <span class="span11">연락처</span> <br>
-                <span class="input11" name="memberMobile" id="my_number"></span><br>
-
-                <button type="button" class="join_button btn11 colored-btn11">수정하기</button>
-                <button type="button" class="btn11 uncolored-btn11"
-                        onclick="location.href='/member/myinfo';">돌아가기</button>
-            </form>
-            </div>
-        </div>
-        </div>
-        </div>
-
-
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <script>
-            var actionForm = $("form");
-            $(".cobtn").click(function(){
-                    actionForm.submit();
-            });
-
-
-        </script>
-
+        </header><!-- End Header -->
     </th:block>
 </th:blotck>
