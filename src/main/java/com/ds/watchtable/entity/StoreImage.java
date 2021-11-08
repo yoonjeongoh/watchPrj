@@ -21,6 +21,4 @@ public class StoreImage extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Store store;
-
-
 }
