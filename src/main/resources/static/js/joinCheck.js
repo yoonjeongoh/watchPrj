@@ -12,8 +12,8 @@ var join = {
    },
 
     memberName: {
-        valid: { code:'valid', desc: '유효한 이름입니다.' }
-        invalid: { code:'invalid', desc: '한글로만 입력하세요.' }
+        valid: { code:'valid', desc: '유효한 이름입니다.' },
+        invalid: { code:'invalid', desc: '한글로만 입력하세요.' },
         min: {code: 'invalid', desc: '최소 2자 이상 입력하세요.' }
     }
 
@@ -102,9 +102,11 @@ var join = {
    tag_status: function(tag) {
       var data = tag.val();
       tag = tag.attr('name');
-      if(tag == 'id') {
+      if(tag == 'memberName') {
+         data = this.memberName_status(data);
+      } else if(tag == 'memberId') {
          data = this.id_status(data);
-      } else if(tag == 'memberPw') {
+      }else if(tag == 'memberPw') {
          data = this.pw_status(data);
       } else if(tag == 'memberPw2') {
          data = this.pw_ck_status(data);

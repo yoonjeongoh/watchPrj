@@ -4,7 +4,10 @@
     <th:block th:fragment="content">
 
         <link th:href="@{/css2/join.css}" rel="stylesheet"/>
-        <script src="/watchtable/js2/joinCheck.js"></script>
+        <style>
+            .invalid { color : red; display:none; font-size:11px; font-weight:bold; }
+            .valid { color : green; display:none; font-size:11px; font-weight:bold; }
+        </style>
 
         <div>
             <fieldset>
@@ -12,33 +15,50 @@
                     <form class="form11" action="http://localhost:8080/watchtable/member/myinfo" method="post"
                           id="join_form" name="f">
                         <span class="span11">이름</span><br>
-                        <input class="input11" type="text" name="memberName" id="my_name"><br>
-                        <div class="valid">이름 입력하세요. (영문 소문자, 숫자만 입력 가능)</div>
+                        <input class="input11" title="아이디" type="text" name="memberName" id="my_name"
+                               placeholder="2자 이상의 한글로만 입력" maxlength="12">
+                        <span class="invalid" id="nameSpace">공백은 사용할 수 없어요.</span>
+                        <span class="invalid" id="noEnglish">한글로 입력해주세요.</span>
+                        <span class="invalid" id="name_min">2자 이상 입력하세요.</span><br>
 
                         <span class="span11">아이디</span> <br>
-                        <input class="input11" type="text" name="memberId" id="my_id"
-                               placeholder="4~12자의 영문 대소문자와 숫자로만 입력" maxlength="12"><br>
+                        <input class="input11" title="아이디" type="text" name="memberId" id="my_id"
+                               placeholder="4~12자의 영문 대소문자와 숫자로만 입력" maxlength="12">
+                        <span class="invalid" id="idSpace">공백은 사용할 수 없어요.</span>
+                        <span class="invalid" id="noKor">한글은 사용할 수 없어요.</span>
+                        <span class="invalid" id="id_min">4자 이상 입력하세요.</span><br>
 
                         <span class="span13">닉네임</span><br>
-                        <input class="input11" type="text" name="memberNickname" id="my_nick"><br>
+                        <input class="input11" title="닉네임" type="text" name="memberNickname" id="my_nick"
+                               placeholder="2~8자로 입력(특수문자 불가)" maxlength="8">
+                        <span class="invalid" id="nickSpace">공백은 사용할 수 없어요.</span>
+                        <span class="invalid" id="noSpecial">특수문자 및 자음은 사용할 수 없어요.</span>
+                        <span class="invalid" id="nick_min">2자 이상 입력하세요.</span>
+                        <span class="valid" id="nick_ok">사용 가능해요.</span><br>
 
                         <span class="span11">비밀번호</span> <br>
-                        <input class="input11" type="password" name="memberPw" id="my_pwd"
-                               placeholder="4~12자의 영문 대소문자와 숫자로만 입력" maxlength="12"><br>
+                        <input class="input11" title="비밀번호" type="password" name="memberPw" id="my_pwd"
+                               placeholder="최소 8자리에 숫자, 문자, 특수문자 각각 1개 이상 포함" maxlength="16">
+                        <span class="invalid" id="pw_min">8자 이상 입력하세요.</span>
+                        <span class="valid" id="pw_ok">사용 가능해요.</span>
+                        <span class="invalid" id="pw_error">비밀번호 형식이 올바르지 않아요.</span><br>
 
                         <span class="span11">비밀번호 재입력</span> <br>
-                        <input class="input11" type="password" name="memberPw2" id="pwd_check" maxlength="12"><br>
+                        <input class="input11" title="비밀번호 확인" type="password" name="memberPw2" id="pwd_check" maxlength="16">
+                        <span class="invalid" id="pw_check">비밀번호가 달라요.</span><br>
 
                         <span class="span11">이메일</span> <br>
-                        <input class="input11" type="text" name="memberEmail" id="my_add"
-                               placeholder="예>id@domain.com"><br>
+                        <input class="input11" title="이메일" type="text" name="memberEmail" id="my_add"
+                               placeholder="예>id@domain.com">
+                        <span class="invalid" id="mail_error">유효하지 않은 이메일이에요.</span>
+                        <span class="valid" id="mail_ok"></span><br>
 
                         <span class="span11">연락처</span> <br>
                         <select class="sel11" name="memberMobile" id="sel-store-tel">
-                            <option class="op11" name="memberMobile">02</option>
-                            <option class="op11" name="memberMobile">051</option>
-                            <option class="op11" name="memberMobile">031</option>
-                            <option class="op11" name="memberMobile" selected>010</option>
+                            <option class="op11" name="02">02</option>
+                            <option class="op11" name="051">051</option>
+                            <option class="op11" name="031">031</option>
+                            <option class="op11" name="010" selected>010</option>
                         </select>
                         - <input class="input14" type="text" name="memberMobile" id="st-tel1">
                         - <input class="input14" type="text" name="memberMobile" id="st-tel2"><br>
@@ -55,44 +75,85 @@
         <!--    margin for end of page-->
         <div class="end-pg"></div>
 
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                crossorigin="anonymous">
+        </script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
+<!--        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
+<!--        <script type="text/javascript"-->
+<!--                src="/watchtable/js/joinCheck.js?v=<%=new java.util.Date().getTime()%>"></script>-->
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-        crossorigin="anonymous">
-</script>
+        <script th:inline="javascript">
+            $(document).ready(function() {
+                var actionForm = $('form');
+                //회원가입 버튼(회원가입 기능 작동)
+                $('.join_button').click(function(){
+                        actionForm.submit();
+                });
 
-     <script th:inline="javascript">
+                const blank = /[\s]/g;
+                const nameCheck = /[^가-힣]$/;
+                const idCheck = /[^a-zA-Z0-9]$/g;
+                const nickCheck = /[ㄱ-ㅎ|ㅏ-ㅣ|\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
+                const mailCheck = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 
-        var actionForm = $("form");
-        //회원가입 버튼(회원가입 기능 작동)
-        $(".join_button").click(function(){
-                actionForm.submit();
-        });
 
-        //유효성 검사
-        $('.form11').on('keyup', function(){
-           if($(this).attr('name') == 'id') {
-              if(event.keyCode == 13) { id_check(); }
-              else {
-                 $(this).removeClass('chked');
-                 validate( $(this) );
-              }
-           } else {
-              validate($(this));
-           }
-        });
+                $('#my_name').keyup(function(){
+                    var name = $('#my_name').val();
+                    if(nameCheck.test(name)){
+                        $('#noEnglish').show();
+                        $('#nameMin').hide();
+                    } else if(blank.test(name)){
+                        $('#nameSpace').show();
+                    } else if(name.length < 2) {
+                        $('#noEnglish').hide();
+                        $('#name_min').show();
+                    } else $('.invalid').hide();
+                });
 
-        function validate(t) {
-           var data = join.tag_status(t);
-           display_status(t.siblings('div'), data);
-        }
+                 $('#my_id').keyup(function(){
+                    var id = $('#my_id').val();
+                    if(idCheck.test(id)){
+                        $('#noKor').show();
+                    } else if(blank.test(id)){
+                        $('#idSpace').show();
+                    } else if(id.length < 4) {
+                        $('#noKor').hide();
+                        $('#id_min').show();
+                    } else $('.invalid').hide();
+                });
 
-        function display_status(div, data) {
-           div.text(data.desc);
-           div.removeClass();
-           div.addClass(data.code)
-        }
+                $('#my_nick').keyup(function(){
+                    var nick = $('#my_nick').val();
+                    if(!nickCheck.test(nick)){
+                        $('#noSpecial').show();
+                        $('#nick_min').hide();
+                        $('#nick_ok').hide();
+                    } else if(blank.test(nick)){
+                        $('#nickSpace').show();
+                        $('#nick_ok').hide();
+                    } else if(nick.length < 2) {
+                        $('#nick_min').show();
+                        $('#nick_ok').hide();
+                    } else {
+                        $('#nick_ok').show();
+                        $('#nick_min').hide();
+                        $('#noSpecial').hide();
+                    }
+                });
 
+                 $('#mail_check').keyup(function(){
+                    var mail = $('#mail_check').val();
+                    if(mailCheck.test(mail)){
+                        $('#mail_ok').show();
+                    } else {
+                        $('#mail_ok').hide();
+                        $('#mail_error').show();
+                    }
+                 });
+
+            });
         </script>
 
     </th:block>
