@@ -8,6 +8,8 @@ import com.ds.watchtable.entity.Pos;
 public interface PosService {
     void posSetting(PosDTO posDTO);
 
+
+
     default Pos dtoToEntity(PosDTO posDTO) {
         Pos pos = Pos.builder()
                 .menu1(posDTO.getMenu1())
@@ -22,8 +24,8 @@ public interface PosService {
                 .build();
         return pos;
 }
-    default PosDTO entityToDto(PosDTO entity){
-        PosDTO posDTO = PosDTO.builder()
+    default PosDTO entityToDto(Pos entity){
+        PosDTO pos = PosDTO.builder()
                 .menu1(entity.getMenu1())
                 .menu2(entity.getMenu2())
                 .menu3(entity.getMenu3())
@@ -34,6 +36,8 @@ public interface PosService {
                 .table4(entity.getTable4())
                 .table6(entity.getTable6())
                 .build();
-        return posDTO;
+        return pos;
     }
+    PosDTO read(int posNum);
+
 }
