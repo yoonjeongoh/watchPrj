@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
@@ -38,4 +40,8 @@ public class StoreDTO {
 
     private String bsNum;
     private String bsImg;
+
+    @Builder.Default
+    private List<StoreImageDTO> imageDTOList = new ArrayList<>();
+
 }
