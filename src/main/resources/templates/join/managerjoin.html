@@ -2,7 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
-        <link th:href="@{/css2/join.css}" rel="stylesheet"/>
+        <link th:href="@{/css2/join.css}" rel="stylesheet" />
         <link id="contextPathHolder" th:data-contextPath="${#httpServletRequest.getContextPath()}"/>
 
         <fieldset>
