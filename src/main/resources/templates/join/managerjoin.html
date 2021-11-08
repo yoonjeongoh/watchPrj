@@ -4,6 +4,23 @@
     <th:block th:fragment="content">
         <link th:href="@{/css2/join.css}" rel="stylesheet" />
         <link id="contextPathHolder" th:data-contextPath="${#httpServletRequest.getContextPath()}"/>
+        <style>
+            .uploadResult1 { margin-top:2px;}
+            .uploadResult1 ul {
+                display:flex;flex-flow:row;justify-content:center;
+                align-items:center;vertical-align:top;overflow:auto;
+            }
+            .uploadResult1 ul li{ list-style:none;padding:10px;margin-left:2em;}
+            .uploadResult1 ul li img{ width:100px;}
+
+            .uploadResult2 { width: 100%;margin-top:10px;}
+            .uploadResult2 ul {
+                display:flex;flex-flow:row;justify-content:center;
+                align-items:center;vertical-align:top;overflow:auto;
+            }
+            .uploadResult2 ul li{ list-style:none;padding:10px;margin-left:2em;}
+            .uploadResult2 ul li img{ width:100px;}
+        </style>
 
         <fieldset>
             <div class="mngfield">
@@ -86,18 +103,24 @@
 
                     <span class="span11">사업자 등록증 파일 첨부</span> <br>
                     <label class="btn-store-image input12" for="business_license">파일 선택</label>
-                    <input class="input15 custom-file-input" type="file" name="bsImg" id="business_license"
+                    <span class="uploadResult1">
+                        <ul>
+
+                        </ul>
+                    </span>
+                    <input class="input15 custom-file-input1" type="file" name="bsImg" id="business_license"
                            style="display:none;" multiple><br>
-                    <div class="box"></div>
-                    <div style="margin-bottom: 20px;"></div>
+
 
                     <span class="span11">가게 이미지 첨부</span> <br>
                     <label class="btn-store-image input12" for="store-img">파일 선택</label>
-                    <input class="input15 custom-file-input" type="file" name="storeMenu" id="store-img"
-                           style="display:none;" multiple><br>
-                    <div class="box"></div>
-                    <div style="margin-bottom: 20px;"></div>
+                    <span class="uploadResult2">
+                        <ul style="display:inline;">
 
+                        </ul>
+                    </span>
+                    <input class="input15 custom-file-input2" type="file" name="storeMenu" id="store-img"
+                           style="display:none;" multiple><br>
 
                     <button type="button" id="btn" class="join_button btn11 colored-btn11 btn-primary">회원가입</button>
                     <button type="reset" class="reset-btn btn11 uncolored-btn11">다시입력</button>
@@ -107,23 +130,8 @@
                 </form>
             </div>
         </fieldset>
-        <style>
-            .uploadResult { width: 100%;background:gray;margin-top:10px;}
-            .uploadResult ul {
-                display:flex;flex-flow:row;justify-content:center;
-                align-items:center;vertical-align:top;overflow:auto;
-            }
-            .uploadResult ul li{ list-style:none;padding:10px;margin-left:2em;}
-            .uploadResult ul li img{ width:100px;}
-
-        </style>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-        <div class="uploadResult">
-            <ul>
-
-            </ul>
-        </div>
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script>
@@ -145,10 +153,10 @@
                     }
                     return true;
                 }
-                function showResult(uploadResultArr){
-                    var uploadUL = $(".uploadResult ul");
+                function showResult(uploadResult1Arr){
+                    var uploadUL = $(".uploadResult1 ul");
                     var str = "";
-                    $(uploadResultArr).each(function(i,obj){
+                    $(uploadResult1Arr).each(function(i,obj){
                         str += "<li data-name='" + obj.fileName + "' data-path='"
                             + obj.folderPath + "' data-uuid='"+obj.uuid+"'>";
                         str += "<div>";
@@ -160,7 +168,7 @@
                     });
                     uploadUL.append(str);
                 }
-                $(".custom-file-input").on("change", function(){
+                $(".custom-file-input1").on("change", function(){
                     var fileName = $(this).val().split("\\").pop();
                     $(this).siblings(".custom-file-label")
                         .addClass("selected").html(fileName);
@@ -194,7 +202,7 @@
                             console.log(textStatus);
                         }
                     });
-                    $('.uploadResult').on('click','li button',function(e){
+                    $('.uploadResult1').on('click','li button',function(e){
                         console.log("delete file");
                         var targetFile = $(this).data("file");
                         var targetLi = $(this).closest("li");
@@ -210,7 +218,56 @@
                         });
                     });
                 });
-                    $('.uploadResult').on('click','li button',function(e){
+                function showResult2(uploadResult2Arr){
+                    var uploadUL = $(".uploadResult2 ul");
+                    var str = "";
+                    $(uploadResult2Arr).each(function(i,obj){
+                        str += "<li data-name='" + obj.fileName + "' data-path='"
+                            + obj.folderPath + "' data-uuid='"+obj.uuid+"'>";
+                        str += "<td>";
+                        str += "<button type='button' data-file='" + obj.imageURL
+                            + "\' class='btn-warning btn-sm'>X</button><br>";
+                        str += "<img src='"+contextPath+"/display?fileName="+obj.thumbnailURL+"'>";;
+                        str += "</td>";
+                        str += "</li>";
+                    });
+                    uploadUL.append(str);
+                }
+                $(".custom-file-input2").on("change", function(){
+                    var fileName = $(this).val().split("\\").pop();
+                    $(this).siblings(".custom-file-label")
+                        .addClass("selected").html(fileName);
+                    var formData = new FormData();
+                    var inputFile = $(this);
+                    var files = inputFile[0].files;
+                    var append = false;
+                    for(var i=0;i<files.length;i++){
+                        if(!checkExtension(files[i].name, files[i].size)) return false;
+                        console.log(files[i]);
+                        formData.append("uploadFiles", files[i]);
+                        append = true;
+                    }
+                    if(!append) return;
+                    for(var value of formData.values()) {
+                        console.log(value);
+                    }
+
+                    $.ajax({
+                        url: contextPath+ '/uploadAjax',
+                        processData: false,
+                        contentType: false,
+                        data: formData,
+                        type:'POST',
+                        dataType: 'json',
+                        success: function(result){
+                            console.log("result: " + result);
+                            showResult2(result);
+                        },
+                        error: function(jqXHR, textStatus, errorThrown){
+                            console.log(textStatus);
+                        }
+                    });
+                    $('.uploadResult2').on('click','li button',function(e){
                         console.log("delete file");
                         var targetFile = $(this).data("file");
                         var targetLi = $(this).closest("li");
@@ -225,10 +282,12 @@
                             }
                         });
                     });
+                });
+
                 $(".btn-primary").on("click", function(e){
                     e.preventDefault();
                     var str = "";
-                    $(".uploadResult li").each(function(i, obj){
+                    $(".uploadResult1 li").each(function(i, obj){
                         var target = $(obj);
                         str += "<input type='hidden' name='imageDTOList[" + i
                             + "].imgName' value='" + target.data('name') + "'>";
@@ -237,11 +296,18 @@
                         str += "<input type='hidden' name='imageDTOList[" + i
                             + "].uuid' value='" + target.data('uuid') + "'>";
                     });
-                    $(".box").html(str);
+                    $(".uploadResult2 li").each(function(i, obj){
+                        var target = $(obj);
+                        str += "<input type='hidden' name='imageDTOList[" + i
+                            + "].imgName' value='" + target.data('name') + "'>";
+                        str += "<input type='hidden' name='imageDTOList[" + i
+                            + "].path' value='" + target.data('path') + "'>";
+                        str += "<input type='hidden' name='imageDTOList[" + i
+                            + "].uuid' value='" + target.data('uuid') + "'>";
+                    });
                     $("form").submit();
                 });
             });
-
         </script>
         <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <script>
