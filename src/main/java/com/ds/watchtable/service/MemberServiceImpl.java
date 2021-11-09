@@ -21,9 +21,9 @@ public class MemberServiceImpl implements MemberService {
         return member.getMemberName();
     }
 
-
     //    @Override
 //    public User add(User user) throws Exception {
 //        return userRepository.save(user);
 //    }
+
 }
