@@ -16,7 +16,6 @@ border: 0;
     margin: 0 auto;
 }
 
-
   /*span {
     width: 70px;
     height: 40px;
@@ -76,20 +75,19 @@ border: 0;
       padding: 8px;
     }
 
-  .input1::placeholder {
-  padding-left: 10px;
-  }
+.input1::placeholder {
+   padding-left: 10px;
+}
 
- .field1 {
-     position:relative;
-         left:350px;
-
+.field1 {
+    position:relative;
+    left:350px;
     text-align: center;
     line-height: middle;
     width: 500px; height: 500px;
     padding: 10px;
-    background-color: #82817e;
-  }
+    //background-color: #82817e;
+}
 
   .btn1 {
     width: 300px;
@@ -128,10 +126,6 @@ border: 0;
     background-color: #fdad3c;
     }
 
-button {
-outline: none; //이거 찾아봐야함... 안지워져..이름뭔데.. 경박한 파란색..
-}
-
 .pw-field {
     border-radius: 10px;
     border: 1px solid #c7c4bf;
@@ -146,15 +140,14 @@ outline: none; //이거 찾아봐야함... 안지워져..이름뭔데.. 경박�
     padding: 15px;
 }
 
-  .input1::placeholder {
-      font-size: 12px; //rem으로 바꾸고싶다.....
-      text-align: left;
-  }
+.input1::placeholder {
+    font-size: 12px; //rem으로 바꾸고싶다.....
+    text-align: left;
+}
 
 .field2{
-position:relative;
-         left:460px;
-
+    position:relative;
+    left:460px;
     text-align: center;
     line-height: middle;
     width: 500px; height: 500px;

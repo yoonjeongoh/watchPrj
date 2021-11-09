@@ -8,7 +8,7 @@
             <div class="joinfield">
                 <form class="form11" action="http://localhost:8080/watchtable/member/myinfo" method="post" id="join_form" name="f">
                     <span class="span11"><input type="checkbox" class="ch-box1" name="name" value="name">이름</span><br>
-                    <input class="input11" type="text" id="my_name" th:value="${data}"><br>
+                    <input class="input11" type="text" id="my_name" th:value="${memberDTO.memberNum}"><br>
 <!--                    <span class="invalid" id="nameSpace">공백은 사용할 수 없습니다.</span>-->
 <!--                    <span class="invalid" id="noEnglish">한글로 입력해주세요.</span>-->
 <!--                    <span class="invalid" id="name_min">2자 이상 입력하세요.</span>-->
@@ -16,7 +16,7 @@
 
 
                     <span class="span11"><input type="checkbox" class="ch-box1" name="name" value="nick">닉네임</span><br>
-                    <input class="input11" type="text" name="membernick" id="my_nick" th:value="${data}" ><br>
+                    <input class="input11" type="text" name="membernick" id="my_nick" th:value="${memberDTO.memberNick}" ><br>
 <!--                    <span class="invalid" id="nickSpace">공백은 사용할 수 없습니다.</span>-->
 <!--                    <span class="invalid" id="noSpecial">특수문자 및 자음은 사용할 수 없습니다.</span>-->
 <!--                    <span class="invalid" id="nick_min">2자 이상 입력하세요.</span>-->
@@ -36,7 +36,7 @@
 
                     <span class="span11">이메일</span> <br>
                     <input class="input11" title="이메일" type="text" name="memberEmail" id="my_add"
-                           placeholder="예>id@domain.com">
+                           placeholder="예>id@domain.com" th:value="${memberDTO.memberEmail}">
 <!--                    <span class="invalid" id="mail_error">유효하지 않은 이메일 입니다.</span>-->
 <!--                    <span class="valid" id="mail_ok">사용 가능한 이메일 입니다.</span><br>-->
 
@@ -47,7 +47,7 @@
                         <option class="op11" name="memberMobile">031</option>
                         <option class="op11" name="memberMobile" selected>010</option>
                     </select>
-                    - <input class="input14" type="text" name="memberMobile" id="st-tel1" maxlength="4">
+                    - <input class="input14" type="text" name="memberMobile" id="st-tel1" maxlength="4" th:value="${memberDTO.memberMobile}">
                     - <input class="input14" type="text" name="memberMobile" id="st-tel2" maxlength="4">
 <!--                    <span class="invalid" id="mobile_error">전화번호를 확인해주세요.</span>-->
 <!--                    <span class="valid" id="mobile_ok">확인.</span><br>-->
