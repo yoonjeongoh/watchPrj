@@ -10,15 +10,15 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Getter
 @ToString(exclude = "store")
-public class StoreImage extends BaseEntity {
+public class MenuImage extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int inum;
+    private int minum;
 
-    private String bsUuid;
-    private String bsImgName;
-    private String bsImg;
-    private String bsPath;
+    private String menuUuid;
+    private String menuImgName;
+    private String menuImg;
+    private String menuPath;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Store store;

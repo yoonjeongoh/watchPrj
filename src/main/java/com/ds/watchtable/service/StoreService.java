@@ -44,9 +44,9 @@ public interface StoreService {
         if (imageDTOList != null && imageDTOList.size() > 0) {
             List<StoreImage> storeImageList = imageDTOList.stream().map(storeImageDTO -> {
                 StoreImage storeImage = StoreImage.builder()
-                        .path(storeImageDTO.getPath())
-                        .imgName(storeImageDTO.getImgName())
-                        .uuid(storeImageDTO.getUuid())
+                        .bsPath(storeImageDTO.getBsPath())
+                        .bsImgName(storeImageDTO.getBsImgName())
+                        .bsUuid(storeImageDTO.getBsUuid())
                         .store(store)
                         .build();
                 return storeImage;
@@ -88,9 +88,10 @@ public interface StoreService {
 
         List<StoreImageDTO> storeImageDTOList = storeImageList.stream()
                 .map(storeImage -> {
-                    return StoreImageDTO.builder().imgName(storeImage.getImgName())
-                            .path(storeImage.getPath())
-                            .uuid(storeImage.getUuid())
+                    return StoreImageDTO.builder()
+                            //.imgName(storeImage.getImgName())
+                            //.path(storeImage.getPath())
+                            //.uuid(storeImage.getUuid())
                             .build();
                 }).collect(Collectors.toList());
         storeDTO.setImageDTOList(storeImageDTOList);
