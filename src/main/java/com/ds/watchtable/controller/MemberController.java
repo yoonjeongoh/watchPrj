@@ -1,12 +1,15 @@
 package com.ds.watchtable.controller;
 
 import com.ds.watchtable.dto.MemberDTO;
+import com.ds.watchtable.repository.MemberRepository;
 import com.ds.watchtable.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.lang.reflect.Member;
 
 @Controller
 @Log4j2

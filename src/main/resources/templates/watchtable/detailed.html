@@ -82,7 +82,7 @@
 
             <!--        6열 리뷰 리스트-->
            <div class="rv-list">
-                <div class="rv-list-table"> 리뷰리스트
+                <div id="rv-list-table" class="rv-list-table"> 리뷰리스트
 
                 </div>
             </div>
@@ -100,9 +100,9 @@
     <script>
         $(document).ready(function(e){
             var contextPath = $('#contextPathHolder').attr('data-contextPath') ? $('#contextPathHolder').attr('data-contextPath') : '';
+            var review = $('textarea[name="reviewText"]');
 
             $("#rv-btn").click(function(){
-                var review = $('textarea[name="reviewText"]');
                 var data = {text: review.val()};
 
                 $.ajax({
@@ -116,8 +116,35 @@
                         self.location.reload();
                      }
                 });
-            });
-        });
+                });
+//리뷰리스트
+            function getReviews() {
+                function formatTime(str) {
+                var date = new Date(str);
+                return date.getFullYear()+'/'+
+                (date.getMonth() + 1)+'/' +
+                date.getDate() + ' ' +
+                date.getHours()+':'+
+                date.getMinutes();
+                }
+
+                $.getJSON("contextPath+'/detailed'", function(arr) {
+                var str = "";
+
+                $.each(arr, function(idx, review) {
+                console.log(review);
+
+                str += ' <div class="card-body" data-reviewnum='+review.reviewnum+'>';
+                str += ' <h5 class="card-title">'+review.text+'</h5>';
+                str += ' <p class="card-text">'+formatTime(review.regDate)+'</p>';
+                str += ' </div>';
+                });
+                $("#rv-list-table").html(str);
+                });
+                }
+                getReviews();
+           });
+
     </script>
 
         <!--        그냥 스타일시트-->
@@ -133,7 +160,7 @@
         <!--            });-->
         <!--        </script>-->
 
-        <!--        리뷰작성칸-->
+        <!--        폼 태그 사용한 리뷰작성칸-->
         <!--            <div id="review" class="rv-field">-->
         <!--                <iframe name="iframe11" id="iframe11" style="display:none;"></iframe>-->
         <!--                <form class="form1" target="iframe11" method="post" name="frm">-->

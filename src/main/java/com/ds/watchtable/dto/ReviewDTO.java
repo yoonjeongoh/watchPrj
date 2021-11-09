@@ -12,10 +12,11 @@ import java.time.LocalDateTime;
 public class ReviewDTO {
     private Long reviewnum;
 
-//    private Long storenum;
-//    private String username;
-//    private String usernick; //네임과 닉넴중에 하나만있어야하지 않나
-//    private String grade;
+//    private int memberNum;
+//    private String memberId;
+//    private String memberName;
+//    private String memberNickname;
+
     private String text;
     private LocalDateTime regDate;
     private LocalDateTime modDate;

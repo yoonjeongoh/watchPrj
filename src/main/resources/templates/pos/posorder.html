@@ -76,21 +76,22 @@
             </thead>
 
             <tbody>
-            <tr th:each="pos : ${posList}">
+            <tr>
             <tr class="tb-content">
                 <td>
                 <input type="text" class="form-control" name="gno"
                        th:value="${pos}" readonly>
+                    <input type="text" class="form-control" name="gno"
+                           th:value="${hi}" readonly>
+
                 </td>
             </tr>
             <tr class="tb-content">
-                <td>
-                <input type="text" class="form-control" name="gno"
-                       th:value="${pos}" readonly>
-                </td>
+                <td th:text="${data}">[[${data}]]</td>
+                <td th:text="${data}">[[data]]</td>
             </tr>
             <tr class="tb-content">
-                <td th:text="${pos}">[[data]]</td>
+                <td>{{pos}}</td>
             </tr>
             <tr class="tb-content">
                 <td>d</td>
@@ -100,9 +101,9 @@
             </tr>
             <tr class="tb-content">
                 <td>d</td>
-            </tr>
             </tr>
             </tbody>
+            </tr>
         </table>
         </div>
         <div class="btn">
