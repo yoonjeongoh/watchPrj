@@ -18,6 +18,7 @@ public class StoreImage extends BaseEntity {
     private String uuid;
     private String imgName;
     private String path;
+    private String imgType;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Store store;
