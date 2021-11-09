@@ -24,10 +24,11 @@
 
                         <span class="span11">아이디</span> <br>
                         <input class="input11" title="아이디" type="text" name="memberId" id="my_id"
-                               placeholder="4~12자의 영문 대소문자와 숫자로만 입력" maxlength="12">
+                               placeholder="4~12자의 영문 대소문자와 숫자로만 입력" maxlength="12" required oninput="checkId()"/>
                         <span class="invalid" id="idSpace">공백은 사용할 수 없습니다.</span>
                         <span class="invalid" id="noKor">유효하지 않은 형식입니다.</span>
                         <span class="invalid" id="id_min">4자 이상 입력하세요.</span>
+                        <span class="invalid" id="id_already">사용중인 ID입니다.</span>
                         <span class="valid" id="id_ok">사용 가능한 ID입니다.</span><br>
 
                         <span class="span13">닉네임</span><br>
@@ -181,7 +182,7 @@
 
                $('#my_pwd').keyup(function(){
                     var pw = $('#my_pwd').val();
-                    if(pwCheck.test(pw)){
+                    if(pwCheck.test(pw) && pw.length > 7){
                         $('#pw_ok').show();
                         $('#pw_min').hide();
                         $('#pw_error').hide();
@@ -218,8 +219,8 @@
                  });
 
                  $('.input14').keyup(function(){
-                    var mobile = $('#st-tel1').val() + $('#st-tel2').val();
-                    if(mobileCheck.test(mobile)){
+                    var mobile = $('#st-tel1').val();
+                    if(mobileCheck.test(mobile) && mobile.length == 4){
                             $('#mobile_ok').show();
                             $('#mobile_error').hide();
                     } else {
