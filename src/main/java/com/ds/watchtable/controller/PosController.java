@@ -22,11 +22,10 @@ public class PosController {
         posService.posSetting(posDTO);
     }
 
-    @RequestMapping({"/pos/posorder","/pos/postable"})
-    public String list( Model model){
-        model.addAttribute("data","장종찬");
-        return "/pos/posorder";
+    @GetMapping({"/pos/posorder"})
+    public void list(int posNum,Model model){
+        log.info("posNum"+posNum);
+        PosDTO posDTO = posService.read(posNum);
+        model.addAttribute("data",posDTO);
     }
-
-
 }

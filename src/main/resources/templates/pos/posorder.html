@@ -4,7 +4,6 @@
     <th:block th:fragment="content">
         <link th:href="@{/css2/posorder.css}" rel="stylesheet" />
         <div class="order">
-
         <table class="tb-order">
             <tr class="tb-title">
                 <th>번호</th>
@@ -69,7 +68,6 @@
         </div>
         <div class="list">
         <table class="tb-list">
-            <thead>
             <tr class="tb-title">
                 <th>메뉴</th>
             </tr>
@@ -80,18 +78,18 @@
             <tr class="tb-content">
                 <td>
                 <input type="text" class="form-control" name="gno"
-                       th:value="${pos}" readonly>
+                       th:value="${data.posNum}" readonly>
                     <input type="text" class="form-control" name="gno"
                            th:value="${hi}" readonly>
 
                 </td>
             </tr>
             <tr class="tb-content">
-                <td th:text="${data}">[[${data}]]</td>
-                <td th:text="${data}">[[data]]</td>
+                <td>[[${data}]]</td>
+                <td th:value="${data}"></td>
             </tr>
             <tr class="tb-content">
-                <td>{{pos}}</td>
+                <td>[[${data}]]</td>
             </tr>
             <tr class="tb-content">
                 <td>d</td>
@@ -113,5 +111,12 @@
         <hr>
         <h1 class="mt-4">Pos order</h1>
         <a href="/watchtable/pos/postable">/watchtable/postable[포스테이블]</a><br>
+
+<!--        <script th:inline="javascript">-->
+<!--            $(document).ready(function(){-->
+<!--            var data = -->
+<!--            })-->
+<!--            -->
+<!--        </script>-->
     </th:block>
 </th:blotck>
