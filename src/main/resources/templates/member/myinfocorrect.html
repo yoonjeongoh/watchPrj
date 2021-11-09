@@ -8,7 +8,7 @@
             <div class="joinfield">
                 <form class="form11" action="http://localhost:8080/watchtable/member/myinfo" method="post" id="join_form" name="f">
                     <span class="span11"><input type="checkbox" class="ch-box1" name="name" value="name">이름</span><br>
-                    <input class="input11" type="text" id="my_name" th:value="${dto.memberName}"><br>
+                    <input class="input11" type="text" id="my_name" th:value="${data}"><br>
 <!--                    <span class="invalid" id="nameSpace">공백은 사용할 수 없습니다.</span>-->
 <!--                    <span class="invalid" id="noEnglish">한글로 입력해주세요.</span>-->
 <!--                    <span class="invalid" id="name_min">2자 이상 입력하세요.</span>-->
@@ -16,7 +16,7 @@
 
 
                     <span class="span11"><input type="checkbox" class="ch-box1" name="name" value="nick">닉네임</span><br>
-                    <input class="input11" type="text" name="membernick" id="my_nick" th:value="${dto.memberNickname}" ><br>
+                    <input class="input11" type="text" name="membernick" id="my_nick" th:value="${data}" ><br>
 <!--                    <span class="invalid" id="nickSpace">공백은 사용할 수 없습니다.</span>-->
 <!--                    <span class="invalid" id="noSpecial">특수문자 및 자음은 사용할 수 없습니다.</span>-->
 <!--                    <span class="invalid" id="nick_min">2자 이상 입력하세요.</span>-->
