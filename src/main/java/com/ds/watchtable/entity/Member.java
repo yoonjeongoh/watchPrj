@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Member extends com.ds.watchtable.entity.BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int memberNum;
+    private Long memberNum;
 
     private String memberId;
 

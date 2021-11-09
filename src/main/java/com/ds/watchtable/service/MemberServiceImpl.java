@@ -22,21 +22,26 @@ import static com.ds.watchtable.entity.QMember.member;
 public class MemberServiceImpl implements MemberService {
     final private MemberRepository memberRepository;
 
+    //db 저장
     @Override
     public String register(MemberDTO memberDTO) {
         Member member = dtoToEntity(memberDTO);
-        memberRepository.save(member); //저장, 수정
+        memberRepository.save(member); //save: 저장, 수정
         return member.getMemberName();
     }
+}
 
-    @Override
-    public MemberDTO getInfo(int memberNum) {
-        Optional<Member> result = memberRepository.findById(memberNum);
-        return result.isPresent()?entityToDTO(result.get()):null;
-    }
+// ------ 삽질 샤따내립니다 -----------------------------------------------------
 
 //    @Override
-//    public MemberDTO getInfo(int memberNum) {
+//    public MemberDTO get(Long memberNum) {
+//        Optional<Member> result = memberRepository.findById(memberNum);
+////        Optional<Member> result = memberRepository.findById(Math.toIntExact(memberNum));
+//        return result.isPresent()?entityToDTO(result.get()):"null";
+//    }
+
+//    @Override
+//    public MemberDTO get(int memberNum) {
 //        List<Object[]> result = memberRepository.findAll();
 //
 //        return entityToDTO(member);
@@ -47,4 +52,4 @@ public class MemberServiceImpl implements MemberService {
 //        return userRepository.save(user);
 //    }
 
-}
+

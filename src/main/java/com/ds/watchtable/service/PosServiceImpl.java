@@ -30,6 +30,6 @@ public class PosServiceImpl implements PosService{
     @Override
     public PosDTO read(int posNum) {
         Optional<Pos> result = posRepository.findById(posNum);
-        return result.isPresent()?entityToDto(result.get()):null;
+        return result.isPresent()?entityToDTO(result.get()):null;
          }
 }

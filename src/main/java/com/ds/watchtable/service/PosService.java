@@ -24,7 +24,7 @@ public interface PosService {
                 .build();
         return pos;
 }
-    default PosDTO entityToDto(Pos entity){
+    default PosDTO entityToDTO(Pos entity){
         PosDTO pos = PosDTO.builder()
                 .menu1(entity.getMenu1())
                 .menu2(entity.getMenu2())
