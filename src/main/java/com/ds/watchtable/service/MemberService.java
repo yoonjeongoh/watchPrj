@@ -23,6 +23,7 @@ public interface MemberService {
         return member;
     }
 
+
     default MemberDTO entityToDTO(Member member){
         MemberDTO memberDTO = MemberDTO.builder()
                 .memberNum(member.getMemberNum())
@@ -36,4 +37,5 @@ public interface MemberService {
                 .build();
         return memberDTO;
     }
+
 }
