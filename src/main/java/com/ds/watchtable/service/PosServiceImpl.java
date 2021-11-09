@@ -8,6 +8,8 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -29,5 +31,5 @@ public class PosServiceImpl implements PosService{
     public PosDTO read(int posNum) {
         Optional<Pos> result = posRepository.findById(posNum);
         return result.isPresent()?entityToDto(result.get()):null;
-    }
+         }
 }

@@ -7,8 +7,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @Log4j2
@@ -24,9 +23,10 @@ public class PosController {
     }
 
     @RequestMapping({"/pos/posorder","/pos/postable"})
-    public void read(int posNum, Model model){
-        PosDTO pos = posService.read(posNum);
-        model.addAttribute("pos", pos);
+    public String list( Model model){
+        model.addAttribute("data","장종찬");
+        return "/pos/posorder";
     }
+
 
 }
