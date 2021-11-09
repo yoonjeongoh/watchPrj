@@ -1,12 +1,14 @@
 package com.ds.watchtable.controller;
 
 import com.ds.watchtable.dto.MemberDTO;
+import com.ds.watchtable.dto.PageRequestDTO;
 import com.ds.watchtable.repository.MemberRepository;
 import com.ds.watchtable.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Member;
@@ -40,4 +42,18 @@ public class MemberController {
 //    attributes.addAttribute("username",userDTO.getUsername());
 //    attributes.addAttribute("userid",userDTO.getUserid());
     }
+
+//    @GetMapping("/member/myinfocorrect")
+//    public void getInfo(int memberNum, @ModelAttribute("dto") Model model) {
+//        MemberDTO memberDTO = memberService.getInfo(memberNum);
+//        model.addAttribute("dto", memberDTO);
+//    }
+
+    @RequestMapping("/member/myinfocorrect")
+    public String getInfo( Model model){
+        model.addAttribute("data","tlqkf");
+        return "/member/myinfocorrect";
+    }
+
+
 }
