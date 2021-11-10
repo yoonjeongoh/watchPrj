@@ -7,6 +7,10 @@
   input:focus, select:focus, option:focus, textarea:focus, button:focus{
   	outline: none;
   }
+html, body{
+    height: 100%;
+    margin: 0;
+}
 
 button {
     border: 0;
@@ -20,20 +24,26 @@ button {
 
  .joinfield {
     position:relative;
-    left:500px;
+    width: 100%;
+    text-align: center;
+    line-height: middle;
+    /*left:500px;*/
   }
 
 .mngfield {
     position: relative;
+    width: 100%;
+    text-align: center;
+    line-height: middle;
+
 /*
     top: 50%;
     left: 50%;
     margin-left: -250px;
     margin-top: -350px;
-*/
     line-height: middle;
-    width: 500px; height: 1000px;
-    padding: 10px;
+    width: 100%; height: 1000px;
+    padding: 10px;*/
 }
 
  .mngfield2 {
@@ -221,6 +231,5 @@ margin-right: 10px;
 }
 
   .end-pg {
-      width: auto;
-      height: 20px;
+      height: 150px;
    }
