@@ -8,6 +8,7 @@ import com.ds.watchtable.entity.Pos;
 public interface PosService {
     void posSetting(PosDTO posDTO);
 
+//    PosDTO getPos(Long posNum);
 
 
     default Pos dtoToEntity(PosDTO posDTO) {
@@ -38,6 +39,6 @@ public interface PosService {
                 .build();
         return pos;
     }
-    PosDTO read(int posNum);
+
 
 }
