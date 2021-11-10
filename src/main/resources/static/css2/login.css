@@ -8,9 +8,9 @@ html, body, field{
 }
 
 .wrapper {
-    height: 100%;
-    width: 1200px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 button {
@@ -81,18 +81,11 @@ button {
 }
 
 .field1 {
-    position:relative;
     width: 100%;
     height: auto;
     text-align: center;
     line-height: middle;
-/*    position:relative;
-    left:350px;
-    text-align: center;
-    line-height: middle;
-    width: 500px; height: 500px;
-    padding: 10px;
-    //background-color: #82817e;*/
+    //background-color: #82817e;
 }
 
   .btn1 {
@@ -135,13 +128,7 @@ button {
 .pw-field {
     border-radius: 10px;
     border: 1px solid #c7c4bf;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -225px;
-    margin-top: -220px;
     text-align: center;
-    line-height: middle;
     width: 450px; height: 220px;
     padding: 15px;
 }
