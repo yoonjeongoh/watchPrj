@@ -1,23 +1,17 @@
 package com.ds.watchtable.controller;
 
 import com.ds.watchtable.dto.MemberDTO;
-import com.ds.watchtable.dto.PageRequestDTO;
-import com.ds.watchtable.repository.MemberRepository;
 import com.ds.watchtable.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
-import java.lang.reflect.Member;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @Log4j2
 @RequiredArgsConstructor
 public class MemberController {
-    @Autowired
+
     private final MemberService memberService;
 
     @RequestMapping("/member/myinfo")
@@ -27,13 +21,49 @@ public class MemberController {
 //    attributes.addAttribute("username",userDTO.getUsername());
 //    attributes.addAttribute("userid",userDTO.getUserid());
     }
+}
+
+
+
+//-----------예진이 삽질의 흔적-------------------------------------------
+    //session으로부터 정보들고오는거 - principal
+//    @GetMapping("/member/myinfocorrect") //이거미완성
+//    private void getInfo(Model model, Principal principal) {
+//
+//        log.info("memberNum>>"+memberNum);
+//        MemberDTO dto = memberService.get(memberNum);
+//        model.addAttribute("memberDTO", dto );
+//        log.info("dto>>"+dto);
+//    }
+
+//    @GetMapping("/member/myinfocorrect") //get-불러오기
+//    private void getInfo( Model model) {
+//        List<MemberDTO> dto = memberService.getAll();
+//        model.addAttribute("memberDTO", dto );
+//        log.info("dto>>"+dto);
+//    }
 
 //    @GetMapping("/member/myinfocorrect") //get-불러오기
 //    private void getInfo(Long memberNum, Model model) {
-//        MemberDTO memberDTO = memberService.get(memberNum);
-//        model.addAttribute("memberDTO0", memberDTO);
+//        log.info("memberNum>>"+memberNum);
+//        MemberDTO dto = memberService.get(memberNum);
+//        model.addAttribute("memberDTO", dto );
+//        log.info("dto>>"+dto);
 //    }
-}
+
+//
+//    @GetMapping("/member/myinfocorrect", produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<List<MemberDTO>> get(@PathVariable("memberNum") Long memberNum){
+//        return new ResponseEntity<>( memberService.get(memberNum), HttpStatus.OK);
+//    }
+
+
+//    @RequestMapping(value = "/member/myinfocorrect/", method = RequestMethod.GET)
+//    public @ResponseBody Member getInfo(@PathVariable("memberNum") Long memberNum){
+//        return memberService.get(memberNum);
+//    }
+
+
 
 
 
