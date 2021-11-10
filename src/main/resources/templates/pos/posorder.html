@@ -6,16 +6,15 @@
 
         <div class="flex-container">
         <div class="order-list">
-            <div class="menu-item" id="item1"></div>
+            <div class="menu-item" id="items"></div>
             <div class="order-item">2</div>
             <div class="order-item">3</div>
         </div>
-        </div>
-        <div class="flex-container">
+
         <div class="menu-list">
-            <input type='button' value = '1' onclick= 'sub1()' />
-            <input type='button' value = '2' onclick= 'sub1()' />
-            <input type='button' value = '3' onclick= 'sub1()' />
+            <input type='button' id="menu1" value = '1' onclick= 'menu1()' />
+            <input type='button' th:value="${pos.menu1}" id="menu2"value = '2' onclick= 'menu2()' />
+            <input type='button' id="menu3"value = '3' onclick= 'menu3()' />
         </div>
         </div>
         <div class="btn">
@@ -33,9 +32,11 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
 
         <script th:inline="javascript">
-            function sub1() {
-            const element = document.getElementById('item1');
-            element.innerHTML='<div style="color:black">menu1<div>';
+            var orderList = [];
+            function menu1() {
+            var list = document.getElementById("menu1").value;
+            orderList.push(list);
+            console.log(orderList);
             }
         </script>
     </th:block>

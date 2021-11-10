@@ -1,14 +1,14 @@
 package com.ds.watchtable.service;
 
 import com.ds.watchtable.dto.PosDTO;
-import com.ds.watchtable.dto.StoreDTO;
-import com.ds.watchtable.entity.Member;
 import com.ds.watchtable.entity.Pos;
+
+import java.util.List;
 
 public interface PosService {
     void posSetting(PosDTO posDTO);
 
-//    PosDTO getPos(Long posNum);
+    PosDTO list(Long posNum);
 
 
     default Pos dtoToEntity(PosDTO posDTO) {
