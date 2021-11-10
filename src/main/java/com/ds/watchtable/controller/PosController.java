@@ -1,6 +1,7 @@
 package com.ds.watchtable.controller;
 
 import com.ds.watchtable.dto.PosDTO;
+import com.ds.watchtable.entity.Pos;
 import com.ds.watchtable.repository.PosRepository;
 import com.ds.watchtable.service.PosService;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +29,8 @@ public class PosController {
 
     @GetMapping({"/pos/posorder","/pos/postable"})
     public void list( Model model) {
-        model.addAttribute("pos", "gogo");
+        Iterable<Pos> posList = posRepository.findAll();
+        model.addAttribute("pos", posList);
     }
 
 
