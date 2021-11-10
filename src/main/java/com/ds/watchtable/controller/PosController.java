@@ -1,6 +1,7 @@
 package com.ds.watchtable.controller;
 
 import com.ds.watchtable.dto.PosDTO;
+import com.ds.watchtable.repository.PosRepository;
 import com.ds.watchtable.service.PosService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
