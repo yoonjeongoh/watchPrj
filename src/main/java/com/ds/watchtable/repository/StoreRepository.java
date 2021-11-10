@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface StoreRepository extends JpaRepository <Store, Integer> {
+public interface StoreRepository extends JpaRepository <Store, Long> {
 
 }
 

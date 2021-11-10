@@ -108,18 +108,18 @@
                     <div class="modal-body">
                         <!--<p id="modalMsg"> 번 글이 <span class="modal-title"></span>되었습니다.</p>-->
                         <div class="form-group" style="margin-bottom:30px;">
-                            <span class="span21">이름</span><input class="form-control" type="text" name="memberName">
+                            <span class="span21">이름</span><input class="form-control" type="text-name" name="memberName">
                         </div>
                         <div class="form-group" style="margin-bottom:30px;">
-                            <span class="span21">연락처</span><input class="form-control" type="text" name="memberMobile">
+                            <span class="span21">연락처</span><input class="form-control" type="text-mobile" name="memberMobile">
                         </div>
                         <div class="form-group" style="margin-bottom:30px;">
                             <span class="span21">인원수</span>
-                            <select class="sel11" name="partyMember" id="">
-                                <option class="op11" name="partyMember">1</option>
-                                <option class="op11" name="partyMember">2</option>
-                                <option class="op11" name="partyMember">3</option>
-                                <option class="op11" name="partyMember">4</option>
+                            <select class="sel21" name="partyMember" id="">
+                                <option class="op21" name="partyMember">1</option>
+                                <option class="op21" name="partyMember">2</option>
+                                <option class="op21" name="partyMember">3</option>
+                                <option class="op21" name="partyMember">4</option>
                               </select>
                         </div>
                     </div >
@@ -137,23 +137,70 @@
         $(document).ready(function(e){
             var contextPath = $('#contextPathHolder').attr('data-contextPath') ? $('#contextPathHolder').attr('data-contextPath') : '';
 
-            //대기등록 모달
+            //대기등록 모달 - 수정, 등록 url, method 미완성
             var modal = $('.modal');
             var mobile = $('.memberMobile');
             var party = $('.partyMember');
 
             $(".waiting-register21").click(function(){
                 modal.modal('show');
-                    $('.memberMobile').val('');
+                    $('.memberName').val();
+                    $('.memberMobile').val();
                     $('.partyMember').val('');
                 });
 
             $(".waiting-close21").click(function(){
                 modal.modal('hide');
+                $('.memberName').val('');
                 $('.memberMobile').val('');
                 $('.partyMember').val('');
             });
 
+<!--            $(".go-modify21").click(function(){-->
+<!--                var memberName = $('.memberName');-->
+<!--                var waiting = {-->
+<!--                    memberName: memberName,-->
+<!--                    storeNum: storeNum,-->
+<!--                    text-name:  $('.memberName').val(),-->
+<!--                    text-mobile: $('.memberMobile').val(),-->
+<!--                    partyMember: $('.partyMember').val()-->
+<!--                }-->
+<!--                $.ajax({-->
+<!--                    url: '/replies/'+rno,-->
+<!--                    method: 'put',-->
+<!--                    data: JSON.stringify(waiting),-->
+<!--                    contentType: 'application/json; charset=utf-8',-->
+<!--                    success: function(result){-->
+<!--                        console.log("result: "+result);-->
+<!--                        if(result === 'success'){-->
+<!--                        self.location.reload();-->
+<!--                        }-->
+<!--                    }-->
+<!--                });-->
+<!--            });-->
+
+<!--            $(".go-waiting21").click(function(){-->
+<!--                var waiting = {-->
+<!--                    memberName: memberName,-->
+<!--                    storeNum: storeNum,-->
+<!--                    text-name:  $('.memberName').val(),-->
+<!--                    text-mobile: $('.memberMobile').val(),-->
+<!--                    partyMember: $('.partyMember').val()-->
+<!--                    }-->
+<!--                $.ajax({-->
+<!--                    url:'/replies/',-->
+<!--                    method:'post',-->
+<!--                    data: JSON.stringify(waiting),-->
+<!--                    contentType:'application/json; charset=utf-8',-->
+<!--                    dataType:'json',-->
+<!--                    success: function(data){-->
+<!--                        console.log(data);-->
+<!--                        var newWaitNum = parseInt(data);-->
+<!--                        modal.modal('hide');-->
+<!--                        loadJSONData();-->
+<!--                        }-->
+<!--                    })-->
+<!--                });-->
 
             //리뷰 데이터 넘기기-완성
             $("#rv-btn").click(function(){
@@ -171,7 +218,7 @@
                         self.location.reload();
                      }
                 });
-                });
+            });
 
             //리뷰리스트-미완성
             function getReviews() {

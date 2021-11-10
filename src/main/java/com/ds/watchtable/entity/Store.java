@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Store extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int storeNum;
+    private Long storeNum;
 
     private String storeName;
     private String storeMenu;
