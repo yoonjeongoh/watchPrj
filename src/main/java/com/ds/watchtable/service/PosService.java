@@ -13,6 +13,7 @@ public interface PosService {
 
     default Pos dtoToEntity(PosDTO posDTO) {
         Pos pos = Pos.builder()
+                .posNum(posDTO.getPosNum())
                 .menu1(posDTO.getMenu1())
                 .menu2(posDTO.getMenu2())
                 .menu3(posDTO.getMenu3())
@@ -23,10 +24,12 @@ public interface PosService {
                 .table4(posDTO.getTable4())
                 .table6(posDTO.getTable6())
                 .build();
+        System.out.printf(">>>>"+pos);
         return pos;
 }
     default PosDTO entityToDTO(Pos entity){
         PosDTO pos = PosDTO.builder()
+                .posNum(entity.getPosNum())
                 .menu1(entity.getMenu1())
                 .menu2(entity.getMenu2())
                 .menu3(entity.getMenu3())
@@ -37,6 +40,7 @@ public interface PosService {
                 .table4(entity.getTable4())
                 .table6(entity.getTable6())
                 .build();
+        System.out.printf(">>>>"+pos);
         return pos;
     }
 

@@ -3,8 +3,9 @@
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
         <link th:href="@{/css2/login.css}" rel="stylesheet" />
-<div class="wrapper">
-    <div class="content1">
+        <link th:href="@{/css2/join.css}" rel="stylesheet"/>
+
+
         <fieldset>
             <div id="login" class="field1">
                 <form class="form1" th:action="@{/}" method="post" name="frm">
@@ -26,12 +27,9 @@
                   <a href="/oauth2/authorization/naver"><img class="authimg"
                                                              src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile24.uf.tistory.com%2Fimage%2F99580C465C3D7D130CF754"></a>
                 </div>
-
             </div>
         </fieldset>
-</div>
-</div>
-
+        <div class="end-pg"></div>
         <script th:inline="javascript">
                 window.onload = function() {
                   document.getElementById('btn').onclick = function() {

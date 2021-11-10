@@ -2,8 +2,9 @@
     margin: 0px; padding: 0px;
   }
 
-input:focus, select:focus, option:focus, textarea:focus, button:focus{
-	outline: none;
+html, body{
+    height: 100%;
+    margin: 0;
 }
 
 .wrapper {
@@ -81,12 +82,16 @@ button {
 
 .field1 {
     position:relative;
+    width: 100%;
+    text-align: center;
+    line-height: middle;
+/*    position:relative;
     left:350px;
     text-align: center;
     line-height: middle;
     width: 500px; height: 500px;
     padding: 10px;
-    //background-color: #82817e;
+    //background-color: #82817e;*/
 }
 
   .btn1 {

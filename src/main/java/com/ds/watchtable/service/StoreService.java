@@ -49,6 +49,7 @@ public interface StoreService {
                         .bsUuid(storeImageDTO.getBsUuid())
                         .store(store)
                         .build();
+                System.out.printf(">>"+storeImage);
                 return storeImage;
             }).collect(Collectors.toList());
             entityMap.put("storeImgList",storeImageList);
