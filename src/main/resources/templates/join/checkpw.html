@@ -4,6 +4,7 @@
     <th:block th:fragment="content">
         <link th:href="@{/css2/login.css}" rel="stylesheet" />
 
+        <div class="wrapper">
         <fieldset>
             <div class="pw-field">
                 <form action="http://localhost:8080/watchtable/member/myinfocorrect" th:method="get">
@@ -13,7 +14,7 @@
                 </form>
             </div>
         </fieldset>
-
+        </div>
 <!--                <h1 class="mt-4">Check Password</h1>-->
 <!--                <a href="/watchtable/myinfocorrect">/watchtable/myinfocorrect(All Members)[내정보수정]</a><br>-->
 <!--                <a href="/watchtable/manageinfocorrect">/watchtable/manageinfocorrect(Business Member)[사업자정보수정]</a><br>-->

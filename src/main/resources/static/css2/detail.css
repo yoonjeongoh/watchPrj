@@ -3,9 +3,9 @@
     //background: #82817e;
   }
 .wrapper {
-    height: 100%;
-    width: 1200px;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 button {
@@ -16,34 +16,37 @@ input:focus, select:focus, option:focus, textarea:focus, button:focus{
 	outline: none;
 }
 
+.top-card1, .sec-col1, .thd-col1, .fifth-col1 {
+    margin-bottom: 8px;
+}
+
 .top-card1 {
-    position: relative;
-    align-items: center;
+    overflow: hidden;
     display: flex;
+    justify-content: space-between;
     background-color: #82817e;
 }
 
 .card1 {
-    width: 250px; height: 200px;
+    width: 240px; height: 200px;
     display: inline-block;
     overflow: hidden;
     float: center;
-    margin: 2px 2px 2px 2px;
+    padding: 2px;
     background-color: #fdb53c;
 }
 
 .sec-col1 {
-    position: relative;
-    align-items: center;
+    overflow: hidden;
     display: flex;
+    justify-content: space-between;
     width: auto;
     height: 400px;
     background-color: #f75931;
 }
 .sec1 {
     display: inline-block;
-    float: center;
-    margin: 2px 2px 2px 2px;
+    padding: 2px;
     background-color: #fdb53c;
 }
 
@@ -60,19 +63,17 @@ input:focus, select:focus, option:focus, textarea:focus, button:focus{
     height: 400px;
 }
 .thd-col1 {
-    position: relative;
-    display: inline-block;
-    float: center;
+    overflow: hidden;
     display: flex;
+    justify-content: space-between;
     width: auto;
     height: 400px;
-    background-color: #82817e;
+    background-color: #f75931;
 }
 
 .thd1 {
-    position: relative;
     display: inline-block;
-    margin: 2px 2px 2px 2px;
+    padding: 2px;
     background-color: #fdb53c;
 }
 .thd-left1 {
@@ -85,17 +86,9 @@ input:focus, select:focus, option:focus, textarea:focus, button:focus{
     height: 400px;
 }
 
-.forth-col1 {
-    height: 80px;
-    width: auto;
-    display: flex;
-    float: center;
-    background-color: #f75931;
-    position: relative;
-}
-
 .rv-grade {
-    margin: 2px;
+    overflow: hidden;
+    padding: 2px;
     background-color: #fdb53c;
 }
 
@@ -108,18 +101,19 @@ input:focus, select:focus, option:focus, textarea:focus, button:focus{
 }
 
 .rv-ta1 {
-    margin: 2px;
+    padding: 2px;
     background-color: #fdb53c;
 }
 
 .rv-list {
+    overflow: hidden;
     display: flex;
     background-color: #f75931;
     position: relative;
 }
 
 .rv-list-table {
-    margin: 2px;
+    padding: 2px;
     background-color: #fdb53c;
 }
 
@@ -128,6 +122,7 @@ input:focus, select:focus, option:focus, textarea:focus, button:focus{
     height: 20px;
  }
 
+/* 이하 모달 css------------------ */
 .waiting-register21 {
     width: 120px;
     height: 50px;
@@ -144,8 +139,9 @@ input:focus, select:focus, option:focus, textarea:focus, button:focus{
 }
 
 .span21 {
+    display: inline-block;
     color: #75736e;
-    width: 40px;
+    width: 60px;
     height: 35px;
     text-align: right;
     padding-right: 10px;
@@ -185,4 +181,15 @@ input:focus, select:focus, option:focus, textarea:focus, button:focus{
     font-size: 14px;
     color: #75736e;
     border-color: #c7c4bf;
+    margin-left: -5px;
 }
+
+/*
+.forth-col1 {
+    height: 80px;
+    width: auto;
+    display: flex;
+    float: center;
+    background-color: #f75931;
+    position: relative;
+}*/
