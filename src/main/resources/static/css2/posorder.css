@@ -1,4 +1,4 @@
-  * {
+ * {
      margin: 0px; padding: 0px;
   }
 
@@ -10,38 +10,23 @@ button {
   border: 0;
 }
 
-.tb-list{
-    border: 1px solid black;
-    border-collapse: collapse;
-    width:300px;
+
+.order-list {
+    display:flex;
+    flex-direction: column;
 }
 
-.tb-order{
-    border: 1px solid black;
-    border-collapse: collapse;
-    width:400px;
+.menu-list{
+display:flex;
+flex-direction: column;
+width:400px;
+height:50px;
 }
 
-.tb-title{
-border: 1px solid black;
-    border-collapse: collapse;
+.flex-container{
+
 }
 
-.tb-content{
-border: 1px solid black;
-    border-collapse: collapse;
-}
-
-th{
-border: 1px solid black;
-    border-collapse: collapse;
-    }
-
-.list{
-position:relative;
-left:800px;
-bottom:280px;
-}
 
 #btn-ok{
 width:100px;

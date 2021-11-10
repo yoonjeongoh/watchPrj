@@ -3,108 +3,20 @@
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
         <link th:href="@{/css2/posorder.css}" rel="stylesheet" />
-        <div class="order">
 
-        <table class="tb-order">
-            <tr class="tb-title">
-                <th>번호</th>
-                <th>상품명</th>
-                <th>개수</th>
-            </tr>
-            <tr class="tb-content">
-                <td>
-                    d
-                </td>
-                <td>d</td>
-                <td>d</td>
-            </tr>
-            <tr class="tb-content">
-                <td>d</td>
-                <td>d</td>
-                <td>d</td>
-            </tr>
-            <tr class="tb-content">
-                <td>d</td>
-                <td>d</td>
-                <td>d</td>
-            </tr>
-            <tr class="tb-content">
-                <td>d</td>
-                <td>d</td>
-                <td>d</td>
-            </tr>
-            <tr class="tb-content">
-                <td>d</td>
-                <td>d</td>
-                <td>d</td>
-            </tr>
-            <tr class="tb-content">
-                <td>d</td>
-                <td>d</td>
-                <td>d</td>
-            </tr>
-            <tr class="tb-content">
-                <td>d</td>
-                <td>d</td>
-                <td>d</td>
-            </tr>
-            <tr class="tb-content">
-                <td>d</td>
-                <td>d</td>
-                <td>d</td>
-            </tr>
-            <tr class="tb-content">
-                <td>d</td>
-                <td>d</td>
-                <td>d</td>
-            </tr>
-            <tr class="tb-content">
-                <td>d</td>
-                <td>d</td>
-                <td>d</td>
-            </tr>
-
-
-        </table>
+        <div class="flex-container">
+        <div class="order-list">
+            <div class="menu-item" id="item1"></div>
+            <div class="order-item">2</div>
+            <div class="order-item">3</div>
         </div>
-        <div class="list">
-        <table class="tb-list">
-            <thead>
-            <tr class="tb-title">
-                <th>메뉴</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            <tr>
-            <tr class="tb-content">
-                <td>
-                <input type="text" class="form-control" name="gno"
-                       th:value="${pos}" readonly>
-                    <input type="text" class="form-control" name="gno"
-                           th:value="${hi}" readonly>
-
-                </td>
-            </tr>
-            <tr class="tb-content">
-                <td th:text="${data}">[[${data}]]</td>
-                <td th:text="${data}">[[data]]</td>
-            </tr>
-            <tr class="tb-content">
-                <td>{{pos}}</td>
-            </tr>
-            <tr class="tb-content">
-                <td>d</td>
-            </tr>
-            <tr class="tb-content">
-                <td>d</td>
-            </tr>
-            <tr class="tb-content">
-                <td>d</td>
-            </tr>
-            </tbody>
-            </tr>
-        </table>
+        </div>
+        <div class="flex-container">
+        <div class="menu-list">
+            <input type='button' value = '1' onclick= 'sub1()' />
+            <input type='button' value = '2' onclick= 'sub1()' />
+            <input type='button' value = '3' onclick= 'sub1()' />
+        </div>
         </div>
         <div class="btn">
         <button id="btn-ok" onClick="location.href='/watchtable/pos/postable'">확인</button>
@@ -113,5 +25,18 @@
         <hr>
         <h1 class="mt-4">Pos order</h1>
         <a href="/watchtable/pos/postable">/watchtable/postable[포스테이블]</a><br>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                crossorigin="anonymous">
+        </script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
+
+        <script th:inline="javascript">
+            function sub1() {
+            const element = document.getElementById('item1');
+            element.innerHTML='<div style="color:black">menu1<div>';
+            }
+        </script>
     </th:block>
 </th:blotck>

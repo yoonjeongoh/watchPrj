@@ -1,6 +1,7 @@
 package com.ds.watchtable.controller;
 
 import com.ds.watchtable.dto.PosDTO;
+import com.ds.watchtable.repository.PosRepository;
 import com.ds.watchtable.service.PosService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -16,16 +17,19 @@ public class PosController {
     @Autowired
     private final PosService posService;
 
+    @Autowired
+    private PosRepository posRepository;
+
     @PostMapping("/pos/postable")
     public void registerPost(PosDTO posDTO){
         log.info("Register............");
         posService.posSetting(posDTO);
     }
 
-    @RequestMapping({"/pos/posorder","/pos/postable"})
-    public String list( Model model){
-        model.addAttribute("data","장종찬");
-        return "/pos/posorder";
+    @GetMapping({"/pos/posorder","/pos/postable"})
+    public void list( Model model){
+//        PosDTO posDTO = posService.getPos(posNum);
+        model.addAttribute("pos", "gogo");
     }
 
 
