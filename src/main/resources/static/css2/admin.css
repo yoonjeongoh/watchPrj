@@ -1,0 +1,21 @@
+#container {
+    position:relative; width:1130px; height:860px; padding:30px 30px; margin:0 auto; background-color:#82817e;
+}
+#detail {
+    position:absolute; width:640px; height:800px; background-color:yellow;
+}
+#search {
+    position:absolute; width:480px; height:40px; background-color:green;
+}
+#store_cnt{
+    position:absolute; right:0; margin-top:8px; background-color:green;
+}
+#store_list{
+    position:absolute; width:640px; height:701px; height:margin-top:20px; bottom:0px; background-color:green;
+}
+#approve {
+    position:absolute; width:410px; height:390px; right:30px; top:30px; background-color:yellow;
+}
+#reviewMng {
+    position:absolute; width:410px; height:390px; right:30px; bottom:30px; background-color:yellow;
+}
