@@ -8,6 +8,8 @@ public interface MemberService {
 //    public User add(User user) throws Exception;
 
     String register(MemberDTO dto);
+//    MemberDTO get(Long memberNum);
+
 
     default Member dtoToEntity(MemberDTO memberDTO){
         Member member = Member.builder()

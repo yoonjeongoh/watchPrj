@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StoreDTO {
-    private int memberNum;
+    private Long memberNum;
 
     private String memberName;
     private String memberNickname;

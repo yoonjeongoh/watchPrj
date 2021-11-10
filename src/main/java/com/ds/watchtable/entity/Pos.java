@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Pos extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int posNum;
+    private Long posNum;
 
     private String menu1;
     private String menu2;

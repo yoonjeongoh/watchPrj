@@ -16,16 +16,19 @@ public class PosController {
     @Autowired
     private final PosService posService;
 
+    @Autowired
+    private PosRepository posRepository;
+
     @PostMapping("/pos/postable")
     public void registerPost(PosDTO posDTO){
         log.info("Register............");
         posService.posSetting(posDTO);
     }
 
-    @GetMapping({"/pos/posorder"})
-    public void list(int posNum,Model model){
-        log.info("posNum"+posNum);
-        PosDTO posDTO = posService.read(posNum);
-        model.addAttribute("data",posDTO);
+    @GetMapping({"/pos/posorder","/pos/postable"})
+    public void list( Model model) {
+        model.addAttribute("pos", "gogo");
     }
+
+
 }

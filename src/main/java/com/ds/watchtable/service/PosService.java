@@ -1,13 +1,14 @@
 package com.ds.watchtable.service;
 
 import com.ds.watchtable.dto.PosDTO;
-import com.ds.watchtable.dto.StoreDTO;
-import com.ds.watchtable.entity.Member;
 import com.ds.watchtable.entity.Pos;
+
+import java.util.List;
 
 public interface PosService {
     void posSetting(PosDTO posDTO);
 
+    PosDTO list(Long posNum);
 
 
     default Pos dtoToEntity(PosDTO posDTO) {
@@ -24,7 +25,7 @@ public interface PosService {
                 .build();
         return pos;
 }
-    default PosDTO entityToDto(Pos entity){
+    default PosDTO entityToDTO(Pos entity){
         PosDTO pos = PosDTO.builder()
                 .menu1(entity.getMenu1())
                 .menu2(entity.getMenu2())
@@ -38,6 +39,6 @@ public interface PosService {
                 .build();
         return pos;
     }
-    PosDTO read(int posNum);
+
 
 }
