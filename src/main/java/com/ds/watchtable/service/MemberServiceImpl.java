@@ -5,6 +5,7 @@ import com.ds.watchtable.dto.PosDTO;
 import com.ds.watchtable.dto.StoreDTO;
 import com.ds.watchtable.entity.Member;
 import com.ds.watchtable.entity.Pos;
+import com.ds.watchtable.entity.Review;
 import com.ds.watchtable.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -36,18 +37,31 @@ public class MemberServiceImpl implements MemberService {
 //    @Override
 //    public MemberDTO get(Long memberNum) {
 //        Optional<Member> result = memberRepository.findById(memberNum);
-////        Optional<Member> result = memberRepository.findById(Math.toIntExact(memberNum));
-//        return result.isPresent()?entityToDTO(result.get()):"null";
+//        return result.isPresent() ? entityToDTO(result.get()) : null;
 //    }
 
 //    @Override
-//    public MemberDTO get(int memberNum) {
-//        List<Object[]> result = memberRepository.findAll();
-//
-//        return entityToDTO(member);
+//    public List<MemberDTO> getAll() {
+//        List<Member> list = memberRepository.findAll();
+//        List<MemberDTO> dtoList = new ArrayList<>();
+//        for (int i = 0; i < list.size(); i++) {
+//            MemberDTO dto = entityToDTO(list.get(i));
+//            dtoList.add(dto);
+//        }
+//        return dtoList;
 //    }
 
-    //    @Override
+// ------ 삽질 샤따내립니다 -----------------------------------------------------
+
+
+//    @Override
+//    public MemberDTO get(Long memberNum) {
+//        Object result = memberRepository.findAll();
+//        Object[] arr = (Object[]) result;
+//        return entityToDTO((Member)arr[0]);
+//    }
+
+//    @Override
 //    public User add(User user) throws Exception {
 //        return userRepository.save(user);
 //    }

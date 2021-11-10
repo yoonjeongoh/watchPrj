@@ -29,7 +29,7 @@ public class Store extends BaseEntity {
     private String bsImg;
 
     @JoinColumn(name = "memberNum")
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     Member member;
 
 }

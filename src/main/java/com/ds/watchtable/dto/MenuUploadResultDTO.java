@@ -11,13 +11,13 @@ import java.net.URLEncoder;
 @Data
 @AllArgsConstructor
 public class MenuUploadResultDTO implements Serializable {
-  private String fileName;
-  private String uuid;
-  private String folderPath;
+  private String mfileName;
+  private String muuid;
+  private String mfolderPath;
   public String getImageURL(){
     try {
-      return URLEncoder.encode(folderPath + "/" + uuid
-        +"_"+fileName, "UTF-8");
+      return URLEncoder.encode(mfolderPath + "/" + muuid
+        +"_"+mfileName, "UTF-8");
     } catch (UnsupportedEncodingException e) {
       e.printStackTrace();
     }
@@ -25,8 +25,8 @@ public class MenuUploadResultDTO implements Serializable {
   }
   public String getThumbnailURL(){
     try {
-      return URLEncoder.encode(folderPath + "/s_" + uuid
-        +"_"+fileName, "UTF-8");
+      return URLEncoder.encode(mfolderPath + "/s_" + muuid
+        +"_"+mfileName, "UTF-8");
     } catch (UnsupportedEncodingException e) {
       e.printStackTrace();
     }

@@ -31,7 +31,7 @@
                     <button>♡</button>
                     <br>
                     <span>현재 대기 팀 0팀</span>
-                    <button>대기 등록하기</button>
+                    <button class="waiting-register21 colored-btn21">대기 등록하기</button>
                     <br>
                     <span>혼잡도가 80% 이상 일 때 가게 도착 시 만석이 될 수 있습니다</span><br>
                     <div>그래프</div>
@@ -93,17 +93,72 @@
         </div>
 
 
+
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
                 crossorigin="anonymous"></script>
 
-    <script>
+        <div class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">대기 등록하기</h5>
+                        <button type="button" class="btn btn-close waiting-close21" data-dismiss="modal" aria-label="Close"/>
+                    </div>
+                    <div class="modal-body">
+                        <!--<p id="modalMsg"> 번 글이 <span class="modal-title"></span>되었습니다.</p>-->
+                        <div class="form-group" style="margin-bottom:30px;">
+                            <span class="span21">이름</span><input class="form-control" type="text" name="memberName">
+                        </div>
+                        <div class="form-group" style="margin-bottom:30px;">
+                            <span class="span21">연락처</span><input class="form-control" type="text" name="memberMobile">
+                        </div>
+                        <div class="form-group" style="margin-bottom:30px;">
+                            <span class="span21">인원수</span>
+                            <select class="sel11" name="partyMember" id="">
+                                <option class="op11" name="partyMember">1</option>
+                                <option class="op11" name="partyMember">2</option>
+                                <option class="op11" name="partyMember">3</option>
+                                <option class="op11" name="partyMember">4</option>
+                              </select>
+                        </div>
+                    </div >
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary go-modify21">수정하기</button>
+                        <button type="button" class="btn btn-info go-waiting21">등록하기</button>
+<!--                        <button class="btn btn-secondary waiting-close21" data-dismiss="modal">닫기</button>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
         $(document).ready(function(e){
             var contextPath = $('#contextPathHolder').attr('data-contextPath') ? $('#contextPathHolder').attr('data-contextPath') : '';
-            var review = $('textarea[name="reviewText"]');
 
+            //대기등록 모달
+            var modal = $('.modal');
+            var mobile = $('.memberMobile');
+            var party = $('.partyMember');
+
+            $(".waiting-register21").click(function(){
+                modal.modal('show');
+                    $('.memberMobile').val('');
+                    $('.partyMember').val('');
+                });
+
+            $(".waiting-close21").click(function(){
+                modal.modal('hide');
+                $('.memberMobile').val('');
+                $('.partyMember').val('');
+            });
+
+
+            //리뷰 데이터 넘기기-완성
             $("#rv-btn").click(function(){
                 var data = {text: review.val()};
+                var review = $('textarea[name="reviewText"]');
 
                 $.ajax({
                     url: contextPath+'/detailed',
@@ -117,7 +172,8 @@
                      }
                 });
                 });
-//리뷰리스트
+
+            //리뷰리스트-미완성
             function getReviews() {
                 function formatTime(str) {
                 var date = new Date(str);

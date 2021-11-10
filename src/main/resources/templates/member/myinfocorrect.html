@@ -7,16 +7,16 @@
         <fieldset>
             <div class="joinfield">
                 <form class="form11" action="http://localhost:8080/watchtable/member/myinfo" method="post" id="join_form" name="f">
-                    <span class="span11"><input type="checkbox" class="ch-box1" name="name" value="name">이름</span><br>
-                    <input class="input11" type="text" id="my_name" th:value="${memberDTO.memberNum}"><br>
+                    <label><span class="span11"><input type="radio" class="ch-box1" name="name" value="name">이름</span></label><br>
+                    <input class="input11" type="text" id="my_name"><br>
 <!--                    <span class="invalid" id="nameSpace">공백은 사용할 수 없습니다.</span>-->
 <!--                    <span class="invalid" id="noEnglish">한글로 입력해주세요.</span>-->
 <!--                    <span class="invalid" id="name_min">2자 이상 입력하세요.</span>-->
 <!--                    <span class="valid" id="name_ok">확인.</span><br>-->
 
 
-                    <span class="span11"><input type="checkbox" class="ch-box1" name="name" value="nick">닉네임</span><br>
-                    <input class="input11" type="text" name="membernick" id="my_nick" th:value="${memberDTO.memberNick}" ><br>
+                    <label><span class="span11"><input type="radio" class="ch-box1" name="name" value="nick">닉네임</span></label><br>
+                    <input class="input11" type="text" name="membernick" id="my_nick" ><br>
 <!--                    <span class="invalid" id="nickSpace">공백은 사용할 수 없습니다.</span>-->
 <!--                    <span class="invalid" id="noSpecial">특수문자 및 자음은 사용할 수 없습니다.</span>-->
 <!--                    <span class="invalid" id="nick_min">2자 이상 입력하세요.</span>-->
@@ -24,19 +24,19 @@
 
                     <span class="span11">비밀번호</span> <br>
                     <input class="input11" title="비밀번호" type="password" name="memberPw" id="my_pwd"
-                           placeholder="최소 8자리에 숫자, 문자, 특수문자 각각 1개 이상 포함" maxlength="16">
+                           placeholder="최소 8자리에 숫자, 문자, 특수문자 각각 1개 이상 포함" maxlength="16"><br>
 <!--                    <span class="invalid" id="pw_min">8자 이상 입력하세요.</span>-->
 <!--                    <span class="valid" id="pw_ok">사용 가능한 비밀번호 입니다.</span>-->
 <!--                    <span class="invalid" id="pw_error">비밀번호 형식이 올바르지 않습니다.</span><br>-->
 
                     <span class="span11">비밀번호 재입력</span> <br>
-                    <input class="input11" title="비밀번호 확인" type="password" name="memberPw2" id="pwd_check" maxlength="16">
+                    <input class="input11" title="비밀번호 확인" type="password" name="memberPw2" id="pwd_check" maxlength="16"><br>
 <!--                    <span class="valid" id="pwck_ok">확인.</span>-->
 <!--                    <span class="invalid" id="pwck_error">비밀번호가 다릅니다.</span><br>-->
 
                     <span class="span11">이메일</span> <br>
                     <input class="input11" title="이메일" type="text" name="memberEmail" id="my_add"
-                           placeholder="예>id@domain.com" th:value="${memberDTO.memberEmail}">
+                           placeholder="예>id@domain.com"><br>
 <!--                    <span class="invalid" id="mail_error">유효하지 않은 이메일 입니다.</span>-->
 <!--                    <span class="valid" id="mail_ok">사용 가능한 이메일 입니다.</span><br>-->
 
@@ -45,14 +45,14 @@
                         <option class="op11" name="memberMobile">02</option>
                         <option class="op11" name="memberMobile">051</option>
                         <option class="op11" name="memberMobile">031</option>
-                        <option class="op11" name="memberMobile" selected>010</option>
+                        <option class="op11" name="memberMobile" selected>010</option>br
                     </select>
-                    - <input class="input14" type="text" name="memberMobile" id="st-tel1" maxlength="4" th:value="${memberDTO.memberMobile}">
-                    - <input class="input14" type="text" name="memberMobile" id="st-tel2" maxlength="4">
+                    - <input class="input14" type="text" name="memberMobile" id="st-tel1" maxlength="4">
+                    - <input class="input14" type="text" name="memberMobile" id="st-tel2" maxlength="4"><br>
 <!--                    <span class="invalid" id="mobile_error">전화번호를 확인해주세요.</span>-->
 <!--                    <span class="valid" id="mobile_ok">확인.</span><br>-->
 
-                    <button id = "coBtn"type="button" class="join_button btn11 colored-btn11">수정하기</button>
+                    <button id = "coBtn" type="button" class="join_button btn11 colored-btn11">수정하기</button>
                     <button type="reset" class="reset-btn btn11 uncolored-btn11"
                             onclick="location.href='/member/myinfo';">돌아가기</button>
 
@@ -60,24 +60,26 @@
             </div>
         </fieldset>
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                crossorigin="anonymous"></script>
 
-        <script>
-        $(document).ready(function(){
-        var contextPath = $('#contextPathHolder').attr('data-contextPath') ? $('#contextPathHolder').attr('data-contextPath') : '';
+<!--        <script>-->
+<!--        $(document).ready(function(){-->
+<!--        var contextPath = $('#contextPathHolder').attr('data-contextPath') ? $('#contextPathHolder').attr('data-contextPath') : '';-->
 
-            $.ajax({
-                url: contextPath+'/myinfocorrect',
-                type:"post",
-                data: {
-                    name : $(#my_name).val(),
-                    nickname : $(#my_nick).val()
-                },
-                contentType:"application/json; charset=utf-8",
-                dataType:"json",
-            });
-        });
-        </script>
+<!--            $.ajax({-->
+<!--                url: contextPath+'/myinfocorrect',-->
+<!--                type:"post",-->
+<!--                data: {-->
+<!--                    name : $(#my_name).val(),-->
+<!--                    nickname : $(#my_nick).val()-->
+<!--                },-->
+<!--                contentType:"application/json; charset=utf-8",-->
+<!--                dataType:"json",-->
+<!--            });-->
+<!--        });-->
+<!--        </script>-->
 
 <!--        유효성검사-->
         <script>

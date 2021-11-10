@@ -1,14 +1,17 @@
 package com.ds.watchtable.service;
 
 import com.ds.watchtable.dto.MemberDTO;
-import com.ds.watchtable.dto.StoreDTO;
 import com.ds.watchtable.entity.Member;
+
+import java.util.List;
 
 public interface MemberService {
 //    public User add(User user) throws Exception;
 
     String register(MemberDTO dto);
 //    MemberDTO get(Long memberNum);
+//    public void get(Member member);
+//    public List<MemberDTO> getAll();
 
 
     default Member dtoToEntity(MemberDTO memberDTO){
@@ -24,7 +27,6 @@ public interface MemberService {
                 .build();
         return member;
     }
-
 
     default MemberDTO entityToDTO(Member member){
         MemberDTO memberDTO = MemberDTO.builder()

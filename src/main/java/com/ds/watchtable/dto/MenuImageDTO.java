@@ -20,8 +20,8 @@ public class MenuImageDTO {
 
     public String getImageURL(){
         try {
-            return URLEncoder.encode(menuPath + "/" + menuUuid
-                    +"_"+menuImgName, "UTF-8");
+            return URLEncoder.encode(menuImgName + "/" + menuUuid
+                    +"_"+menuPath, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -29,8 +29,8 @@ public class MenuImageDTO {
     }
     public String getThumbnailURL(){
         try {
-            return URLEncoder.encode(menuPath + "/s_" + menuUuid
-                    +"_"+menuImgName, "UTF-8");
+            return URLEncoder.encode(menuImgName + "/s_" + menuUuid
+                    +"_"+menuPath, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
