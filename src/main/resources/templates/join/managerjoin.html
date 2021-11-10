@@ -2,49 +2,103 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <link th:href="@{/css2/join.css}" rel="stylesheet" />
+        <style>
+            .uploadResult { width: 100%;margin-top:10px;}
+            .ul1 {
+                 display:flex;flex-flow:row;justify-content:center;
+                align-items:center;vertical-align:top;overflow:auto;
+            }
+            .ul1 li{ list-style:none;padding:10px;margin-left:2em;}
+            .ul1 li img{ width:100px;}
+
+
+            .uploadResult2 { width: 100%;margin-top:10px;}
+            .ul2 {
+                display:flex;flex-flow:row;justify-content:center;
+                align-items:center;vertical-align:top;overflow:auto;
+            }
+            .ul2 li{ list-style:none;padding:10px;margin-left:2em;}
+            .ul2 li img{ width:100px;}
+            .invalid { color : red; display:none; font-size:11px; font-weight:bold; }
+            .valid { color : green; display:none; font-size:11px; font-weight:bold; }
+        </style>
         <link id="contextPathHolder" th:data-contextPath="${#httpServletRequest.getContextPath()}"/>
         <fieldset>
             <div class="mngfield">
                 <div class="end-pg"></div>
                 <form class="form11" tH:action="@{/member/managemyinfo}" method="post" name="f">
-                    <span class="span11">이름</span> <br>
-                    <input class="input11" type="text" id="my_name" name="memberName" maxlength="7"><br>
-
-                    <span class="span11">닉네임</span> <br>
-                    <input class="input11" type="text" id="my_nickname" name="memberNickname" maxlength="7"><br>
+                    <span class="span11">이름</span><br>
+                    <input class="input11" title="아이디" type="text" name="memberName" id="my_name"
+                           placeholder="2자 이상의 한글로만 입력" maxlength="12">
+                    <span class="invalid" id="nameSpace">공백은 사용할 수 없습니다.</span>
+                    <span class="invalid" id="noEnglish">한글로 입력해주세요.</span>
+                    <span class="invalid" id="name_min">2자 이상 입력하세요.</span>
+                    <span class="valid" id="name_ok">확인.</span><br>
 
                     <span class="span11">아이디</span> <br>
-                    <input class="input11" type="text" name="memberId" id="my_id"
-                           placeholder="4~12자의 영문 대소문자와 숫자로만 입력" maxlength="12"><br>
+                    <input class="input11" title="아이디" type="text" name="memberId" id="my_id"
+                           placeholder="4~12자의 영문 대소문자와 숫자로만 입력" maxlength="12" required oninput="checkId()"/>
+                    <span class="invalid" id="idSpace">공백은 사용할 수 없습니다.</span>
+                    <span class="invalid" id="noKor">유효하지 않은 형식입니다.</span>
+                    <span class="invalid" id="id_min">4자 이상 입력하세요.</span>
+                    <span class="invalid" id="id_already">사용중인 ID입니다.</span>
+                    <span class="valid" id="id_ok">사용 가능한 ID입니다.</span><br>
+
+                    <span class="span13">닉네임</span><br>
+                    <input class="input11" title="닉네임" type="text" name="memberNickname" id="my_nick"
+                           placeholder="2~8자로 입력(특수문자 불가)" maxlength="8">
+                    <span class="invalid" id="nickSpace">공백은 사용할 수 없습니다.</span>
+                    <span class="invalid" id="noSpecial">특수문자 및 자음은 사용할 수 없습니다.</span>
+                    <span class="invalid" id="nick_min">2자 이상 입력하세요.</span>
+                    <span class="valid" id="nick_ok">사용 가능한 닉네임 입니다.</span><br>
 
                     <span class="span11">비밀번호</span> <br>
-                    <input class="input11" type="password" name="memberPw" id="my_pwd"
-                           placeholder="4~12자의 영문 대소문자와 숫자로만 입력" maxlength="12"><br>
+                    <input class="input11" title="비밀번호" type="password" name="memberPw" id="my_pwd"
+                           placeholder="최소 8자리에 숫자, 문자, 특수문자 각각 1개 이상 포함" maxlength="16">
+                    <span class="invalid" id="pw_min">8자 이상 입력하세요.</span>
+                    <span class="valid" id="pw_ok">사용 가능한 비밀번호 입니다.</span>
+                    <span class="invalid" id="pw_error">비밀번호 형식이 올바르지 않습니다.</span><br>
 
                     <span class="span11">비밀번호 재입력</span> <br>
-                    <input class="input11" type="password" name="memberPw2" maxlength="12"><br>
+                    <input class="input11" title="비밀번호 확인" type="password" name="memberPw2" id="pwd_check" maxlength="16">
+                    <span class="valid" id="pwck_ok">확인.</span>
+                    <span class="invalid" id="pwck_error">비밀번호가 다릅니다.</span><br>
 
                     <span class="span11">이메일</span> <br>
-                    <input class="input11" type="text" name="memberEmail" id="my_add"
-                           placeholder="예>id@domain.com"><br>
+                    <input class="input11" title="이메일" type="text" name="memberEmail" id="my_add"
+                           placeholder="예>id@domain.com">
+                    <span class="invalid" id="mail_error">유효하지 않은 이메일 입니다.</span>
+                    <span class="valid" id="mail_ok">사용 가능한 이메일 입니다.</span><br>
 
                     <span class="span11">연락처</span> <br>
-                    <select class="sel11" name="memberMobile" id="sel_my_number">
+                    <select class="sel11" name="memberMobile" id="sel-my-tel">
                         <option class="op11" name="memberMobile">02</option>
                         <option class="op11" name="memberMobile">051</option>
                         <option class="op11" name="memberMobile">031</option>
                         <option class="op11" name="memberMobile" selected>010</option>
                     </select>
-                    - <input class="input14" type="text" name="memberMobile" id="my_number1">
-                    - <input class="input14" type="text" name="memberMobile" id="my_number2"><br>
+                    - <input class="input14" type="text" name="memberMobile" id="my_number1" maxlength="4">
+                    - <input class="input14" type="text" name="memberMobile" id="my_number2" maxlength="4">
+                    <span class="invalid" id="mobile_error">전화번호를 확인해주세요.</span>
+                    <span class="valid" id="mobile_ok">확인.</span><br>
 
                     <span class="span11">상호명</span> <br>
                     <input class="input11" type="text" name="storeName" id="shop_name"><br>
+                    <span class="invalid" id="storeName_error">상호명을 입력해주세요.</span>
+                    <span class="valid" id="storeName_ok">확인.</span><br>
 
                     <span class="span11">사업자 등록번호</span> <br>
                     <input class="input11" type="text" name="bsNum" id="manager_num"
-                           placeholder="11자의 숫자로만 입력" maxlength="11"><br>
+                           placeholder="11자의 숫자로만 입력" maxlength="11">
+                    <span class="invalid" id="bsNumSpace">공백은 사용할 수 없습니다.</span>
+                    <span class="invalid" id="bsNumOnly">숫자만 입력하세요.</span>
+                    <span class="invalid" id="buNum_min">11자리를 입력하세요.</span>
+                    <span class="invalid" id="buNum_check">유효하지 않은 사업자번호입니다.</span>
+                    <span class="valid" id="buNum_ok">확인.</span><br>
+
 
                     <span class="span11">사업장 주소</span><br>
                     <!--                    <input class="input11" type="text" name="storeAds" id="shop_add"><br>-->
@@ -71,7 +125,8 @@
 
                     <span class="span11">가게 영업시간</span> <br>
                     <input class="input13" type="time" value="00:00" name="storeOpen" id="st-bh1"> ~
-                    <input class="input13" type="time" value="00:00" name="storeClose" id="st-bh2"><br>
+                    <input class="input13" type="time" value="00:00" name="storeClose" id="st-bh2">
+                    <span class="invalid" id="storeHours">영업시간을 입력해주세요.</span><br>
                     <!--                    <input class="input11" type="text" name="st-bh" id="st-bh"><br>-->
 
                     <span class="span11">가게 소개</span> <br>
@@ -107,29 +162,11 @@
             </div>
         </fieldset>
 
-        <style>
-            .uploadResult { width: 100%;margin-top:10px;}
-            .ul1 {
-                 display:flex;flex-flow:row;justify-content:center;
-                align-items:center;vertical-align:top;overflow:auto;
-            }
-            .ul1 li{ list-style:none;padding:10px;margin-left:2em;}
-            .ul1 li img{ width:100px;}
 
-
-            .uploadResult2 { width: 100%;margin-top:10px;}
-            .ul2 {
-                display:flex;flex-flow:row;justify-content:center;
-                align-items:center;vertical-align:top;overflow:auto;
-            }
-            .ul2 li{ list-style:none;padding:10px;margin-left:2em;}
-            .ul2 li img{ width:100px;}
-        </style>
         <!--        var token = $("input[name='_csrf']").val();-->
         <!--        var header = "X-CSRF-TOKEN";-->
         <!--        var contextPath = $('#contextPathHolder').attr('data-contextPath') ? $('#contextPathHolder').attr('data-contextPath') : '';-->
 
-        <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script>
             $(document).ready(function(e){
                 var regex = new RegExp("(.*?)\.(exe|sh|zip|alz|tiff)$");
@@ -309,253 +346,323 @@
                 });
             });
         </script>
-        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
         <script>
-    // 우편번호 찾기 화면을 넣을 element
-    var element_layer = document.getElementById('layer');
+            // 우편번호 찾기 화면을 넣을 element
+            var element_layer = document.getElementById('layer');
 
-    function closeDaumPostcode() {
-        // iframe을 넣은 element를 안보이게 한다.
-        element_layer.style.display = 'none';
-    }
-
-    function sample2_execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
-
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
-
-                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                if(data.userSelectedType === 'R'){
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-                    // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("sample2_extraAddress").value = extraAddr;
-
-                } else {
-                    document.getElementById("sample2_extraAddress").value = '';
-                }
-
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample2_postcode').value = data.zonecode;
-                document.getElementById("sample2_address").value = addr;
-                // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("sample2_detailAddress").focus();
-
+            function closeDaumPostcode() {
                 // iframe을 넣은 element를 안보이게 한다.
-                // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
                 element_layer.style.display = 'none';
-            },
+            }
 
-            //테마변경.. 기본으로 갈지 말지 고민중 근데 전체 보더 없애고싶은데 또 못하는중못하는중
-            theme : {
-                bgColor : "#fdb53c",
-                searchBgColor : "#FFFFFF",
-                contentBgColor : "#FFFFFF",
-                pageBgColor : "#FAFAFA",
-                textColor : "#333333",
-                queryTextColor : "#222222",
-                postcodeTextColor : "#FA4256",
-                emphTextColor : "#008BD3",
-                outlineColor : "#c7c4bf"
-            },
-            width : '100%',
-            height : '100%',
-            maxSuggestItems : 5
+            function sample2_execDaumPostcode() {
+                new daum.Postcode({
+                    oncomplete: function(data) {
+                        // 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-        }).embed(element_layer);
+                        // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                        // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                        var addr = ''; // 주소 변수
+                        var extraAddr = ''; // 참고항목 변수
 
-        // iframe을 넣은 element를 보이게 한다.
-        element_layer.style.display = 'block';
+                        //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                        if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                            addr = data.roadAddress;
+                        } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                            addr = data.jibunAddress;
+                        }
 
-        // iframe을 넣은 element의 위치를 화면의 가운데로 이동시킨다.
-        initLayerPosition();
+                        // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                        if(data.userSelectedType === 'R'){
+                            // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                            // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                            if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                                extraAddr += data.bname;
+                            }
+                            // 건물명이 있고, 공동주택일 경우 추가한다.
+                            if(data.buildingName !== '' && data.apartment === 'Y'){
+                                extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                            }
+                            // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                            if(extraAddr !== ''){
+                                extraAddr = ' (' + extraAddr + ')';
+                            }
+                            // 조합된 참고항목을 해당 필드에 넣는다.
+                            document.getElementById("sample2_extraAddress").value = extraAddr;
 
-    }
+                        } else {
+                            document.getElementById("sample2_extraAddress").value = '';
+                        }
 
-    // 브라우저의 크기 변경에 따라 레이어를 가운데로 이동시키고자 하실때에는
-    // resize이벤트나, orientationchange이벤트를 이용하여 값이 변경될때마다 아래 함수를 실행 시켜 주시거나,
-    // 직접 element_layer의 top,left값을 수정해 주시면 됩니다.
-    function initLayerPosition(){
-        var width = 500; //우편번호서비스가 들어갈 element의 width
-        var height = 500; //우편번호서비스가 들어갈 element의 height
-        var borderWidth = 1; //샘플에서 사용하는 border의 두께
+                        // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                        document.getElementById('sample2_postcode').value = data.zonecode;
+                        document.getElementById("sample2_address").value = addr;
+                        // 커서를 상세주소 필드로 이동한다.
+                        document.getElementById("sample2_detailAddress").focus();
 
-        // 위에서 선언한 값들을 실제 element에 넣는다.
-        element_layer.style.width = width + 'px';
-        element_layer.style.height = height + 'px';
-        element_layer.style.border = borderWidth + 'px solid';
-        // 실행되는 순간의 화면 너비와 높이 값을 가져와서 중앙에 뜰 수 있도록 위치를 계산한다.
-        element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth) + 'px';
-        element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
-    }
+                        // iframe을 넣은 element를 안보이게 한다.
+                        // (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
+                        element_layer.style.display = 'none';
+                    },
 
-</script>
-        <!--        var email = document.f.my_add.value;-->
-        <!--        var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;-->
-        <!--        var msg, ss, cc;-->
+                    //테마변경.. 기본으로 갈지 말지 고민중 근데 전체 보더 없애고싶은데 또 못하는중못하는중
+                    theme : {
+                        bgColor : "#fdb53c",
+                        searchBgColor : "#FFFFFF",
+                        contentBgColor : "#FFFFFF",
+                        pageBgColor : "#FAFAFA",
+                        textColor : "#333333",
+                        queryTextColor : "#222222",
+                        postcodeTextColor : "#FA4256",
+                        emphTextColor : "#008BD3",
+                        outlineColor : "#c7c4bf"
+                    },
+                    width : '100%',
+                    height : '100%',
+                    maxSuggestItems : 5
 
-        <!--        //아이디 입력여부 검사-->
-        <!--        if (f.my_id.value == "") {-->
-        <!--        alert("아이디를 입력하지 않았습니다.")-->
-        <!--        f.my_id.focus()-->
-        <!--        return false;-->
-        <!--        }-->
+                }).embed(element_layer);
 
-        <!--        //아이디 유효성 검사 (영문소문자, 숫자만 허용)-->
-        <!--        for (i = 0; i < document.f.my_id.value.length; i++) {-->
-        <!--        ch = document.f.my_id.value.charAt(i)-->
-        <!--        if (!(ch >= '0' && ch <= '9') && !(ch >= 'a' && ch <= 'z')&&!(ch >= 'A' && ch <= 'Z')) {-->
-        <!--        alert("아이디는 대소문자, 숫자만 입력가능합니다.")-->
-        <!--        document.f.my_id.focus()-->
-        <!--        document.f.my_id.select()-->
-        <!--        return false;-->
-        <!--        }-->
-        <!--        }-->
-        <!--        //아이디에 공백 사용하지 않기-->
-        <!--        if (document.f.my_id.value.indexOf(" ") >= 0) {-->
-        <!--        alert("아이디에 공백을 사용할 수 없습니다.")-->
-        <!--        document.f.my_id.focus()-->
-        <!--        document.f.my_id.select()-->
-        <!--        return false;-->
-        <!--        }-->
-        <!--        //아이디 길이 체크 (4~12자)-->
-        <!--        if (document.f.my_id.value.length<4 || document.f.my_id.value.length>12) {-->
-        <!--        alert("아이디를 4~12자까지 입력해주세요.")-->
-        <!--        document.f.my_id.focus()-->
-        <!--        document.f.my_id.select()-->
-        <!--        return false;-->
-        <!--        }-->
-        <!--        //비밀번호 입력여부 체크-->
-        <!--        if (document.f.my_pwd.value == "") {-->
-        <!--        alert("비밀번호를 입력하지 않았습니다.")-->
-        <!--        document.f.my_pwd.focus()-->
-        <!--        return false;-->
-        <!--        }-->
-        <!--        if (f.my_pwd.value == f.my_id.value) {-->
-        <!--        alert("아이디와 비밀번호가 같습니다.")-->
-        <!--        document.f.my_pwd.focus()-->
-        <!--        return false;-->
-        <!--        }-->
-        <!--        //비밀번호 길이 체크(4~8자 까지 허용)-->
-        <!--        if (document.f.my_pwd.value.length<4 || document.f.my_pwd.value.length>12) {-->
-        <!--        alert("비밀번호를 4~12자까지 입력해주세요.")-->
-        <!--        document.f.my_pwd.focus()-->
-        <!--        document.f.my_pwd.select()-->
-        <!--        return false;-->
-        <!--        }-->
+                // iframe을 넣은 element를 보이게 한다.
+                element_layer.style.display = 'block';
 
-        <!--        //비밀번호와 비밀번호 확인 일치여부 체크-->
-        <!--        if (document.f.my_pwd.value != document.f.my_pwd1.value) {-->
-        <!--        document.getElementById("danger").style.display = "block";-->
-        <!--        document.f.my_pwd1.value = ""-->
-        <!--        document.f.my_pwd1.focus()-->
-        <!--        return false;-->
-        <!--        }-->
+                // iframe을 넣은 element의 위치를 화면의 가운데로 이동시킨다.
+                initLayerPosition();
 
-        <!--        if (document.f.my_add.value == "") {-->
-        <!--        alert("이메일을 입력하지 않았습니다.")-->
-        <!--        document.f.my_add.focus()-->
-        <!--        return false;-->
-        <!--        }-->
+            }
+
+            // 브라우저의 크기 변경에 따라 레이어를 가운데로 이동시키고자 하실때에는
+            // resize이벤트나, orientationchange이벤트를 이용하여 값이 변경될때마다 아래 함수를 실행 시켜 주시거나,
+            // 직접 element_layer의 top,left값을 수정해 주시면 됩니다.
+            function initLayerPosition(){
+                var width = 500; //우편번호서비스가 들어갈 element의 width
+                var height = 500; //우편번호서비스가 들어갈 element의 height
+                var borderWidth = 1; //샘플에서 사용하는 border의 두께
+
+                // 위에서 선언한 값들을 실제 element에 넣는다.
+                element_layer.style.width = width + 'px';
+                element_layer.style.height = height + 'px';
+                element_layer.style.border = borderWidth + 'px solid';
+                // 실행되는 순간의 화면 너비와 높이 값을 가져와서 중앙에 뜰 수 있도록 위치를 계산한다.
+                element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth) + 'px';
+                element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
+            }
+
+        </script>
+        <script th:inline="javascript">
+            $(document).ready(function() {
+                var actionForm = $('form');
+                //회원가입 버튼(회원가입 기능 작동)
+                $('.join_button').click(function(){
+                    var data = $('.input11').val();
+                    if( data == null || data == '' ){
+                        alert("정보를 모두 입력하세요.");
+                        } else actionForm.submit();
+                });
+
+                const blank = /[\s]/g;
+                const nameCheck = /^[가-힣]+$/;
+                const idCheck = /^[a-zA-Z0-9]+$/;
+                const nickCheck = /^[가-힣a-zA-Z0-9]+$/;
+                const pwCheck = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+                const mailCheck = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+                const numCheck = /[^0-9]/g;
+
+                $('#my_name').keyup(function(){
+                    var name = $('#my_name').val();
+                    if(nameCheck.test(name) && name.length > 1){
+                        $('#name_ok').show();
+                        $('#nameSpace').hide();
+                        $('#noEnglish').hide();
+                        $('#name_min').hide();
+                    } else if(blank.test(name)){
+                        $('#name_ok').hide();
+                        $('#nameSpace').show();
+                        $('#noEnglish').hide();
+                        $('#name_min').hide();
+                    } else if(name.length < 2) {
+                        $('#name_ok').hide();
+                        $('#nameSpace').hide();
+                        $('#noEnglish').hide();
+                        $('#name_min').show();
+                    } else {
+                        $('#name_ok').hide();
+                        $('#nameSpace').hide();
+                        $('#noEnglish').show();
+                        $('#name_min').hide();
+                    }
+                });
+
+                $('#my_id').keyup(function(){
+                    var id = $('#my_id').val();
+                    if(idCheck.test(id) && id.length > 3){
+                        $('#id_ok').show();
+                        $('#id_min').hide();
+                        $('#noKor').hide();
+                        $('#idSpace').hide();
+                    } else if(blank.test(id)){
+                        $('#idSpace').show();
+                        $('#id_min').hide();
+                        $('#noKor').hide();
+                        $('#id_ok').hide();
+                    } else if(id.length < 4) {
+                        $('#id_min').show();
+                        $('#id_ok').hide();
+                        $('#noKor').hide();
+                        $('#idSpace').hide();
+                    } else {
+                        $('#noKor').show();
+                        $('#id_min').hide();
+                        $('#id_ok').hide();
+                        $('#idSpace').hide();
+                    }
+                });
+
+                $('#my_nick').keyup(function(){
+                    var nick = $('#my_nick').val();
+                    if(nickCheck.test(nick) && nick.length > 1){
+                        $('#nick_ok').show();
+                        $('#nick_min').hide();
+                        $('#noSpecial').hide();
+                        $('#nickSpace').hide();
+                    } else if(blank.test(nick)){
+                        $('#nickSpace').show();
+                        $('#nick_min').hide();
+                        $('#noSpecial').hide();
+                        $('#nick_ok').hide();
+                    } else if(nick.length < 2) {
+                        $('#nick_min').show();
+                        $('#nick_ok').hide();
+                        $('#nickSpace').hide();
+                        $('#noSpecial').hide();
+                    } else {
+                        $('#noSpecial').show();
+                        $('#nick_min').hide();
+                        $('#nick_ok').hide();
+                        $('#nickSpace').hide();
+                    }
+                });
+
+               $('#my_pwd').keyup(function(){
+                    var pw = $('#my_pwd').val();
+                    if(pwCheck.test(pw) && pw.length > 7){
+                        $('#pw_ok').show();
+                        $('#pw_min').hide();
+                        $('#pw_error').hide();
+                    } else if(pw.length < 8) {
+                        $('#pw_min').show();
+                        $('#pw_error').hide();
+                        $('#pw_ok').hide();
+                    } else {
+                        $('#pw_error').show();
+                        $('#pw_ok').hide();
+                        $('#pw_min').hide();
+                    }
+                });
+
+                 $('#pwd_check').keyup(function(){
+                    if( $('#my_pwd').val() == $('#pwd_check').val() ){
+                        $('#pwck_ok').show();
+                        $('#pwck_error').hide();
+                    } else {
+                        $('#pwck_ok').hide();
+                        $('#pwck_error').show();
+                    }
+                 });
+
+                 $('#my_add').keyup(function(){
+                    var mail = $('#my_add').val();
+                    if(mailCheck.test(mail)){
+                        $('#mail_ok').show();
+                        $('#mail_error').hide();
+                    } else {
+                        $('#mail_ok').hide();
+                        $('#mail_error').show();
+                    }
+                 });
+
+                 $('.input14').keyup(function(){
+                    var mobile = $('#my_number1').val();
+                    if(numCheck.test(mobile) && mobile.length == 4){
+                            $('#mobile_ok').show();
+                            $('#mobile_error').hide();
+                    } else {
+                        $('#mobile_ok').hide();
+                        $('#mobile_error').show();
+                    }
+                 });
+
+                 $('#shop_name').keyup(function(){
+                    var shopName = $('#shop_name').val();
+                    if(shopName == '' || shopName == null){
+                        $('#storeName_error').show();
+                        $('#storeName_ok').hide();
+                    } else {
+                        $('#storeName_error').hide();
+                        $('#storeName_ok').show();
+                    }
+                 });
+
+                 $('#manager_num').keyup(function(){
+                    var bsNum = $('#manager_num').val();
+                    if(bsNum.length == 11){
+                        $('#buNum_ok').show();
+                        $('#bsNumOnly').hide();
+                        $('#buNum_min').hide();
+                        $('#buNum_check').hide();
+                        $('#bsNumSpace').hide();
+                    } else if(blank.test(bsNum)){
+                        $('#buNum_ok').hide();
+                        $('#bsNumOnly').hide();
+                        $('#buNum_min').hide();
+                        $('#buNum_check').hide();
+                        $('#bsNumSpace').show();
+                    } else if(numCheck.test(bsNum)) {
+                        $('#buNum_ok').hide();
+                        $('#bsNumOnly').show();
+                        $('#buNum_min').hide();
+                        $('#buNum_check').hide();
+                        $('#bsNumSpace').hide();
+                    } else if(bsNum.length < 11) {
+                        $('#buNum_ok').hide();
+                        $('#bsNumOnly').hide();
+                        $('#buNum_min').show();
+                        $('#buNum_check').hide();
+                        $('#bsNumSpace').hide();
+                    } else {
+                        $('#buNum_ok').hide();
+                        $('#bsNumOnly').hide();
+                        $('#buNum_min').hide();
+                        $('#buNum_check').show();
+                        $('#bsNumSpace').hide();
+                    }
+                });
+            });
 
 
-        <!--        if (regex.test(email) === false) {-->
-        <!--        alert("잘못된 이메일 형식입니다.");-->
-        <!--        document.f.my_add.value=""-->
-        <!--        document.f.my_add.focus()-->
-        <!--        return false;-->
-        <!--        }-->
-        <!--        if (document.f.my_name.value == "") {-->
-        <!--        alert("이름을 입력하지 않았습니다.")-->
-        <!--        document.f.my_name.focus()-->
-        <!--        return false;-->
-        <!--        }-->
-        <!--        if(document.f.my_name.value.length<2){-->
-        <!--        alert("이름을 2자 이상 입력해주십시오.")-->
-        <!--        document.f.my_name.focus()-->
-        <!--        return false;-->
-        <!--        }-->
 
-        <!--        if (document.f.my_number.value == "") {-->
-        <!--        alert("전화번호를 입력하지 않았습니다.")-->
-        <!--        document.f.my_number.focus()-->
-        <!--        return false;-->
-        <!--        }-->
-        <!--        if (document.f.my_number.value.length<11||document.f.my_number.value.length>11) {-->
-        <!--        alert("전화번호 길이가 맞지 않습니다.")-->
-        <!--        document.f.my_number.value = ""-->
-        <!--        document.f.my_number.focus()-->
-        <!--        return false;-->
-        <!--        }-->
-        <!--        if (!isNumeric(document.f.my_number.value)) {-->
-        <!--        alert("전화번호는 숫자로 입력하세요.");-->
-        <!--        document.f.my_number.value = ""-->
-        <!--        document.f.my_number.focus()-->
-        <!--        return false;-->
-        <!--        }-->
-        <!--        if (document.f.shop_name.value == "") {-->
-        <!--        alert("상호명을 입력하지 않았습니다.")-->
-        <!--        document.f.my_add.focus()-->
-        <!--        return false;-->
-        <!--        }-->
-        <!--        if (document.f.manager_num.value.length != 11) {-->
-        <!--        alert("사업자번호 길이가 맞지 않습니다.")-->
-        <!--        document.f.manager_num.focus()-->
-        <!--        return false;-->
-        <!--        }-->
-        <!--        if (!isNumeric(document.f.manager_num.value)) {-->
-        <!--        alert("사업자번호는 숫자로 입력하세요.");-->
-        <!--        document.f.manager_num.focus()-->
-        <!--        return false;-->
-        <!--        }-->
-        <!--        function isNumeric(s) {-->
-        <!--        for (i=0; i<s.length; i++) {-->
-        <!--        c = s.substr(i, 1);-->
-        <!--        if (c < "0" || c > "9") return false;-->
-        <!--        }-->
-        <!--        return true;-->
-        <!--        }-->
+            //사업자 등록번호 공식
+            function checkCorporateRegiNumber(number){
+                var numberMap = number.replace(/-/gi, '').split('').map(function (d){
+                    return parseInt(d, 10);
+                });
 
-        <!--        function isSSN(s1, s2) {-->
-        <!--        n = 2;-->
-        <!--        sum = 0;-->
-        <!--        for (i=0; i<s1.length; i++)-->
-        <!--        sum += parseInt(s1.substr(i, 1)) * n++;-->
-        <!--        for (i=0; i<s2.length-1; i++) {-->
-        <!--        sum += parseInt(s2.substr(i, 1)) * n++;-->
-        <!--        if (n == 10) n = 2;-->
-        <!--        }-->
-        <!--        }-->
+                if(numberMap.length == 10){
+                    var keyArr = [1, 3, 7, 1, 3, 7, 1, 3, 5];
+                    var chk = 0;
 
-        <!--        c = 11 - sum % 11;-->
-        <!--        if (c == 11) c = 1;-->
-        <!--        if (c == 10) c = 0;-->
-        <!--        if (c != parseInt(s2.substr(6, 1))) return false;-->
-        <!--        else return true;-->
+                    keyArr.forEach(function(d, i){
+                        chk += d * numberMap[i];
+                    });
 
+                    chk += parseInt((keyArr[8] * numberMap[8])/ 10, 10);
+                    console.log(chk);
+                    return Math.floor(numberMap[9]) === ( (10 - (chk % 10) ) % 10);
+                }
+
+                return false;
+            }
+        </script>
     </th:block>
 </th:blotck>
 </html>

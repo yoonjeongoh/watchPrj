@@ -2,7 +2,11 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
-
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                crossorigin="anonymous">
+        </script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
         <link th:href="@{/css2/join.css}" rel="stylesheet"/>
         <style>
             .invalid { color : red; display:none; font-size:11px; font-weight:bold; }
@@ -58,14 +62,14 @@
                         <span class="valid" id="mail_ok">사용 가능한 이메일 입니다.</span><br>
 
                         <span class="span11">연락처</span> <br>
-                        <select class="sel11" name="memberMobile" id="sel-store-tel">
+                        <select class="sel11" name="memberMobile" id="sel-my-tel">
                             <option class="op11" name="memberMobile">02</option>
                             <option class="op11" name="memberMobile">051</option>
                             <option class="op11" name="memberMobile">031</option>
                             <option class="op11" name="memberMobile" selected>010</option>
                         </select>
-                        - <input class="input14" type="text" name="memberMobile" id="st-tel1" maxlength="4">
-                        - <input class="input14" type="text" name="memberMobile" id="st-tel2" maxlength="4">
+                        - <input class="input14" type="text" name="memberMobile" id="my_number1" maxlength="4">
+                        - <input class="input14" type="text" name="memberMobile" id="my_number2" maxlength="4">
                         <span class="invalid" id="mobile_error">전화번호를 확인해주세요.</span>
                         <span class="valid" id="mobile_ok">확인.</span><br>
 
@@ -80,11 +84,6 @@
         <!--    margin for end of page-->
         <div class="end-pg"></div>
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-                crossorigin="anonymous">
-        </script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
 
         <script th:inline="javascript">
             $(document).ready(function() {
@@ -219,7 +218,7 @@
                  });
 
                  $('.input14').keyup(function(){
-                    var mobile = $('#st-tel1').val();
+                    var mobile = $('#me-tel1').val();
                     if(mobileCheck.test(mobile) && mobile.length == 4){
                             $('#mobile_ok').show();
                             $('#mobile_error').hide();
