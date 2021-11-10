@@ -8,12 +8,12 @@
     margin: 0 auto;
 }
 
-input:focus, select:focus, option:focus, textarea:focus, button:focus{
-	outline: none;
-}
-
 button {
     border: 0;
+}
+
+input:focus, select:focus, option:focus, textarea:focus, button:focus{
+	outline: none;
 }
 
 .top-card1 {
@@ -145,6 +145,10 @@ button {
 
 .span21 {
     color: #75736e;
+    width: 40px;
+    height: 35px;
+    text-align: right;
+    padding-right: 10px;
 }
 
 .go-modify21 {
@@ -162,4 +166,23 @@ button {
 .go-modify21:hover, .go-waiting21:hover {
     background-color: #fdad3c;
     border-color: #fdad3c;
+}
+
+.form-control {
+    display: inline-block;
+    width: 200px;
+    height: 35px;
+    border-color: #c7c4bf;
+}
+
+.sel21, .op21 {
+    width: 100px;
+    height: 35px;
+    border-radius: 3px;
+    border-style: none;
+    border: 1px solid #c7c4bf;
+    text-align: center;
+    font-size: 14px;
+    color: #75736e;
+    border-color: #c7c4bf;
 }

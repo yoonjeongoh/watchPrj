@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class MenuImage extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int minum;
+    private Long minum;
 
     private String menuUuid;
     private String menuImgName;

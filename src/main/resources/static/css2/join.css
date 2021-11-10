@@ -8,9 +8,9 @@
   	outline: none;
   }
 
-  button {
+button {
     border: 0;
-  }
+}
 
   .wrapper {
       height: 100%;
@@ -23,16 +23,18 @@
     left:500px;
   }
 
-   .mngfield {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin-left: -250px;
-      margin-top: -350px;
-      line-height: middle;
-      width: 500px; height: 1000px;
-      padding: 10px;
-    }
+.mngfield {
+    position: relative;
+/*
+    top: 50%;
+    left: 50%;
+    margin-left: -250px;
+    margin-top: -350px;
+*/
+    line-height: middle;
+    width: 500px; height: 1000px;
+    padding: 10px;
+}
 
  .mngfield2 {
       position: absolute;

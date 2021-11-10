@@ -18,7 +18,7 @@ class StoreRepositoryTest {
     public void insertStores() {
         IntStream.rangeClosed(1, 10).forEach(i -> {
             Store store = Store.builder()
-                    .storeNum(i++)
+                    .storeNum((long) i++)
                     .storeName("store" + i)
                     .storeMenu("menu" + i)
                     .storeAds("adr" + i)

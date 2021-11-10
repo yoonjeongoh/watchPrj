@@ -28,7 +28,7 @@ public class StoreDTO {
     private LocalDateTime regDate;
     private LocalDateTime modDate;
 
-    private int storeNum;
+    private Long storeNum;
 
     private String storeName;
     private String storeAds;

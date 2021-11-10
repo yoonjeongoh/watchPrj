@@ -13,7 +13,7 @@ import javax.persistence.*;
 public class StoreImage extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int inum;
+    private Long inum;
 
     private String bsUuid;
     private String bsImgName;

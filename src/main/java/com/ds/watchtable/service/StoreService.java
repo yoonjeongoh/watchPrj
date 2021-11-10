@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 public interface StoreService {
 
-    int storeRegister(StoreDTO storeDTO);
+    Long storeRegister(StoreDTO storeDTO);
 
     default Map<String, Object> dtoToEntity(StoreDTO storeDTO) {
         Map<String, Object> entityMap = new HashMap<>();

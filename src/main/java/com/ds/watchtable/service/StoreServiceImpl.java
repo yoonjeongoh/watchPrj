@@ -30,7 +30,7 @@ public class StoreServiceImpl implements StoreService{
 
     @Transactional
     @Override
-    public int storeRegister(StoreDTO storeDTO) {
+    public Long storeRegister(StoreDTO storeDTO) {
         log.info(">>>"+storeDTO);
         Map<String, Object> entityMap = dtoToEntity(storeDTO);
         Store store = (Store) entityMap.get("store");
