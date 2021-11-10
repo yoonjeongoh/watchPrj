@@ -27,8 +27,7 @@ public class PosController {
     }
 
     @GetMapping({"/pos/posorder","/pos/postable"})
-    public void list( Model model){
-//        PosDTO posDTO = posService.getPos(posNum);
+    public void list( Model model) {
         model.addAttribute("pos", "gogo");
     }
 
