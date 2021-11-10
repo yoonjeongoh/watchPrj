@@ -15,7 +15,7 @@ public class StoreController {
     @Autowired
     private final StoreService storeService;
 
-    @RequestMapping("/member/managemyinfo")
+    @PostMapping("/member/managemyinfo")
     public void registerPost(StoreDTO storeDTO){
         log.info("Register............");
         storeService.storeRegister(storeDTO);

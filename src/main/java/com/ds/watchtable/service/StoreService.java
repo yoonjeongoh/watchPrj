@@ -1,8 +1,10 @@
 package com.ds.watchtable.service;
 
+import com.ds.watchtable.dto.MenuImageDTO;
 import com.ds.watchtable.dto.StoreDTO;
 import com.ds.watchtable.dto.StoreImageDTO;
 import com.ds.watchtable.entity.Member;
+import com.ds.watchtable.entity.MenuImage;
 import com.ds.watchtable.entity.Store;
 import com.ds.watchtable.entity.StoreImage;
 
@@ -29,20 +31,18 @@ public interface StoreService {
                         .build())
                 .storeNum(storeDTO.getStoreNum())
                 .storeName(storeDTO.getStoreName())
-                .storeMenu(storeDTO.getStoreMenu())
                 .storeAds(storeDTO.getStoreAds())
                 .storeTel(storeDTO.getStoreTel())
                 .storeText(storeDTO.getStoreText())
                 .storeOpen(storeDTO.getStoreOpen())
                 .storeClose(storeDTO.getStoreClose())
                 .bsNum(storeDTO.getBsNum())
-                .bsImg(storeDTO.getBsImg())
                 .build();
         entityMap.put("store", store);
 
-        List<StoreImageDTO> imageDTOList = storeDTO.getImageDTOList();
-        if (imageDTOList != null && imageDTOList.size() > 0) {
-            List<StoreImage> storeImageList = imageDTOList.stream().map(storeImageDTO -> {
+        List<StoreImageDTO> storeImageDTOList = storeDTO.getStoreImageDTOList();
+        if (storeImageDTOList != null && storeImageDTOList.size() > 0) {
+            List<StoreImage> storeImageList = storeImageDTOList.stream().map(storeImageDTO -> {
                 StoreImage storeImage = StoreImage.builder()
                         .bsPath(storeImageDTO.getBsPath())
                         .bsImgName(storeImageDTO.getBsImgName())
@@ -51,37 +51,35 @@ public interface StoreService {
                         .build();
                 return storeImage;
             }).collect(Collectors.toList());
-            entityMap.put("imgList",storeImageList);
+            entityMap.put("storeImgList",storeImageList);
+        }
+        List<MenuImageDTO> menuImageDTOList = storeDTO.getMenuImageDTOList();
+        if (menuImageDTOList != null && menuImageDTOList.size() > 0) {
+            List<MenuImage> menuImageList = menuImageDTOList.stream().map(menuImageDTO -> {
+                MenuImage menuImage = MenuImage.builder()
+                        .menuPath(menuImageDTO.getMenuPath())
+                        .menuImgName(menuImageDTO.getMenuImgName())
+                        .menuUuid(menuImageDTO.getMenuUuid())
+                        .store(store)
+                        .build();
+                System.out.printf(">>"+menuImage);
+                return menuImage;
+            }).collect(Collectors.toList());
+            entityMap.put("menuImgList",menuImageList);
         }
         return entityMap;
     }
 
-//    default Member dtoToEntity2(StoreDTO storeDTO){
-//        Member member = Member.builder()
-//                .memberNum(storeDTO.getMemberNum())
-//                .memberName(storeDTO.getMemberName())
-//                .memberId(storeDTO.getMemberId())
-//                .memberEmail(storeDTO.getMemberEmail())
-//                .memberNickname(storeDTO.getMemberNickname())
-//                .memberPw(storeDTO.getMemberPw())
-//                .type(storeDTO.getType())
-//                .memberMobile(storeDTO.getMemberMobile())
-//                .build();
-//        return member;
-//    }
-
-    default StoreDTO entityToDTO(Store store, List<StoreImage> storeImageList) {
+    default StoreDTO entityToDTO(Store store, List<StoreImage> storeImageList, List<MenuImage> menuImageList) {
         StoreDTO storeDTO = StoreDTO.builder()
                 .storeNum(store.getStoreNum())
                 .storeName(store.getStoreName())
-                .storeMenu(store.getStoreMenu())
                 .storeAds(store.getStoreAds())
                 .storeTel(store.getStoreTel())
                 .storeText(store.getStoreText())
                 .storeOpen(store.getStoreOpen())
                 .storeClose(store.getStoreClose())
                 .bsNum(store.getBsNum())
-                .bsImg(store.getBsImg())
                 .regDate(store.getRegDate())
                 .modDate(store.getModDate())
                 .build();
@@ -89,12 +87,22 @@ public interface StoreService {
         List<StoreImageDTO> storeImageDTOList = storeImageList.stream()
                 .map(storeImage -> {
                     return StoreImageDTO.builder()
-                            //.imgName(storeImage.getImgName())
-                            //.path(storeImage.getPath())
-                            //.uuid(storeImage.getUuid())
+                            .bsImgName(storeImage.getBsImgName())
+                            .bsPath(storeImage.getBsPath())
+                            .bsUuid(storeImage.getBsUuid())
                             .build();
                 }).collect(Collectors.toList());
-        storeDTO.setImageDTOList(storeImageDTOList);
+        storeDTO.setStoreImageDTOList(storeImageDTOList);
+
+        List<MenuImageDTO> menuImageDTOList = menuImageList.stream()
+                .map(menuImage -> {
+                    return MenuImageDTO.builder()
+                            .menuImgName(menuImage.getMenuImgName())
+                            .menuPath(menuImage.getMenuPath())
+                            .menuUuid(menuImage.getMenuUuid())
+                            .build();
+                }).collect(Collectors.toList());
+        storeDTO.setMenuImageDTOList(menuImageDTOList);
 
         return storeDTO;
     }
