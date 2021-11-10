@@ -10,11 +10,12 @@
     <div id="container">
       <div id="detail">
         <div> <h2>서비스 이용매장 관리</h2> </div>
-        <div id="search"><h3>검색창</h3></div>
+        <div id="search"><input id="store_src" placeholder="매장 검색"></itput><button id="btn_src">검색</button></div>
         <span id="store_cnt">가입 매장 수</span>
-        <div id="store_list">매장 리스트</div>
-        <div>
-          <a th:href="@{watchtable/detailed}">/watchtable/detailed(All)</a><br>
+        <div id="store_list">
+          <div>
+            <a th:href="@{watchtable/detailed}">/watchtable/detailed(All)</a><br>
+          </div>
         </div>
       </div>
 
