@@ -2,12 +2,27 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
   <th:block th:fragment="content">
+    <link th:href="@{/css2/admin.css}" rel="stylesheet"/>
 
 
 
     <h1 class="mt-4">Admin</h1>
-    <a th:href="@{watchtable/detailed}">/watchtable/detailed(All)</a><br>
-    <a href="http://localhost:8080/watchtable/">/watchtable/main(All)</a><br>
-    <a th:href="@{watchtable/approve}">/watchtable/approve(Admin)[사업자승인]</a><br>
+    <div id="container">
+      <div id="detail">
+        <div> <h2>서비스 이용매장 관리</h2> </div>
+        <div id="search"><h3>검색창</h3></div>
+        <span id="store_cnt">가입 매장 수</span>
+        <div id="store_list">매장 리스트</div>
+        <div>
+          <a th:href="@{watchtable/detailed}">/watchtable/detailed(All)</a><br>
+        </div>
+      </div>
+
+      <div id="approve">
+        <a th:href="@{watchtable/approve}">/watchtable/approve(Admin)[사업자승인]</a><br>
+      </div>
+
+      <div id="reviewMng">리뷰 신고 관리</div>
+    </div>
   </th:block>
 </th:blotck>
