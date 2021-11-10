@@ -1,6 +1,6 @@
 package com.ds.watchtable.controller;
 
-import com.ds.watchtable.dto.StoreUploadResultDTO;
+import com.ds.watchtable.dto.MenuUploadResultDTO;
 import lombok.extern.log4j.Log4j2;
 import net.coobird.thumbnailator.Thumbnailator;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,13 +30,13 @@ import java.util.UUID;
 @Log4j2
 public class MenuUploadController {
 
-  @Value("${com.ds.upload.path}")
+  @Value("${com.ds.upload.menuPath}")
   private String uploadPath;
 
   @ResponseBody
-  @PostMapping("/uploadAjax")
-  public ResponseEntity<List<StoreUploadResultDTO>> uploadFile(MultipartFile[] uploadFiles) {
-    List<StoreUploadResultDTO> resultDTOList = new ArrayList<>();
+  @PostMapping("/menuUploadAjax")
+  public ResponseEntity<List<MenuUploadResultDTO>> uploadFile(MultipartFile[] uploadFiles) {
+    List<MenuUploadResultDTO> menuUploadResultDTOS = new ArrayList<>();
 
     for (MultipartFile uploadFile : uploadFiles) {
       if (uploadFile.getContentType().startsWith("image") == false) {
@@ -44,35 +44,35 @@ public class MenuUploadController {
         return new ResponseEntity<>(HttpStatus.FORBIDDEN);
       }
       String originalName = uploadFile.getOriginalFilename();
-      String fileName = originalName.substring(originalName.lastIndexOf("\\")+1);
-      log.info(fileName);
+      String mfileName = originalName.substring(originalName.lastIndexOf("\\")+1);
+      log.info(mfileName);
 
-      String folderPath = makeFolder();
+      String mfolderPath = makeFolder();
 
-      String uuid = UUID.randomUUID().toString();
-      String saveName = uploadPath + File.separator + folderPath
-              + File.separator + uuid + "_" + fileName;
+      String muuid = UUID.randomUUID().toString();
+      String saveName = uploadPath + File.separator + mfolderPath
+              + File.separator + muuid + "_" + mfileName;
       Path savePath = Paths.get(saveName);
       try {
         uploadFile.transferTo(savePath);
 
         //썸네일 생성
-        String thumbnailSaveName = uploadPath + File.separator + folderPath
-                + File.separator + "s_" + uuid + "_" + fileName;
+        String thumbnailSaveName = uploadPath + File.separator + mfolderPath
+                + File.separator + "s_" + muuid + "_" + mfileName;
         File thumbnailFile = new File(thumbnailSaveName);
         Thumbnailator.createThumbnail(savePath.toFile(), thumbnailFile, 100,100);
 
-        resultDTOList.add(new StoreUploadResultDTO(fileName, uuid, folderPath));
+        menuUploadResultDTOS.add(new MenuUploadResultDTO(mfileName, muuid, mfolderPath));
       } catch (IOException e) {
         e.printStackTrace();
       }
     }
-    return new ResponseEntity<>(resultDTOList, HttpStatus.OK);
+    return new ResponseEntity<>(menuUploadResultDTOS, HttpStatus.OK);
   }
 
-  @GetMapping("/display")
+  @GetMapping("/menuDisplay")
   public ResponseEntity<byte[]> getFile(String fileName, String size) {
-    ResponseEntity<byte[]> result = null;
+    ResponseEntity<byte[]> result2 = null;
     try {
       String srcFileName = URLDecoder.decode(fileName, "UTF-8");
       log.info("fileName : " + srcFileName); //시험해보는거임.
@@ -87,16 +87,16 @@ public class MenuUploadController {
       log.info("file : " + file);
       HttpHeaders header = new HttpHeaders();
       header.add("Content-Type", Files.probeContentType(file.toPath()));
-      result = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file),
+      result2 = new ResponseEntity<>(FileCopyUtils.copyToByteArray(file),
               header, HttpStatus.OK);
     } catch (Exception e) {
       e.printStackTrace();
       return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
-    return result;
+    return result2;
   }
 
-  @PostMapping("/removeFile")
+  @PostMapping("/menuRemoveFile")
   public ResponseEntity<Boolean> removeFiles(String fileName) {
     String srcFileName = null;
     boolean result = false;
@@ -122,6 +122,4 @@ public class MenuUploadController {
     }
     return folderPath;
   }
-
-
 }

@@ -17,7 +17,6 @@ public class MenuImage extends BaseEntity{
 
     private String menuUuid;
     private String menuImgName;
-    private String menuImg;
     private String menuPath;
 
     @ManyToOne(fetch = FetchType.LAZY)

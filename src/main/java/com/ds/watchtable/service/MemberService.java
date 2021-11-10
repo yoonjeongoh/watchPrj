@@ -1,7 +1,6 @@
 package com.ds.watchtable.service;
 
 import com.ds.watchtable.dto.MemberDTO;
-import com.ds.watchtable.dto.StoreDTO;
 import com.ds.watchtable.entity.Member;
 
 public interface MemberService {
