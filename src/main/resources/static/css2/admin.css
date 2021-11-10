@@ -1,21 +1,33 @@
 #container {
-    position:relative; width:1130px; height:860px; padding:30px 30px; margin:0 auto; background-color:#82817e;
+    position:relative; width:1130px; height:860px; padding:30px 30px; margin:0 auto;
 }
 #detail {
-    position:absolute; width:640px; height:800px; background-color:yellow;
+    position:absolute; width:640px; height:800px;
 }
 #search {
-    position:absolute; width:480px; height:40px; background-color:green;
+    position:relative; width:480px; height:40px;
+}
+#store_src {
+    position:absolute; width:400px; height:40px; padding:8px; border:1px solid #fdad3c;
+    text-align:left; font-size:22px; color:#75736e; border-radius:4px;
+}
+#btn_src {
+    position:absolute; left:400px; width:80px; height:40px; border-radius:4px; background-color:#fdad3c; color:white;
+    text-align:center;
 }
 #store_cnt{
-    position:absolute; right:0; margin-top:8px; background-color:green;
+    position:absolute; right:0; margin-top:8px;
 }
 #store_list{
-    position:absolute; width:640px; height:701px; height:margin-top:20px; bottom:0px; background-color:green;
+    position:absolute; width:640px; height:701px; height:margin-top:20px; bottom:0px;
+    border:1px solid #fdad3c; border-radius:10px; background-color:white;
 }
 #approve {
-    position:absolute; width:410px; height:390px; right:30px; top:30px; background-color:yellow;
+    position:absolute; width:410px; height:390px; right:30px; top:30px;
+    border:1px solid #fdad3c; border-radius:10px; background-color:white;
+
 }
 #reviewMng {
-    position:absolute; width:410px; height:390px; right:30px; bottom:30px; background-color:yellow;
+    position:absolute; width:410px; height:390px; right:30px; bottom:30px;
+    border:1px solid #fdad3c; border-radius:10px; background-color:white;
 }
