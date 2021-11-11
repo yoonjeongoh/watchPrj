@@ -24,7 +24,6 @@ public interface PosService {
                 .table4(posDTO.getTable4())
                 .table6(posDTO.getTable6())
                 .build();
-        System.out.printf(">>>>"+pos);
         return pos;
 }
     default PosDTO entityToDTO(Pos entity){
@@ -40,7 +39,6 @@ public interface PosService {
                 .table4(entity.getTable4())
                 .table6(entity.getTable6())
                 .build();
-        System.out.printf(">>>>"+pos);
         return pos;
     }
 
