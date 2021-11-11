@@ -3,16 +3,23 @@
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
         <link th:href="@{/css2/posorder.css}" rel="stylesheet" />
-
         <div class="flex-container">
+        <form class="menu_form" action="http://localhost:8080/watchtable/pos/postable" method="post"
+              id="menu_form" name="form">
         <div class="order-list">
-            <div class="menu-item" id="items"></div>
-            <div class="order-item">2</div>
-            <div class="order-item">3</div>
+            <div>메뉴</div>
+            <div class="menu-item" id="item1"></div>
+            <div class="menu-item" id="item2"></div>
+            <div class="menu-item" id="item3"></div>
+            <div class="menu-item" id="item4"></div>
         </div>
+        </form>
         <tr th:each="pos: ${pos}">
         <div class="menu-list">
-            <input type='button' th:value="${pos.menu1}" id="menu2" onclick= 'menu2()' />
+            <input type='button' th:value="${pos.menu1}" id="menu1" onclick= 'menu1()' />
+            <input type='button' th:value="${pos.menu2}" id="menu2" onclick= 'menu2()' />
+            <input type='button' th:value="${pos.menu3}" id="menu3" onclick= 'menu3()' />
+            <input type='button' th:value="${pos.menu4}" id="menu4" onclick= 'menu4()' />
 
         </div>
         </tr>
@@ -32,12 +39,35 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
 
         <script th:inline="javascript">
-            var orderList = [];
+        var count1 = 1;
+        var count2 = 1;
+        var count3 = 1;
+        var count4 = 1;
             function menu1() {
-            var list = document.getElementById("menu1").value;
-            orderList.push(list);
-            console.log(orderList);
-            }
+            var menu1 = document.getElementById("menu1").value;
+            document.getElementById("item1").innerHTML= menu1+count1+"인분";
+            count1++;
+            return;
+        }
+            function menu2() {
+            var menu2 = document.getElementById("menu2").value;
+            document.getElementById("item2").innerHTML= menu2+count2+"인분";
+            count2++;
+            return;
+        }
+            function menu3() {
+            var menu3 = document.getElementById("menu3").value;
+            document.getElementById("item3").innerHTML= menu3+count3+"인분";
+            count3++;
+            return;
+        }
+            function menu4() {
+            var menu4 = document.getElementById("menu4").value;
+            document.getElementById("item4").innerHTML= menu4+count4+"인분";
+            count4++;
+            return;
+        }
+
 
         </script>
     </th:block>
