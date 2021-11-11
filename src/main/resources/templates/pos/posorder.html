@@ -5,21 +5,21 @@
         <link th:href="@{/css2/posorder.css}" rel="stylesheet" />
 
         <div class="flex-container">
-            <div class="order-list">
-                <div class="menu-item" id="items"></div>
-                <div class="order-item">2</div>
-                <div class="order-item">3</div>
-            </div>
-            <tr th:each="pos: ${pos}">
-                <div class="menu-list">
-                    <input type='button' th:value="${pos.menu1}" id="menu2" onclick= 'menu2()' />
+        <div class="order-list">
+            <div class="menu-item" id="items"></div>
+            <div class="order-item">2</div>
+            <div class="order-item">3</div>
+        </div>
+        <tr th:each="pos: ${pos}">
+        <div class="menu-list">
+            <input type='button' th:value="${pos.menu1}" id="menu2" onclick= 'menu2()' />
 
-                </div>
-            </tr>
+        </div>
+        </tr>
         </div>
         <div class="btn">
-            <button id="btn-ok" onClick="location.href='/watchtable/pos/postable'">확인</button>
-            <button id="btn-no" onClick="location.href='/watchtable/pos/postable'">취소</button>
+        <button id="btn-ok" onClick="location.href='/watchtable/pos/postable'">확인</button>
+        <button id="btn-no" onClick="location.href='/watchtable/pos/postable'">취소</button>
         </div>
         <hr>
         <h1 class="mt-4">Pos order</h1>
@@ -38,6 +38,7 @@
             orderList.push(list);
             console.log(orderList);
             }
+
         </script>
     </th:block>
 </th:blotck>
