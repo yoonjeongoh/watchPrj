@@ -2,6 +2,7 @@ package com.ds.watchtable.service;
 
 import com.ds.watchtable.dto.PosDTO;
 import com.ds.watchtable.entity.Pos;
+import com.ds.watchtable.entity.Store;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ public interface PosService {
 
     default Pos dtoToEntity(PosDTO posDTO) {
         Pos pos = Pos.builder()
+                .store(Store.builder().storeNum(posDTO.getStoreNum()).build())
                 .posNum(posDTO.getPosNum())
                 .menu1(posDTO.getMenu1())
                 .menu2(posDTO.getMenu2())
