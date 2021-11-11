@@ -1,5 +1,7 @@
 package com.ds.watchtable.service;
 
+import com.ds.watchtable.dto.PageRequestDTO;
+import com.ds.watchtable.dto.PageResultDTO;
 import com.ds.watchtable.dto.StoreDTO;
 import com.ds.watchtable.entity.MenuImage;
 import com.ds.watchtable.entity.Store;
@@ -10,11 +12,16 @@ import com.ds.watchtable.repository.StoreRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 
 @Service
 @Log4j2
@@ -47,5 +54,19 @@ public class StoreServiceImpl implements StoreService{
             menuImageRepository.save(menuImage);
         });
         return store.getStoreNum();
+    }
+
+    @Override
+    public PageResultDTO<StoreDTO, Object[]> getList(PageRequestDTO requestDTO) {
+        Pageable pageable = requestDTO.getPageable(Sort.by("storeNum").descending());
+
+        Page<Object[]> result = storeRepository.getListPage(pageable);
+
+        Function<Object[], StoreDTO> fn = (arr -> entityToDTO(
+                (Store) arr[0],
+                (List<StoreImage>)(Arrays.asList((StoreImage)arr[1])),
+                (List<MenuImage>)(Arrays.asList((MenuImage)arr[2]))
+        ));
+        return new PageResultDTO<>(result, fn);
     }
 }

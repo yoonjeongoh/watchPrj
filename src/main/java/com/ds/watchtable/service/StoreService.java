@@ -1,8 +1,6 @@
 package com.ds.watchtable.service;
 
-import com.ds.watchtable.dto.MenuImageDTO;
-import com.ds.watchtable.dto.StoreDTO;
-import com.ds.watchtable.dto.StoreImageDTO;
+import com.ds.watchtable.dto.*;
 import com.ds.watchtable.entity.Member;
 import com.ds.watchtable.entity.MenuImage;
 import com.ds.watchtable.entity.Store;
@@ -16,6 +14,7 @@ import java.util.stream.Collectors;
 public interface StoreService {
 
     Long storeRegister(StoreDTO storeDTO);
+    PageResultDTO<StoreDTO, Object[]> getList(PageRequestDTO requestDTO);
 
     default Map<String, Object> dtoToEntity(StoreDTO storeDTO) {
         Map<String, Object> entityMap = new HashMap<>();

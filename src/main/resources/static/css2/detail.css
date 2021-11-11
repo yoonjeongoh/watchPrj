@@ -41,7 +41,7 @@ input:focus, select:focus, option:focus, textarea:focus, button:focus{
     display: flex;
     justify-content: space-between;
     width: auto;
-    height: 400px;
+    height: 500px;
     background-color: #f75931;
 }
 .sec1 {
@@ -52,15 +52,15 @@ input:focus, select:focus, option:focus, textarea:focus, button:focus{
 
 .sec-left1 {
     width: 250px;
-    height: 400px;
+    height: 500px;
 }
 .sec-center1 {
     width: 470px;
-    height: 400px;
+    height: 500px;
 }
 .sec-right1 {
     width: 440px;
-    height: 400px;
+    height: 500px;
 }
 .thd-col1 {
     overflow: hidden;
