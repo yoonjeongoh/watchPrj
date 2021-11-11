@@ -30,15 +30,6 @@ public class MemberServiceImpl implements MemberService {
         memberRepository.save(member); //save: 저장, 수정
         return member.getMemberName();
     }
-}
-
-// ------ 삽질 샤따내립니다 -----------------------------------------------------
-
-//    @Override
-//    public MemberDTO get(Long memberNum) {
-//        Optional<Member> result = memberRepository.findById(memberNum);
-//        return result.isPresent() ? entityToDTO(result.get()) : null;
-//    }
 
 //    @Override
 //    public List<MemberDTO> getAll() {
@@ -50,6 +41,18 @@ public class MemberServiceImpl implements MemberService {
 //        }
 //        return dtoList;
 //    }
+
+}
+
+// ------ 삽질 샤따내립니다 -----------------------------------------------------
+
+//    @Override
+//    public MemberDTO get(Long memberNum) {
+//        Optional<Member> result = memberRepository.findById(memberNum);
+//        return result.isPresent() ? entityToDTO(result.get()) : null;
+//    }
+
+
 
 // ------ 삽질 샤따내립니다 -----------------------------------------------------
 
