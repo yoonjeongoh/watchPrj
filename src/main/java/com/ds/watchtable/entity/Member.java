@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @ToString
 @Table(name = "member")
-public class Member extends com.ds.watchtable.entity.BaseEntity {
+public class Member extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memberNum;

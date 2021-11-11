@@ -30,14 +30,16 @@
     </div>
 </nav>
 <!-- Page Content-->
-<div class="container-fluid bgcolor my-content">
-    <th:block th:replace="${content}"></th:block>
-</div>
 
 <!-- Footer-->
-<footer class="py-5 bg-dark">
-    <div class="container px-4 px-lg-5"><p class="m-0 text-center text-color">Copyright WatchTable 2021</p></div>
-</footer>
+<div id="body-wrapper">
+    <div id="body-content">
+    <th:block th:replace="${content}"></th:block>
+        <footer class="py-5 bg-dark">
+                <p class="text-center text-color">Copyright WatchTable 2021</p>
+        </footer>
+    </div>
+</div>
 
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>

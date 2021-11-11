@@ -8,46 +8,41 @@
   	outline: none;
   }
 
-  button {
-    border: 0;
-  }
+html, body{
+    height: 100%;
+    margin: 0;
+}
 
-  .wrapper {
-      height: 100%;
-      width: 1200px;
-      margin: 0 auto;
-  }
+button {
+    border: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
  .joinfield {
-    position:relative;
-    left:500px;
+    width: 100%;
+    text-align: center;
+    line-height: middle;
+    /*left:500px;*/
   }
 
-   .mngfield {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin-left: -250px;
-      margin-top: -350px;
-      line-height: middle;
-      width: 500px; height: 1000px;
-      padding: 10px;
-    }
+.mngfield {
+    width: 100%;
+    text-align: center;
+    line-height: middle;
+}
 
  .mngfield2 {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      margin-left: -250px;
-      margin-top: -350px;
-      line-height: middle;
-      width: 500px; height: 1000px;
-      padding: 10px;
     }
 
  .span11 {
     width: 400px;
-    height: 40px;    text-align: left;
+    height: 40px;
+    text-align: left;
     padding: 10px 0px 0px 10px;
     //border: 1px solid #c7c4bf;
     border-radius: 10px;
@@ -82,7 +77,7 @@
       width: 400px;
       height: 50px;
       display: inline-block;
-      border-radius: 10px; //이색기왜이래...보더 굵어짐...
+      border-radius: 10px;
       border-style: none;
       border: 1px solid #c7c4bf;
       margin: 0px 0px 15px 0px;
@@ -107,17 +102,23 @@
   }
 
 .colored-btn11 {
-  color: #f2f1ed;
-  background-color: #fdb53c;
-  box-shadow: #fdc63c;
-  margin: 10px 20px 0px 0px;
-
+    color: #f2f1ed;
+    background-color: #fdb53c;
+    box-shadow: #fdc63c;
+    margin: 10px 20px 0px 0px;
 }
 
 .uncolored-btn11 {
     color: #75736e;
     margin: 10px 0px 0px 20px;
+}
 
+.div11 {
+    display: inline-block;
+    width: 400px;
+    height: auto;
+    margin: 0px;
+    text-align: left;
 }
 
 .input12 {
@@ -201,7 +202,7 @@
     }
 
 .ch-box1 {
-margin-right: 10px;
+    margin-right: 10px;
 }
 
 .valid {
@@ -218,7 +219,6 @@ margin-right: 10px;
     //border: 1px solid #c7c4bf;
 }
 
-  .end-pg {
-      width: auto;
-      height: 20px;
-   }
+.end-pg {
+   height: 150px;
+}

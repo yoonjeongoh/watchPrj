@@ -7,11 +7,12 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
-    @Data
-    @Builder
-    @NoArgsConstructor
-    @AllArgsConstructor
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class PosDTO {
+    private Long posNum;
 
     private String menu1;
     private String menu2;

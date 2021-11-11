@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 public interface StoreService {
 
-    int storeRegister(StoreDTO storeDTO);
+    Long storeRegister(StoreDTO storeDTO);
 
     default Map<String, Object> dtoToEntity(StoreDTO storeDTO) {
         Map<String, Object> entityMap = new HashMap<>();
@@ -49,6 +49,7 @@ public interface StoreService {
                         .bsUuid(storeImageDTO.getBsUuid())
                         .store(store)
                         .build();
+                System.out.printf(">>"+storeImage);
                 return storeImage;
             }).collect(Collectors.toList());
             entityMap.put("storeImgList",storeImageList);

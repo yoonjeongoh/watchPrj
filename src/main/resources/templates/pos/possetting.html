@@ -3,7 +3,7 @@
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
         <div class="tableSetting">
-            <form class="formTableSetting" action="http://localhost:8080/watchtable/pos/postable" method="post"
+            <form class="formTableSetting" th:action="@{/pos/posorder}" method="post"
                   id="settingTableForm" name="f2">
                 <span>테이블 수</span>> </br>
                 <span>2인:</span>
