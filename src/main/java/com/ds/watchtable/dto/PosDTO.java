@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 public class PosDTO {
     private Long posNum;
 
+
     private String menu1;
     private String menu2;
     private String menu3;
@@ -25,5 +26,7 @@ public class PosDTO {
     private int table2;
     private int table4;
     private int table6;
+
+    private Long storeNum;
 
 }

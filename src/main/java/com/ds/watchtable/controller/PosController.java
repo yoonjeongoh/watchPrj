@@ -11,10 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
+import java.util.Optional;
 
 @Controller
 @Log4j2
@@ -33,8 +30,8 @@ public class PosController {
     }
 
     @GetMapping({"/pos/posorder","/pos/postable"})
-    public void list( Model model) {
-        Iterable<Pos> posList = posRepository.findAll();
+    public void list(long posNum, Model model) {
+        Optional<Pos> posList = posRepository.findById(posNum);
         model.addAttribute("pos", posList);
     }
 

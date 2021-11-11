@@ -28,5 +28,6 @@ public class Pos extends BaseEntity{
     private int table4;
     private int table6;
 
-
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Store store;
 }
