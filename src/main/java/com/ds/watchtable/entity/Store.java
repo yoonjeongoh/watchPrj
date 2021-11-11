@@ -17,7 +17,6 @@ public class Store extends BaseEntity {
     private Long storeNum;
 
     private String storeName;
-    private String storeMenu;
     private String storeAds;
     private String storeTel;
     private String storeText;
@@ -26,7 +25,6 @@ public class Store extends BaseEntity {
 
 
     private String bsNum;
-    private String bsImg;
 
     @JoinColumn(name = "memberNum")
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
