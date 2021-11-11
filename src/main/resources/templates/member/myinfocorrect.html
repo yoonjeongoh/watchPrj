@@ -6,7 +6,7 @@
 
         <fieldset>
             <div class="joinfield">
-                <form class="form11" action="http://localhost:8080/watchtable/member/myinfo" method="post" id="join_form" name="f">
+                <form class="form11" th:action="@{/member/myinfo}" method="post" id="join_form" name="f">
                     <label><span class="span11"><input type="radio" class="ch-box1" name="name" value="name">이름</span></label><br>
                     <input class="input11" type="text" id="my_name"><br>
 <!--                    <span class="invalid" id="nameSpace">공백은 사용할 수 없습니다.</span>-->
@@ -41,14 +41,7 @@
 <!--                    <span class="valid" id="mail_ok">사용 가능한 이메일 입니다.</span><br>-->
 
                     <span class="span11">연락처</span> <br>
-                    <select class="sel11" name="memberMobile" id="sel-store-tel">
-                        <option class="op11" name="memberMobile">02</option>
-                        <option class="op11" name="memberMobile">051</option>
-                        <option class="op11" name="memberMobile">031</option>
-                        <option class="op11" name="memberMobile" selected>010</option>br
-                    </select>
-                    - <input class="input14" type="text" name="memberMobile" id="st-tel1" maxlength="4">
-                    - <input class="input14" type="text" name="memberMobile" id="st-tel2" maxlength="4"><br>
+                    <input class="input11" title="연락처" type="text" name="memberMobile" id="sel-my-tel"><br>
 <!--                    <span class="invalid" id="mobile_error">전화번호를 확인해주세요.</span>-->
 <!--                    <span class="valid" id="mobile_ok">확인.</span><br>-->
 
@@ -59,6 +52,9 @@
                 </form>
             </div>
         </fieldset>
+
+<!--   ------페이지 하단 마진주기---- -->
+        <div class="end-pg"></div>
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
