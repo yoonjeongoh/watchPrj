@@ -78,14 +78,7 @@
                     <span class="valid" id="mail_ok">사용 가능한 이메일 입니다.</span><br>
 
                     <span class="span11">연락처</span> <br>
-                    <select class="sel11" name="memberMobile" id="sel-my-tel">
-                        <option class="op11" name="memberMobile">02</option>
-                        <option class="op11" name="memberMobile">051</option>
-                        <option class="op11" name="memberMobile">031</option>
-                        <option class="op11" name="memberMobile" selected>010</option>
-                    </select>
-                    - <input class="input14" type="text" name="memberMobile" id="my_number1" maxlength="4">
-                    - <input class="input14" type="text" name="memberMobile" id="my_number2" maxlength="4">
+                    <input class="input11" title="연락처" type="text" name="memberMobile" id="sel-my-tel"><br>
                     <span class="invalid" id="mobile_error">전화번호를 확인해주세요.</span>
                     <span class="valid" id="mobile_ok">확인.</span><br>
 
@@ -125,14 +118,7 @@
                     </div>
 
                     <span class="span11">가게 연락처</span> <br>
-                    <!--                    <input class="input11" type="text" name="st-tel" id="st-tel"><br>-->
-                    <select class="sel11" name="storeTel" id="sel-store-tel">
-                        <option class="op11" name="storeTel" value="02">02</option>
-                        <option class="op11" name="storeTel" value="051">051</option>
-                        <option class="op11" name="storeTel" value="031">031</option>
-                    </select>
-                    - <input class="input14" type="text" name="storeTel" id="st-tel1">
-                    - <input class="input14" type="text" name="storeTel" id="st-tel2"><br>
+                    <input class="input11" title="가게연락처" type="text" name="storeTel" id="sel-store-tel"><br>
 
                     <span class="span11">가게 영업시간</span> <br>
                     <input class="input13" type="time" value="00:00" name="storeOpen" id="st-bh1"> ~
@@ -180,7 +166,6 @@
         </div>
 
         <div class="end-pg"></div>
-
 
         <!--        var token = $("input[name='_csrf']").val();-->
         <!--        var header = "X-CSRF-TOKEN";-->

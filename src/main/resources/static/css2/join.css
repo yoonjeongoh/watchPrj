@@ -151,8 +151,9 @@ button {
       font-size: 14px;
     }
 
-.input14 {
-      width: 120px;
+
+.sel11, .op11 {
+      width: 122px;
       height: 50px;
       display: inline-block;
       border-radius: 10px;
@@ -162,9 +163,9 @@ button {
       text-align: center;
       padding: 10px;
       display: inline-block;
-      color: #75736e;
       font-size: 14px;
-    }
+      color: #75736e;
+}
 
 .find-zipcode {
       width: 110px;
@@ -186,8 +187,8 @@ button {
       cursor: pointer;
 }
 
-.sel11, .op11 {
-      width: 122px;
+.input14 {
+      width: 120px;
       height: 50px;
       display: inline-block;
       border-radius: 10px;
@@ -197,8 +198,8 @@ button {
       text-align: center;
       padding: 10px;
       display: inline-block;
-      font-size: 14px;
       color: #75736e;
+      font-size: 14px;
     }
 
 .ch-box1 {
@@ -222,3 +223,6 @@ button {
 .end-pg {
    height: 150px;
 }
+
+
+
