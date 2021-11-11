@@ -57,12 +57,9 @@
                         <br>
 
                         <span class="span11">비밀번호 재입력</span> <br>
-                        <input class="input11" title="비밀번호 확인" type="password" name="memberPw2" id="pwd_check" maxlength="16"><br>
-                        <div class ="valid-div11">
-                            <span class="valid" id="pwck_ok">확인.</span>
-                            <span class="invalid" id="pwck_error">비밀번호가 다릅니다.</span><br>
-                        </div>
-                        <br>
+                        <input class="input11" title="비밀번호 확인" type="password" name="memberPw2" id="pwd_check" maxlength="16">
+                        <span class="valid" id="pwck_ok">확인.</span>
+                        <span class="invalid" id="pwck_error">비밀번호가 다릅니다.</span><br>
 
                         <span class="span11">이메일</span> <br>
                         <input class="input11" title="이메일" type="text" name="memberEmail" id="my_add"
@@ -97,10 +94,24 @@
                 var actionForm = $('form');
                 //회원가입 버튼(회원가입 기능 작동)
                 $('.join_button').click(function(){
-                    var data = $('.input11').val();
-                    if( data == null || data == '' ){
-                        alert("정보를 모두 입력하세요.");
-                        } else actionForm.submit();
+                    var name = $('#my_name').val();
+                    var id = $('#my_id').val();
+                    var nick = $('#my_nick').val();
+                    var pw = $('#my_pwd').val();
+                    var pwch = $('#pwd_check').val();
+                    var mail = $('#my_add').val();
+                    var mobile = $('#st-tel1').val();
+
+                    if( nameCheck.test(name) && name.length > 1
+                        && idCheck.test(id) && id.length > 3
+                        && nickCheck.test(nick) && nick.length > 1
+                        && pwCheck.test(pw) && pw.length > 7
+                        && pw == pwch
+                        && mailCheck.test(mail)
+                        && numCheck.test(mobile) && mobile.length == 11 ) {
+                            alert("환영합니다");
+                            actionForm.submit();
+                    } else alert("입력 정보를 다시 확인해주세요."
                 });
 
                 const blank = /[\s]/g;
@@ -224,9 +235,9 @@
                     }
                  });
 
-                 $('.input14').keyup(function(){
-                    var mobile = $('#me-tel1').val();
-                    if(mobileCheck.test(mobile) && mobile.length == 4){
+                 $('#sel-my-tel').keyup(function(){
+                    var mobile = $('#sel-my-tel').val();
+                    if(mobileCheck.test(mobile) && mobile.length == 8){
                             $('#mobile_ok').show();
                             $('#mobile_error').hide();
                     } else {

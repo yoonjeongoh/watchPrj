@@ -237,5 +237,9 @@ button {
    height: 150px;
 }
 
+.join_button btn11:disabled {
+
+}
+
 
 

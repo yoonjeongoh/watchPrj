@@ -8,11 +8,11 @@
         <div class="wrapper">
         <fieldset>
             <div id="login" class="field1">
-                <form class="form1" th:action="@{/}" method="post" name="frm">
+                <form class="form1" th:action="@{/login}" method="post" name="frm">
 <!--                    <span class="span1">아이디</span><input class="input1" type="text" id="id"><br>-->
 <!--                    <span class="span1">비밀번호</span><input class="input1" type="password" id="pw"><br>-->
-                    <input class="input1" type="text" id="id" placeholder="아이디"><br>
-                    <input class="input1" type="password" id="pw" placeholder="비밀번호"><br>
+                    <input class="input1" type="text" id="id" name="username" placeholder="아이디"><br>
+                    <input class="input1" type="password" id="pw" name="password" placeholder="비밀번호"><br>
                     <button type="button" name="button" id='btn' class="btn1 login-btn colored-btn1">로그인</button><br>
                    <span class="span2" >아직 회원이 아니신가요?</span>
                    <span class="spanOnclick" onclick="location.href='/watchtable/join/joinselect';">회원가입하기</span>
