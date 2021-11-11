@@ -11,10 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 @Controller
 @Log4j2
@@ -26,28 +23,17 @@ public class PosController {
     @Autowired
     private PosRepository posRepository;
 
-    @RequestMapping("/pos/postable")
-    public void registerPost(PosDTO posDTO) {
-        log.info("Register............");
+    @PostMapping("/pos/postable")
+    public void registerPost(PosDTO posDTO){
+        log.info("Register…………");
         posService.posSetting(posDTO);
     }
 
-//    @GetMapping({"/pos/posorder"})
-//    public void read(long posNum,Model model) {
-//        log.info("posNum:"+posNum);
-//        Pos posDTO1 = posRepository.getById(posNum);
-//        model.addAttribute("pos", posDTO1);
-//    }
-
-    @GetMapping({"/pos/posorder"})
-    public void posorder(Model model) {
-        List<PosDTO> list = IntStream.rangeClosed(1, 20).asLongStream().mapToObj(i -> {
-            PosDTO dto = PosDTO.builder()
-                    .posNum(i)
-                    .menu1("first " + i)
-                    .build();
-            return dto;
-        }).collect(Collectors.toList());
-        model.addAttribute("pos", list);
+    @GetMapping({"/pos/posorder","/pos/postable"})
+    public void list( Model model) {
+        List<Pos> posList = posRepository.findAll();
+        model.addAttribute("pos", posList);
     }
+
+
 }
