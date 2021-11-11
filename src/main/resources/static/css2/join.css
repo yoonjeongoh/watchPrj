@@ -151,6 +151,36 @@ button {
       font-size: 14px;
     }
 
+.input14 {
+      width: 120px;
+      height: 50px;
+      display: inline-block;
+      border-radius: 10px;
+      border-style: none;
+      border: 1px solid #c7c4bf;
+      margin: 0px 0px 15px 0px;
+      text-align: center;
+      padding: 10px;
+      display: inline-block;
+      color: #75736e;
+      font-size: 14px;
+    }
+
+.input15 {
+      width: auto;
+      height: 50px;
+      border-radius: 10px;
+      border-style: none;
+      border: 1px solid #c7c4bf;
+      margin: 0px 0px 15px 0px;
+      text-align: center;
+      padding: 13px 10px 10px 10px;
+      display: inline-block;
+      font-size: 14px;
+      color: #75736e;
+      border-color: #c7c4bf;
+      background-color: #f2f1ed;
+      }
 
 .sel11, .op11 {
       width: 122px;
@@ -182,25 +212,10 @@ button {
       border-color: #c7c4bf;
       background-color: #f2f1ed;
 }
-.find-zipcode:hover, button:hover, .input12:hover {
+.find-zipcode:hover, button:hover, .input15:hover {
       background-color: #fdad3c;
       cursor: pointer;
 }
-
-.input14 {
-      width: 120px;
-      height: 50px;
-      display: inline-block;
-      border-radius: 10px;
-      border-style: none;
-      border: 1px solid #c7c4bf;
-      margin: 0px 0px 15px 0px;
-      text-align: center;
-      padding: 10px;
-      display: inline-block;
-      color: #75736e;
-      font-size: 14px;
-    }
 
 .ch-box1 {
     margin-right: 10px;
@@ -212,7 +227,7 @@ button {
     height: 100%;
     text-align: left;
     margin: 0px 0px 3px 0px;
-    border: 1px solid #c7c4bf;
+    //border: 1px solid #c7c4bf;
 }
 
 .valid {
