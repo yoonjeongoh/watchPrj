@@ -26,7 +26,6 @@ public interface StoreService {
                         .memberId(storeDTO.getMemberId())
                         .memberEmail(storeDTO.getMemberEmail())
                         .memberPw(storeDTO.getMemberPw())
-                        .type(storeDTO.getType())
                         .memberMobile(storeDTO.getMemberMobile())
                         .build())
                 .storeNum(storeDTO.getStoreNum())

@@ -3,6 +3,8 @@ package com.ds.watchtable.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -24,5 +26,14 @@ public class Member extends BaseEntity {
     private String memberEmail;
     private String memberMobile;
 
-    private String type;
+
+    private boolean fromSocial;
+
+    @ElementCollection(fetch = FetchType.LAZY)
+    @Builder.Default
+    private Set<ClubMemberRole> roleSet = new HashSet<>();
+
+    public void addMemberRole(ClubMemberRole clubMemberRole) {
+        roleSet.add(clubMemberRole);
+    }
 }

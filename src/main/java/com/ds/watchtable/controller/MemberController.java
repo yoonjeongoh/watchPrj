@@ -16,6 +16,7 @@ import java.util.List;
 @Controller
 @Log4j2
 @RequiredArgsConstructor
+@RequestMapping("/member")
 public class MemberController {
 
     private final MemberService memberService;
@@ -28,12 +29,10 @@ public class MemberController {
 //    attributes.addAttribute("userid",userDTO.getUserid());
     }
 
-//    @GetMapping("/member/myinfocorrect") //get-불러오기
-//    private void getInfo(Model model, @AuthenticationPrincipal Principal principal) {
-//        List<MemberDTO> dto = memberService.getAll();
-//        model.addAttribute("memberDTO", dto );
-//        log.info("dto>>"+dto);
-//    }
+    @GetMapping("/login") //get-불러오기
+    private void login() {
+
+    }
 }
 
 
