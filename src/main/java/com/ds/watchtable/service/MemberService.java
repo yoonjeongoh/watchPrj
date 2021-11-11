@@ -2,6 +2,7 @@ package com.ds.watchtable.service;
 
 
 import com.ds.watchtable.dto.MemberDTO;
+import com.ds.watchtable.dto.PosDTO;
 import com.ds.watchtable.entity.Member;
 
 import java.util.List;
@@ -10,6 +11,7 @@ public interface MemberService {
 //    public User add(User user) throws Exception;
 
     String register(MemberDTO dto);
+//    MemberDTO list(Long memberDTO);
 //    MemberDTO get(Long memberNum);
 //    public void get(Member member);
 //    public List<MemberDTO> getAll();

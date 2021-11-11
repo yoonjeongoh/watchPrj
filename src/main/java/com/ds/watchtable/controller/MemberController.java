@@ -48,6 +48,13 @@ public class MemberController {
 //        log.info("dto>>"+dto);
 //    }
 
+//    @GetMapping("/member/myinfocorrect") //get-불러오기
+//    private void getInfo(Model model, @AuthenticationPrincipal Principal principal) {
+//        List<MemberDTO> dto = memberService.getAll();
+//        model.addAttribute("memberDTO", dto );
+//        log.info("dto>>"+dto);
+//    }
+
 
 
 //    @GetMapping("/member/myinfocorrect") //get-불러오기
