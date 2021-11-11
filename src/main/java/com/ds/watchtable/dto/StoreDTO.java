@@ -38,9 +38,7 @@ public class StoreDTO {
     private String storeClose;
 
     private String bsNum;
-    @Builder.Default
-    private List<StoreImageDTO> storeImageDTOList = new ArrayList<>();
-    @Builder.Default
-    private List<MenuImageDTO> menuImageDTOList = new ArrayList<>();
 
+    private List<MenuImageDTO> menuImageDTOList = new ArrayList<>();
+    private List<StoreImageDTO> storeImageDTOList = new ArrayList<>();
 }
