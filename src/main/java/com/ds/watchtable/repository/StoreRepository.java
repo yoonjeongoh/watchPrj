@@ -9,7 +9,10 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface StoreRepository extends JpaRepository <Store, Long> {
-//    Page<Object[]> getListPage(Pageable pageable);
+    @Query("select s, si, mi from Store s left outer join StoreImage si " +
+            "on si.member =s left outer join MenuImage mi on mi.store = " +
+            "s group by s ")
+    Page<Object[]> getListPage(Pageable pageable);
 
 
 }

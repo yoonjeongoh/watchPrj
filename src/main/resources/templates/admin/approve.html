@@ -3,13 +3,12 @@
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
 
-<!--
         <table class="table table-striped">
             <thead>
             <tr>
                 <th scope="col">Member Number</th>
                 <th scope="col">Store Name</th>
-&lt;!&ndash;                <th scope="col">Member Name</th>&ndash;&gt;
+<!--                <th scope="col">Member Name</th>-->
                 <th scope="col">Register Date</th>
             </tr>
             </thead>
@@ -19,12 +18,11 @@
                         "|javascript:read('${dto.storeNum}','${result.page}')|">
                 <th scope="row">[[${dto.storeNum}]]</th>
                 <td>[[${dto.storeName}]]</td>
-&lt;!&ndash;                <td>[[${dto.memberName}]]</td>&ndash;&gt;
+<!--                <td>[[${dto.memberName}]]</td>-->
                 <td>[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</td>
             </tr>
             </tbody>
         </table>
--->
 
     </th:block>
 </th:blotck>

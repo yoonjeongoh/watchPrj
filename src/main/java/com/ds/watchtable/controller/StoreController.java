@@ -23,10 +23,10 @@ public class StoreController {
         storeService.storeRegister(storeDTO);
     }
 
-//    @GetMapping("/admin/approve")
-//    public void list(PageRequestDTO pageRequestDTO, Model model){
-//        log.info("pageRequestDTO: "+pageRequestDTO);
-//        model.addAttribute("result", storeService.getList(pageRequestDTO));
-//    }
+    @GetMapping("/admin/approve")
+    public void list(PageRequestDTO pageRequestDTO, Model model){
+        log.info("pageRequestDTO: "+pageRequestDTO);
+        model.addAttribute("result", storeService.getList(pageRequestDTO));
+    }
 
 }
