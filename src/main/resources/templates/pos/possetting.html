@@ -3,7 +3,7 @@
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
         <div class="tableSetting">
-            <form class="formTableSetting" th:action="@{/pos/posorder}" method="post"
+            <form class="formTableSetting" action="http://localhost:8080/watchtable/pos/postable" method="post"
                   id="settingTableForm" name="f2">
                 <span>테이블 수</span>> </br>
                 <span>2인:</span>
@@ -45,8 +45,8 @@
                     <span>2.</span><input type=text name=drink2>
                 </div>
 
-        <button id= "combtn" class="combtn" type="button">완료</button>
-        </form>
+                <button id= "combtn" class="combtn" type="button">완료</button>
+            </form>
         </div>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script th:inline="javascript">
