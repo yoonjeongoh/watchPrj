@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public interface StoreService {
 
     Long storeRegister(StoreDTO storeDTO);
-    PageResultDTO<StoreDTO, Object[]> getList(PageRequestDTO requestDTO);
+//    PageResultDTO<StoreDTO, Object[]> getList(PageRequestDTO requestDTO);
 
     default Map<String, Object> dtoToEntity(StoreDTO storeDTO) {
         Map<String, Object> entityMap = new HashMap<>();

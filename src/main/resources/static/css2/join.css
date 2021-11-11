@@ -212,7 +212,7 @@ button {
     height: 100%;
     text-align: left;
     margin: 0px 0px 3px 0px;
-    //border: 1px solid #c7c4bf;
+    border: 1px solid #c7c4bf;
 }
 
 .valid {

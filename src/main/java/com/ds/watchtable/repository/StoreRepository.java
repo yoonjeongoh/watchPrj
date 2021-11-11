@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface StoreRepository extends JpaRepository <Store, Long> {
-    Page<Object[]> getListPage(Pageable pageable);
+//    Page<Object[]> getListPage(Pageable pageable);
 
 
 }
