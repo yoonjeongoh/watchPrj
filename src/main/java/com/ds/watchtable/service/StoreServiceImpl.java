@@ -56,17 +56,17 @@ public class StoreServiceImpl implements StoreService{
         return store.getStoreNum();
     }
 
-    @Override
-    public PageResultDTO<StoreDTO, Object[]> getList(PageRequestDTO requestDTO) {
-        Pageable pageable = requestDTO.getPageable(Sort.by("storeNum").descending());
-
-        Page<Object[]> result = storeRepository.getListPage(pageable);
-
-        Function<Object[], StoreDTO> fn = (arr -> entityToDTO(
-                (Store) arr[0],
-                (List<StoreImage>)(Arrays.asList((StoreImage)arr[1])),
-                (List<MenuImage>)(Arrays.asList((MenuImage)arr[2]))
-        ));
-        return new PageResultDTO<>(result, fn);
-    }
+//    @Override
+//    public PageResultDTO<StoreDTO, Object[]> getList(PageRequestDTO requestDTO) {
+//        Pageable pageable = requestDTO.getPageable(Sort.by("storeNum").descending());
+//
+//        Page<Object[]> result = storeRepository.getListPage(pageable);
+//
+//        Function<Object[], StoreDTO> fn = (arr -> entityToDTO(
+//                (Store) arr[0],
+//                (List<StoreImage>)(Arrays.asList((StoreImage)arr[1])),
+//                (List<MenuImage>)(Arrays.asList((MenuImage)arr[2]))
+//        ));
+//        return new PageResultDTO<>(result, fn);
+//    }
 }

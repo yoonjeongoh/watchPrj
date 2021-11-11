@@ -29,11 +29,11 @@ public class Member extends BaseEntity {
 
     private boolean fromSocial;
 
-    @ElementCollection(fetch = FetchType.LAZY)
-    @Builder.Default
-    private Set<ClubMemberRole> roleSet = new HashSet<>();
-
-    public void addMemberRole(ClubMemberRole clubMemberRole) {
-        roleSet.add(clubMemberRole);
-    }
+//    @ElementCollection(fetch = FetchType.LAZY)
+//    @Builder.Default
+//    private Set<ClubMemberRole> roleSet = new HashSet<>();
+//
+//    public void addMemberRole(ClubMemberRole clubMemberRole) {
+//        roleSet.add(clubMemberRole);
+//    }
 }
