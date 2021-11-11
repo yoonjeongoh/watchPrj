@@ -10,5 +10,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface PosRepository extends JpaRepository<Pos, Long> {
-
+    @Query("select p.posNum from Pos p ")
+    List<Pos> findByPos(Pos pos);
 }
