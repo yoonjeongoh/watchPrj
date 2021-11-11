@@ -10,16 +10,11 @@
             <div class="order-item">2</div>
             <div class="order-item">3</div>
         </div>
-            <li th:each= "dto, state : ${pos}" th:if="${dto.posNum % 5 == 0}">
-                [[${state.index}]] - - - [[${dto}]]
-            </li>
-
-            <tr th:each="pos : ${pos}">
-            <input type='button' id="menu1" value = '1' onclick= 'menu1()' />
+        <tr th:each="pos: ${pos}">
+        <div class="menu-list">
             <input type='button' th:value="${pos.menu1}" id="menu2" onclick= 'menu2()' />
-            <input type='button' th:text="${pos.menu1}"  onclick= 'menu2()' />
-            <input type='button' id="menu3"value = '3' onclick= 'menu3()' />
 
+        </div>
         </tr>
         </div>
         <div class="btn">
@@ -43,7 +38,6 @@
             orderList.push(list);
             console.log(orderList);
             }
-
         </script>
     </th:block>
 </th:blotck>
