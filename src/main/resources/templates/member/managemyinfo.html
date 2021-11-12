@@ -2,39 +2,88 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
-        <link th:href="@{/css2/join.css}" rel="stylesheet" />
+        <link th:href="@{/css2/join.css}" rel="stylesheet"/>
+        <link th:href="@{/css2/styles.css}" rel="stylesheet"/>
 
+        <!--        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
+        <!--        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>-->
+        <!--        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+        <!--        &lt;!&ndash;&#45;&#45;&#45;&#45; Include the above in your HEAD tag &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
 
-        <fieldset>
-            <div class="mngfield">
-                <form class="form11" action="https://localhost:8080/watchtable/member/managemyinfo" method="post" name="f" onsubmit="return sendIt();">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+              integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+              crossorigin="anonymous">
 
-                    <span class="span11">가게 연락처</span> <br>
-                    <span class="input11" name="st-tel" id="st-tel"></span><br>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+                integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+                integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+                integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+                crossorigin="anonymous"></script>
 
-
-
-                    <span class="span11">가게 영업시간</span> <br>
-                    <span class="input11" name="st-bh" id="st-bh"></span><br>
-
-                    <span class="span11">가게 소개</span> <br>
-                    <span class="input11" type="text" name="st-epl" id="st-epl"></span><br>
-
-                    <span class="span11">가게 이미지</span> <br>
-                    <span class="input12" type="file" name="store-img" id="store-img"></span><br>
-
-                    <button type="button" class="join_button btn11 colored-btn11">수정하기</button>
-                    <button type="button" class="reset-btn btn11 uncolored-btn11"
-                            onclick="location.href='/member/manage';">돌아가기</button>
-
-                </form>
-                <div class="end-pg"></div>
-
+        <div class="container-fluid gedf-wrapper">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="container">
+                            <div class="row profile">
+                                <div class="col-md-9">
+                                    <div class="profile-sidebar">
+                                        <div class="profile-userpic">
+                                            <img src="https://via.placeholder.com/150" class="img-responsive" alt="">
+                                        </div>
+                                        <div class="profile-usertitle">
+                                            <div class="profile-usertitle-name">{{가게이름}}</div>
+                                        </div>
+                                        <div class="profile-usermenu">
+                                            <ul class="nav">
+                                                <li class="active">
+                                                    <button class="btn11">내 정보 수정</button>
+                                                    <button class="btn11">내 가게 수정</button>
+                                                </li>
+                                                <br>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 gedf-main">
+                    <div class="card gedf-card">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="ml-2">
+                                        <div class="h5 m-0">대기중인 손님</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                {{n}}번째 손님 {{n}}명 대기 중입니다.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card gedf-card">
+                        <div class="card-header">
+                            <div class="h5 m-0">우리 가게 리뷰
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{리뷰 내용 클릭시 상세페이지로}}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </fieldset>
-
-        <h1 class="mt-4">My Business information</h1>
-        <a href="http://localhost:8080/watchtable/">/watchtable/main(All)[로고]</a><br>
-        <a href="/watchtable/join/checkpw">/watchtable/checkpw(Business Member)[정보수정하기]</a><br>
+        </div>
+        <div class="end-pg"></div>
     </th:block>
 </th:blotck>
