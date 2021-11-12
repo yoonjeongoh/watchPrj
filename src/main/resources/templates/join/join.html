@@ -25,7 +25,7 @@
 
                         <span class="span11">아이디</span> <br>
                         <input class="input11" title="아이디" type="text" name="memberId" id="my_id"
-                               placeholder="4~12자의 영문 대소문자와 숫자로만 입력" maxlength="12" required oninput="checkId()"/><br>
+                               placeholder="4~12자의 영문 대소문자와 숫자로만 입력" maxlength="12"/><br>
                         <div class ="valid-div11">
                         <span class="invalid" id="idSpace">공백은 사용할 수 없습니다.</span>
                         <span class="invalid" id="noKor">유효하지 않은 형식입니다.</span>
@@ -95,26 +95,6 @@
             $(document).ready(function() {
                 var actionForm = $('form');
                 //회원가입 버튼(회원가입 기능 작동)
-                $('.join_button').click(function(){
-                    var name = $('#my_name').val();
-                    var id = $('#my_id').val();
-                    var nick = $('#my_nick').val();
-                    var pw = $('#my_pwd').val();
-                    var pwch = $('#pwd_check').val();
-                    var mail = $('#my_add').val();
-                    var mobile = $('#st-tel1').val();
-
-                    if( nameCheck.test(name) && name.length > 1
-                        && idCheck.test(id) && id.length > 3
-                        && nickCheck.test(nick) && nick.length > 1
-                        && pwCheck.test(pw) && pw.length > 7
-                        && pw == pwch
-                        && mailCheck.test(mail)
-                        && numCheck.test(mobile) && mobile.length == 11 ) {
-                            alert("환영합니다");
-                            actionForm.submit();
-                    } else alert("입력 정보를 다시 확인해주세요."
-                });
 
                 const blank = /[\s]/g;
                 const nameCheck = /^[가-힣]+$/;
@@ -122,7 +102,28 @@
                 const nickCheck = /^[가-힣a-zA-Z0-9]+$/;
                 const pwCheck = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
                 const mailCheck = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-                const mobileCheck = /^[0-9]/g;
+                const numCheck = /^[0-9]/g;
+
+                $('.join_button').click(function(){
+<!--                    var name = $('#my_name').val();-->
+<!--                    var id = $('#my_id').val();-->
+<!--                    var nick = $('#my_nick').val();-->
+<!--                    var pw = $('#my_pwd').val();-->
+<!--                    var pwch = $('#pwd_check').val();-->
+<!--                    var mail = $('#my_add').val();-->
+<!--                    var mobile = $('#st-tel1').val();-->
+
+<!--                    if( nameCheck.test(name) && name.length > 1-->
+<!--                        && idCheck.test(id) && id.length > 3-->
+<!--                        && nickCheck.test(nick) && nick.length > 1-->
+<!--                        && pwCheck.test(pw) && pw.length > 7-->
+<!--                        && pw == pwch-->
+<!--                        && mailCheck.test(mail)-->
+<!--                        && numCheck.test(mobile) && mobile.length == 11 ) {-->
+<!--                            alert("환영합니다");-->
+                            actionForm.submit();
+
+                });
 
                 $('#my_name').keyup(function(){
                     var name = $('#my_name').val();
@@ -239,7 +240,7 @@
 
                  $('#sel-my-tel').keyup(function(){
                     var mobile = $('#sel-my-tel').val();
-                    if(mobileCheck.test(mobile) && mobile.length == 8){
+                    if(numCheck.test(mobile) && mobile.length == 11){
                             $('#mobile_ok').show();
                             $('#mobile_error').hide();
                     } else {

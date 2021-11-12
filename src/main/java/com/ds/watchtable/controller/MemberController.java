@@ -21,7 +21,7 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @RequestMapping("/member/myinfo")
+    @RequestMapping("/myinfo")
     public void registerPost(MemberDTO memberDTO) {
         log.info("register...........");
         memberService.register(memberDTO);
