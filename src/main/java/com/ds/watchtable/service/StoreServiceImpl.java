@@ -76,19 +76,25 @@ public class StoreServiceImpl implements StoreService{
     //admin 가게정보 상세보기
     @Override
     public StoreDTO getStore(Long storeNum) {
-        List<Object[]> result = storeRepository.getStoreWithAll(storeNum);
+        List<Object[]> result = storeRepository.getStoreDetail(storeNum);
+        log.info(">>"+result.get(0));
 
-        Store store = (Store) result.get(0)[0];
+        Store store = (Store) result.get(0)[0]; //get(0) -중복방지
+        log.info(">>"+store);
 
         List<StoreImage> storeImageList = new ArrayList<>();
         result.forEach(arr->{
             StoreImage storeImage = (StoreImage) arr[1];
+            log.info(">>"+storeImage);
+
             storeImageList.add((storeImage));
         });
 
         List<MenuImage> menuImageList = new ArrayList<>();
         result.forEach(arr->{
             MenuImage menuImage = (MenuImage) arr[2];
+            log.info(">>"+menuImage);
+
             menuImageList.add((menuImage));
         });
         return entityToDTO(store, storeImageList, menuImageList);
