@@ -14,7 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequiredArgsConstructor
 @RequestMapping({"/watchtable","/join","/member","/pos","/review","/admin",})
 public class WatchtableController {
-    @GetMapping({"/admin","/approve","/approvefiles","/checkpw","/join","managerjoin","/joinselect", "/myinfocorrect", "/detailed",
+    @GetMapping({"/admin","/checkpw","/join","managerjoin","/joinselect", "/myinfocorrect", "/detailed",
            "/manage","/manageinfocorrect","/myinfo","/managemyinfo","/myreview","/storereview",
             "/kitchen","/possetting" ,"/loginmng"})
 
