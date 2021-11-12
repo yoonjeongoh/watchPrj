@@ -26,7 +26,6 @@ public class Member extends BaseEntity {
     private String memberEmail;
     private String memberMobile;
 
-
     private boolean fromSocial;
 
     @ElementCollection(fetch = FetchType.LAZY)

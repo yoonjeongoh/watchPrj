@@ -4,6 +4,7 @@ package com.ds.watchtable.service;
 import com.ds.watchtable.dto.MemberDTO;
 import com.ds.watchtable.dto.PosDTO;
 import com.ds.watchtable.entity.Member;
+import com.ds.watchtable.entity.MemberRole;
 
 import java.util.List;
 
@@ -27,6 +28,7 @@ public interface MemberService {
                 .memberMobile(memberDTO.getMemberMobile())
                 .memberPw(memberDTO.getMemberPw())
                 .build();
+        member.addMemberRole(MemberRole.USER);
         return member;
     }
 
@@ -40,6 +42,7 @@ public interface MemberService {
                 .memberPw(member.getMemberPw())
                 .modDate(member.getModDate())
                 .regDate(member.getRegDate())
+                .roleSet(member.getRoleSet())
                 .build();
         return memberDTO;
     }
