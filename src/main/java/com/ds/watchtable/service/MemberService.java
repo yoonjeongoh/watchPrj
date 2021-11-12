@@ -21,6 +21,7 @@ public interface MemberService {
     default Member dtoToEntity(MemberDTO memberDTO){
         Member member = Member.builder()
                 .memberNum(memberDTO.getMemberNum())
+                .roleSet(memberDTO.getRoleSet())
                 .memberName(memberDTO.getMemberName())
                 .memberNickname(memberDTO.getMemberNickname())
                 .memberId(memberDTO.getMemberId())
