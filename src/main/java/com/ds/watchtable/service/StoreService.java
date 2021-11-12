@@ -16,7 +16,6 @@ public interface StoreService {
     //admin 가게 정보 상세보기
     StoreDTO getStore(Long storeNum);
 
-
     default Map<String, Object> dtoToEntity(StoreDTO storeDTO) {
         Map<String, Object> entityMap = new HashMap<>();
         Store store = Store.builder()

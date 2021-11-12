@@ -14,14 +14,14 @@ import java.net.URLEncoder;
 @AllArgsConstructor
 public class StoreImageDTO {
 
+    private String bsPath;
     private String bsUuid;
     private String bsImgName;
-    private String bsPath;
 
     public String getImageURL(){
         try {
-            return URLEncoder.encode(bsImgName + "/" + bsUuid
-                    +"_"+bsPath, "UTF-8");
+            return URLEncoder.encode(bsPath + "/" + bsUuid
+                    +"_"+bsImgName, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -29,8 +29,8 @@ public class StoreImageDTO {
     }
     public String getThumbnailURL(){
         try {
-            return URLEncoder.encode(bsImgName + "/s_" + bsUuid
-                    +"_"+bsPath, "UTF-8");
+            return URLEncoder.encode(bsPath + "/s_" + bsUuid
+                    +"_"+bsImgName, "UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

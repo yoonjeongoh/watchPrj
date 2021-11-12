@@ -11,7 +11,6 @@ public interface PosService {
 
     List<PosDTO> getPosList(Long posNum);
 
-
     default Pos dtoToEntity(PosDTO posDTO) {
         Pos pos = Pos.builder()
                 .store(Store.builder().storeNum(posDTO.getStoreNum()).build())
@@ -43,6 +42,4 @@ public interface PosService {
                 .build();
         return pos;
     }
-
-
 }
