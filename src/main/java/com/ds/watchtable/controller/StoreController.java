@@ -17,16 +17,23 @@ public class StoreController {
     @Autowired
     private final StoreService storeService;
 
+    //DB저장
     @PostMapping("/member/managemyinfo")
     public void registerPost(StoreDTO storeDTO){
         log.info("Register............");
         storeService.storeRegister(storeDTO);
     }
-
-//    @GetMapping("/admin/approve")
-//    public void list(PageRequestDTO pageRequestDTO, Model model){
-//        log.info("pageRequestDTO: "+pageRequestDTO);
-//        model.addAttribute("result", storeService.getList(pageRequestDTO));
-//    }
+    //admin list
+    @GetMapping("/admin/approve")
+    public void list(PageRequestDTO pageRequestDTO, Model model){
+        log.info("pageRequestDTO: "+pageRequestDTO);
+        model.addAttribute("result", storeService.getList(pageRequestDTO));
+    }
+    //admin list read
+    @GetMapping("/admin/approvefiles")
+    public void read(Long storeNum, @ModelAttribute("requestDTO") PageRequestDTO requestDTO , Model model) {
+        StoreDTO storeDTO = storeService.getStore(storeNum);
+        model.addAttribute("dto", storeDTO);
+    }
 
 }
