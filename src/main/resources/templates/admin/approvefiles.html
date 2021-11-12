@@ -3,6 +3,44 @@
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
 
+
+        <div class="form-group">
+            <label>사업장 코드</label>
+            <input type="text" class="form-control" name="title" th:value="${dto.storeNum}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label>상호명</label>
+            <input type="text" class="form-control" name="title" th:value="${dto.storeName}" readonly>
+        </div>
+        <div class="form-group">
+            <label>사업장 주소</label>
+            <input type="text" class="form-control" name="title" th:value="${dto.storeAds}" readonly>
+        </div>
+        <div class="form-group">
+            <label>사업장 연락처</label>
+            <input type="text" class="form-control" name="title" th:value="${dto.storeOpen}" readonly>
+        </div>
+        <div class="form-group">
+            <label>사업장 영업시간</label>
+            <input type="text" class="form-control" name="title" th:value="${dto.storeName}" readonly>
+        </div>
+        <div class="form-group">
+            <label>사업장 소개글</label>
+            <input type="text" class="form-control" name="title" th:value="${dto.storeText}" readonly>
+        </div>
+        <div class="form-group">
+            <label>사업자 등록 번호</label>
+            <input type="text" class="form-control" name="title" th:value="${dto.bsNum}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label>가입일</label>
+            <input type="text" class="form-control" name="regDate"
+                   th:value="${#temporals.format(dto.regDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
+        </div>
+        <div style="margin-bottom: 20px;"></div>
+
         <style>
             .uploadResult { width: 100%;background:gray;margin-top:10px;}
             .uploadResult ul {
@@ -13,36 +51,20 @@
             .uploadResult ul li img{ width:100px;}
         </style>
 
-        <div class="form-group">
-            <label>Store Number</label>
-            <input type="text" class="form-control" name="title" th:value="${dto.storeNum}" readonly>
-        </div>
-
-        <div class="form-group">
-            <label>Store Name</label>
-            <input type="text" class="form-control" name="title" th:value="${dto.storeName}" readonly>
-        </div>
-
-        <div class="form-group">
-            <label>작성일</label>
-            <input type="text" class="form-control" name="regDate"
-                   th:value="${#temporals.format(dto.regDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
-        </div>
-        <div style="margin-bottom: 20px;"></div>
 
         <div class="uploadResult">
             <ul>
                 <li th:each="storeImage: ${dto.storeImageDTOList}"
                     th:data-file="${storeImage.getThumbnailURL()}">
-                    <img th:if="${storeImage.path != null}"
-                         th:src="|/display?fileName=${storeImage.getThumbnailURL()}|">
+                    <img th:if="${storeImage.bsPath != null}"
+                         th:src="|/storeDisplay?fileName=${storeImage.getThumbnailURL()}|">
                 </li>
             </ul>
             <ul>
                 <li th:each="menuImage: ${dto.menuImageDTOList}"
                     th:data-file="${menuImage.getThumbnailURL()}">
-                    <img th:if="${menuImage.path != null}"
-                         th:src="|/display?fileName=${menuImage.getThumbnailURL()}|">
+                    <img th:if="${menuImage.menuPath != null}"
+                         th:src="|/menuDisplay?fileName=${menuImage.getThumbnailURL()}|">
                 </li>
             </ul>
         </div>
