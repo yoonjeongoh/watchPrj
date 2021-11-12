@@ -25,7 +25,7 @@ public class StoreController {
         storeService.storeRegister(storeDTO);
     }
     //admin list
-    @GetMapping("/admin/approve")
+    @GetMapping("/admin/storelist")
     public void list(PageRequestDTO pageRequestDTO, Model model){
         log.info("pageRequestDTO: "+pageRequestDTO);
         PageResultDTO result = storeService.getList(pageRequestDTO);
@@ -34,16 +34,10 @@ public class StoreController {
     }
 
     //admin read
-    @GetMapping("/admin/approvefiles")
+    @GetMapping("/admin/storeread")
     public void read(Long storeNum, @ModelAttribute("pageRequestDTO") PageRequestDTO pageRequestDTO , Model model) {
         StoreDTO storeDTO = storeService.getStore(storeNum);
         model.addAttribute("dto", storeDTO);
     }
-
-/*    @GetMapping("/admin/approve")
-    public void list(PageRequestDTO pageRequestDTO, Model model){
-        log.info("pageRequestDTO: "+pageRequestDTO);
-        model.addAttribute("result", storeService.getList(pageRequestDTO));
-    }*/
 
 }

@@ -10,13 +10,8 @@ import java.util.List;
 
 public interface MemberService {
 //    public User add(User user) throws Exception;
-
+    //DB 저장
     String register(MemberDTO dto);
-//    MemberDTO list(Long memberDTO);
-//    MemberDTO get(Long memberNum);
-//    public void get(Member member);
-//    public List<MemberDTO> getAll();
-
 
     default Member dtoToEntity(MemberDTO memberDTO){
         Member member = Member.builder()
@@ -47,5 +42,4 @@ public interface MemberService {
                 .build();
         return memberDTO;
     }
-
 }

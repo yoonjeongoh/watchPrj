@@ -8,7 +8,7 @@
 
     <h3>실제 메인화면에 나와야 할 것들</h3>
     <a href="http://localhost:8080/watchtable/">/watchtable/main(All)</a><br>
-    <a th:href="@{watchtable/detailed}">/watchtable/detailed(All)</a><br>
+    <a th:href="@{watchtable/detail}">/watchtable/detailed(All)</a><br>
     <a th:href="@{join/login}">/watchtable/login(Guest)</a><br>
     <a th:href="@{member/myinfo}">/watchtable/myinfo(Member)</a><br>
     <a th:href="@{member/manage}">/watchtable/manage(Business member)</a><br>
@@ -34,8 +34,8 @@
     <hr>
     <h3>관리자 항목들</h3>
     <a th:href="@{admin/admin}">/watchtable/admin(Admin)</a><br>
-    <a th:href="@{admin/approve}">/watchtable/approve(Admin)[사업자승인]</a><br>
-    <a th:href="@{admin/approvefiles}">/watchtable/approvefiles(Admin)[사업자증명서확인]</a><br>
+    <a th:href="@{admin/storelist}">/watchtable/approve(Admin)[사업자승인]</a><br>
+    <a th:href="@{admin/storeread}">/watchtable/approvefiles(Admin)[사업자증명서확인]</a><br>
     <hr>
     <h3>포스+주방</h3>
     <a th:href="@{pos/loginmng}">/watchtable/loginmng[포스로그인]</a><br>

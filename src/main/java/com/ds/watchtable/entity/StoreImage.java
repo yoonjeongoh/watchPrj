@@ -15,9 +15,9 @@ public class StoreImage extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long inum;
 
+    private String bsPath;
     private String bsUuid;
     private String bsImgName;
-    private String bsPath;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Store store;

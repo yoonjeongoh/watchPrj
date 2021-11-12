@@ -23,7 +23,7 @@ public class ReviewController {
     final private ReviewService reviewService;
 
 //    제이쿼리를 이용한 db저장
-/*    @PostMapping("/watchtable/detailed")
+/*    @PostMapping("/watchtable/detail")
     public ResponseEntity<Long> addReview(ReviewDTO reviewDTO){
         Long reviewnum = reviewService.registerReview(reviewDTO);
         return new ResponseEntity<>( reviewnum, HttpStatus.OK);
@@ -40,14 +40,14 @@ public class ReviewController {
     */
 
 //ajax를 이용한 데이터 저장
-    @PostMapping("/detailed")
+    @PostMapping("/detail")
     public ResponseEntity<Long> addReview(@RequestBody ReviewDTO reviewDTO){
         Long reviewnum = reviewService.registerReview(reviewDTO);
         return new ResponseEntity<>(reviewnum, HttpStatus.OK);
     }
 
 //    리스트 나오게 하기..
-//    @GetMapping("/detailed/all")
+//    @GetMapping("/detail/all")
 //    public ResponseEntity<List<ReviewDTO>> getList(@PathVariable("storeNum") int storeNum){
 //        List<ReviewDTO> reviewDTOList = reviewService.getListOfStore(storeNum);
 //        return new ResponseEntity<>(reviewDTOList, HttpStatus.OK);
