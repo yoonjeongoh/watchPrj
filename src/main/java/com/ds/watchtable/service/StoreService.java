@@ -1,10 +1,7 @@
 package com.ds.watchtable.service;
 
 import com.ds.watchtable.dto.*;
-import com.ds.watchtable.entity.Member;
-import com.ds.watchtable.entity.MenuImage;
-import com.ds.watchtable.entity.Store;
-import com.ds.watchtable.entity.StoreImage;
+import com.ds.watchtable.entity.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -35,7 +32,9 @@ public interface StoreService {
                 .storeOpen(storeDTO.getStoreOpen())
                 .storeClose(storeDTO.getStoreClose())
                 .bsNum(storeDTO.getBsNum())
+                .roleSet(storeDTO.getRoleSet())
                 .build();
+        store.addMemberRole(MemberRole.MANAGER);
         entityMap.put("store", store);
 
         List<StoreImageDTO> storeImageDTOList = storeDTO.getStoreImageDTOList();
@@ -47,10 +46,10 @@ public interface StoreService {
                         .bsUuid(storeImageDTO.getBsUuid())
                         .store(store)
                         .build();
-                System.out.printf(">>"+storeImage);
+                System.out.printf(">>" + storeImage);
                 return storeImage;
             }).collect(Collectors.toList());
-            entityMap.put("storeImgList",storeImageList);
+            entityMap.put("storeImgList", storeImageList);
         }
         List<MenuImageDTO> menuImageDTOList = storeDTO.getMenuImageDTOList();
         if (menuImageDTOList != null && menuImageDTOList.size() > 0) {
@@ -61,10 +60,10 @@ public interface StoreService {
                         .menuUuid(menuImageDTO.getMenuUuid())
                         .store(store)
                         .build();
-                System.out.printf(">>"+menuImage);
+                System.out.printf(">>" + menuImage);
                 return menuImage;
             }).collect(Collectors.toList());
-            entityMap.put("menuImgList",menuImageList);
+            entityMap.put("menuImgList", menuImageList);
         }
         return entityMap;
     }

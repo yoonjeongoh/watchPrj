@@ -1,5 +1,6 @@
 package com.ds.watchtable.dto;
 
+import com.ds.watchtable.entity.MemberRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Builder
@@ -38,6 +40,7 @@ public class StoreDTO {
     private String storeClose;
 
     private String bsNum;
+    private Set<MemberRole> roleSet;
 
     private List<MenuImageDTO> menuImageDTOList = new ArrayList<>();
     private List<StoreImageDTO> storeImageDTOList = new ArrayList<>();
