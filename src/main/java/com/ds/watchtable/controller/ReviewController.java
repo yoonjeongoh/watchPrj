@@ -22,6 +22,13 @@ public class ReviewController {
     @Autowired
     final private ReviewService reviewService;
 
+    //ajax를 이용한 데이터 저장
+    @PostMapping("/detail")
+    public ResponseEntity<Long> addReview(@RequestBody ReviewDTO reviewDTO){
+        Long reviewnum = reviewService.registerReview(reviewDTO);
+        return new ResponseEntity<>(reviewnum, HttpStatus.OK);
+    }
+
 //    제이쿼리를 이용한 db저장
 /*    @PostMapping("/watchtable/detail")
     public ResponseEntity<Long> addReview(ReviewDTO reviewDTO){
@@ -29,31 +36,12 @@ public class ReviewController {
         return new ResponseEntity<>( reviewnum, HttpStatus.OK);
     }*/
 
-/*
-    @GetMapping("/all")
-    public ResponseEntity<List<ReviewDTO>> getList(@PathVariable("mno") Long mno){
-        log.info("--------------list---------------");
-        log.info("MNO: " + mno);
-        List<ReviewDTO> reviewDTOList = reviewService.getListOfMovie(mno);
-        return new ResponseEntity<>(reviewDTOList, HttpStatus.OK);
-    }
-    */
-
-//ajax를 이용한 데이터 저장
-    @PostMapping("/detail")
-    public ResponseEntity<Long> addReview(@RequestBody ReviewDTO reviewDTO){
-        Long reviewnum = reviewService.registerReview(reviewDTO);
-        return new ResponseEntity<>(reviewnum, HttpStatus.OK);
-    }
-
 //    리스트 나오게 하기..
 //    @GetMapping("/detail/all")
 //    public ResponseEntity<List<ReviewDTO>> getList(@PathVariable("storeNum") int storeNum){
 //        List<ReviewDTO> reviewDTOList = reviewService.getListOfStore(storeNum);
 //        return new ResponseEntity<>(reviewDTOList, HttpStatus.OK);
 //    }
-
-
 
 }
 

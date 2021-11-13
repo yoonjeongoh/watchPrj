@@ -15,7 +15,6 @@
             .ul1 li{ list-style:none;padding:10px;margin-left:2em;}
             .ul1 li img{ width:100px;}
 
-
             .uploadResult2 { width: 100%;margin-top:10px;}
             .ul2 {
                 display:flex;flex-flow:row;justify-content:center;
@@ -23,8 +22,6 @@
             }
             .ul2 li{ list-style:none;padding:10px;margin-left:2em;}
             .ul2 li img{ width:100px;}
-            .invalid { color : red; display:none; font-size:11px; font-weight:bold; }
-            .valid { color : green; display:none; font-size:11px; font-weight:bold; }
         </style>
 
         <link id="contextPathHolder" th:data-contextPath="${#httpServletRequest.getContextPath()}"/>
@@ -373,12 +370,11 @@
                     $("form").submit();
                 });
             });
-
-
-
             </script>
-            <script>
-            // 우편번호 찾기 화면을 넣을 element
+
+<!--        post code api script-->
+        <script>
+                        // 우편번호 찾기 화면을 넣을 element
             var element_layer = document.getElementById('layer');
 
             function closeDaumPostcode() {
@@ -479,10 +475,8 @@
                 element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
             }
 
+        </script>
 
-
-
-            </script>
             <!--        <script th:inline="javascript">-->
             <!--            $(document).ready(function() {-->
             <!--                var actionForm = $('form');-->
