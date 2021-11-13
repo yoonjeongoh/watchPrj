@@ -1,5 +1,6 @@
 package com.ds.watchtable.repository;
 
+import com.ds.watchtable.dto.StoreDTO;
 import com.ds.watchtable.entity.Store;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,19 +14,18 @@ import static com.ds.watchtable.entity.QStore.store;
 public interface StoreRepository extends JpaRepository <Store, Long> {
 //orm - entity이름으로
 
-    //리스트
+    //admin/storelist
     @Query("select s, si, mi " +
             "from Store s left outer join StoreImage si on si.store = s " +
             "left outer join MenuImage mi on mi.store = s ")
     Page<Object[]> getListPage(Pageable pageable);
 
-    //상세보기
+    //admin/storeread
    @Query("select s, si, mi " +
             "from Store s left outer join StoreImage si on si.store = s " +
             "left outer join MenuImage mi on mi.store = s " +
             "where s.storeNum =:storeNum ")
     List<Object[]> getStoreDetail(Long storeNum);
-
 
 }
 

@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @Log4j2
 @RequiredArgsConstructor
@@ -24,8 +26,8 @@ public class StoreController {
         log.info("Register............");
         storeService.storeRegister(storeDTO);
     }
-    //admin list
-    @GetMapping("/admin/storelist")
+    //admin/storelist
+    @GetMapping({"/admin/storelist", "/admin/admin"})
     public void list(PageRequestDTO pageRequestDTO, Model model){
         log.info("pageRequestDTO: "+pageRequestDTO);
         PageResultDTO result = storeService.getList(pageRequestDTO);
@@ -33,7 +35,7 @@ public class StoreController {
         model.addAttribute("result", result);
     }
 
-    //admin read
+    //admin/storeread
     @GetMapping("/admin/storeread")
     public void read(Long storeNum, @ModelAttribute("pageRequestDTO") PageRequestDTO pageRequestDTO , Model model) {
         StoreDTO storeDTO = storeService.getStore(storeNum);

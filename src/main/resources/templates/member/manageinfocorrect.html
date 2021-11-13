@@ -5,46 +5,100 @@
         <link th:href="@{/css2/join.css}" rel="stylesheet" />
 
 
-        <fieldset>
-            <div class="mngfield">
-                <form class="form11" action="https://localhost:8080/watchtable/member/managemyinfo" method="post" name="f" onsubmit="return sendIt();">
+        <div class="wrapper">
+            <fieldset>
+                <div class="mngfield">
+                    <form class="form11" tH:action="@{/member/managemyinfo}" method="post" name="f">
+                        <span class="span11">상호명</span> <br>
+                        <input class="input11" type="text" name="storeName" id="shop_name"><br>
+                        <div class ="valid-div11">
+                            <span class="invalid" id="storeName_error">상호명을 입력해주세요.</span>
+                            <span class="valid" id="storeName_ok">확인.</span>
+                        </div>
+                        <br>
+                        <span class="span11">사업자 등록번호</span> <br>
+                        <input class="input11" type="text" name="bsNum" id="manager_num"
+                               placeholder="11자의 숫자로만 입력" maxlength="11"><br>
+                        <div class ="valid-div11">
+                            <span class="invalid" id="bsNumSpace">공백은 사용할 수 없습니다.</span>
+                            <span class="invalid" id="bsNumOnly">숫자만 입력하세요.</span>
+                            <span class="invalid" id="buNum_min">11자리를 입력하세요.</span>
+                            <span class="invalid" id="buNum_check">유효하지 않은 사업자번호입니다.</span>
+                            <span class="valid" id="buNum_ok">확인.</span>
+                        </div>
+                        <br>
+                        <span class="span11">사업장 주소</span><br>
+                        <!--                    <input class="input11" type="text" name="storeAds" id="shop_add"><br>-->
+                        <div class="div11">
+                            <input class="op11" type="text" name="storeAds" id="sample2_postcode" placeholder="우편번호">
+                            <input class="find-zipcode" type="button" name="storeAds"
+                                   onclick="sample2_execDaumPostcode()"
+                                   value="우편번호 찾기"><br>
+                        </div>
+                        <br>
+                        <input class="input11" type="text" name="storeAds" id="sample2_address" placeholder="주소"><br>
+                        <input class="input11" type="text" name="storeAds" id="sample2_detailAddress"
+                               placeholder="상세주소"><br>
+                        <input class="input11" type="text" name="storeAds" id="sample2_extraAddress" placeholder="참고항목"><br>
 
-                    <span class="span11">가게 연락처</span> <br>
-                    <!--                    <input class="input11" type="text" name="st-tel" id="st-tel"><br>-->
-                    <select class="sel11" name="tel" id="sel-store-tel">
-                        <option class="op11" value="02">02</option>
-                        <option class="op11" value="051">051</option>
-                        <option class="op11" value="031">031</option>
-                    </select>
-                    - <input class="input14" type="text" name="st-tel1" id="st-tel1">
-                    - <input class="input14" type="text" name="st-tel2" id="st-tel2"><br>
+                        <!-- iOS에서는 position:fixed 버그가 있음, 적용하는 사이트에 맞게 position:absolute 등을 이용하여 top,left값 조정 필요 -->
+                        <div id="layer"
+                             style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
+                            <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer"
+                                 style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1"
+                                 onclick="closeDaumPostcode()" alt="닫기 버튼">
+                        </div>
 
+                        <span class="span11">가게 연락처</span> <br>
+                        <input class="input11" title="가게연락처" type="text" name="storeTel" id="sel-store-tel"><br>
 
-                    <span class="span11">가게 영업시간</span> <br>
-                    <input class="input13" type="time" value="00:00" name="st-bh" id="st-bh1"> ~
-                    <input class="input13" type="time" value="00:00" name="st-bh" id="st-bh2"><br>
-                    <!--                    <input class="input11" type="text" name="st-bh" id="st-bh"><br>-->
+                        <span class="span11">가게 영업시간</span> <br>
+                        <input class="input13" type="time" value="00:00" name="storeOpen" id="st-bh1"> ~
+                        <input class="input13" type="time" value="00:00" name="storeClose" id="st-bh2">
+                        <span class="invalid" id="storeHours">영업시간을 입력해주세요.</span><br>
+                        <!--                    <input class="input11" type="text" name="st-bh" id="st-bh"><br>-->
 
-                    <span class="span11">가게 소개</span> <br>
-                    <input class="input11" type="text" name="st-epl" id="st-epl"><br>
+                        <span class="span11">가게 소개</span> <br>
+                        <input class="input11" type="text" name="storeText" id="st-epl"><br>
 
-                    <span class="span11">가게 이미지</span> <br>
-                    <input class="input12" type="file" name="store-img" id="store-img"><br>
+                        <span class="span11">사업자 등록증 파일 첨부</span> <br>
+                        <div class ="valid-div11">
+                            <label class="btn-store-image input15 custom-file-label" for="business_license">파일 선택</label>
+                            <input class="custom-file-input" type="file" id="business_license" style="display:none;"
+                                   multiple><br>
+                        </div>
+                        <br>
+                        <div class="box1"></div>
+                        <div style="margin-bottom: 20px;"></div>
+                        <div class="uploadResult">
+                            <ul class="ul1">
 
+                            </ul>
+                        </div>
+
+                        <span class="span11">가게 이미지 첨부</span><br>
+                        <div class ="valid-div11">
+                            <label class="btn-store-image input15 custom-file-label2" for="store-img">파일 선택</label>
+                            <input class="custom-file-input2" type="file" id="store-img" style="display:none;"
+                                   multiple><br>
+                        </div><br>
+
+                        <div class="box2"></div>
+                        <div style="margin-bottom: 20px;"></div>
+                        <div class="uploadResult2">
+                            <ul class="ul2">
+
+                            </ul>
+                        </div>
 
                     <button type="button" class="join_button btn11 colored-btn11">수정하기</button>
                     <button type="button" class="reset-btn btn11 uncolored-btn11"
                             onclick="location.href='/member/manage';">취소</button>
+                    </form>
+                </div>
+            </fieldset>
+        </div>
 
-                </form>
-                <div class="end-pg"></div>
-
-            </div>
-        </fieldset>
-
-        <h1 class="mt-4">Business information correction</h1>
-        나는 이게 왜 자꾸 위로 올라가는지 모루겟다....
-        <a href="/watchtable/member/myinfocorrect">/watchtable/managemyinfo(Member)[확인]</a><br>
-        <a href="/watchtable/member/manage">/watchtable/manage(Business member)[취소]</a><br>
+        <div class="end-pg"></div>
     </th:block>
 </th:blotck>

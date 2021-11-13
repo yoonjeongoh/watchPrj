@@ -50,11 +50,21 @@
                   <th scope="col">가입 날짜</th>
                 </tr>
                 </thead>
+                <tbody>
+                <tr th:each="dto : ${result.dtoList}" class="tr-list"
+                    th:onclick=
+                            "|javascript:read('${dto.storeNum}','${result.page}')|">
+                  <th scope="row">[[${dto.storeNum}]]</th>
+                  <td>[[${dto.memberName}]]</td>
+                  <td>[[${dto.storeName}]]</td>
+                  <td>[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</td>
+                </tr>
+                </tbody>
               </table>
-
             </div>
           </div>
         </div>
+
         <div class="col-md-3">
           <div class="card gedf-card">
             <div class="card-header">
@@ -117,8 +127,8 @@
       </div>
     </div>
     <div class="end-pg"></div>
-    <script>
 
+    <script>
       $(document).ready(function(){
           $('.cat-list li').addClass('fnd');
           function counter_set()
@@ -141,5 +151,17 @@
           });
       });
     </script>
+
+    <script th:inline="javascript">
+        function read(storeNum, page){
+            //alert('read');
+            /*[+
+            var urlword = [[@{/admin/storeread}]] +
+                "?storeNum="+storeNum+"&page="+page;
+            +]*/
+            location.href=urlword;
+        }
+    </script>
+
   </th:block>
 </th:blotck>

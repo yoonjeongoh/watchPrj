@@ -58,7 +58,7 @@ public class StoreServiceImpl implements StoreService{
         return store.getStoreNum();
     }
 
-//    admin 리스트 목록
+//    admin store list
     @Override
     public PageResultDTO<StoreDTO, Object[]> getList(PageRequestDTO requestDTO) {
         Pageable pageable = requestDTO.getPageable(Sort.by("storeNum").descending());
@@ -73,7 +73,7 @@ public class StoreServiceImpl implements StoreService{
         return new PageResultDTO<>(result, fn);
     }
 
-    //admin 가게정보 상세보기
+    //admin/storeread
     @Override
     public StoreDTO getStore(Long storeNum) {
         List<Object[]> result = storeRepository.getStoreDetail(storeNum);
