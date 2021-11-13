@@ -20,5 +20,4 @@ public class ReviewDTO {
     private String text;
     private LocalDateTime regDate;
     private LocalDateTime modDate;
-//    private int reviewCount;
 }

@@ -11,8 +11,19 @@
 
         var options = {
           title: '혼잡도',
-          width: 400,
-          height: 400
+          width: 470,
+//          height: 400,
+//          backgroundColor: {
+//            fill: 'none',
+//          },
+          chartArea: {
+            width: 300,
+            height: 300,
+            top: 30,
+            backgroundColor: {
+                stoke: 'none'
+            }
+          }
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));

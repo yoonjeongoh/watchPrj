@@ -5,9 +5,6 @@
         <link th:href="@{/css2/detail.css}" rel="stylesheet" />
         <link id="contextPathHolder" th:data-contextPath="${#httpServletRequest.getContextPath()}"/>
 
-
-
-
         <div class="wrapper">
             <div class="detail-content">
             <!--        1열 상단 카드이미지-->
@@ -37,8 +34,9 @@
                     <button class="waiting-register21 colored-btn21">대기 등록하기</button>
                     <br>
                     <span>혼잡도가 80% 이상 일 때 가게 도착 시 만석이 될 수 있습니다</span><br>
+                  <div class="chartRoom">
                     <div id="piechart"></div>
-
+                  </div>
                 </div>
 
                 <!--        2열 우측 지도-->
@@ -128,6 +126,7 @@
             </div>
         </div>
 
+<!--        스크립트-->
         <link rel="stylesheet"
               href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
 
