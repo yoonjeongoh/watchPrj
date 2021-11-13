@@ -2,9 +2,9 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
-        <link th:href="@{/css2/store.css}" rel="stylesheet" />
+        <link th:href="@{/css2/admin.css}" rel="stylesheet" />
 
-
+<!--        본문   -->
         <div class="wrapper">
         <div class="col-md-6 gedf-main">
             <div class="card gedf-card">
@@ -44,6 +44,24 @@
             </div>
         </div>
         </div>
+
+<!--        페이징-->
+        <ul class="pagination h-100 justify-content-center align-items-center">
+            <li class="page-item" th:if="${result.prev}">
+                <a class="page-link" th:href="@{/admin/storelist(page=${result.start-1})}"
+                   tabindex="-1">Previous</a>
+            </li>
+
+            <li th:class=" 'page-item ' + ${result.page == page?'active':''}"
+                th:each="page: ${result.pageList}">
+                <a class="page-link" th:href="@{/admin/storelist(page=${page})}">[[${page}]]</a>
+            </li>
+
+            <li class="page-item" th:if="${result.next}">
+                <a class="page-link" th:href="@/admin/storelist(page=${result.end+1})}">Next</a>
+            </li>
+        </ul>
+
 
         <script th:inline="javascript">
             function read(storeNum, page){

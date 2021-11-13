@@ -11,12 +11,12 @@ import java.util.stream.Collectors;
 public interface StoreService {
     //DB저장
     Long storeRegister(StoreDTO storeDTO);
-    //admin 리스트 목록
+    //admin/storelist 리스트 목록
     PageResultDTO<StoreDTO, Object[]> getList(PageRequestDTO requestDTO);
-    //admin 가게 정보 상세보기
+    //admin/storeread 가게 정보 상세보기
     StoreDTO getStore(Long storeNum);
 
-    default Map<String, Object> dtoToEntity(StoreDTO storeDTO) {
+        default Map<String, Object> dtoToEntity(StoreDTO storeDTO) {
         Map<String, Object> entityMap = new HashMap<>();
         Store store = Store.builder()
                 .member(Member.builder().memberNum(storeDTO.getMemberNum())

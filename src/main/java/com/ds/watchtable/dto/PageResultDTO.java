@@ -46,7 +46,7 @@ public class PageResultDTO<DTO, EN> {
         int tempEnd = (int) (Math.ceil(page/10.0))*10;
         start = tempEnd - 9;
         prev = start > 1;
-        end = totalPage>tempEnd?tempEnd:totalPage;
+        end = totalPage>tempEnd ? tempEnd : totalPage;
         next = totalPage>tempEnd;
         //페이지번호를 담는 리스트
         pageList = IntStream.rangeClosed(start, end).boxed().collect(Collectors.toList());

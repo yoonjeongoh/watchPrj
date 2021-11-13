@@ -1,3 +1,12 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+}
+
 .goStoreList:hover {
+    cursor: pointer;
+}
+
+td:hover {
     cursor: pointer;
 }
