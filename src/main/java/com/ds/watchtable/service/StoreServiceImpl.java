@@ -9,6 +9,7 @@ import com.ds.watchtable.entity.StoreImage;
 import com.ds.watchtable.repository.MenuImageRepository;
 import com.ds.watchtable.repository.StoreImageRepository;
 import com.ds.watchtable.repository.StoreRepository;
+import com.querydsl.core.BooleanBuilder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +36,7 @@ public class StoreServiceImpl implements StoreService{
     @Autowired
     final private MenuImageRepository menuImageRepository;
 
-
+//    DB저장
     @Transactional
     @Override
     public Long storeRegister(StoreDTO storeDTO) {
@@ -56,17 +58,46 @@ public class StoreServiceImpl implements StoreService{
         return store.getStoreNum();
     }
 
-//    @Override
-//    public PageResultDTO<StoreDTO, Object[]> getList(PageRequestDTO requestDTO) {
-//        Pageable pageable = requestDTO.getPageable(Sort.by("storeNum").descending());
-//
-//        Page<Object[]> result = storeRepository.getListPage(pageable);
-//
-//        Function<Object[], StoreDTO> fn = (arr -> entityToDTO(
-//                (Store) arr[0],
-//                (List<StoreImage>)(Arrays.asList((StoreImage)arr[1])),
-//                (List<MenuImage>)(Arrays.asList((MenuImage)arr[2]))
-//        ));
-//        return new PageResultDTO<>(result, fn);
-//    }
+//    admin 리스트 목록
+    @Override
+    public PageResultDTO<StoreDTO, Object[]> getList(PageRequestDTO requestDTO) {
+        Pageable pageable = requestDTO.getPageable(Sort.by("storeNum").descending());
+
+        Page<Object[]> result = storeRepository.getListPage(pageable);
+
+        Function<Object[], StoreDTO> fn = (arr -> entityToDTO(
+                (Store) arr[0],
+                (List<StoreImage>)(Arrays.asList((StoreImage)arr[1])),
+                (List<MenuImage>)(Arrays.asList((MenuImage)arr[2]))
+        ));
+        return new PageResultDTO<>(result, fn);
+    }
+
+    //admin 가게정보 상세보기
+    @Override
+    public StoreDTO getStore(Long storeNum) {
+        List<Object[]> result = storeRepository.getStoreDetail(storeNum);
+        log.info(">>"+result.get(0));
+
+        Store store = (Store) result.get(0)[0]; //get(0) -중복방지
+        log.info(">>"+store);
+
+        List<StoreImage> storeImageList = new ArrayList<>();
+        result.forEach(arr->{
+            StoreImage storeImage = (StoreImage) arr[1];
+            log.info(">>"+storeImage);
+
+            storeImageList.add((storeImage));
+        });
+
+        List<MenuImage> menuImageList = new ArrayList<>();
+        result.forEach(arr->{
+            MenuImage menuImage = (MenuImage) arr[2];
+            log.info(">>"+menuImage);
+
+            menuImageList.add((menuImage));
+        });
+        return entityToDTO(store, storeImageList, menuImageList);
+    }
+
 }

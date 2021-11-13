@@ -9,9 +9,12 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public interface StoreService {
-
+    //DB저장
     Long storeRegister(StoreDTO storeDTO);
-//    PageResultDTO<StoreDTO, Object[]> getList(PageRequestDTO requestDTO);
+    //admin 리스트 목록
+    PageResultDTO<StoreDTO, Object[]> getList(PageRequestDTO requestDTO);
+    //admin 가게 정보 상세보기
+    StoreDTO getStore(Long storeNum);
 
     default Map<String, Object> dtoToEntity(StoreDTO storeDTO) {
         Map<String, Object> entityMap = new HashMap<>();
@@ -23,7 +26,6 @@ public interface StoreService {
                         .memberEmail(storeDTO.getMemberEmail())
                         .memberPw(storeDTO.getMemberPw())
                         .memberMobile(storeDTO.getMemberMobile())
-
                         .build())
                 .storeNum(storeDTO.getStoreNum())
                 .storeName(storeDTO.getStoreName())
@@ -33,8 +35,8 @@ public interface StoreService {
                 .storeOpen(storeDTO.getStoreOpen())
                 .storeClose(storeDTO.getStoreClose())
                 .bsNum(storeDTO.getBsNum())
+                .roleSet(storeDTO.getRoleSet())
                 .build();
-        store.addMemberRole(MemberRole.USER);
         store.addMemberRole(MemberRole.MANAGER);
         entityMap.put("store", store);
 

@@ -10,17 +10,13 @@ import java.util.List;
 
 public interface MemberService {
 //    public User add(User user) throws Exception;
-
+    //DB 저장
     String register(MemberDTO dto);
-//    MemberDTO list(Long memberDTO);
-//    MemberDTO get(Long memberNum);
-//    public void get(Member member);
-//    public List<MemberDTO> getAll();
-
 
     default Member dtoToEntity(MemberDTO memberDTO){
         Member member = Member.builder()
                 .memberNum(memberDTO.getMemberNum())
+                .roleSet(memberDTO.getRoleSet())
                 .memberName(memberDTO.getMemberName())
                 .memberNickname(memberDTO.getMemberNickname())
                 .memberId(memberDTO.getMemberId())
@@ -29,6 +25,7 @@ public interface MemberService {
                 .memberPw(memberDTO.getMemberPw())
                 .build();
         member.addMemberRole(MemberRole.USER);
+        member.addMemberRole(MemberRole.MANAGER);
         return member;
     }
 
@@ -42,9 +39,7 @@ public interface MemberService {
                 .memberPw(member.getMemberPw())
                 .modDate(member.getModDate())
                 .regDate(member.getRegDate())
-                .roleSet(member.getRoleSet())
                 .build();
         return memberDTO;
     }
-
 }

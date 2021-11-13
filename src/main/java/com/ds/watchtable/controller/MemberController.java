@@ -29,8 +29,8 @@ public class MemberController {
 //    attributes.addAttribute("userid",userDTO.getUserid());
     }
 
-    @GetMapping("/login")
-    public void login(String error, String logout, Model model) {
+    @GetMapping("/login") //get-불러오기
+    private void login(String error, String logout, Model model) {
         log.info("login error: " + error);
         log.info("login logout: " + logout);
         if (error != null) {

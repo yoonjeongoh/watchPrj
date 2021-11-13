@@ -4,7 +4,7 @@
      margin: 0px; padding: 0px;
   }
 
-  input:focus, select:focus, option:focus, textarea:focus, button:focus{
+input:focus, select:focus, option:focus, textarea:focus, button:focus{
   	outline: none;
   }
 
@@ -35,9 +35,6 @@ button {
     text-align: center;
     line-height: middle;
 }
-
- .mngfield2 {
-    }
 
  .span11 {
     width: 400px;

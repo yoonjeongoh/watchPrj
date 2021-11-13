@@ -19,6 +19,7 @@ public class ReviewServiceImpl implements ReviewService{
 
     private final ReviewRepository reviewRepository;
 
+    //DB저장
     @Override
     public Long registerReview(ReviewDTO reviewDTO) {
         Review review = dtoToEntity(reviewDTO);

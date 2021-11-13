@@ -24,7 +24,6 @@ public class StoreDTO {
     private String memberPw;
     private String memberEmail;
     private String memberMobile;
-    private String type="MANAGER";
 
 
     private LocalDateTime regDate;
@@ -40,8 +39,7 @@ public class StoreDTO {
     private String storeClose;
 
     private String bsNum;
-    private Set<MemberRole> roleSet;
 
-    private List<MenuImageDTO> menuImageDTOList = new ArrayList<>();
     private List<StoreImageDTO> storeImageDTOList = new ArrayList<>();
+    private List<MenuImageDTO> menuImageDTOList = new ArrayList<>();
 }

@@ -8,7 +8,7 @@
         <div class="wrapper">
         <fieldset>
             <div id="login" class="field1">
-                <form class="form1" th:action="@{/login}" method="post" name="frm">
+                <form class="form1" th:action="@{member/login}" method="post" name="frm">
 <!--                    <span class="span1">아이디</span><input class="input1" type="text" id="id"><br>-->
 <!--                    <span class="span1">비밀번호</span><input class="input1" type="password" id="pw"><br>-->
                     <input class="input1" type="text" id="id" name="username" placeholder="아이디"><br>
@@ -20,15 +20,15 @@
 <!--                    onclick="location.href='/watchtable/joinselect';">회원가입</button>-->
                 </form>
 
-                <div class="auth">
-                  <a href="/oauth2/authorization/google"><img class="authimg"
-                                                              src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F998689465C3D7D1217F053"></a>
+                    <div class="auth">
+                        <a href="/oauth2/authorization/google"><img class="authimg"
+                                                                    src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F998689465C3D7D1217F053"></a>
 
-<!--                  <a href="/oauth2/authorization/naver"><img class="authimg"-->
-<!--                                                             src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile24.uf.tistory.com%2Fimage%2F99580C465C3D7D130CF754"></a>-->
+                        <!--                  <a href="/oauth2/authorization/naver"><img class="authimg"-->
+                        <!--                                                             src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile24.uf.tistory.com%2Fimage%2F99580C465C3D7D130CF754"></a>-->
+                    </div>
                 </div>
-            </div>
-            </div>
+        </div>
         </fieldset>
         <div class="end-pg"></div>
         <script th:inline="javascript">
@@ -46,7 +46,7 @@
                       document.getElementById('pw').focus();
                       return;
                     }
-<!--                    alert("로그인");-->
+                    alert("로그인");
                     document.frm.submit();
                   }
                 };

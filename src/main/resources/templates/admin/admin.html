@@ -4,26 +4,142 @@
   <th:block th:fragment="content">
     <link th:href="@{/css2/admin.css}" rel="stylesheet"/>
 
+    <!--        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
+    <!--        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>-->
+    <!--        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+    <!--        &lt;!&ndash;&#45;&#45;&#45;&#45; Include the above in your HEAD tag &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
 
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+          crossorigin="anonymous">
 
-    <h1 class="mt-4">Admin</h1>
-    <div id="container">
-      <div id="detail">
-        <div> <h2>서비스 이용매장 관리</h2> </div>
-        <div id="search"><input id="store_src" placeholder="매장 검색"></itput><button id="btn_src">검색</button></div>
-        <span id="store_cnt">가입 매장 수</span>
-        <div id="store_list">
-          <div>
-            <a th:href="@{watchtable/detailed}">/watchtable/detailed(All)</a><br>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+
+    <div class="container-fluid gedf-wrapper">
+      <div class="row">
+        <div class="col-md-3 gedf-main">
+          <div class="card gedf-card">
+            <div class="card-header">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="ml-2">
+                    <div class="h5 m-0">
+                      <span class="goStoreList" onclick="location.href='/watchtable/admin/storelist';">승인 대기 가게리스트</span>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+<!--              <p class="card-text"></p>-->
+              <table class="table table-striped">
+                <thead>
+                <tr>
+                  <th scope="col">사업장 코드</th>
+                  <th scope="col">회원 이름</th>
+                  <th scope="col">상호명</th>
+                  <th scope="col">가입 날짜</th>
+                </tr>
+                </thead>
+              </table>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card gedf-card">
+            <div class="card-header">
+              <div class="h5 m-0">리뷰 신고신청 리스트
+              </div>
+            </div>
+            <div class="card-body">
+              <p class="card-text">{{가게이름-리스트}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 gedf-main">
+          <div class="card gedf-card">
+            <div class="card-header">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="ml-2">
+                    <div class="h5 m-0">가입한 가게 리스트</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+<!--              <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
+<!--              <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>-->
+<!--              <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+<!--              &lt;!&ndash;&#45;&#45;&#45;&#45; Include the above in your HEAD tag &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&ndash;&gt;-->
+
+              <div class="container bg-light border pb-2">
+                <nav class="navbar navbar-light ">
+                  <form class="form-inline">
+                    <input class="form-control mr-sm-2 srch" type="text" placeholder="가게 이름을 입력하세요">
+                  </form>
+                </nav>
+                <div id="accordion" role="tablist">
+                  <div class="card">
+                    <div class="card-header" role="tab" id="headingOne">
+                      <span class="badge badge-primary badge-pill incat-count" style="background:orange;">0</span>
+                      <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
+                      style="text-decoration:none;">
+                        ☆
+                      </a>
+                    </div>
+                    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                      <div class="card-body p-0">
+                        <ul class="list-group cat-list">
+                          <li class="list-group-item">예진이네</li>
+                          <li class="list-group-item">윤정이네</li>
+                          <li class="list-group-item">영돈이네</li>
+                          <li class="list-group-item">종찬이네</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <div id="approve">
-        <a th:href="@{watchtable/approve}">/watchtable/approve(Admin)[사업자승인]</a><br>
-      </div>
-
-      <div id="reviewMng">리뷰 신고 관리</div>
     </div>
+    <div class="end-pg"></div>
+    <script>
+
+      $(document).ready(function(){
+          $('.cat-list li').addClass('fnd');
+          function counter_set()
+          {
+              $('.cat-list').each(function() {
+              var cnt = $(this).children('.cat-list li.fnd').length;
+
+              $(this).parent().parent().parent().find('.incat-count').text(cnt);
+              });
+          }
+          counter_set();
+          $('.srch').keyup(function(){
+              var txt = $(this).val().toLowerCase();
+              $('.cat-list li').filter(function(){
+                  var mt = $(this).text().toLowerCase().indexOf(txt) > -1;
+                  $(this).toggle(mt);
+                  $(this).toggleClass('fnd', mt);
+              });
+              counter_set();
+          });
+      });
+    </script>
   </th:block>
 </th:blotck>

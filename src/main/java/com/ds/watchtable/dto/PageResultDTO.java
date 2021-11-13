@@ -1,5 +1,6 @@
 package com.ds.watchtable.dto;
 
+import com.ds.watchtable.entity.Store;
 import lombok.Data;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

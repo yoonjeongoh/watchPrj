@@ -8,8 +8,23 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
+import static com.ds.watchtable.entity.QStore.store;
+
 public interface StoreRepository extends JpaRepository <Store, Long> {
-//    Page<Object[]> getListPage(Pageable pageable);
+//orm - entity이름으로
+
+    //리스트
+    @Query("select s, si, mi " +
+            "from Store s left outer join StoreImage si on si.store = s " +
+            "left outer join MenuImage mi on mi.store = s ")
+    Page<Object[]> getListPage(Pageable pageable);
+
+    //상세보기
+   @Query("select s, si, mi " +
+            "from Store s left outer join StoreImage si on si.store = s " +
+            "left outer join MenuImage mi on mi.store = s " +
+            "where s.storeNum =:storeNum ")
+    List<Object[]> getStoreDetail(Long storeNum);
 
 
 }
