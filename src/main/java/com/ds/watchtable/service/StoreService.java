@@ -35,9 +35,7 @@ public interface StoreService {
                 .storeOpen(storeDTO.getStoreOpen())
                 .storeClose(storeDTO.getStoreClose())
                 .bsNum(storeDTO.getBsNum())
-                .roleSet(storeDTO.getRoleSet())
                 .build();
-        store.addMemberRole(MemberRole.MANAGER);
         entityMap.put("store", store);
 
         List<StoreImageDTO> storeImageDTOList = storeDTO.getStoreImageDTOList();
@@ -81,6 +79,7 @@ public interface StoreService {
                 .storeOpen(store.getStoreOpen())
                 .storeClose(store.getStoreClose())
                 .bsNum(store.getBsNum())
+                .memberName(store.getMember().getMemberName())
                 .regDate(store.getRegDate())
                 .modDate(store.getModDate())
                 .build();

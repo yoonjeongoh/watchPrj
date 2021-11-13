@@ -29,15 +29,15 @@ public class MemberController {
 //    attributes.addAttribute("userid",userDTO.getUserid());
     }
 
-    @GetMapping("/login") //get-불러오기
-    private void login(String error, String logout, Model model) {
-        log.info("login error: " + error);
-        log.info("login logout: " + logout);
-        if (error != null) {
-            model.addAttribute("error", "Login Error Check Your Account");
+    @GetMapping("/login")
+    public void login(String error, String logout, Model model) {
+        log.info("login error : "+error);
+        log.info("login logout : "+logout);
+        if (error != null){
+            model.addAttribute("error","Login Error Check Your Account");
         }
-        if (logout != null) {
-            model.addAttribute("logout", "Logout!");
+        if (logout != null){
+            model.addAttribute("logout","Logout!");
         }
     }
 }
