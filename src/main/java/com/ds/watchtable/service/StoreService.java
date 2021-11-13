@@ -80,6 +80,7 @@ public interface StoreService {
                 .storeOpen(store.getStoreOpen())
                 .storeClose(store.getStoreClose())
                 .bsNum(store.getBsNum())
+                .memberName(store.getMember().getMemberName())
                 .regDate(store.getRegDate())
                 .modDate(store.getModDate())
                 .build();
