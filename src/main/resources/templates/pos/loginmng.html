@@ -4,30 +4,20 @@
     <th:block th:fragment="content">
         <link th:href="@{/css2/login.css}" rel="stylesheet" />
 
-        <fieldset>
-            <div id="login" class="field2">
-                <form class="form1" action="/watchtable/pos/possetting" method="get" name="frm">
-                    <!--                    <span class="span1">아이디</span><input class="input1" type="text" id="id"><br>-->
-                    <!--                    <span class="span1">비밀번호</span><input class="input1" type="password" id="pw"><br>-->
-                    <input class="input1" type="text" id="id" placeholder="아이디"><br>
-                    <input class="input1" type="password" id="pw" placeholder="비밀번호"><br>
-                    <button type="button" name="button" id='btn' class="btn1 login-btn colored-btn1">로그인</button><br>
-                    <span class="span2" >아직 회원이 아니신가요?</span>
-                    <span class="spanOnclick" onclick="location.href='/join/joinselect';">회원가입하기</span>
-                    <!--                    <button type="button" name="button2" id='btn2' class="btn select-btn"-->
-                    <!--                    onclick="location.href='/watchtable/joinselect';">회원가입</button>-->
-                </form>
-
-                <div class="auth">
-                    <a href="/oauth2/authorization/google"><img class="authimg"
-                                                                src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile27.uf.tistory.com%2Fimage%2F998689465C3D7D1217F053"></a>
-
-                    <a href="/oauth2/authorization/naver"><img class="authimg"
-                                                               src = "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile24.uf.tistory.com%2Fimage%2F99580C465C3D7D130CF754"></a>
+        <div class="wrapper">
+            <fieldset>
+                <div id="login" class="field1">
+                    <form class="form1" th:action="@{/login}" method="post" name="frm">
+                        <input class="input1" type="text" id="id" name="username" placeholder="아이디"><br>
+                        <input class="input1" type="password" id="pw" name="password" placeholder="비밀번호"><br>
+                        <button type="button" name="button" id='btn' class="btn1 login-btn colored-btn1">로그인</button><br>
+                        <span class="span2" ></span>
+                    </form>
                 </div>
-
-            </div>
         </fieldset>
+        </div>
+        <div class="end-pg"></div>
+
 
         <script th:inline="javascript">
                 window.onload = function() {
@@ -52,4 +42,3 @@
         </script>
     </th:block>
 </th:blotck>
-</html>
