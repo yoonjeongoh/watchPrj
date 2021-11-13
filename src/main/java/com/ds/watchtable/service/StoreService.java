@@ -23,6 +23,7 @@ public interface StoreService {
                         .memberEmail(storeDTO.getMemberEmail())
                         .memberPw(storeDTO.getMemberPw())
                         .memberMobile(storeDTO.getMemberMobile())
+
                         .build())
                 .storeNum(storeDTO.getStoreNum())
                 .storeName(storeDTO.getStoreName())
@@ -32,8 +33,8 @@ public interface StoreService {
                 .storeOpen(storeDTO.getStoreOpen())
                 .storeClose(storeDTO.getStoreClose())
                 .bsNum(storeDTO.getBsNum())
-                .roleSet(storeDTO.getRoleSet())
                 .build();
+        store.addMemberRole(MemberRole.USER);
         store.addMemberRole(MemberRole.MANAGER);
         entityMap.put("store", store);
 

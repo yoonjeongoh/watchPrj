@@ -2,7 +2,6 @@ package com.ds.watchtable.service;
 
 import com.ds.watchtable.dto.PosDTO;
 import com.ds.watchtable.entity.Pos;
-import com.ds.watchtable.entity.Store;
 import com.ds.watchtable.repository.PosRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -12,7 +11,6 @@ import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @Log4j2
@@ -28,12 +26,10 @@ public class PosServiceImpl implements PosService{
     }
 
     @Override
-    public List<PosDTO> getPosList(Long posNum) {
-        Pos pos = Pos.builder().posNum(posNum).build();
-        List<Pos> result = posRepository.findByPos(pos);
-        return result.stream().map(pos1 -> entityToDTO(pos)).collect(Collectors.toList());
+    public PosDTO getlist(Long posNum){
+        Optional<Pos> result = posRepository.findById(posNum);
+        return result.isPresent()?entityToDTO(result.get()):null;
     }
-
 
 //    @Override
 //    public PosDTO getPos(Long posNum) {

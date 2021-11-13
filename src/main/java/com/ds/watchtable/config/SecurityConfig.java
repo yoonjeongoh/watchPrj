@@ -2,25 +2,26 @@
 
 package com.ds.watchtable.config;
 
-        import com.ds.watchtable.security.filter.ApiCheckFilter;
-        import com.ds.watchtable.security.filter.ApiLoginFilter;
-        import com.ds.watchtable.security.handler.ApiLoginFailHandler;
-        import com.ds.watchtable.security.service.MemberDetailsService;
-        import com.ds.watchtable.security.util.JWTUtil;
-        import lombok.extern.log4j.Log4j2;
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.context.annotation.Bean;
-        import org.springframework.context.annotation.Configuration;
-        import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-        import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-        import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-        import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-        import org.springframework.security.crypto.password.PasswordEncoder;
-        import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import com.ds.watchtable.security.filter.ApiCheckFilter;
+import com.ds.watchtable.security.filter.ApiLoginFilter;
+import com.ds.watchtable.security.handler.ApiLoginFailHandler;
+import com.ds.watchtable.security.handler.ClubLoginSuccessHandler;
+import com.ds.watchtable.security.service.MemberDetailsService;
+import com.ds.watchtable.security.util.JWTUtil;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
-@EnableWebSecurity
 @Log4j2
+@EnableGlobalMethodSecurity(prePostEnabled=true, securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private MemberDetailsService userDetailsService;
@@ -30,20 +31,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin().loginPage("/member/login").loginProcessingUrl("/login")
-//                .successHandler(successHandler())
+        http.formLogin().loginPage("/member/login").loginProcessingUrl("/member/login")
+                .successHandler(successHandler())
                 .failureUrl("/member/login?error");
         http.csrf().disable();
         http.logout();
-//        http.oauth2Login().successHandler(successHandler());
+        http.oauth2Login().successHandler(successHandler());
         http.rememberMe().tokenValiditySeconds(60 * 60 * 24 * 7).userDetailsService(userDetailsService);
         http.addFilterBefore(apiCheckFilter(), UsernamePasswordAuthenticationFilter.class);
         http.addFilterBefore(apiLoginFilter(), UsernamePasswordAuthenticationFilter.class);
         http.headers().frameOptions().sameOrigin();
     }
-
+    @Bean
+    public ClubLoginSuccessHandler successHandler() {
+        return new ClubLoginSuccessHandler(passwordEncoder());
+    }
     @Bean
     public ApiCheckFilter apiCheckFilter() {
         return new ApiCheckFilter("/notes/**/*", jwtUtil());
@@ -63,3 +68,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 }
+

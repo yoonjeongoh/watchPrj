@@ -34,13 +34,15 @@ public class PosController {
 
 //    @RequestMapping({"/pos/posorder","/pos/postable"})
 //    public void list(long posNum, Model model) {
-//        Optional<Pos> posList = posRepository.findById(posNum);
+//        Opti  onal<Pos> posList = posRepository.findById(posNum);
 //        model.addAttribute("pos", posList);
 //    }
     @GetMapping("/pos/posorder")
-    public ResponseEntity<List<PosDTO>> getPosList(@PathVariable("posNum") Long posNum){
-        List<PosDTO> posDTOList = posService.getPosList(posNum);
-        return new ResponseEntity<>(posDTOList, HttpStatus.OK);
+    public String index(Long posNum, Model model) {
+        Pos pos = posRepository.findById(posNum).orElse(null);
+        model.addAttribute("pos", pos);
+    return "/pos/posorder";
     }
+
 
 }
