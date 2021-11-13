@@ -25,6 +25,7 @@ public interface MemberService {
                 .memberPw(memberDTO.getMemberPw())
                 .build();
         member.addMemberRole(MemberRole.USER);
+        member.addMemberRole(MemberRole.MANAGER);
         return member;
     }
 
@@ -38,7 +39,6 @@ public interface MemberService {
                 .memberPw(member.getMemberPw())
                 .modDate(member.getModDate())
                 .regDate(member.getRegDate())
-                .roleSet(member.getRoleSet())
                 .build();
         return memberDTO;
     }

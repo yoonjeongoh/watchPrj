@@ -28,8 +28,6 @@ public class MemberDTO {
 
     private boolean fromSocial;
 
-    private Set<MemberRole> roleSet;
-
     private LocalDateTime regDate;
     private LocalDateTime modDate;
 }
