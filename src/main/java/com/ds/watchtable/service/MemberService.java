@@ -2,17 +2,14 @@ package com.ds.watchtable.service;
 
 
 import com.ds.watchtable.dto.MemberDTO;
-import com.ds.watchtable.dto.PosDTO;
 import com.ds.watchtable.entity.Member;
 import com.ds.watchtable.entity.MemberRole;
-
-import java.util.List;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 public interface MemberService {
 //    public User add(User user) throws Exception;
     //DB 저장
-    String register(MemberDTO dto);
-
+String register(MemberDTO memberDTO);
     default Member dtoToEntity(MemberDTO memberDTO){
         Member member = Member.builder()
                 .memberNum(memberDTO.getMemberNum())

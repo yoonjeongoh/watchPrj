@@ -28,6 +28,6 @@ public class ApiLoginFailHandler implements AuthenticationFailureHandler {
     json.put("code", "401");
     json.put("message", message);
     PrintWriter out = response.getWriter();
-    out.print(json);
+    log.info(json);
   }
 }

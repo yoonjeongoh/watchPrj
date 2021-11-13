@@ -9,7 +9,7 @@ import java.util.List;
 public interface PosService {
     void posSetting(PosDTO posDTO);
 
-    List<PosDTO> getPosList(Long posNum);
+    PosDTO getlist(Long posNum);
 
     default Pos dtoToEntity(PosDTO posDTO) {
         Pos pos = Pos.builder()

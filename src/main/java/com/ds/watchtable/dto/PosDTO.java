@@ -23,9 +23,9 @@ public class PosDTO {
     private String drink1;
     private String drink2;
 
-    private int table2;
-    private int table4;
-    private int table6;
+    private Long table2;
+    private Long table4;
+    private Long table6;
 
     private Long storeNum;
 

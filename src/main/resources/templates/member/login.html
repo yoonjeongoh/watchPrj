@@ -3,11 +3,12 @@
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
         <link th:href="@{/css2/login.css}" rel="stylesheet" />
+        <link th:href="@{/css2/join.css}" rel="stylesheet"/>
 
         <div class="wrapper">
         <fieldset>
             <div id="login" class="field1">
-                <form class="form1" th:action="@{member/login}" method="post" name="frm">
+                <form class="form1" th:action="@{/login}" method="post" name="frm">
 <!--                    <span class="span1">아이디</span><input class="input1" type="text" id="id"><br>-->
 <!--                    <span class="span1">비밀번호</span><input class="input1" type="password" id="pw"><br>-->
                     <input class="input1" type="text" id="id" name="username" placeholder="아이디"><br>
@@ -45,7 +46,7 @@
                       document.getElementById('pw').focus();
                       return;
                     }
-                    //alert("로그인");
+<!--                    alert("로그인");-->
                     document.frm.submit();
                   }
                 };

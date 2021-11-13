@@ -9,6 +9,6 @@ import java.util.Optional;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
     @EntityGraph(attributePaths = {"roleSet"}, type = EntityGraph.EntityGraphType.LOAD)
-    @Query("select m from Member m where m.fromSocial =:social and m.memberId=:memberId")
-    Optional<Member> findByMemberId(String memberId, boolean social);
+    @Query("select m from Member m where m.fromSocial =:social and m.memberId=:Id")
+    Optional<Member> findByMemberId(String Id, boolean social);
 }
