@@ -25,11 +25,12 @@ public class PosServiceImpl implements PosService{
         posRepository.save(pos);
     }
 
-    @Override
-    public PosDTO getlist(Long posNum){
-        Optional<Pos> result = posRepository.findById(posNum);
-        return result.isPresent()?entityToDTO(result.get()):null;
-    }
+    //    @Override
+//    public PosDTO getPos(Long posNum) {
+//        List<Object[]> result = posRepository.getPosAll(posNum);
+//        Pos pos = (Pos) result.get(0)[0];
+//        return entityToDTO(pos);
+//    }
 
 //    @Override
 //    public PosDTO getPos(Long posNum) {

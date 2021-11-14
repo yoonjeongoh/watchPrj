@@ -37,8 +37,11 @@ public class PosController {
 //        Opti  onal<Pos> posList = posRepository.findById(posNum);
 //        model.addAttribute("pos", posList);
 //    }
-    @GetMapping("/pos/posorder")
-    public void index( Model model) {
-        model.addAttribute("pos", "gogo");
-    }
+
+
+    //    @GetMapping("/pos/posorder")
+//    public void read(Long posNum, Model model) {
+//        PosDTO posDTO = posService.getPos(posNum);
+//        model.addAttribute("pos", posDTO);
+//    }
 }

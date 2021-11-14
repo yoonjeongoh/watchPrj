@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,12 +36,15 @@ public class StoreServiceImpl implements StoreService{
     final private StoreImageRepository storeImageRepository;
     @Autowired
     final private MenuImageRepository menuImageRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
 //    DB저장
     @Transactional
     @Override
     public Long storeRegister(StoreDTO storeDTO) {
         log.info(">>>"+storeDTO);
+        storeDTO.setMemberPw(passwordEncoder.encode(storeDTO.getMemberPw()));
         Map<String, Object> entityMap = dtoToEntity(storeDTO);
         Store store = (Store) entityMap.get("store");
         log.info("오류오류"+store);
