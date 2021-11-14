@@ -19,7 +19,6 @@ public interface StoreService {
         default Map<String, Object> dtoToEntity(StoreDTO storeDTO) {
         Map<String, Object> entityMap = new HashMap<>();
         Store store = Store.builder()
-/*
                 .member(Member.builder().memberNum(storeDTO.getMemberNum())
                         .memberName(storeDTO.getMemberName())
                         .memberNickname(storeDTO.getMemberNickname())
@@ -28,7 +27,6 @@ public interface StoreService {
                         .memberPw(storeDTO.getMemberPw())
                         .memberMobile(storeDTO.getMemberMobile())
                         .build())
-*/
                 .storeNum(storeDTO.getStoreNum())
                 .storeName(storeDTO.getStoreName())
                 .storeAds(storeDTO.getStoreAds())
