@@ -12,10 +12,12 @@ import java.time.LocalDateTime;
 public class ReviewDTO {
     private Long reviewnum;
 
-//    private int memberNum;
-//    private String memberId;
-//    private String memberName;
-//    private String memberNickname;
+    private Long memberNum;
+    private String memberId;
+    private String memberName;
+    private String memberNickname;
+
+//    private Long storeNum;
 
     private String text;
     private LocalDateTime regDate;

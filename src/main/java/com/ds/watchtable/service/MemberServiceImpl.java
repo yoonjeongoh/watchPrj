@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static com.ds.watchtable.entity.QMember.member;
 
@@ -37,5 +38,34 @@ public class MemberServiceImpl implements MemberService {
         memberRepository.save(member);
         return member.getMemberName();
     }
+
+    @Override
+    public List<MemberDTO> getAll() {
+        List<Member> list = memberRepository.findAll();
+        List<MemberDTO> dtoList = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            MemberDTO dto = entityToDTO(list.get(i));
+            dtoList.add(dto);
+        }
+        return dtoList;
+    }
+
+//    @Override
+//    public MemberDTO getInfo(Long memberNum) {
+//        Object result = memberRepository.findAll();
+//        Object[] arr = (Object[]) result;
+//        return entityToDTO((Member)arr[0]);
+//    }
+
+
+
+//    @Override
+//    public List<MemberDTO> getInfo(Long memberNum) {
+//        List<Member> = memberRepository.findById(memberNum);
+//        return entityToDTO(member);
+//    }
+
+
+
 }
 
