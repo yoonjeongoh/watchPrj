@@ -23,8 +23,11 @@ public class ReviewController {
     final private ReviewService reviewService;
 
     //ajax를 이용한 데이터 저장
-    @PostMapping("/detail")
+    @PostMapping("watchtable/detail")
     public ResponseEntity<Long> addReview(@RequestBody ReviewDTO reviewDTO){
+        log.info("--------------add MovieReview---------------");
+        log.info("reviewDTO: " + reviewDTO);
+
         Long reviewnum = reviewService.registerReview(reviewDTO);
         return new ResponseEntity<>(reviewnum, HttpStatus.OK);
     }

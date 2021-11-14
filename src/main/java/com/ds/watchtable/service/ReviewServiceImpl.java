@@ -27,6 +27,7 @@ public class ReviewServiceImpl implements ReviewService{
         return review.getReviewnum();
     }
 
+
 //    @Override
 //    public List<ReviewDTO> getListOfStore(int storeNum) {
 //        Store store = Store.builder().storeNum(storeNum).build();

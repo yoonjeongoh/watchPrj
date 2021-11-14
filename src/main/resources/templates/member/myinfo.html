@@ -42,7 +42,7 @@
                                         <div class="profile-usermenu">
                                             <ul class="nav">
                                                 <li class="active">
-                                                    <button class="btn11">내 정보 수정</button>
+                                                    <button class="btn11 goInfoCorrect">내 정보 수정</button>
                                                 </li>
                                                 <br>
                                             </ul>
@@ -96,5 +96,16 @@
             </div>
         </div>
         <div class="end-pg"></div>
+
+        <script th:inline="javascript">
+            function goMyinfo(memberNum, page){
+                //alert('gogo');
+                /*[+
+                var url = [[@{/member/myinfocorrect}]] +
+                    "?memberNum="+memberNum+"&page="+page;
+                +]*/
+                location.href=url;
+            }
+        </script>
     </th:block>
 </th:blotck>

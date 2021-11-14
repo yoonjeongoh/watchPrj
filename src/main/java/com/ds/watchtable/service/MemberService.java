@@ -6,10 +6,17 @@ import com.ds.watchtable.entity.Member;
 import com.ds.watchtable.entity.MemberRole;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.List;
+
 public interface MemberService {
 //    public User add(User user) throws Exception;
-    //DB 저장
+
+//DB 저장
 String register(MemberDTO dto);
+// info 불러오기
+//MemberDTO getInfo(Long memberNum);
+List<MemberDTO> getAll();
+
     default Member dtoToEntity(MemberDTO memberDTO){
         Member member = Member.builder()
                 .memberNum(memberDTO.getMemberNum())
@@ -21,7 +28,6 @@ String register(MemberDTO dto);
                 .memberPw(memberDTO.getMemberPw())
                 .build();
         member.addMemberRole(MemberRole.USER);
-        member.addMemberRole(MemberRole.MANAGER);
         return member;
     }
 

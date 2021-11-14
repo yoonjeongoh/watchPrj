@@ -7,7 +7,8 @@
         <fieldset>
             <div class="joinfield">
                 <form class="form11" th:action="@{/member/myinfo}" method="post" id="join_form" name="f">
-                    <label><span class="span11"><input type="radio" class="ch-box1" name="name" value="name">이름</span></label><br>
+                    <label><span class="span11"><input type="radio" class="ch-box1" name="name"
+                                                       th:value="${dto.memberNum}">이름</span></label><br>
                     <input class="input11" type="text" id="my_name"><br>
 <!--                    <span class="invalid" id="nameSpace">공백은 사용할 수 없습니다.</span>-->
 <!--                    <span class="invalid" id="noEnglish">한글로 입력해주세요.</span>-->
