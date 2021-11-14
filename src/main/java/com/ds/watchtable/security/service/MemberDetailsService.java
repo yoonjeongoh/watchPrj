@@ -22,15 +22,16 @@ public class MemberDetailsService implements UserDetailsService {
     private final MemberRepository memberRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String memberId) throws UsernameNotFoundException {
-        log.info("ClubUserDetailsService loadUserByMemberId=" + memberId);
-        Optional<Member> result = memberRepository.findByMemberId(memberId, false);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        log.info("ClubUserDetailsService loadUserByMemberId=" + username);
+        Optional<Member> result = memberRepository.findByMemberId(username, false);
         if (!result.isPresent()) {
             throw new UsernameNotFoundException("Check User Email or from Social ");
         }
         Member member = result.get();
         log.info("-----------------------------");
         log.info(member);
+
         ClubAuthMemberDTO clubAuthMemberDTO = new ClubAuthMemberDTO(
                 member.getMemberId(),
                 member.getMemberPw(),

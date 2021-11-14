@@ -36,15 +36,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin().loginPage("/member/login").loginProcessingUrl("/login")
-                .successHandler(successHandler()).failureUrl("/member/login?error");
+        http.formLogin().loginPage("/login").loginProcessingUrl("/login")
+                .successHandler(successHandler()).failureUrl("/member/login?error")
+                .defaultSuccessUrl("/");
         http.csrf().disable();
         http.logout();
 //        http.oauth2Login().successHandler(successHandler());
         http.rememberMe().tokenValiditySeconds(60 * 60 * 24 * 7).userDetailsService(userDetailsService);
         http.addFilterBefore(apiCheckFilter(), UsernamePasswordAuthenticationFilter.class);
-        http.addFilterBefore(apiLoginFilter(), UsernamePasswordAuthenticationFilter.class);
         http.headers().frameOptions().sameOrigin();
+        http.httpBasic().and().authorizeRequests()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/member/manage").hasRole("MANAGER")
+                .antMatchers("/").permitAll()
+                .and().logout().permitAll()
+                .and().formLogin();
     }
 
     @Bean
