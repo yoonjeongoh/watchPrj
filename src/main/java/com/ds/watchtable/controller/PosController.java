@@ -38,11 +38,7 @@ public class PosController {
 //        model.addAttribute("pos", posList);
 //    }
     @GetMapping("/pos/posorder")
-    public String index(Long posNum, Model model) {
-        Pos pos = posRepository.findById(posNum).orElse(null);
-        model.addAttribute("pos", pos);
-    return "/pos/posorder";
+    public void index( Model model) {
+        model.addAttribute("pos", "gogo");
     }
-
-
 }

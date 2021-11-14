@@ -14,12 +14,12 @@
             <div class="menu-item" id="item4"></div>
         </div>
         </form>
-        <tr th:each="pos: ${pos}">
+        <tr th:each="pos:${pos}">
         <div class="menu-list">
-            <input type='button' th:value="${pos.menu1}" id="menu1" onclick= 'menu1()' />
-            <input type='button' th:value="${pos.menu2}" id="menu2" onclick= 'menu2()' />
-            <input type='button' th:value="${pos.menu3}" id="menu3" onclick= 'menu3()' />
-            <input type='button' th:value="${pos.menu4}" id="menu4" onclick= 'menu4()' />
+            <input type='button' th:value=${pos} id="menu1" onclick= 'menu1()' />
+            <input type='button' th:value=${pos} id="menu2" onclick= 'menu2()' />
+            <input type='button' th:value=${pos} id="menu3" onclick= 'menu3()' />
+            <input type='button' th:value=${pos} id="menu4" onclick= 'menu4()' />
         </div>
         </tr>
         </div>
