@@ -15,11 +15,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Log4j2
 @Controller
 @RequiredArgsConstructor
-@RequestMapping({"/watchtable","/join","/member","/pos","/review","/admin",})
+@RequestMapping({"/watchtable","/member","/pos","/review","/admin","manager"})
 public class WatchtableController {
-    @GetMapping({"/checkpw","/join","managerjoin","/joinselect", "/myinfocorrect", "/detail",
-           "/manageinfocorrect","/myinfo","/managemyinfo","/myreview","/storereview",
-            "/kitchen","/possetting" ,"/loginmng"})
+    @GetMapping({"/myinfocorrect", "/detail","/manageinfocorrect","/myinfo","/managemyinfo",
+            "/myreview","/storereview","/kitchen","/possetting" ,"/loginmng"})
 
     public void list(){
     }

@@ -36,7 +36,8 @@ public interface StoreService {
                 .storeClose(storeDTO.getStoreClose())
                 .bsNum(storeDTO.getBsNum())
                 .build();
-        entityMap.put("store", store);
+                entityMap.put("store", store);
+//                store.addManagerRole(MemberRole.MANAGER);
 
         List<StoreImageDTO> storeImageDTOList = storeDTO.getStoreImageDTOList();
         if (storeImageDTOList != null && storeImageDTOList.size() > 0) {

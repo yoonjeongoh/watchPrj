@@ -10,15 +10,14 @@
     <h3>실제 메인화면에 나와야 할 것들</h3>
     <a href="http://localhost:8080/watchtable/">/watchtable/main(All)</a><br>
     <a th:href="@{watchtable/detail}">/watchtable/detailed(All)</a><br>
-    <a th:href="@{member/login}">/watchtable/login(Guest)</a><br>
+    <a th:href="@{join/login}">/join/login(Guest)</a><br>
     <a th:href="@{member/myinfo}">/watchtable/myinfo(Member)</a><br>
-    <a th:href="@{member/manage}">/watchtable/manage(Business member)</a><br>
     <a th:href="@{admin/admin}">/watchtable/admin(Admin)</a><br>
     <hr>
     <h3>비회원 항목들</h3>
-    <a th:href="@{join/join}">/watchtable/join(Guest)</a><br>
-    <a th:href="@{join/managerjoin}">/watchtable/managerjoin(Guest)</a><br>
-    <a th:href="@{join/joinselect}">/watchtable/joinselect(Guest)</a><br>
+    <a th:href="@{join/join}">/join/join(Guest)</a><br>
+    <a th:href="@{join/managerjoin}">/join/managerjoin(Guest)</a><br>
+    <a th:href="@{join/joinselect}">/join/joinselect(Guest)</a><br>
     <hr>
     <h3>일반회원 항목들</h3>
     <a th:href="@{member/myinfocorrect}">/watchtable/myinfocorrect(Member)</a><br>
@@ -27,8 +26,10 @@
     <a th:href="@{review/myreview}">/watchtable/myreview(Member)</a><br>
     <hr>
     <h3>사업자 회원 항목들</h3>
-    <a th:href="@{member/manageinfocorrect}">/watchtable/manageinfocorrect(Business Member)</a><br>
-    <a th:href="@{member/managemyinfo}">/watchtable/managemyinfo(Business Member)</a><br>
+
+    <a th:href="@{manager/manageinfocorrect}">/manager/manageinfocorrect(Business Member)</a><br>
+    <a th:href="@{manager/managemyinfo}">/manager/managemyinfo(Business Member)</a><br>
+
     <a th:href="@{review/storereview}">/watchtable/storereview(Business Member)</a><br>
 
     <hr>

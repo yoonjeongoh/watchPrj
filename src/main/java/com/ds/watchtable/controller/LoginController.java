@@ -9,19 +9,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@Log4j2
 @Controller
+@Log4j2
 @RequiredArgsConstructor
+@RequestMapping
 public class LoginController {
-//    @Autowired
-//    private JWTUtil jwtUtil;
-//
-//    @PreAuthorize("hasRole('ADMIN')")
-//    @GetMapping("/admin/**")
-//    public void exAdmin(){
-//        log.info("exAdmin....");
-//    }
+    @GetMapping("/join/login")
+    public void login(String error, String logout, Model model) {
+        log.info("login error : "+error);
+        log.info("login logout : "+logout);
+        if (error != null){
+            model.addAttribute("error","Login Error Check Your Account");
+        }
+        if (logout != null){
+            model.addAttribute("logout","Logout!");
+        }
+    }
 }
