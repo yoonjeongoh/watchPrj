@@ -1,25 +1,15 @@
 package com.ds.watchtable.service;
 
 import com.ds.watchtable.dto.MemberDTO;
-import com.ds.watchtable.dto.PosDTO;
-import com.ds.watchtable.dto.StoreDTO;
 import com.ds.watchtable.entity.Member;
-import com.ds.watchtable.entity.Pos;
-import com.ds.watchtable.entity.Review;
 import com.ds.watchtable.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-
-import static com.ds.watchtable.entity.QMember.member;
 
 
 @Service
@@ -38,26 +28,34 @@ public class MemberServiceImpl implements MemberService {
         memberRepository.save(member);
         return member.getMemberName();
     }
-
+    //옵셔널은 하나만 가져오는것
     @Override
-    public List<MemberDTO> getAll() {
-        List<Member> list = memberRepository.findAll();
-        List<MemberDTO> dtoList = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            MemberDTO dto = entityToDTO(list.get(i));
-            dtoList.add(dto);
+    public Member getInfo(Long memberNum) {
+        Optional<Member> result = memberRepository.findById(memberNum);
+        if (result.isPresent()) {
+            Member member = result.get();
+            return member;
         }
-        return dtoList;
+        return null;
     }
 
+
+
+}
+
+
+    //그냥 다 틀려먹었다고 tlqkf
 //    @Override
-//    public MemberDTO getInfo(Long memberNum) {
-//        Object result = memberRepository.findAll();
-//        Object[] arr = (Object[]) result;
-//        return entityToDTO((Member)arr[0]);
+//    public List<MemberDTO> getAll() {
+//        List<Member> list = memberRepository.findAll();
+//        List<MemberDTO> dtoList = new ArrayList<>();
+//        for (int i = 0; i < list.size(); i++) {
+//            MemberDTO dto = entityToDTO(list.get(i));
+//            dtoList.add(dto);
+//        }
+//        return dtoList;
 //    }
-
-
+//
 
 //    @Override
 //    public List<MemberDTO> getInfo(Long memberNum) {
@@ -67,5 +65,4 @@ public class MemberServiceImpl implements MemberService {
 
 
 
-}
 
