@@ -1,8 +1,10 @@
 package com.ds.watchtable.controller;
 
 import com.ds.watchtable.dto.PosDTO;
+import com.ds.watchtable.dto.PosOrderDTO;
 import com.ds.watchtable.entity.Pos;
 import com.ds.watchtable.repository.PosRepository;
+import com.ds.watchtable.service.PosOrderService;
 import com.ds.watchtable.service.PosService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -24,12 +26,26 @@ public class PosController {
     private final PosService posService;
 
     @Autowired
+    private final PosOrderService posOrderService;
+
+    @Autowired
     private PosRepository posRepository;
 
-    @PostMapping("/pos/postable")
-    public void registerPost(PosDTO posDTO){
-        log.info("Register............");
+    @RequestMapping("/pos/postable")
+    public void registerPos(PosDTO posDTO, PosOrderDTO posOrderDTO){
         posService.posSetting(posDTO);
+        posOrderService.posOrder(posOrderDTO);
+        log.info("Register............");
+    }
+
+    @RequestMapping("/pos/posorder")
+    public void PosOrder(PosDTO posDTO){
+        log.info("Register............");
+    }
+
+    @RequestMapping("/pos/possetting")
+    public void PosSetting(PosDTO posDTO){
+        log.info("Register............");
     }
 
 //    @RequestMapping({"/pos/posorder","/pos/postable"})

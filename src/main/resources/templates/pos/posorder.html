@@ -5,26 +5,24 @@
         <link th:href="@{/css2/posorder.css}" rel="stylesheet" />
         <div class="flex-container">
         <form class="menu_form" action="http://localhost:8080/watchtable/pos/postable" method="post"
-              id="menu_form" name="form">
-        <div class="order-list">
+              id="menu_form" name="f3">
             <div>메뉴</div>
-            <div class="menu-item" id="item1"></div>
-            <div class="menu-item" id="item2"></div>
-            <div class="menu-item" id="item3"></div>
-            <div class="menu-item" id="item4"></div>
+        <div id="item-list" name="orderList" class="order-list">
+            <div name="orderList" class="menu-item" id="item1"></div>
+            <div name="orderList" class="menu-item" id="item2"></div>
+            <div name="orderList" class="menu-item" id="item3"></div>
+            <div name="orderList" class="menu-item" id="item4"></div>
         </div>
         </form>
-        <tr th:each="pos:${pos}">
         <div class="menu-list">
-            <input type='button' th:value=${pos} id="menu1" onclick= 'menu1()' />
-            <input type='button' th:value=${pos} id="menu2" onclick= 'menu2()' />
-            <input type='button' th:value=${pos} id="menu3" onclick= 'menu3()' />
-            <input type='button' th:value=${pos} id="menu4" onclick= 'menu4()' />
+            <input type='text' name="orderList" id="menu1" onclick= 'menu1()' />
+            <input type='button' th:value="햄버거" id="menu2" onclick= 'menu2()' />
+            <input type='button' th:value="치킨" id="menu3" onclick= 'menu3()' />
+            <input type='button' th:value="피자" id="menu4" onclick= 'menu4()' />
         </div>
-        </tr>
         </div>
         <div class="btn">
-        <button id="btn-ok" onClick="location.href='/watchtable/pos/postable'">확인</button>
+        <button id="btn-ok">확인</button>
         <button id="btn-no" onClick="location.href='/watchtable/pos/postable'">취소</button>
         </div>
         <hr>
@@ -66,7 +64,9 @@
             count4++;
             return;
         }
-
+        document.getElementById('btn-ok').onclick = function() {
+            document.f3.submit()
+        }
 
         </script>
     </th:block>
