@@ -26,16 +26,21 @@ public class StoreController {
         log.info("Register............");
         storeService.storeRegister(storeDTO);
     }
-    //admin/storelist
+//    //admin/storelist
     @GetMapping({"/admin/storelist", "/admin/admin"})
     public void list(PageRequestDTO pageRequestDTO, Model model){
         log.info("pageRequestDTO: "+pageRequestDTO);
-        PageResultDTO result = storeService.getList(pageRequestDTO);
+        PageResultDTO result = storeService.getLGHlist(pageRequestDTO);
         log.info(">>"+result);
         model.addAttribute("result", result);
     }
-
-    //admin/storeread
+////admin/storelist
+//    @GetMapping({"/admin/storelist", "/admin/admin"})
+//    public void list(Model model){
+//        List<StoreDTO> storeList = storeService.getstoreList();
+//        model.addAttribute("storeList", storeList);
+//    }
+        //admin/storeread
     @GetMapping("/admin/storeread")
     public void read(Long storeNum, @ModelAttribute("pageRequestDTO") PageRequestDTO pageRequestDTO , Model model) {
         StoreDTO storeDTO = storeService.getStore(storeNum);
