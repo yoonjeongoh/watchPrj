@@ -13,24 +13,11 @@ button {
 
 .order-list {
     display:flex;
-    flex-direction: column;
     width:600px;
 }
 
-.flex-container{
-position:relative;
-width:960px;
-height:700px;
-}
 
-.menu-list{
-position:relative;
-display:flex;
-flex-direction: column;
-width:300px;
-height:50px;
-left:80%;
-}
+
 
 
 
