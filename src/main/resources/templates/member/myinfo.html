@@ -4,6 +4,8 @@
     <th:block th:fragment="content">
         <link th:href="@{/css2/join.css}" rel="stylesheet"/>
         <link th:href="@{/css2/styles.css}" rel="stylesheet"/>
+        <link id="contextPathHolder" th:data-contextPath="${#httpServletRequest.getContextPath()}"/>
+
 
         <!--        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
         <!--        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>-->
@@ -42,7 +44,8 @@
                                         <div class="profile-usermenu">
                                             <ul class="nav">
                                                 <li class="active">
-                                                    <button class="btn11 goInfoCorrect">내 정보 수정</button>
+                                                    <button class="btn11 goInfoCorrect"
+                                                            th:onclick = "|location.href ='@{/member/myinfocorrect}'|">내 정보 수정</button>
                                                 </li>
                                                 <br>
                                             </ul>
@@ -97,12 +100,19 @@
         </div>
         <div class="end-pg"></div>
 
+<!--
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
                 crossorigin="anonymous"></script>
 
-        <script>
+        <script >
+        $(document).ready(function(e){
+            var contextPath = $('#contextPathHolder').attr('data-contextPath') ? $('#contextPathHolder').attr('data-contextPath') : '';
 
+            $('.goInfoCorrect').on('click', function(){
+                $('.goInfoCorrect').attr("action","contextPath+'/myinfocorrect'")
+            }
         </script>
+-->
     </th:block>
 </th:blotck>

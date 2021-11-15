@@ -29,8 +29,8 @@ public class MemberServiceImpl implements MemberService {
     final private MemberRepository memberRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
-    //db 저장
 
+    //db 저장
     @Override
     public String register(MemberDTO memberDTO) {
         memberDTO.setMemberPw(this.passwordEncoder.encode(memberDTO.getMemberPw()));
