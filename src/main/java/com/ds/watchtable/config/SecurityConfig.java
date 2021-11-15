@@ -47,7 +47,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().sameOrigin();
         http.httpBasic().and().authorizeRequests()
 //                .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("/member/manage").hasRole("MANAGER")
+//                .antMatchers("/manager/**").hasRole("MANAGER")
+//                .antMatchers("/member/**").hasRole("USER")
+                .antMatchers("/member/manageinfocorrect").hasRole("MANAGER")
+                .antMatchers("/member/myinfocerrect").hasRole("USER")
+                .antMatchers("/join/**").permitAll()
                 .antMatchers("/").permitAll()
                 .and().logout().permitAll()
                 .and().formLogin();
