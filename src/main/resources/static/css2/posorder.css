@@ -18,7 +18,21 @@ button {
 
 
 
-
+.menu-list{
+display:table;
+width:100%;
+border: 1px solid #bcbcbc;
+}
+.menu-list-row{
+display: table-row;
+border: 1px solid #bcbcbc;
+}
+.menu-list-cell{
+display: table-cell;
+padding: 0px 20px;
+height: 150px;
+border: 1px solid #bcbcbc;
+}
 
 
 

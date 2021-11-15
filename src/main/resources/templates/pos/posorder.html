@@ -3,59 +3,72 @@
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
         <link th:href="@{/css2/posorder.css}" rel="stylesheet" />
-
-        <div class="container-fluid gedf-wrapper">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="container">
-                            <div class="row profile">
-                                <div class="col-md-9">
-
-                                    <form class="menu_form" action="http://localhost:8080/watchtable/pos/postable" method="post"
-                                          id="menu_form" name="f3">
-
-                                        <div>리스트</div>
-                                        <div id="item-list" name="orderList" class="order-list">
-                                            <div name="orderList" class="menu-item" id="item1"></div><br>
-                                            <div name="orderList" class="menu-item" id="item2"></div><br>
-                                            <div name="orderList" class="menu-item" id="item3"></div><br>
-                                            <div name="orderList" class="menu-item" id="item4"></div><br>
-                                        </div>
-                                    </form>
-                                        <div class="btn">
-                                            <button id="btn-ok">확인</button>
-                                            <button id="btn-no" onClick="location.href='/watchtable/pos/postable'">취소</button>
-                                        </div>
-                                </div>
+        <div class="super-container" style="display:inline-flex;">
+        <div class="col-md-6 gedf-main">
+            <div class="card gedf-card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-center" style="width:600px;">
+                            <div class="ml-2">
+                                <div class="h5 m-0">리스트</div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="card-body" style="height:300px;">
+                        <form id="action-form" class="menu_form" action="http://localhost:8080/watchtable/pos/postable" method="post">
+
+
+                    <div class="menu-list">
+                        <div class="menu-list-row"></div>
+                            <div class="menu-list-cell">
+                                <input value="ㄱㄱ" readonly></input>
+                            </div>
+                            <div class="menu-list-cell">
+                                <input value="ㄱㄱ" readonly></input>
+                            </div>
+                    </div>
+                        </form>
+                        <div class="btn" >
+                            <button id="btn-ok">확인</button>
+                            <button id="btn-no" onClick="location.href='/watchtable/pos/postable'">취소</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+
                 <div class="col-md-6 gedf-main">
                     <div class="card gedf-card">
                         <div class="card-header">
                             <div class="d-flex justify-content-between align-items-center">
-                                <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex justify-content-between align-items-center" style="width:600px;">
                                     <div class="ml-2">
                                         <div class="h5 m-0">메뉴</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body" style="height:300px;">
                             <div class="menu-list">
-                                <input type='button' th:value="김밥"name="orderList" id="menu1" onclick= 'menu1()' /><br>
-                                <input type='button' th:value="햄버거" id="menu2" onclick= 'menu2()' /><br>
-                                <input type='button' th:value="치킨" id="menu3" onclick= 'menu3()' /><br>
-                                <input type='button' th:value="피자" id="menu4" onclick= 'menu4()' /><br>
-                            </div>
+                                <div class="menu-list">
+                                    <div class="menu-list-row"></div>
+                                    <div class="menu-list-cell">
+                                        <input value="ㄱㄱ" readonly></input>
+                                        <input value="ㄱㄱ" readonly></input>
+                                    </div>
+                                    <div class="menu-list-cell">
+                                            <input type=text name=table7 value=0>
+                                            <input type=button value="+" onClick="javascript:this.form.table7.value++;">
+                                            <input type=button value="-" onClick="javascript:this.form.table7.value--;">
+                                    </div>
+                                    <input type="button" value="추가">
+                                    <input type="button" value="추가">
+                                </div>
+                               </div>
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
-        <div class="end-pg"></div>
         <hr>
         <h1 class="mt-4">Pos order</h1>
         <a href="/watchtable/pos/postable">/watchtable/postable[포스테이블]</a><br>
@@ -72,6 +85,7 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
 
         <script th:inline="javascript">
+        window.onload = function() {
         var count1 = 1;
         var count2 = 1;
         var count3 = 1;
@@ -102,6 +116,7 @@
         }
         document.getElementById('btn-ok').onclick = function() {
             document.f3.submit()
+        }
         }
 
         </script>
