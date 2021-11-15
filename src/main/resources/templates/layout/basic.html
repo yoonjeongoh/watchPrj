@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <th:block th:fragment="setContent(content)">
 <head>
     <meta charset="utf-8" />
@@ -22,7 +22,11 @@
 <nav class="navbar navbar-light bg-light static-top">
     <div class="container">
         <a class="navbar-brand" th:href="@{/}">WATCH TABLE</a>
-        <a class="btn btn-primary" th:href="@{join/login}">로그인</a>
+        <a sec:authorize="isAuthenticated()"><span>${#authentication.principal.memberId} 님 환영합니다.</span></a>
+        <a sec:authorize="isAuthenticated()" class="btn btn-primary" href="/logout">로그아웃</a>
+        <a sec:authorize="!isAuthenticated()" class="btn btn-primary" th:href="@{join/login}">로그인</a>
+        <a sec:authorize="!isAuthenticated()" class="btn btn-primary" th:href="@{join/joinselect}">회원가입</a>
+
     </div>
 </nav>
 <!-- Masthead-->
