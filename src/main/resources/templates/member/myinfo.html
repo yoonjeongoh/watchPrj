@@ -45,7 +45,7 @@
                                             <ul class="nav">
                                                 <li class="active">
                                                     <button class="btn11 goInfoCorrect"
-                                                            th:onclick = "|location.href ='@{/member/myinfocorrect}'|">내 정보 수정</button>
+                                                            th:onclick="|javascript:goToInfo('${memberNum}')|">내 정보 수정</button>
                                                 </li>
                                                 <br>
                                             </ul>
@@ -100,19 +100,17 @@
         </div>
         <div class="end-pg"></div>
 
-<!--
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-                crossorigin="anonymous"></script>
-
-        <script >
-        $(document).ready(function(e){
-            var contextPath = $('#contextPathHolder').attr('data-contextPath') ? $('#contextPathHolder').attr('data-contextPath') : '';
-
-            $('.goInfoCorrect').on('click', function(){
-                $('.goInfoCorrect').attr("action","contextPath+'/myinfocorrect'")
+        <script th:inline="javascript">
+            function goToInfo(memberNum){
+                alert('goToInfo');
+                /*[+
+                var url = [[@{/member/myinfocorrect}]] +
+                    "?memberNum="+memberNum;
+                +]*/
+                location.href=url;
             }
+
         </script>
--->
+
     </th:block>
 </th:blotck>

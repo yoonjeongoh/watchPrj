@@ -28,7 +28,7 @@ public class MemberServiceImpl implements MemberService {
         memberRepository.save(member);
         return member.getMemberName();
     }
-    //옵셔널은 하나만 가져오는것
+    //데이터 불러오기
     @Override
     public Member getInfo(Long memberNum) {
         Optional<Member> result = memberRepository.findById(memberNum);
