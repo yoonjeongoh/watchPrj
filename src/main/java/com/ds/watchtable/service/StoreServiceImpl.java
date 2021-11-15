@@ -1,8 +1,6 @@
 package com.ds.watchtable.service;
 
-import com.ds.watchtable.dto.PageRequestDTO;
-import com.ds.watchtable.dto.PageResultDTO;
-import com.ds.watchtable.dto.StoreDTO;
+import com.ds.watchtable.dto.*;
 import com.ds.watchtable.entity.MenuImage;
 import com.ds.watchtable.entity.Store;
 import com.ds.watchtable.entity.StoreImage;
@@ -25,6 +23,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 @Log4j2
@@ -39,7 +38,9 @@ public class StoreServiceImpl implements StoreService{
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-//    DB저장
+
+
+    //    DB저장
     @Transactional
     @Override
     public Long storeRegister(StoreDTO storeDTO) {
@@ -62,18 +63,12 @@ public class StoreServiceImpl implements StoreService{
         return store.getStoreNum();
     }
 
-//    admin store list
+    //    admin store list
     @Override
-    public PageResultDTO<StoreDTO, Object[]> getList(PageRequestDTO requestDTO) {
-        Pageable pageable = requestDTO.getPageable(Sort.by("storeNum").descending());
-
-        Page<Object[]> result = storeRepository.getListPage(pageable);
-
-        Function<Object[], StoreDTO> fn = (arr -> entityToDTO(
-                (Store) arr[0],
-                (List<StoreImage>)(Arrays.asList((StoreImage)arr[1])),
-                (List<MenuImage>)(Arrays.asList((MenuImage)arr[2]))
-        ));
+    public PageResultDTO<StoreDTO, Store> getLGHlist(PageRequestDTO requestDTO) {
+        Pageable pageable = requestDTO.getPageable(Sort.by("storeNum"));
+        Page<Store> result = storeRepository.findAll(pageable);
+        Function<Store, StoreDTO> fn = (entity -> entityToDTO(entity));
         return new PageResultDTO<>(result, fn);
     }
 
@@ -101,7 +96,7 @@ public class StoreServiceImpl implements StoreService{
 
             menuImageList.add((menuImage));
         });
-        return entityToDTO(store, storeImageList, menuImageList);
+        return storeEntityToDTO(store, storeImageList, menuImageList);
     }
 
 }

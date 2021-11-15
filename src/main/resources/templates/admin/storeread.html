@@ -60,15 +60,13 @@
                 </div>
                 <div class="uploadResult">
                     <ul>
-                        <li th:each="storeImage: ${dto.storeImageDTOList}"
-                            th:data-file="${storeImage.getThumbnailURL()}" class="storeImage"> 사업자 등록증
+                        <li th:each="storeImage: ${dto.storeImageDTOList}"class="storeImage"> 사업자 등록증
                             <img th:if="${storeImage.bsPath != null}"
                                  th:src="|/watchtable/storeDisplay?fileName=${storeImage.getThumbnailURL()}|">
                         </li>
                     </ul>
                     <ul>
-                        <li th:each="menuImage: ${dto.menuImageDTOList}"
-                            th:data-file="${menuImage.getThumbnailURL()}" class="menuImage"> 메뉴 이미지
+                        <li th:each="menuImage: ${dto.menuImageDTOList}" class="menuImage"> 메뉴 이미지
                             <img th:if="${menuImage.menuPath != null}"
                                  th:src="|/watchtable/menuDisplay?fileName=${menuImage.getThumbnailURL()}|">
                         </li>
