@@ -21,7 +21,7 @@ public class StoreController {
     private final StoreService storeService;
 
     //DB저장
-    @PostMapping("/member/managemyinfo")
+    @PostMapping("/manager/managemyinfo")
     public void registerPost(StoreDTO storeDTO){
         log.info("Register............");
         storeService.storeRegister(storeDTO);
