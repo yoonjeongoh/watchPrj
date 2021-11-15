@@ -24,6 +24,7 @@ public class MemberController {
 
     private final MemberService memberService;
 
+    //DB 저장
     @RequestMapping("/myinfo")
     public void registerPost(MemberDTO memberDTO) {
         log.info("register...........");
@@ -31,7 +32,7 @@ public class MemberController {
 //    attributes.addAttribute("username",userDTO.getUsername());
 //    attributes.addAttribute("userid",userDTO.getUserid());
     }
-
+    //내정보 데이터 불러오기
     @GetMapping("/myinfocorrect") //get-불러오기
     private void getMyInfo(Model model, @AuthenticationPrincipal Principal principal) {
         List<MemberDTO> dto = memberService.getAll();

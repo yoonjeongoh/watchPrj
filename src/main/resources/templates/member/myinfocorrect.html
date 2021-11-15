@@ -5,10 +5,9 @@
         <link th:href="@{/css2/join.css}" rel="stylesheet" />
 
         <fieldset>
-            <div class="joinfield">
+            <div class="joinfield" >
                 <form class="form11" th:action="@{/member/myinfo}" method="post" id="join_form" name="f">
-                    <label><span class="span11"><input type="radio" class="ch-box1" name="name"
-                                                       th:value="${dto.memberNum}"></span></label><br>
+                    <label><span class="span11"><input type="radio" class="ch-box1" name="name"></span></label><br>
                     <input class="input11" type="text" id="my_name"><br>
 <!--                    <span class="invalid" id="nameSpace">공백은 사용할 수 없습니다.</span>-->
 <!--                    <span class="invalid" id="noEnglish">한글로 입력해주세요.</span>-->
@@ -48,44 +47,21 @@
 
                     <button id = "coBtn" type="button" class="join_button btn11 colored-btn11">수정하기</button>
                     <button type="reset" class="reset-btn btn11 uncolored-btn11"
-                            onclick="location.href='/member/myinfo';">돌아가기</button>
+                            th:onclick="|location.href='@{/member/myinfo}'|">돌아가기</button>
 
                 </form>
             </div>
         </fieldset>
 
-<!--
-        <div th:value="@{memberDTO}">
-
-        </div>
-
-        <input type="text" th:value="${member.memberName}" id="memberName"/>
-
--->
 
 <!--   ------페이지 하단 마진주기---- -->
         <div class="end-pg"></div>
 
+<!--        스크립트-->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
                 crossorigin="anonymous"></script>
 
-<!--        <script>-->
-<!--        $(document).ready(function(){-->
-<!--        var contextPath = $('#contextPathHolder').attr('data-contextPath') ? $('#contextPathHolder').attr('data-contextPath') : '';-->
-
-<!--            $.ajax({-->
-<!--                url: contextPath+'/myinfocorrect',-->
-<!--                type:"post",-->
-<!--                data: {-->
-<!--                    name : $(#my_name).val(),-->
-<!--                    nickname : $(#my_nick).val()-->
-<!--                },-->
-<!--                contentType:"application/json; charset=utf-8",-->
-<!--                dataType:"json",-->
-<!--            });-->
-<!--        });-->
-<!--        </script>-->
 
 <!--        유효성검사-->
         <script>
