@@ -141,7 +141,7 @@
         $(document).ready(function(e){
             var contextPath = $('#contextPathHolder').attr('data-contextPath') ? $('#contextPathHolder').attr('data-contextPath') : '';
 
-            //리뷰 데이터 넘기기-완성
+            //리뷰 데이터 넘기기-완성..아니 미완성 갑자기 외않되
             $("#rv-btn").click(function(){
                 var review = $('textarea[name="reviewText"]');
                 var data = {memberNum: memberNum, text: review.val()};
@@ -155,10 +155,31 @@
                     success: function(result){
                         console.log("result: "+result);
                         self.location.reload();
-                     }
+                     } //success end
+                }); //end rv-btn ajax
+            }); //end rv-btn function
+
+            //대기등록 모달
+            var modal = $('.modal');
+            var mobile = $('.memberMobile');
+            var party = $('.partyMember');
+
+            $(".waiting-register21").click(function(){
+                modal.modal('show');
+                    $('.memberName').val();
+                    $('.memberMobile').val();
+                    $('.partyMember').val('');
                 });
+
+            $(".waiting-close21").click(function(){
+                modal.modal('hide');
+                $('.memberName').val('');
+                $('.memberMobile').val('');
+                $('.partyMember').val('');
             });
-        });
+
+
+        }); //end script
 
 
     </script>
