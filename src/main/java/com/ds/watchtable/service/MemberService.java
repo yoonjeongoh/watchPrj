@@ -4,9 +4,6 @@ package com.ds.watchtable.service;
 import com.ds.watchtable.dto.MemberDTO;
 import com.ds.watchtable.entity.Member;
 import com.ds.watchtable.entity.MemberRole;
-import org.springframework.security.crypto.password.PasswordEncoder;
-
-import java.util.List;
 
 public interface MemberService {
 //    public User add(User user) throws Exception;
@@ -14,8 +11,7 @@ public interface MemberService {
 //DB 저장
 String register(MemberDTO dto);
 // info 불러오기
-//MemberDTO getInfo(Long memberNum);
-List<MemberDTO> getAll();
+Member getInfo(Long memberNum);
 
     default Member dtoToEntity(MemberDTO memberDTO){
         Member member = Member.builder()
