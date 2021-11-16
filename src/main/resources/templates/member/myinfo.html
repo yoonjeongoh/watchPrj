@@ -38,14 +38,13 @@
                                             <img src="https://via.placeholder.com/150" class="img-responsive" alt="">
                                         </div>
                                         <div class="profile-usertitle">
-                                            <div class="profile-usertitle-name">[[${mem.memberNum}]]</div>
+                                            <div class="profile-usertitle-name">{{이름}}</div>
                                             <div class="profile-usertitle-job">{{별명}}</div>
                                         </div>
                                         <div class="profile-usermenu">
                                             <ul class="nav">
                                                 <li class="active">
-                                                    <button class="btn11 goInfoCorrect"
-                                                            th:onclick="|javascript:goToInfo('${memberNum}')|">내 정보 수정</button>
+                                                    <button class="btn11 goInfoCorrect">내 정보 수정</button>
                                                 </li>
                                                 <br>
                                             </ul>
@@ -100,17 +99,6 @@
         </div>
         <div class="end-pg"></div>
 
-        <script th:inline="javascript">
-            function goToInfo(memberNum){
-                alert('goToInfo');
-                /*[+
-                var url = [[@{/member/myinfocorrect}]] +
-                    "?memberNum="+memberNum;
-                +]*/
-                location.href=url;
-            }
-
-        </script>
 
     </th:block>
 </th:blotck>

@@ -26,22 +26,13 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    //test중
-    @RequestMapping("/myinfo/{memberNum}")
-    public void registerAndMyInfo(MemberDTO memberDTO, Long memberNum, Model model,
-                                  @AuthenticationPrincipal Principal principal) {
+    //db 저장 백업
+    @RequestMapping("/myinfo")
+    public void registerAndMyInfo(MemberDTO memberDTO) {
         log.info("register...........");
         memberService.register(memberDTO);
-
-        SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        log.info("memberNum>>"+memberNum);
-        Optional<Member> result = Optional.ofNullable(memberService.getInfo(memberNum));
-        if (result != null) {
-            model.addAttribute("mem", result.get());
-        }
-        if (result == null) {
-            return;
-        }
+//    attributes.addAttribute("username",userDTO.getUsername());
+//    attributes.addAttribute("userid",userDTO.getUserid());
     }
 
     //내 정보 불러오기
@@ -61,16 +52,23 @@ public class MemberController {
         log.info("result>>"+result);
     }
 
-  //db 저장 백업
+    //test중
 /*    @RequestMapping("/myinfo")
-    public void registerAndMyInfo(MemberDTO memberDTO) {
+    public void registerAndMyInfo(MemberDTO memberDTO, Long memberNum, Model model,
+                                  @AuthenticationPrincipal Principal principal) {
         log.info("register...........");
         memberService.register(memberDTO);
-//    attributes.addAttribute("username",userDTO.getUsername());
-//    attributes.addAttribute("userid",userDTO.getUserid());
+
+        SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        log.info("memberNum>>"+memberNum);
+        Optional<Member> result = Optional.ofNullable(memberService.getInfo(memberNum));
+        if (result != null) {
+            model.addAttribute("mem", result.get());
+        }
+        if (result == null) {
+            return;
+        }
     }*/
-
-
 
     //그냥 틀려먹음
 /*
