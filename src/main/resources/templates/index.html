@@ -15,25 +15,24 @@
     <a th:href="@{admin/admin}">/watchtable/admin(Admin)</a><br>
     <hr>
     <h3>Admin</h3>
-    <a th:href="@{admin/admin}">/admin/admin(Admin)</a><br>
-    <a th:href="@{admin/storelist}">/admin/storelist(Admin)</a><br>
-    <a th:href="@{admin/storeread}">/admin/storeread(Admin)[사업자증명서확인]</a><br>
+    <a th:href="@{admin/admin}">/admin/admin(관리자일체)</a><br>
+    <a th:href="@{admin/storelist}">/admin/storelist(승인대기리스트)</a><br>
+    <a th:href="@{admin/storeread}">/admin/storeread(승인대기 상세보기)[사업자증명서확인]</a><br>
     <hr>
     <h3>Join</h3>
-    <a th:href="@{join/checkpw}">/watchtable/checkpw(All Members)</a><br>
-    <a th:href="@{join/join}">/join/join(Guest)</a><br>
-    <a th:href="@{join/joinselect}">/join/joinselect(Guest)</a><br>
-    <a th:href="@{join/login}">/join/login(Guest)</a><br>
-    <a th:href="@{join/managerjoin}">/join/managerjoin(Guest)</a><br>
+    <a th:href="@{join/checkpw}">/watchtable/checkpw(비밀번호확인)</a><br>
+    <a th:href="@{join/join}">/join/join(일반회원가입)</a><br>
+    <a th:href="@{join/joinselect}">/join/joinselect(회원가입선택)</a><br>
+    <a th:href="@{join/login}">/join/login(로그인)</a><br>
+    <a th:href="@{join/managerjoin}">/join/managerjoin(사업자회원가입)</a><br>
     <hr>
     <h3>Manager</h3>
-    <a th:href="@{manager/manageinfocorrect}">/manager/manageinfocorrect(Business Member)</a><br>
-    <a th:href="@{manager/managemyinfo}">/manager/managemyinfo(Business Member)</a><br>
+    <a th:href="@{manager/managemyinfo}">/manager/managemyinfo(가게상황)</a><br>
+    <a th:href="@{manager/manageinfocorrect}">/manager/manageinfocorrect(가게정보수정)</a><br>
     <hr>
     <h3>Member</h3>
-    <a th:href="@{member/myinfo}">/watchtable/myinfo(All Members)</a><br>
-    <a th:href="|javascript:read('${memberNum}')|">/Testing/myinfo(All Members)</a><br>
-    <a th:href="@{member/myinfocorrect}">/watchtable/myinfocorrect(Member)</a><br>
+    <a th:href="@{member/myinfo}">/member/myinfo(내정보보기)</a><br>
+    <a th:href="@{member/myinfocorrect}">/member/myinfocorrect(내정보수정)</a><br>
     <hr>
     <h3>Pos</h3>
     <a th:href="@{pos/kitchen}">/watchtable/kitchen[주방화면]</a><br>
@@ -43,8 +42,8 @@
     <a th:href="@{pos/postable}">/watchtable/postable[포스테이블]</a><br>
     <hr>
     <h3>Review</h3>
-    <a th:href="@{review/myreview}">/watchtable/myreview(Member)</a><br>
-    <a th:href="@{review/storereview}">/watchtable/storereview(Business Member)</a><br>
+    <a th:href="@{review/myreview}">/watchtable/myreview(내리뷰)</a><br>
+    <a th:href="@{review/storereview}">/watchtable/storereview(가게리뷰)</a><br>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c804c7f02459129ea465ac2bec99e513&libraries=services,clusterer,drawing"></script>
@@ -52,6 +51,7 @@
     <script src="/watchtable/js/index.js"></script>
     <script src="/watchtable/js/indexList.js"></script>
 
+<!--
     <script th:inline="javascript">
             function read(memberNum){
                 //alert('read');
@@ -62,6 +62,7 @@
                 location.href=urlword;
             }
         </script>
+-->
 
   </th:block>
 </th:block>
