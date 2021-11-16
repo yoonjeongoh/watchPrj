@@ -26,25 +26,49 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    //DB 저장
-    @RequestMapping("/myinfo")
-    public void registerPost(MemberDTO memberDTO) {
+    //test중
+    @RequestMapping("/myinfo/{memberNum}")
+    public void registerAndMyInfo(MemberDTO memberDTO, Long memberNum, Model model,
+                                  @AuthenticationPrincipal Principal principal) {
         log.info("register...........");
         memberService.register(memberDTO);
-//    attributes.addAttribute("username",userDTO.getUsername());
-//    attributes.addAttribute("userid",userDTO.getUserid());
+
+        SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        log.info("memberNum>>"+memberNum);
+        Optional<Member> result = Optional.ofNullable(memberService.getInfo(memberNum));
+        if (result != null) {
+            model.addAttribute("mem", result.get());
+        }
+        if (result == null) {
+            return;
+        }
     }
 
+    //내 정보 불러오기
     @GetMapping("/myinfocorrect")
     private void getMyInfo(Long memberNum, Model model,
                            @AuthenticationPrincipal Principal principal) {
        SecurityContextHolder.getContext().getAuthentication().getPrincipal();
        log.info("memberNum>>"+memberNum);
-        Optional<Member> result = Optional.ofNullable(memberService.getInfo(memberNum));
+       Optional<Member> result = Optional.ofNullable(memberService.getInfo(memberNum));
 //        Optional<Member> result = memberService.getInfo(memberNum);
-        model.addAttribute("member", result);
+        if (result != null) {
+            model.addAttribute("mem", result.get());
+        }
+        if (result == null) {
+            return;
+        }
         log.info("result>>"+result);
     }
+
+  //db 저장 백업
+/*    @RequestMapping("/myinfo")
+    public void registerAndMyInfo(MemberDTO memberDTO) {
+        log.info("register...........");
+        memberService.register(memberDTO);
+//    attributes.addAttribute("username",userDTO.getUsername());
+//    attributes.addAttribute("userid",userDTO.getUserid());
+    }*/
 
 
 

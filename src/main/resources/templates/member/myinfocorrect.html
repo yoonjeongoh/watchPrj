@@ -5,12 +5,12 @@
         <link th:href="@{/css2/join.css}" rel="stylesheet" />
     <div class="wrapper">
         <fieldset>
-            <div class="h5 m-0">멤버넘버 : [[${memberNum}]]</div>
+            <div class="h5 m-0">멤버넘버 : [[${mem.memberNum}]]</div>
 
             <div class="joinfield" >
                 <form class="form11" th:action="@{/member/myinfo}" method="post" id="join_form" name="f">
-                    <label><span class="span11"><input type="radio" class="ch-box1" name="name"></span></label><br>
-                    <input class="input11" type="text" id="my_name"><br>
+                    <label><span class="span11"><input type="radio" class="ch-box1" name="name">이름</span></label><br>
+                    <input class="input11" type="text" id="my_name" th:value="${mem.memberName}"><br>
 <!--                    <span class="invalid" id="nameSpace">공백은 사용할 수 없습니다.</span>-->
 <!--                    <span class="invalid" id="noEnglish">한글로 입력해주세요.</span>-->
 <!--                    <span class="invalid" id="name_min">2자 이상 입력하세요.</span>-->
@@ -18,7 +18,7 @@
 
 
                     <label><span class="span11"><input type="radio" class="ch-box1" name="name" value="nick">닉네임</span></label><br>
-                    <input class="input11" type="text" name="membernick" id="my_nick" ><br>
+                    <input class="input11" type="text" name="membernick" id="my_nick" th:value="${mem.memberNickname}" ><br>
 <!--                    <span class="invalid" id="nickSpace">공백은 사용할 수 없습니다.</span>-->
 <!--                    <span class="invalid" id="noSpecial">특수문자 및 자음은 사용할 수 없습니다.</span>-->
 <!--                    <span class="invalid" id="nick_min">2자 이상 입력하세요.</span>-->
@@ -38,12 +38,12 @@
 
                     <span class="span11">이메일</span> <br>
                     <input class="input11" title="이메일" type="text" name="memberEmail" id="my_add"
-                           placeholder="예>id@domain.com"><br>
+                           placeholder="예>id@domain.com" th:value="${mem.memberEmail}"><br>
 <!--                    <span class="invalid" id="mail_error">유효하지 않은 이메일 입니다.</span>-->
 <!--                    <span class="valid" id="mail_ok">사용 가능한 이메일 입니다.</span><br>-->
 
                     <span class="span11">연락처</span> <br>
-                    <input class="input11" title="연락처" type="text" name="memberMobile" id="sel-my-tel"><br>
+                    <input class="input11" title="연락처" type="text" name="memberMobile" id="sel-my-tel" th:value="${mem.memberMobile}" ><br>
 <!--                    <span class="invalid" id="mobile_error">전화번호를 확인해주세요.</span>-->
 <!--                    <span class="valid" id="mobile_ok">확인.</span><br>-->
 
@@ -54,7 +54,7 @@
                 </form>
             </div>
         </fieldset>
-    </div> //end wrapper
+    </div> <!-- end wrapper -->
 
 <!--   ------페이지 하단 마진주기---- -->
         <div class="end-pg"></div>
