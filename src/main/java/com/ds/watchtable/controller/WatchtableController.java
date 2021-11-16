@@ -19,7 +19,7 @@ public class WatchtableController {
     private final StoreService storeService;
 
     @GetMapping({"/watchtable/detail","/manager/manageinfocorrect","/manager/managemyinfo",
-            "/review/storereview","/pos/kitchen","/join/login" ,"/pos/loginmng"})
+            "/review/storereview","/pos/kitchen","/pos/loginmng"})
 
     public void list(){
     }
