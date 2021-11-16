@@ -52,33 +52,6 @@ public class MemberController {
         log.info("result>>"+result);
     }
 
-    //test중
-/*    @RequestMapping("/myinfo")
-    public void registerAndMyInfo(MemberDTO memberDTO, Long memberNum, Model model,
-                                  @AuthenticationPrincipal Principal principal) {
-        log.info("register...........");
-        memberService.register(memberDTO);
-
-        SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        log.info("memberNum>>"+memberNum);
-        Optional<Member> result = Optional.ofNullable(memberService.getInfo(memberNum));
-        if (result != null) {
-            model.addAttribute("mem", result.get());
-        }
-        if (result == null) {
-            return;
-        }
-    }*/
-
-    //그냥 틀려먹음
-/*
-    @GetMapping("/myinfocorrect") //get-불러오기
-    private void getMyInfo(Model model, @AuthenticationPrincipal Principal principal) {
-        List<MemberDTO> dto = memberService.getAll();
-        model.addAttribute("memberDTO", dto);
-        log.info("dto>>" + dto);
-        }
-*/
 
 }
 

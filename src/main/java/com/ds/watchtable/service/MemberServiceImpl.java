@@ -39,29 +39,10 @@ public class MemberServiceImpl implements MemberService {
         return null;
     }
 
-
-
 }
 
 
-    //그냥 다 틀려먹었다고 tlqkf
-//    @Override
-//    public List<MemberDTO> getAll() {
-//        List<Member> list = memberRepository.findAll();
-//        List<MemberDTO> dtoList = new ArrayList<>();
-//        for (int i = 0; i < list.size(); i++) {
-//            MemberDTO dto = entityToDTO(list.get(i));
-//            dtoList.add(dto);
-//        }
-//        return dtoList;
-//    }
-//
 
-//    @Override
-//    public List<MemberDTO> getInfo(Long memberNum) {
-//        List<Member> = memberRepository.findById(memberNum);
-//        return entityToDTO(member);
-//    }
 
 
 
