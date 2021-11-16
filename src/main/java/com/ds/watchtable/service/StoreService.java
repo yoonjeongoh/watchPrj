@@ -14,13 +14,14 @@ public interface StoreService {
 
     //DB저장
     Long storeRegister(StoreDTO storeDTO);
+
     //admin/storelist 리스트 목록
     PageResultDTO<StoreDTO, Store> getLGHlist(PageRequestDTO requestDTO);
+
     //admin/storeread 가게 정보 상세보기
     StoreDTO getStore(Long storeNum);
 
-
-        default Map<String, Object> dtoToEntity(StoreDTO storeDTO) {
+    default Map<String, Object> dtoToEntity(StoreDTO storeDTO) {
         Map<String, Object> entityMap = new HashMap<>();
         Store store = Store.builder()
                 .member(Member.builder()
@@ -41,7 +42,7 @@ public interface StoreService {
                 .storeClose(storeDTO.getStoreClose())
                 .bsNum(storeDTO.getBsNum())
                 .build();
-                entityMap.put("store", store);
+        entityMap.put("store", store);
 //                store.addManagerRole(MemberRole.MANAGER);
 
         List<StoreImageDTO> storeImageDTOList = storeDTO.getStoreImageDTOList();
@@ -89,30 +90,10 @@ public interface StoreService {
                 .regDate(store.getRegDate())
                 .modDate(store.getModDate())
                 .build();
-//
-//        List<StoreImageDTO> storeImageDTOList = storeImageList.stream()
-//                .map(storeImage -> {
-//                    return StoreImageDTO.builder()
-//                            .bsImgName(storeImage.getBsImgName())
-//                            .bsPath(storeImage.getBsPath())
-//                            .bsUuid(storeImage.getBsUuid())
-//                            .build();
-//                }).collect(Collectors.toList());
-//        storeDTO.setStoreImageDTOList(storeImageDTOList);
-//
-//        List<MenuImageDTO> menuImageDTOList = menuImageList.stream()
-//                .map(menuImage -> {
-//                    return MenuImageDTO.builder()
-//                            .menuImgName(menuImage.getMenuImgName())
-//                            .menuPath(menuImage.getMenuPath())
-//                            .menuUuid(menuImage.getMenuUuid())
-//                            .build();
-//                }).collect(Collectors.toList());
-//        storeDTO.setMenuImageDTOList(menuImageDTOList);
-
         return storeDTO;
     }
-    default StoreDTO storeEntityToDTO(Store store,List<StoreImage> storeImageList, List<MenuImage> menuImageList) {
+
+    default StoreDTO storeEntityToDTO(Store store, List<StoreImage> storeImageList, List<MenuImage> menuImageList) {
         StoreDTO storeDTO = StoreDTO.builder()
                 .storeNum(store.getStoreNum())
                 .storeName(store.getStoreName())
