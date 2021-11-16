@@ -16,7 +16,7 @@
     <hr>
     <h3>Admin</h3>
     <a th:href="@{admin/admin}">/admin/admin(Admin)</a><br>
-    <a th:href="@{admin/storelist}">/admin/storelist(Admin)[사업자승인]</a><br>
+    <a th:href="@{admin/storelist}">/admin/storelist(Admin)</a><br>
     <a th:href="@{admin/storeread}">/admin/storeread(Admin)[사업자증명서확인]</a><br>
     <hr>
     <h3>Join</h3>
@@ -32,6 +32,7 @@
     <hr>
     <h3>Member</h3>
     <a th:href="@{member/myinfo}">/watchtable/myinfo(All Members)</a><br>
+    <a th:href="|javascript:read('${memberNum}')|">/Testing/myinfo(All Members)</a><br>
     <a th:href="@{member/myinfocorrect}">/watchtable/myinfocorrect(Member)</a><br>
     <hr>
     <h3>Pos</h3>
@@ -50,6 +51,17 @@
 
     <script src="/watchtable/js/index.js"></script>
     <script src="/watchtable/js/indexList.js"></script>
+
+    <script th:inline="javascript">
+            function read(memberNum){
+                //alert('read');
+                /*[+
+                var urlword = [[@{/member/myinfo}]] +
+                    "?memberNum="+memberNum;
+                +]*/
+                location.href=urlword;
+            }
+        </script>
 
   </th:block>
 </th:block>
