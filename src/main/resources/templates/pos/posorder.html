@@ -22,17 +22,27 @@
                     <div class="menu-list">
                         <div class="menu-list-row"></div>
                             <div class="menu-list-cell">
-                                <input value="ㄱㄱ" readonly></input>
+                                <input id="order1add" name="order1" value="피자" readonly>
+                                <input id="order2add" name="order2" value="치킨" readonly>
+                                <input id="order3add" name="order3" value="햄버거" readonly>
+                                <input id="order4add" name="order4" value="짜장면" readonly>
+                                <input id="drink1add" name="drink1" value="콜라" readonly>
+                                <input id="drink2add" name="drink2" value="스프라이트" readonly>
                             </div>
                             <div class="menu-list-cell">
-                                <input value="ㄱㄱ" readonly></input>
+                                <input id="orderNum1add" name="orderNum1" value="2" readonly>
+                                <input id="orderNum2add" name="orderNum2" value="2" readonly>
+                                <input id="orderNum3add" name="orderNum3" value="3" readonly>
+                                <input id="orderNum4add" name="orderNum4" value="1" readonly>
+                                <input id="orderNum5add" name="drinkNum1" value="3" readonly>
+                                <input id="orderNum6add" name="drinkNum2" value="2" readonly>
                             </div>
                     </div>
+                            <div class="btn" >
+                                <button id="btn-ok">확인</button>
+                                <button id="btn-no" onClick="location.href='/watchtable/pos/postable'">취소</button>
+                            </div>
                         </form>
-                        <div class="btn" >
-                            <button id="btn-ok">확인</button>
-                            <button id="btn-no" onClick="location.href='/watchtable/pos/postable'">취소</button>
-                        </div>
                 </div>
             </div>
         </div>
@@ -53,22 +63,53 @@
                                 <div class="menu-list">
                                     <div class="menu-list-row"></div>
                                     <div class="menu-list-cell">
-                                        <input value="ㄱㄱ" readonly></input>
-                                        <input value="ㄱㄱ" readonly></input>
+                                        <input name="order1" value="1" readonly>
+                                        <input name="order2" value="2" readonly>
+                                        <input name="order3" value="3" readonly>
+                                        <input name="order4" value="4" readonly>
+                                        <input name="drink1" value="5" readonly>
+                                        <input name="dribk2" value="6" readonly>
+
                                     </div>
                                     <div class="menu-list-cell">
-                                            <input type=text name=table7 value=0>
-                                            <input type=button value="+" onClick="javascript:this.form.table7.value++;">
-                                            <input type=button value="-" onClick="javascript:this.form.table7.value--;">
+                                            <input type=text name=orderNum1 value=0>
+                                            <input type=button value="+" onClick="javascript:this.form.orderNum1.value++;">
+                                            <input type=button value="-" onClick="javascript:this.form.orderNum1.value--;">
+
+                                        <input type=text name=orderNum2 value=0>
+                                        <input type=button value="+" onClick="javascript:this.form.orderNum2.value++;">
+                                        <input type=button value="-" onClick="javascript:this.form.orderNum2.value--;">
+
+                                        <input type=text name=orderNum3 value=0>
+                                        <input type=button value="+" onClick="javascript:this.form.orderNum3.value++;">
+                                        <input type=button value="-" onClick="javascript:this.form.orderNum3.value--;">
+
+                                        <input type=text name=orderNum4 value=0>
+                                        <input type=button value="+" onClick="javascript:this.form.orderNum4.value++;">
+                                        <input type=button value="-" onClick="javascript:this.form.orderNum4.value--;">
+
+                                        <input type=text name=drinkNum1 value=0>
+                                        <input type=button value="+" onClick="javascript:this.form.drinkNum1.value++;">
+                                        <input type=button value="-" onClick="javascript:this.form.drinkNum1.value--;">
+
+
+                                        <input type=text name=drinkNum2 value=0>
+                                        <input type=button value="+" onClick="javascript:this.form.drinkNum2.value++;">
+                                        <input type=button value="-" onClick="javascript:this.form.drinkNum2.value--;">
                                     </div>
-                                    <input type="button" value="추가">
-                                    <input type="button" value="추가">
+                                    <input id="order1addq" type="button" value="추가" onclick= 'order1()'>
+                                    <input id="order2addq" type="button" value="추가" onclick= 'order2()'>
+                                    <input id="order3addq" type="button" value="추가" onclick= 'order3()'>
+                                    <input id="order4addq" type="button" value="추가" onclick= 'order4()'>
+                                    <input id="drink1addq" type="button" value="추가" onclick= 'drink1()'>
+                                    <input id="drink2addq" type="button" value="추가" onclick= 'drink2()'>
                                 </div>
                                </div>
                         </div>
                     </div>
                 </div>
         </div>
+        <div class="end-pg"></div>
         <hr>
         <h1 class="mt-4">Pos order</h1>
         <a href="/watchtable/pos/postable">/watchtable/postable[포스테이블]</a><br>
@@ -85,30 +126,39 @@
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js"></script>
 
         <script th:inline="javascript">
-        window.onload = function() {
-        var count1 = 1;
-        var count2 = 1;
-        var count3 = 1;
-        var count4 = 1;
-            function menu1() {
-            var menu1 = document.getElementById("menu1").value;
-            document.getElementById("item1").innerHTML= menu1+count1+"인분";
-            count1++;
+        window.onload=function(){
+            function order1() {
+            var order1 = document.getElementById("order1").value;
+            var orderNum1 = document.getElementById("orderNum1").value;
+            document.getElementById("order1add").innerHTML= order1;
+            document.getElementById("orderNum1add").innerHTML = orderNum1;
             return;
         }
-            function menu2() {
+            function order2() {
             var menu2 = document.getElementById("menu2").value;
             document.getElementById("item2").innerHTML= menu2+count2+"인분";
             count2++;
             return;
         }
-            function menu3() {
+            function order3() {
             var menu3 = document.getElementById("menu3").value;
             document.getElementById("item3").innerHTML= menu3+count3+"인분";
             count3++;
             return;
         }
-            function menu4() {
+            function order4() {
+            var menu4 = document.getElementById("menu4").value;
+            document.getElementById("item4").innerHTML= menu4+count4+"인분";
+            count4++;
+            return;
+        }
+        function drink1() {
+            var menu4 = document.getElementById("menu4").value;
+            document.getElementById("item4").innerHTML= menu4+count4+"인분";
+            count4++;
+            return;
+        }
+        function drink2() {
             var menu4 = document.getElementById("menu4").value;
             document.getElementById("item4").innerHTML= menu4+count4+"인분";
             count4++;
@@ -117,8 +167,8 @@
         document.getElementById('btn-ok').onclick = function() {
             document.f3.submit()
         }
-        }
 
+}
         </script>
     </th:block>
 </th:blotck>
