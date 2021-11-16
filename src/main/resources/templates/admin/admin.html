@@ -45,7 +45,6 @@
                 <thead>
                 <tr>
                   <th scope="col">사업장 코드</th>
-                  <th scope="col">회원 이름</th>
                   <th scope="col">상호명</th>
                   <th scope="col">가입 날짜</th>
                 </tr>
@@ -54,7 +53,6 @@
                 <tr th:each="dto : ${result.dtoList}" class="tr-list"
                     th:onclick="|javascript:read('${dto.storeNum}','${result.page}')|">
                   <th scope="row">[[${dto.storeNum}]]</th>
-                  <td>[[${dto.memberName}]]</td>
                   <td>[[${dto.storeName}]]</td>
                   <td>[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</td>
                 </tr>
@@ -125,11 +123,9 @@
                     </div>
                     <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
                       <div class="card-body p-0">
-                        <ul class="list-group cat-list">
-                          <li class="list-group-item">예진이네</li>
-                          <li class="list-group-item">윤정이네</li>
-                          <li class="list-group-item">영돈이네</li>
-                          <li class="list-group-item">종찬이네</li>
+                        <ul class="list-group cat-list" >
+                          <li class="list-group-item" th:each="dto : ${result.dtoList}" th:onclick="|javascript:read('${dto.storeNum}','${result.page}')|"
+                          >[[${dto.storeName}]]</li>
                         </ul>
                       </div>
                     </div>
