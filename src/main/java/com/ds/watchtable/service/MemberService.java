@@ -24,8 +24,8 @@ Member getInfo(Long memberNum);
                 .memberPw(memberDTO.getMemberPw())
                 .build();
         member.addMemberRole(MemberRole.USER);
-//        member.addMemberRole(MemberRole.MANAGER);
-//        member.addMemberRole(MemberRole.ADMIN);
+        member.addMemberRole(MemberRole.MANAGER);
+        member.addMemberRole(MemberRole.ADMIN);
 
         return member;
     }

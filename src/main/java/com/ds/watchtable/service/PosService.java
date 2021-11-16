@@ -1,6 +1,7 @@
 package com.ds.watchtable.service;
 
 import com.ds.watchtable.dto.PosDTO;
+import com.ds.watchtable.dto.StoreDTO;
 import com.ds.watchtable.entity.Pos;
 import com.ds.watchtable.entity.Store;
 
@@ -9,7 +10,8 @@ import java.util.List;
 public interface PosService {
     void posSetting(PosDTO posDTO);
 
-    //    PosDTO getPos(Long mno);
+        Pos getPos(Long posNum);
+    //admin/storeread 가게 정보 상세보기
 
     default Pos dtoToEntity(PosDTO posDTO) {
         Pos pos = Pos.builder()

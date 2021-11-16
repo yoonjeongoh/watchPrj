@@ -2,6 +2,7 @@ package com.ds.watchtable.service;
 
 import com.ds.watchtable.dto.PosDTO;
 import com.ds.watchtable.entity.Pos;
+import com.ds.watchtable.entity.PosOrder;
 import com.ds.watchtable.repository.PosRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -23,6 +24,16 @@ public class PosServiceImpl implements PosService{
     public void posSetting(PosDTO posDTO) {
         Pos pos = dtoToEntity(posDTO);
         posRepository.save(pos);
+    }
+
+    @Override
+    public Pos getPos(Long posNum) {
+        Optional<Pos> result2 = posRepository.findById(posNum);
+        if (result2.isPresent()) {
+            Pos pos = result2.get();
+            return pos;
+        }
+        return null;
     }
 
     //    @Override
