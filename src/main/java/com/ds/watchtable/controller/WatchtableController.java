@@ -22,33 +22,19 @@ public class WatchtableController {
     private final StoreService storeService;
 
     @GetMapping({"/manager/manageinfocorrect","/manager/managemyinfo",
-            "/review/storereview","/pos/kitchen","/pos/loginmng",
-            "/pos/setting","/pos/storetable","/pos/order","/pos/menuitem"})
+            "/review/storereview","/pos/kitchen","/pos/loginmng"})
 
     public void list(){
     }
 
     // /watchtable
-/*
     @GetMapping("")
-    public String getInfo(Model model, @AuthenticationPrincipal Principal principal){
-        if (principal != null) {
-            log.info(">>" + principal.getName());
-        }
-//        model.addAttribute("mem",principal.getName())
-        return "/index";
-    }
-*/
-
-/*    @GetMapping("")
-    public String list(PageRequestDTO pageRequestDTO, Model model,@AuthenticationPrincipal Principal principal){
+    public String list(PageRequestDTO pageRequestDTO, Model model){
         log.info("pageRequestDTO: "+pageRequestDTO);
         PageResultDTO result = storeService.getLGHlist(pageRequestDTO);
         log.info(">>"+result);
         model.addAttribute("result", result);
-        log.info(">>"+principal.getName());
-//        model.addAttribute("mem",principal.getName())
         return "/index";
-    }*/
+    }
 
 }

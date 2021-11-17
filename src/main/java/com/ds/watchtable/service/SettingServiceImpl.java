@@ -22,5 +22,4 @@ public class SettingServiceImpl implements SettingService {
         settingRepository.save(setting);
         return setting.getTableNum();
     }
-
 }
