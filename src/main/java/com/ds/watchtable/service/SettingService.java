@@ -1,11 +1,14 @@
 package com.ds.watchtable.service;
 
 import com.ds.watchtable.dto.SettingDTO;
+import com.ds.watchtable.entity.Member;
 import com.ds.watchtable.entity.Setting;
 
 public interface SettingService {
 
 Long register(SettingDTO settingDTO);
+
+Setting getSetting(Long posNum);
 
     default Setting dtoToEntity(SettingDTO settingDTO){
         Setting setting = Setting.builder()

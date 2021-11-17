@@ -2,15 +2,18 @@ package com.ds.watchtable.controller;
 
 import com.ds.watchtable.dto.MenuItemDTO;
 import com.ds.watchtable.dto.SettingDTO;
+import com.ds.watchtable.entity.Member;
+import com.ds.watchtable.entity.Setting;
 import com.ds.watchtable.service.MenuItemService;
 import com.ds.watchtable.service.SettingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.Optional;
 
 @Controller
 @Log4j2
@@ -30,63 +33,35 @@ public class PosController {
     public void storetable(SettingDTO settingDTO){
 
     }
-  /*  @PostMapping("/pos/setting")
-    public void menuitem(SettingDTO settingDTO, MenuItemDTO menuItemDTO){
-           }*/
 
-    @PostMapping("/pos/setting")
-    private void registering() {
+
+    @RequestMapping("/pos/storetable")
+    private void registering(SettingDTO settingDTO, MenuItemDTO menuItemDTO
+                                    ,Long posNum, Model model) {
+        //데이터넣기
+        settingService.register(settingDTO);
+        menuItemService.MenuItem(menuItemDTO);
+
+        //데이터 가져오기
+        Optional<Setting> result = Optional.ofNullable(settingService.getSetting(posNum));
+        if (result != null) {
+            model.addAttribute("setting", result.get());
+        }
+        if (result == null) {
+            return;
+        }
         log.info("registering.................");
     }
 
     @GetMapping("/pos/setting")
-    public void register(SettingDTO settingDTO){
+    public void register(SettingDTO settingDTO, MenuItemDTO menuItemDTO){
         log.info(">>>>>>>>>>>settingDTO : "+settingDTO);
-        settingService.register(settingDTO);
         log.info(">>>>>>>>>>>settingDTO2 : "+settingDTO);
-/*
-        menuItemService.MenuItem(menuItemDTO);
-        log.info(">>>>>>>>>>>menuItemDTO : "+menuItemDTO);
-        log.info(">>>>>>>>>>>menuItemDTO2 : "+menuItemDTO);
-*/
+
     }
 
 
-//    @GetMapping("/pos/postable")
-//    public void registerPos(PosDTO posDTO, PosOrderDTO posOrderDTO){
-//        posService.posSetting(posDTO);
-//        posOrderService.posOrder(posOrderDTO);
-//        log.info("Register............");
-//    }
-//    @GetMapping("/pos/postable")
-//    public void table(Long orderNum, Long posNum, Model model, Model model2){
-//        log.info("orderNum>>"+orderNum);
-//        Optional<PosOrder> result = Optional.ofNullable(posOrderService.getPosOrder(orderNum));
-//        if (result != null) {
-//            model.addAttribute("posOrder", result.get());
-//        }
-//        if (result == null) {
-//            return;
-//        }
-//
-//    }
-//    @GetMapping("/pos/posorder")
-//    public void Order(Long orderNum, Long posNum, Model model, Model model2){
-//      log.info("orderNum>>"+posNum);
-//        Optional<Pos> result = Optional.ofNullable(posService.getPos(posNum));
-//        if (result != null) {
-//            model.addAttribute("pos", result.get());
-//        }
-//        if (result == null) {
-//            return;
-//        }
-//
-//    }
-//    @PostMapping("/pos/posorder")
-//    public void PosOrder(PosOrderDTO posOrderDTO){
-//        log.info("Register............");
-//        posOrderService.posOrder(posOrderDTO);
-//    }
+
 
 
 
