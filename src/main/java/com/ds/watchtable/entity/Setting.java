@@ -14,11 +14,11 @@ import javax.persistence.*;
 public class Setting extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long storeTableNum;
+    private Long posNum;
 
-    private String tableTwo;
-    private String tableFour;
-    private String tableSix;
+    private int tableTwo;
+    private int tableFour;
+    private int tableSix;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     Store store;

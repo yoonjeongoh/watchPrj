@@ -54,6 +54,7 @@
     <hr>
     <h3>Member</h3>
     <a th:href="@{member/myinfo}">/member/myinfo(내정보보기)</a><br>
+    <span th:onclick="|javascript:goMyInfo('${member}')|"></span><br>
     <a th:href="@{member/myinfocorrect}">/member/myinfocorrect(내정보수정)</a><br>
     <hr>
     <h3>Pos</h3>
@@ -80,17 +81,6 @@
                 /*[+
                 var url = [[@{/member/myinfo}]] +
                     "?memberNum="+memberNum;
-                +]*/
-                location.href=urlword;
-            }
-        </script>
-
-    <script th:inline="javascript">
-            function read(storeNum){
-                //alert('read');
-                /*[+
-                var urlword = [[@{/store/detail}]] +
-                    "?storeNum="+storeNum;
                 +]*/
                 location.href=urlword;
             }

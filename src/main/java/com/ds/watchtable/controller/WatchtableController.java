@@ -25,13 +25,13 @@ public class WatchtableController {
     }
 
     // /watchtable
-    @GetMapping("")
+/*    @GetMapping("")
     public String list(PageRequestDTO pageRequestDTO, Model model){
         log.info("pageRequestDTO: "+pageRequestDTO);
         PageResultDTO result = storeService.getLGHlist(pageRequestDTO);
         log.info(">>"+result);
         model.addAttribute("result", result);
         return "/index";
-    }
+    }*/
 
 }

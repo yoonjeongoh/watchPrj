@@ -4,7 +4,6 @@ import com.ds.watchtable.dto.MenuItemDTO;
 import com.ds.watchtable.dto.SettingDTO;
 import com.ds.watchtable.service.MenuItemService;
 import com.ds.watchtable.service.SettingService;
-import javafx.geometry.Pos;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;

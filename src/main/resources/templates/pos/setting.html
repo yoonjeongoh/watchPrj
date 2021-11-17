@@ -21,20 +21,20 @@
                             <span>2인:</span>
                             <div>
                                 <input type=text name=tableTwo value=0>
-                                <input type=button value="+" onClick="javascript:this.form.tableTwo.value++;">
-                                <input type=button value="-" onClick="javascript:this.form.tableTwo.value--;">
+                                <input type=button value="+" th:onClick="|javascript:this.form.tableTwo.value++;|">
+                                <input type=button value="-" th:onClick="|javascript:this.form.tableTwo.value--;|">
                             </div>
                             <span>4인:</span>
                             <div>
                                 <input type=text name=tableFour value=0>
-                                <input type=button value="+" onClick="javascript:this.form.tableFour.value++;">
-                                <input type=button value="-" onClick="javascript:this.form.tableFour.value--;">
+                                <input type=button value="+" th:onClick="|javascript:this.form.tableFour.value++;|">
+                                <input type=button value="-" th:onClick="|javascript:this.form.tableFour.value--;|">
                             </div>
                             <span>6인:</span>
                             <div>
                                 <input type=text name=tableSix value=0>
-                                <input type=button value="+" onClick="javascript:this.form.tableSix.value++;">
-                                <input type=button value="-" onClick="javascript:this.form.tableSix.value--;">
+                                <input type=button value="+" th:onClick="|javascript:this.form.tableSix.value++;|">
+                                <input type=button value="-" th:onClick="|javascript:this.form.tableSix.value--;|">
                             </div>
                             <span>메뉴</span>
                             <div>
@@ -66,8 +66,8 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script th:inline="javascript">
         window.onload = function() {
-        document.getElementById('combtn').onclick = function() {
-        document.f2.submit()
+            document.getElementById('combtn').onclick = function() {
+                document.f2.submit()
      }
     }
         </script>
