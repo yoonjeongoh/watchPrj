@@ -10,7 +10,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString(exclude = "store")
-@Table(name = "table")
+@Table(name = "setting")
 public class Setting extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

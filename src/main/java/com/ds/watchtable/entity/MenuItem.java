@@ -10,7 +10,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Getter
 @ToString
-@Table(name="menuitem")
+@Table(name="menuItem")
 public class MenuItem extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
