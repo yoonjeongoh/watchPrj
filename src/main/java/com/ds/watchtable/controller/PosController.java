@@ -4,6 +4,7 @@ import com.ds.watchtable.dto.MenuItemDTO;
 import com.ds.watchtable.dto.SettingDTO;
 import com.ds.watchtable.service.MenuItemService;
 import com.ds.watchtable.service.SettingService;
+import javafx.geometry.Pos;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,25 +22,27 @@ public class PosController {
     private final MenuItemService menuItemService;
 
 
-
-    @GetMapping("/pos/menuitem")
-    public void getmenuitem(SettingDTO settingDTO, MenuItemDTO menuItemDTO){
-
-    }
-    @PostMapping("/pos/menuitem")
-    public void menuitem(SettingDTO settingDTO, MenuItemDTO menuItemDTO){
-        settingService.storeSetting(settingDTO);
-        menuItemService.MenuItem(menuItemDTO);
-    }
-
-    @GetMapping("/pos/order")
-    public void order(SettingDTO settingDTO){
+    @GetMapping("/pos/storeorder")
+    public void storeorder(SettingDTO settingDTO){
 
     }
 
     @GetMapping("/pos/storetable")
     public void storetable(SettingDTO settingDTO){
 
+    }
+    @PostMapping("/pos/setting")
+    public void menuitem(SettingDTO settingDTO, MenuItemDTO menuItemDTO){
+           }
+    @GetMapping("/pos/setting")
+    public void getmenuitem(SettingDTO settingDTO, MenuItemDTO menuItemDTO){
+
+        log.info(">>>>>>>>>>>settingDTO : "+settingDTO);
+        log.info(">>>>>>>>>>>menuItemDTO : "+menuItemDTO);
+        settingService.storeSetting(settingDTO);
+        menuItemService.MenuItem(menuItemDTO);
+        log.info(">>>>>>>>>>>settingDTO2 : "+settingDTO);
+        log.info(">>>>>>>>>>>menuItemDTO2 : "+menuItemDTO);
     }
 
 

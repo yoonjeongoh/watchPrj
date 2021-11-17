@@ -15,47 +15,38 @@
                 </div>
                 <div class="card-body">
                     <div class="tableSetting">
-                        <form class="formTableSetting" th:action="@{/pos/postable}" method="post"
+                        <form class="formTableSetting" th:action="@{/pos/storetable}" method="get"
                               id="settingTableForm" name="f2">
                             <span>테이블 수</span> </br>
                             <span>2인:</span>
                             <div>
-                                <input type=text name=table2 value=0>
-                                <input type=button value="+" onClick="javascript:this.form.table2.value++;">
-                                <input type=button value="-" onClick="javascript:this.form.table2.value--;">
+                                <input type=text name=tableTwo value=0>
+                                <input type=button value="+" onClick="javascript:this.form.tableTwo.value++;">
+                                <input type=button value="-" onClick="javascript:this.form.tableTwo.value--;">
                             </div>
                             <span>4인:</span>
                             <div>
-                                <input type=text name=table4 value=0>
-                                <input type=button value="+" onClick="javascript:this.form.table4.value++;">
-                                <input type=button value="-" onClick="javascript:this.form.table4.value--;">
+                                <input type=text name=tableFour value=0>
+                                <input type=button value="+" onClick="javascript:this.form.tableFour.value++;">
+                                <input type=button value="-" onClick="javascript:this.form.tableFour.value--;">
                             </div>
                             <span>6인:</span>
                             <div>
-                                <input type=text name=table6 value=0>
-                                <input type=button value="+" onClick="javascript:this.form.table6.value++;">
-                                <input type=button value="-" onClick="javascript:this.form.table6.value--;">
+                                <input type=text name=tableSix value=0>
+                                <input type=button value="+" onClick="javascript:this.form.tableSix.value++;">
+                                <input type=button value="-" onClick="javascript:this.form.tableSix.value--;">
                             </div>
                             <span>메뉴</span>
                             <div>
-                                <span>1.</span><input type=text name=menu1>
+                                <span>1.</span><input type=text name=menu>
                             </div>
                             <div>
-                                <span>2.</span><input type=text name=menu2>
+                                <span>2.</span><input type=text name=side>
                             </div>
                             <div>
-                                <span>3.</span><input type=text name=menu3>
+                                <span>3.</span><input type=text name=drink>
                             </div>
-                            <div>
-                                <span>4.</span><input type=text name=menu4>
-                            </div>
-                            <span>음료</span>
-                            <div>
-                                <span>1.</span><input type=text name=drink1>
-                            </div>
-                            <div>
-                                <span>2.</span><input type=text name=drink2>
-                            </div>
+
 
                             <button id= "combtn" class="combtn" type="button">완료</button>
                         </form>
