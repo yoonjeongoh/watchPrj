@@ -12,13 +12,13 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SettingDTO {
-    private Long storeTableNum;
+    private Long posNum;
 
-    private String tableTwo;
-    private String tableFour;
-    private String tableSix;
+    private int tableTwo;
+    private int tableFour;
+    private int tableSix;
 
-    private String storeNum;
+    private Long storeNum;
 
     private LocalDateTime regDate;
     private LocalDateTime modDate;

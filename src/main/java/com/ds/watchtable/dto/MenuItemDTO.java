@@ -18,8 +18,8 @@ public class MenuItemDTO {
     private String side;
     private String drink;
 
-    private String storeNum;
-    private String storeTableNum;
+    private Long storeNum;
+    private Long posNum;
 
     private LocalDateTime regDate;
     private LocalDateTime modDate;

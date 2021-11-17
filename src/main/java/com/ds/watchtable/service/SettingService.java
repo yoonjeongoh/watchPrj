@@ -9,7 +9,7 @@ public interface SettingService {
 
     default Setting dtoToEntity(SettingDTO settingDTO){
         Setting setting = Setting.builder()
-                .storeTableNum(settingDTO.getStoreTableNum())
+                .posNum(settingDTO.getPosNum())
                 .tableTwo(settingDTO.getTableTwo())
                 .tableFour(settingDTO.getTableFour())
                 .tableSix(settingDTO.getTableSix())
@@ -19,7 +19,7 @@ public interface SettingService {
 
     default SettingDTO entityToDTO(Setting storeTable){
         SettingDTO settingDTO = SettingDTO.builder()
-                .storeTableNum(storeTable.getStoreTableNum())
+                .posNum(storeTable.getPosNum())
                 .tableTwo(storeTable.getTableTwo())
                 .tableFour(storeTable.getTableFour())
                 .tableSix(storeTable.getTableSix())
