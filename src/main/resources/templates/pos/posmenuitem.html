@@ -15,7 +15,7 @@
                 </div>
                 <div class="card-body">
                     <div class="tableSetting">
-                        <form class="formTableSetting" action="http://localhost:8080/watchtable/pos/postable" method="post"
+                        <form class="formTableSetting" th:action="@{/pos/postable}" method="post"
                               id="settingTableForm" name="f2">
                             <span>테이블 수</span> </br>
                             <span>2인:</span>
