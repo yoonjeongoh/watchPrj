@@ -12,10 +12,10 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderDTO {
-    private Long orderNum;
+public class StoreOrderDTO {
+    private Long storeOrderNum;
 
-    private String orderList;
+    private String storeOrderList;
 
     private Long storeTableNum;
     private Long storeNum;

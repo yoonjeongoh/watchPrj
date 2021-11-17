@@ -10,13 +10,13 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Table(name = "order")
-public class Order extends BaseEntity{
+@Table
+public class StoreOrder extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderNum;
+    private Long storeOrderNum;
 
-    private String orderList;
+    private String storeOrderList;
 
 
 }
