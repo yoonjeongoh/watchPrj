@@ -52,6 +52,17 @@ public class MemberController {
         log.info("result>>"+result);
     }
 
+    @GetMapping("/myinfo")
+    private void goInfo(Long memberNum, Model model,
+                          @AuthenticationPrincipal Principal principal) {
+        Optional<Member> result = Optional.ofNullable(memberService.getInfo(memberNum));
+
+        if (principal != null) {
+            log.info("principal"+principal.getName());
+            model.addAttribute("mem", result.get());
+        }
+    }
+
 
 }
 

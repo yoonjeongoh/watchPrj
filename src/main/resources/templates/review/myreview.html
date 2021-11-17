@@ -3,5 +3,48 @@
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
 
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">상호명</th>
+                    <th scope="col">작성 날짜</th>
+                </tr>
+                </thead>
+
+<!--
+                <tbody>
+                <tr th:each="dto : ${result.dtoList}" class="tr-list"
+                    th:onclick=
+                            "|javascript:read('${dto.storeNum}','${result.page}')|">
+                    <th scope="row">[[${dto.storeName}]]</th>
+                    <td>[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</td>
+                </tr>
+                </tbody>
+-->
+            </table>
+
+            <!--        페이징-->
+<!--
+            <ul class="pagination h-100 justify-content-center align-items-center">
+                <li class="page-item" th:if="${result.prev}">
+                    <a class="page-link" th:href="@{/review/myreview(page=${result.start-1})}"
+                       tabindex="-1">Previous</a>
+                </li>
+
+                <li th:class=" 'page-item ' + ${result.page == page?'active':''}"
+                    th:each="page: ${result.pageList}">
+                    <a class="page-link" th:href="@{/review/myreview(page=${page})}">[[${page}]]</a>
+                </li>
+
+                <li class="page-item" th:if="${result.next}">
+                    <a class="page-link" th:href="@/review/myreview(page=${result.end+1})}">Next</a>
+                </li>
+            </ul>
+-->
+
+        </div>
+
+
     </th:block>
 </th:blotck>
