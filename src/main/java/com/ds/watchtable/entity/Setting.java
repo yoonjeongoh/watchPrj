@@ -16,9 +16,9 @@ public class Setting extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long posNum;
 
-    private int tableTwo;
-    private int tableFour;
-    private int tableSix;
+    private Long tableTwo;
+    private Long tableFour;
+    private Long tableSix;
 
 /*    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     Store store;*/
