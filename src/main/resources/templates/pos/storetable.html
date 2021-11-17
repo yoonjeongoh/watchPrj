@@ -16,9 +16,12 @@
         </style>
         <div class="flex-container">
 
-            <div id = "ftb1" class="flextb" th:onClick="|location.href='@{/pos/order}'|">1
+            <div th:each="setting : ${result.tabletwo}">
+                <div id = "ftb1" class="flextb" th:onClick="|location.href='@{/pos/order}'|">1
 
+                </div>
             </div>
+
             <div id = "ftb2" class="flextb" th:onClick="|location.href='@{/pos/posorder}'|">
                 2
             </div>
