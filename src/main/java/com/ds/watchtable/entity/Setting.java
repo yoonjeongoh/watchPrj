@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class Setting extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long tableNum;
+    private Long storeTableNum;
 
     private String tableTwo;
     private String tableFour;

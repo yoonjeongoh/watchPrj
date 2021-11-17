@@ -17,9 +17,9 @@ public class SettingServiceImpl implements SettingService {
     final private SettingRepository settingRepository;
 
     @Override
-    public Long storeSetting(SettingDTO settingDTO) {
+    public void storeSetting(SettingDTO settingDTO) {
         Setting setting = dtoToEntity(settingDTO);
         settingRepository.save(setting);
-        return setting.getTableNum();
+
     }
 }
