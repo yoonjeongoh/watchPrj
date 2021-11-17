@@ -52,6 +52,7 @@ public class MemberController {
         log.info("result>>"+result);
     }
 
+/*
     @GetMapping("/myinfo")
     private void goInfo(Long memberNum, Model model,
                           @AuthenticationPrincipal Principal principal) {
@@ -62,6 +63,7 @@ public class MemberController {
             model.addAttribute("mem", result.get());
         }
     }
+*/
 
 
 }

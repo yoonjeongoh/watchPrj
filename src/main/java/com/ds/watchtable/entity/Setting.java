@@ -9,8 +9,8 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString(exclude = "store")
-@Table(name = "setting")
+@ToString
+@Table
 public class Setting extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +20,6 @@ public class Setting extends BaseEntity {
     private int tableFour;
     private int tableSix;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    Store store;
+/*    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    Store store;*/
 }

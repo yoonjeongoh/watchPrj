@@ -5,7 +5,7 @@ import com.ds.watchtable.entity.Setting;
 
 public interface SettingService {
 
-    void storeSetting(SettingDTO settingDTO);
+Long register(SettingDTO settingDTO);
 
     default Setting dtoToEntity(SettingDTO settingDTO){
         Setting setting = Setting.builder()
@@ -17,14 +17,14 @@ public interface SettingService {
         return setting;
     }
 
-    default SettingDTO entityToDTO(Setting storeTable){
+    default SettingDTO entityToDTO(Setting setting){
         SettingDTO settingDTO = SettingDTO.builder()
-                .posNum(storeTable.getPosNum())
-                .tableTwo(storeTable.getTableTwo())
-                .tableFour(storeTable.getTableFour())
-                .tableSix(storeTable.getTableSix())
-                .modDate(storeTable.getModDate())
-                .regDate(storeTable.getRegDate())
+                .posNum(setting.getPosNum())
+                .tableTwo(setting.getTableTwo())
+                .tableFour(setting.getTableFour())
+                .tableSix(setting.getTableSix())
+                .modDate(setting.getModDate())
+                .regDate(setting.getRegDate())
                 .build();
         return settingDTO;
     }

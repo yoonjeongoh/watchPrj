@@ -16,16 +16,6 @@
           <th scope="col">영업시간----------</th>
         </tr>
         </thead>
-        <tbody>
-        <tr th:each="dto : ${result.dtoList}" class="tr-list"
-            th:onclick=
-                    "|javascript:read('${dto.storeNum}','${result.page}')|">
-          <th scope="row">[[${dto.storeName}]]</th>
-          <td>[[${dto.storeAds}]]</td>
-          <td>[[${dto.storeTel}]]</td>
-          <td>[[${dto.storeOpen} + ' ~ ' + ${dto.storeClose}]]</td>
-        </tr>
-        </tbody>
       </table>
     </div>
 
@@ -54,7 +44,7 @@
     <hr>
     <h3>Member</h3>
     <a th:href="@{member/myinfo}">/member/myinfo(내정보보기)</a><br>
-    <span th:onclick="|javascript:goMyInfo('${member}')|"></span><br>
+    <span th:onclick="|javascript:goMyInfo('${member}')|">Testing</span><br>
     <a th:href="@{member/myinfocorrect}">/member/myinfocorrect(내정보수정)</a><br>
     <hr>
     <h3>Pos</h3>

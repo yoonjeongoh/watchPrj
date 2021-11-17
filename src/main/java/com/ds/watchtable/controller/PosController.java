@@ -10,14 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @Log4j2
 @RequiredArgsConstructor
+@RequestMapping
 public class PosController {
-    @Autowired
     private final SettingService settingService;
-    @Autowired
     private final MenuItemService menuItemService;
 
 
@@ -30,18 +30,25 @@ public class PosController {
     public void storetable(SettingDTO settingDTO){
 
     }
-    @PostMapping("/pos/setting")
+  /*  @PostMapping("/pos/setting")
     public void menuitem(SettingDTO settingDTO, MenuItemDTO menuItemDTO){
-           }
-    @GetMapping("/pos/setting")
-    public void getmenuitem(SettingDTO settingDTO, MenuItemDTO menuItemDTO){
+           }*/
 
+    @PostMapping("/pos/setting")
+    private void registering() {
+        log.info("registering.................");
+    }
+
+    @GetMapping("/pos/setting")
+    public void register(SettingDTO settingDTO){
         log.info(">>>>>>>>>>>settingDTO : "+settingDTO);
-        log.info(">>>>>>>>>>>menuItemDTO : "+menuItemDTO);
-        settingService.storeSetting(settingDTO);
-        menuItemService.MenuItem(menuItemDTO);
+        settingService.register(settingDTO);
         log.info(">>>>>>>>>>>settingDTO2 : "+settingDTO);
+/*
+        menuItemService.MenuItem(menuItemDTO);
+        log.info(">>>>>>>>>>>menuItemDTO : "+menuItemDTO);
         log.info(">>>>>>>>>>>menuItemDTO2 : "+menuItemDTO);
+*/
     }
 
 

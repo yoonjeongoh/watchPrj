@@ -13,13 +13,17 @@ import org.springframework.stereotype.Service;
 @Log4j2
 @RequiredArgsConstructor
 public class SettingServiceImpl implements SettingService {
-    @Autowired
+
     final private SettingRepository settingRepository;
 
     @Override
-    public void storeSetting(SettingDTO settingDTO) {
+    public Long register(SettingDTO settingDTO) {
+        log.info("impl1>>>"+settingDTO);
         Setting setting = dtoToEntity(settingDTO);
+        log.info("impl2>>>"+settingDTO);
         settingRepository.save(setting);
+        log.info("impl3>>>"+setting);
+        return setting.getPosNum();
 
     }
 }
