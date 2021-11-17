@@ -37,7 +37,8 @@ public class AdminController {
 //    }
     //admin/storeread
     @GetMapping("/storeread")
-    public void read(Long storeNum, @ModelAttribute("pageRequestDTO") PageRequestDTO pageRequestDTO , Model model) {
+    public void read(Long storeNum, @ModelAttribute("pageRequestDTO")
+            PageRequestDTO pageRequestDTO , Model model) {
         StoreDTO storeDTO = storeService.getStore(storeNum);
         model.addAttribute("dto", storeDTO);
     }
