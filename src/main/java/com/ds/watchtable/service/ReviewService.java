@@ -11,7 +11,11 @@ public interface ReviewService {
     //리뷰 추가
     Long registerReview(ReviewDTO reviewDTO);
     //리뷰 리스트
-//    List<ReviewDTO> getListOfStore(int storeNum);
+    List<ReviewDTO> getListOfStore(Long storeNum);
+
+    void modify(ReviewDTO storeReviewDTO);
+
+    void remove(Long reviewNum);
 
     default Review dtoToEntity(ReviewDTO reviewDTO){
         Review review = Review.builder()

@@ -17,9 +17,8 @@ public class ReviewDTO {
     private String memberName;
     private String memberNickname;
 
-//    private Long storeNum;
+    private Long storeNum;
 
     private String text;
-    private LocalDateTime regDate;
-    private LocalDateTime modDate;
+    private LocalDateTime regDate, modDate;
 }

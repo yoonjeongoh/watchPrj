@@ -18,6 +18,10 @@ public class Review extends BaseEntity {
 
     private String text;
 
+    public void changeText(String text){
+        this.text = text;
+    }
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Member member;
 
