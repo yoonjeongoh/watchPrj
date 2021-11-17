@@ -6,6 +6,28 @@
     <link rel="stylesheet" href="/watchtable/css2/index.css"/>
 
     <div class="map" id="map"></div>
+    <div class="store-list">
+      <table>
+        <thead>
+        <tr>
+          <th scope="col">매장이름----------</th>
+          <th scope="col">주소-------------------------------</th>
+          <th scope="col">전화번호----------</th>
+          <th scope="col">영업시간----------</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="dto : ${result.dtoList}" class="tr-list"
+            th:onclick=
+                    "|javascript:read('${dto.storeNum}','${result.page}')|">
+          <th scope="row">[[${dto.storeName}]]</th>
+          <td>[[${dto.storeAds}]]</td>
+          <td>[[${dto.storeTel}]]</td>
+          <td>[[${dto.storeOpen} + ' ~ ' + ${dto.storeClose}]]</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
 
     <h3>실제 메인화면에 나와야 할 것들</h3>
     <a href="http://localhost:8080/watchtable/">/watchtable/main(All)</a><br>
@@ -63,6 +85,16 @@
             }
         </script>
 -->
+    <script th:inline="javascript">
+            function read(storeNum){
+                //alert('read');
+                /*[+
+                var urlword = [[@{/store/detail}]] +
+                    "?storeNum="+storeNum;
+                +]*/
+                location.href=urlword;
+            }
+        </script>
 
   </th:block>
 </th:block>

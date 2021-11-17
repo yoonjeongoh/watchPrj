@@ -20,7 +20,7 @@
             <div class="sec-col1">
                 <!--        2열 좌측 가게이름, 임티-->
                 <div class="sec1 sec-left1">1
-                    <span>가게이름</span><br>
+                    <span th:value="${dto.storeName}"></span><br>
                     <div>이모티콘</div>
                     <div>대충 평가 그래프</div>
                 </div>
@@ -55,12 +55,12 @@
                 </div>
 
                 <!--        3열 우측 가게정보-->
-                <div class="thd1 thd-right1"> 2
-                    <span>주소</span> <span>1</span><br>
-                    <span>전화번호</span> <span>2</span><br>
-                    <span>영업시간</span> <span>3</span><br>
+                <div class="thd1 thd-right1"> 2<br>
+                    <span th:value="${dto.storeAds}">주소</span> <span>1</span><br>
+                    <span th:value="${dto.storeTel}">전화번호</span> <span>2</span><br>
+                    <span th:value="${dto.storeOpen} + ' ~ ' + ${dto.storeClose}">영업시간</span> <span>3</span><br>
                     <span>기타</span> <span>4</span><br>
-                    <span>가게소개</span> <span>5</span>
+                    <span th:value="${dto.storeText}">가게소개</span> <span>5</span>
                 </div>
 
             </div>
@@ -89,7 +89,7 @@
 <!--        map api-->
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c804c7f02459129ea465ac2bec99e513&libraries=services,clusterer,drawing"></script>
         <script th:src="@{/js/index.js}"></script>
-        <script th:src="@{/js/indexList.js}"></script>
+<!--        <script th:src="@{/js/indexList.js}"></script>-->
 
 <!--        modal view-->
         <div class="modal" tabindex="-1" role="dialog">
