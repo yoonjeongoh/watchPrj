@@ -25,11 +25,9 @@ public class StoreController {
     private final StoreService storeService;
 
     @GetMapping("/detail")
-    public void detail(@ModelAttribute("requestDTO") PageRequestDTO
-                       pageRequestDTO, Long storeNum, Model model) {
-        log.info("StoreNum: " +storeNum);
+    public void read(Long storeNum, @ModelAttribute("pageRequestDTO")
+                       PageRequestDTO pageRequestDTO , Model model) {
         StoreDTO storeDTO = storeService.getStore(storeNum);
-        log.info(storeDTO);
-        model.addAttribute("dto-------------------------------------", storeDTO);
+        model.addAttribute("dto", storeDTO);
     }
 }

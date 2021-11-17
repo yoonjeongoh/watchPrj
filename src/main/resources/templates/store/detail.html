@@ -20,7 +20,7 @@
             <div class="sec-col1">
                 <!--        2열 좌측 가게이름, 임티-->
                 <div class="sec1 sec-left1">1
-                    <span>[[${</span><br>
+                    <span><h2>[[${dto.storeName}]]</h2></span><br>
                     <div>이모티콘</div>
                     <div>대충 평가 그래프</div>
                 </div>
@@ -56,11 +56,11 @@
 
                 <!--        3열 우측 가게정보-->
                 <div class="thd1 thd-right1"> 2<br>
-                    <span>주소</span> <span>1</span><br>
-                    <span>전화번호</span> <span>2</span><br>
-                    <span>영업시간</span> <span>3</span><br>
-                    <span>기타</span> <span>4</span><br>
-                    <span>가게소개</span> <span>5</span>
+                    <span>가게주소 : [[${dto.storeAds}]]</span><br>
+                    <span>전화번호 : [[${dto.storeTel}]]</span><br>
+                    <span>영업시간 : [[${dto.storeOpen} + ' ~ ' + ${dto.storeClose}]]</span><br>
+                    <span>기타</span><br>
+                    <span>가게정보 : [[${dto.storeText}]]</span>
                 </div>
 
             </div>
@@ -77,7 +77,23 @@
             <!--        6열 리뷰 리스트-->
            <div class="rv-list six-col1">
                 <div id="rv-list-table" class="rv-list-table"> 리뷰리스트
-
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th scope="col">닉네임</th>
+                            <th scope="col">내용</th>
+                            <th scope="col">등록 날짜</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="dto : ${result.dtoList}" class="tr-list"
+                            th:onclick="|javascript:read('${dto.storeNum}','${result.page}')|">
+                            <th scope="row">[[${dto.storeNum}]]</th>
+                            <td>[[${dto.storeName}]]</td>
+                            <td>[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
@@ -147,7 +163,7 @@
                 var data = {storeNum: storeNum, text: review.val()};
 
                 $.ajax({
-                    url: contextPath+'/detail',
+                    url: '/review/'+storeNum,
                     type:"POST",
                     data:JSON.stringify(data),
                     contentType:"application/json; charset=utf-8",
