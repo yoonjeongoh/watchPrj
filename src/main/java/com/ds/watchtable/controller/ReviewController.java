@@ -17,34 +17,47 @@ import java.util.List;
 @Controller
 @Log4j2
 @RequiredArgsConstructor
+@RequestMapping("/reviews")
 public class ReviewController {
 
     @Autowired
     final private ReviewService reviewService;
 
-    //ajax를 이용한 데이터 저장
-    @PostMapping("watchtable/detail")
-    public ResponseEntity<Long> addReview(@RequestBody ReviewDTO reviewDTO){
-        log.info("--------------add MovieReview---------------");
-        log.info("reviewDTO: " + reviewDTO);
-
-        Long reviewnum = reviewService.registerReview(reviewDTO);
-        return new ResponseEntity<>(reviewnum, HttpStatus.OK);
+    @GetMapping("/{storeNum}/all")
+    public ResponseEntity<List<ReviewDTO>> getList(@PathVariable("storeNum") Long storeNum) {
+        List<ReviewDTO> reviewDTOList = reviewService.getListOfStore(storeNum);
+        return new ResponseEntity<>(reviewDTOList, HttpStatus.OK);
     }
 
+    @PostMapping("/{storeNum}")
+    public ResponseEntity<Long> addReview(@RequestBody ReviewDTO storeReviewDTO) {
+        Long reviewNum = reviewService.registerReview(storeReviewDTO);
+        return new ResponseEntity<>( reviewNum, HttpStatus.OK );
+    }
+
+    @PutMapping("/{storeNum}/{reviewnum}")
+    public ResponseEntity<Long> modifyReview(@PathVariable Long reviewnum,
+                                             @RequestBody ReviewDTO storeReviewDTO){
+        log.info("---------------modify MovieReview--------------" + reviewnum);
+        log.info("reviewDTO: " + storeReviewDTO);
+        reviewService.modify(storeReviewDTO);
+
+        return new ResponseEntity<>( reviewnum, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{storeNum}/{reviewnum}")
+    public ResponseEntity<Long> removeReview( @PathVariable Long reviewnum){
+        log.info("---------------modify removeReview--------------");
+        log.info("reviewnum: " + reviewnum);
+        reviewService.remove(reviewnum);
+        return new ResponseEntity<>( reviewnum, HttpStatus.OK);
+    }
 //    제이쿼리를 이용한 db저장
 /*    @PostMapping("/watchtable/detail")
     public ResponseEntity<Long> addReview(ReviewDTO reviewDTO){
         Long reviewnum = reviewService.registerReview(reviewDTO);
         return new ResponseEntity<>( reviewnum, HttpStatus.OK);
     }*/
-
-//    리스트 나오게 하기..
-//    @GetMapping("/detail/all")
-//    public ResponseEntity<List<ReviewDTO>> getList(@PathVariable("storeNum") int storeNum){
-//        List<ReviewDTO> reviewDTOList = reviewService.getListOfStore(storeNum);
-//        return new ResponseEntity<>(reviewDTOList, HttpStatus.OK);
-//    }
 
 }
 
