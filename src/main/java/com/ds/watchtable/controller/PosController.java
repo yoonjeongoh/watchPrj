@@ -56,6 +56,7 @@ public class PosController {
     @GetMapping("/pos/setting")
     public void register(SettingDTO settingDTO, MenuItemDTO menuItemDTO){
         log.info(">>>>>>>>>>>settingDTO : "+settingDTO);
+        settingService.register(settingDTO);
         log.info(">>>>>>>>>>>settingDTO2 : "+settingDTO);
 
     }

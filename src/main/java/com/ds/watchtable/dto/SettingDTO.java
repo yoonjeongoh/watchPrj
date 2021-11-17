@@ -14,9 +14,9 @@ import java.time.LocalDateTime;
 public class SettingDTO {
     private Long posNum;
 
-    private int tableTwo;
-    private int tableFour;
-    private int tableSix;
+    private Long tableTwo;
+    private Long tableFour;
+    private Long tableSix;
 
 //    private Long storeNum;
 
