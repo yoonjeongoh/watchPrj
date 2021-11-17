@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class StoreTableDTO {
+public class SettingDTO {
     private Long storeTableNum;
 
     private String tableTwo;

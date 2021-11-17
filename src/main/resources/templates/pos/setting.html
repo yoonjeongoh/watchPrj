@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
+    <th:block th:fragment="content">
+        <div class="col-md-6 gedf-main">
+            <div class="card gedf-card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="ml-2">
+                                <div class="h5 m-0">메뉴</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="tableSetting">
+                        <form class="formTableSetting" th:action="@{/pos/postable}" method="post"
+                              id="settingTableForm" name="f2">
+                            <span>테이블 수</span> </br>
+                            <span>2인:</span>
+                            <div>
+                                <input type=text name=table2 value=0>
+                                <input type=button value="+" onClick="javascript:this.form.table2.value++;">
+                                <input type=button value="-" onClick="javascript:this.form.table2.value--;">
+                            </div>
+                            <span>4인:</span>
+                            <div>
+                                <input type=text name=table4 value=0>
+                                <input type=button value="+" onClick="javascript:this.form.table4.value++;">
+                                <input type=button value="-" onClick="javascript:this.form.table4.value--;">
+                            </div>
+                            <span>6인:</span>
+                            <div>
+                                <input type=text name=table6 value=0>
+                                <input type=button value="+" onClick="javascript:this.form.table6.value++;">
+                                <input type=button value="-" onClick="javascript:this.form.table6.value--;">
+                            </div>
+                            <span>메뉴</span>
+                            <div>
+                                <span>1.</span><input type=text name=menu1>
+                            </div>
+                            <div>
+                                <span>2.</span><input type=text name=menu2>
+                            </div>
+                            <div>
+                                <span>3.</span><input type=text name=menu3>
+                            </div>
+                            <div>
+                                <span>4.</span><input type=text name=menu4>
+                            </div>
+                            <span>음료</span>
+                            <div>
+                                <span>1.</span><input type=text name=drink1>
+                            </div>
+                            <div>
+                                <span>2.</span><input type=text name=drink2>
+                            </div>
+
+                            <button id= "combtn" class="combtn" type="button">완료</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        <div class="end-pg"></div>
+
+
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script th:inline="javascript">
+        window.onload = function() {
+        document.getElementById('combtn').onclick = function() {
+        document.f2.submit()
+     }
+    }
+        </script>
+    </th:block>
+</th:blotck>

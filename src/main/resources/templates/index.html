@@ -6,28 +6,6 @@
     <link rel="stylesheet" href="/watchtable/css2/index.css"/>
 
     <div class="map" id="map"></div>
-    <div class="store-list">
-      <table>
-        <thead>
-        <tr>
-          <th scope="col">매장이름----------</th>
-          <th scope="col">주소-------------------------------</th>
-          <th scope="col">전화번호----------</th>
-          <th scope="col">영업시간----------</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="dto : ${result.dtoList}" class="tr-list"
-            th:onclick=
-                    "|javascript:read('${dto.storeNum}','${result.page}')|">
-          <th scope="row">[[${dto.storeName}]]</th>
-          <td>[[${dto.storeAds}]]</td>
-          <td>[[${dto.storeTel}]]</td>
-          <td>[[${dto.storeOpen} + ' ~ ' + ${dto.storeClose}]]</td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
 
     <h3>실제 메인화면에 나와야 할 것들</h3>
     <a href="http://localhost:8080/watchtable/">/watchtable/main(All)</a><br>
@@ -54,14 +32,16 @@
     <hr>
     <h3>Member</h3>
     <a th:href="@{member/myinfo}">/member/myinfo(내정보보기)</a><br>
+    <span th:onclick="|javascript:goMyInfo('${memberNum}')|">Test</span><br>
     <a th:href="@{member/myinfocorrect}">/member/myinfocorrect(내정보수정)</a><br>
     <hr>
     <h3>Pos</h3>
     <a th:href="@{pos/kitchen}">/watchtable/kitchen[주방화면]</a><br>
     <a th:href="@{pos/loginmng}">/watchtable/loginmng[포스로그인]</a><br>
-    <a th:href="@{pos/posorder}">/watchtable/posorder[포스주문]</a><br>
-    <a th:href="@{pos/possetting}">/watchtable/possetting[포스세팅]</a><br>
-    <a th:href="@{pos/postable}">/watchtable/postable[포스테이블]</a><br>
+    <a th:href="@{pos/menuitem}">/watchtable/menuitem[메뉴]</a><br>
+    <a th:href="@{pos/order}">/watchtable/order[주문내역]</a><br>
+    <a th:href="@{pos/setting}">/watchtable/setting[메뉴]</a><br>
+    <a th:href="@{pos/storetable}">/watchtable/storetable[가게테이블]</a><br>
     <hr>
     <h3>Review</h3>
     <a th:href="@{review/myreview}">/watchtable/myreview(내리뷰)</a><br>
@@ -73,28 +53,17 @@
     <script src="/watchtable/js/index.js"></script>
     <script src="/watchtable/js/indexList.js"></script>
 
-<!--
     <script th:inline="javascript">
-            function read(memberNum){
-                //alert('read');
+            function goMyInfo(memberNum){
+                alert('read');
                 /*[+
-                var urlword = [[@{/member/myinfo}]] +
+                var url = [[@{/member/myinfo}]] +
                     "?memberNum="+memberNum;
                 +]*/
-                location.href=urlword;
+                location.href=url;
             }
         </script>
--->
-    <script th:inline="javascript">
-            function read(storeNum){
-                //alert('read');
-                /*[+
-                var urlword = [[@{/store/detail}]] +
-                    "?storeNum="+storeNum;
-                +]*/
-                location.href=urlword;
-            }
-        </script>
+
 
   </th:block>
 </th:block>
