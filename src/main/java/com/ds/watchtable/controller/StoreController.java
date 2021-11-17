@@ -16,35 +16,16 @@ import java.util.List;
 @Controller
 @Log4j2
 @RequiredArgsConstructor
+@RequestMapping("/store")
 public class StoreController {
     @Autowired
     private final StoreService storeService;
 
-    //DB저장
-    @PostMapping("/manager/managemyinfo")
-    public void registerPost(StoreDTO storeDTO){
-        log.info("Register............");
-        storeService.storeRegister(storeDTO);
-    }
-//    //admin/storelist
-    @GetMapping({"/admin/storelist", "/admin/admin"})
-    public void list(PageRequestDTO pageRequestDTO, Model model){
-        log.info("pageRequestDTO: "+pageRequestDTO);
-        PageResultDTO result = storeService.getLGHlist(pageRequestDTO);
-        log.info(">>"+result);
-        model.addAttribute("result", result);
-    }
-////admin/storelist
-//    @GetMapping({"/admin/storelist", "/admin/admin"})
-//    public void list(Model model){
-//        List<StoreDTO> storeList = storeService.getstoreList();
-//        model.addAttribute("storeList", storeList);
-//    }
-        //admin/storeread
-    @GetMapping("/admin/storeread")
-    public void read(Long storeNum, @ModelAttribute("pageRequestDTO") PageRequestDTO pageRequestDTO , Model model) {
+    @GetMapping("/detail")
+    public void detail(@ModelAttribute("requestDTO") PageRequestDTO
+                       pageRequestDTO, Long storeNum, Model model) {
+        log.info("StoreNum: " +storeNum);
         StoreDTO storeDTO = storeService.getStore(storeNum);
         model.addAttribute("dto", storeDTO);
     }
-
 }
