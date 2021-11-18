@@ -8,7 +8,7 @@ public interface SettingService {
 
 Long register(SettingDTO settingDTO);
 
-Setting getSetting(Long posNum);
+SettingDTO getSetting(Long posNum);
 
     default Setting dtoToEntity(SettingDTO settingDTO){
         Setting setting = Setting.builder()

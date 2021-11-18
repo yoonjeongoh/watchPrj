@@ -2,6 +2,7 @@ package com.ds.watchtable.controller;
 
 import com.ds.watchtable.dto.MenuItemDTO;
 import com.ds.watchtable.dto.SettingDTO;
+import com.ds.watchtable.dto.StoreDTO;
 import com.ds.watchtable.entity.Member;
 import com.ds.watchtable.entity.Setting;
 import com.ds.watchtable.service.MenuItemService;
@@ -33,15 +34,10 @@ public class PosController {
 
     }
 
-    @GetMapping("/pos/storetable")
-    public void storetable(SettingDTO settingDTO){
-
-    }
     @GetMapping("/pos/menuitem")
     public void menuitem(SettingDTO settingDTO){
 
     }
-
 
     @RequestMapping("/pos/storetable")
     private void registering(SettingDTO settingDTO, MenuItemDTO menuItemDTO
@@ -51,16 +47,13 @@ public class PosController {
         log.info(">>>1111111"+settingDTO);
         menuItemService.MenuItem(menuItemDTO);
 
-        //데이터 가져오기
-        Optional<Setting> result = Optional.ofNullable(settingService.getSetting(posNum));
-        if (result != null) {
-            model.addAttribute("setting", result.get());
-        }
-        if (result == null) {
-            return;
-        }
-        log.info(">>>>>>>model:" + model);
-        log.info(">>>>>>>model:" + result);
+
+    }
+
+    @GetMapping("/pos/storetable")
+    public void storetable(Long posNum,Model model){
+        SettingDTO settingDTO = settingService.getSetting(posNum);
+        model.addAttribute("setting", settingDTO);
     }
 
 
