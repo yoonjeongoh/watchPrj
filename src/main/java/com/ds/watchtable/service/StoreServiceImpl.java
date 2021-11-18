@@ -78,17 +78,6 @@ public class StoreServiceImpl implements StoreService {
         return storeEntityToDTO(store, storeImageList, menuImageList);
     }
 
-    //manager/managemyinfo
-    @Override
-    public Store getInfo(Long storeNum) {
-        Optional<Store> result = storeRepository.findById(storeNum);
-        log.info(">>11"+storeNum);
-        if (result.isPresent()) {
-            Store store = result.get();
-        log.info(">>22"+result.get());
-        }
-        return null;
-    }
 
 
 

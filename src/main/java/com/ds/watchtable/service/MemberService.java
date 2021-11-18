@@ -10,8 +10,6 @@ public interface MemberService {
 
 //DB 저장
 String register(MemberDTO dto);
-// info 불러오기
-Member getInfo(Long memberNum);
 
     default Member dtoToEntity(MemberDTO memberDTO){
         Member member = Member.builder()
@@ -43,4 +41,5 @@ Member getInfo(Long memberNum);
                 .build();
         return memberDTO;
     }
+
 }

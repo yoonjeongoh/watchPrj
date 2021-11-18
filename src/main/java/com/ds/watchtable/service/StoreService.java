@@ -16,8 +16,6 @@ public interface StoreService {
     PageResultDTO<StoreDTO, Store> getLGHlist(PageRequestDTO requestDTO);
     //admin/storeread 가게 정보 상세보기
     StoreDTO getStore(Long storeNum);
-    //manager/
-    Store getInfo(Long storeNum);
 
 
     default Map<String, Object> dtoToEntity(StoreDTO storeDTO) {
