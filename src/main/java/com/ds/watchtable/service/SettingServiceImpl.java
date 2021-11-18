@@ -2,14 +2,16 @@ package com.ds.watchtable.service;
 
 
 import com.ds.watchtable.dto.SettingDTO;
-import com.ds.watchtable.entity.Member;
+import com.ds.watchtable.entity.MenuImage;
 import com.ds.watchtable.entity.Setting;
+import com.ds.watchtable.entity.Store;
+import com.ds.watchtable.entity.StoreImage;
 import com.ds.watchtable.repository.SettingRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -31,12 +33,9 @@ public class SettingServiceImpl implements SettingService {
     }
 
     @Override
-    public Setting getSetting(Long posNum) {
-        Optional<Setting> result = settingRepository.findById(posNum);
-        if (result.isPresent()) {
-            Setting setting = result.get();
-            return setting;
-        }
-        return null;
+    public SettingDTO getSetting(Long posNum) {
+        Setting setting = settingRepository.getById(posNum);
+        return entityToDTO(setting);
     }
 }
+
