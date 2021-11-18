@@ -33,6 +33,10 @@ public class PosController {
     public void storetable(SettingDTO settingDTO){
 
     }
+    @GetMapping("/pos/menuitem")
+    public void menuitem(SettingDTO settingDTO){
+
+    }
 
 
     @RequestMapping("/pos/storetable")
@@ -50,13 +54,14 @@ public class PosController {
         if (result == null) {
             return;
         }
-        log.info("registering.................");
+        log.info(">>>>>>>model:" + model);
+        log.info(">>>>>>>model:" + result);
     }
 
     @GetMapping("/pos/setting")
     public void register(SettingDTO settingDTO, MenuItemDTO menuItemDTO){
         log.info(">>>>>>>>>>>settingDTO : "+settingDTO);
-        settingService.register(settingDTO);
+//        settingService.register(settingDTO);
         log.info(">>>>>>>>>>>settingDTO2 : "+settingDTO);
 
     }
