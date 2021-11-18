@@ -18,7 +18,10 @@
         </thead>
       </table>
     </div>
-
+    <div th:each="member: ${member}">
+      <span>[[${member.memberNum}]]</span>
+      <<span>[[${member.memberName}]]</span>
+    </div>
     <h3>실제 메인화면에 나와야 할 것들</h3>
     <a href="http://localhost:8080/watchtable/">/watchtable/main(All)</a><br>
     <a th:href="@{watchtable/detail}">/watchtable/detailed(All)</a><br>
@@ -44,7 +47,7 @@
     <hr>
     <h3>Member</h3>
     <a th:href="@{member/myinfo}">/member/myinfo(내정보보기)</a><br>
-    <span th:onclick="|javascript:goMyInfo('${memberNum}')|">Testing</span><br>
+<!--    <span th:onclick="|javascript:goMyInfo('${member}')|">Testing</span><br>-->
     <a th:href="@{member/myinfocorrect}">/member/myinfocorrect(내정보수정)</a><br>
     <hr>
     <h3>Pos</h3>
