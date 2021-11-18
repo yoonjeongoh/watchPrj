@@ -2,9 +2,7 @@ package com.ds.watchtable.service;
 
 import com.ds.watchtable.dto.*;
 import com.ds.watchtable.entity.*;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,8 +16,9 @@ public interface StoreService {
     PageResultDTO<StoreDTO, Store> getLGHlist(PageRequestDTO requestDTO);
     //admin/storeread 가게 정보 상세보기
     StoreDTO getStore(Long storeNum);
-    //manager/managemyinfo 매장관리
-//    Store getInfo(Long storeNum);
+    //manager/
+    Store getInfo(Long storeNum);
+
 
     default Map<String, Object> dtoToEntity(StoreDTO storeDTO) {
         Map<String, Object> entityMap = new HashMap<>();

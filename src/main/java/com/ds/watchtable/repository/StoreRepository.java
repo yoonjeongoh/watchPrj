@@ -1,14 +1,17 @@
 package com.ds.watchtable.repository;
 
+import com.ds.watchtable.entity.Member;
 import com.ds.watchtable.entity.MenuImage;
 import com.ds.watchtable.entity.Store;
 import com.ds.watchtable.entity.StoreImage;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface StoreRepository extends JpaRepository <Store, Long> {
@@ -26,6 +29,10 @@ public interface StoreRepository extends JpaRepository <Store, Long> {
             "left outer join MenuImage mi on mi.store = si.store " +
             "where s.storeNum =:storeNum ")
     Object[] getStoreDetail(Long storeNum);
+
+    @EntityGraph(attributePaths = {"roleSet"}, type = EntityGraph.EntityGraphType.LOAD)
+    @Query("select s from Store m where s.fromSocial =:social and s.StoreName=:storeName")
+    Optional<Store> findByMemberId(String storeName, boolean social);
 
 }
 

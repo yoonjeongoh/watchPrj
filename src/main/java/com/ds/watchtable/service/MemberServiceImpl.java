@@ -28,16 +28,24 @@ public class MemberServiceImpl implements MemberService {
         memberRepository.save(member);
         return member.getMemberName();
     }
+
     //데이터 불러오기
     @Override
     public Member getInfo(Long memberNum) {
-        Optional<Member> result = memberRepository.findById(memberNum);
+        Optional<Member> result = memberRepository.findById(1L);
+        log.info(">>>>>>"+result);
+        log.info(">>>>>>>"+ result.get());
         if (result.isPresent()) {
             Member member = result.get();
             return member;
         }
         return null;
     }
+
+/*    @Override
+    public  getting(MemberDTO memberDTO) {
+
+    }*/
 
 }
 
