@@ -20,6 +20,8 @@ public class Setting extends BaseEntity {
     private Long tableFour;
     private Long tableSix;
 
-/*    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    Store store;*/
+    @JoinColumn(name = "storeNum")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    Store store;
+
 }

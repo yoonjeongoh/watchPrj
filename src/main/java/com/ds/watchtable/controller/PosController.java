@@ -23,6 +23,10 @@ public class PosController {
     private final SettingService settingService;
     private final MenuItemService menuItemService;
 
+    @GetMapping("/pos/setting")
+    public void list(){
+    }
+
 
     @GetMapping("/pos/storeorder")
     public void storeorder(SettingDTO settingDTO){
@@ -44,6 +48,7 @@ public class PosController {
                                     ,Long posNum, Model model) {
         //데이터넣기
         settingService.register(settingDTO);
+        log.info(">>>1111111"+settingDTO);
         menuItemService.MenuItem(menuItemDTO);
 
         //데이터 가져오기
@@ -58,13 +63,6 @@ public class PosController {
         log.info(">>>>>>>model:" + result);
     }
 
-    @GetMapping("/pos/setting")
-    public void register(SettingDTO settingDTO, MenuItemDTO menuItemDTO){
-        log.info(">>>>>>>>>>>settingDTO : "+settingDTO);
-//        settingService.register(settingDTO);
-        log.info(">>>>>>>>>>>settingDTO2 : "+settingDTO);
-
-    }
 
 
 

@@ -18,7 +18,7 @@ public class SettingDTO {
     private Long tableFour;
     private Long tableSix;
 
-//    private Long storeNum;
+    private Long storeNum;
 
     private LocalDateTime regDate;
     private LocalDateTime modDate;

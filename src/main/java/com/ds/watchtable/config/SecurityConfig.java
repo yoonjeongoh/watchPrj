@@ -37,14 +37,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin().loginPage("/login").loginProcessingUrl("/login")
-                .successHandler(successHandler()).failureUrl("/member/login?error")
+                .successHandler(successHandler()).failureUrl("/join/login?error")
                 .defaultSuccessUrl("/");
         http.csrf().disable();
         http.logout();
         http.oauth2Login().successHandler(successHandler());
         http.rememberMe().tokenValiditySeconds(60 * 60 * 24 * 7).userDetailsService(userDetailsService);
         http.addFilterBefore(apiCheckFilter(), UsernamePasswordAuthenticationFilter.class);
-        http.headers().frameOptions().sameOrigin();
+        http.headers().frameOptions().disable();
         http.httpBasic().and().authorizeRequests()
 //                .antMatchers("/admin/**").hasRole("ADMIN")
 
