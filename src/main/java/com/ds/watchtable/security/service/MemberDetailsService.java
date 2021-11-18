@@ -40,8 +40,7 @@ public class MemberDetailsService implements UserDetailsService {
                         .map(role -> new SimpleGrantedAuthority("ROLE_" + role.name()))
                         .collect(Collectors.toSet())
         );
-        clubAuthMemberDTO.setName(member.getMemberName());
-        clubAuthMemberDTO.setFromSocial(member.isFromSocial());
+        clubAuthMemberDTO.setMember(member);
         return clubAuthMemberDTO;
     }
 }
