@@ -14,12 +14,12 @@ public interface StoreService {
 
     //DB저장
     Long storeRegister(StoreDTO storeDTO);
-
     //admin/storelist 리스트 목록
     PageResultDTO<StoreDTO, Store> getLGHlist(PageRequestDTO requestDTO);
-
     //admin/storeread 가게 정보 상세보기
     StoreDTO getStore(Long storeNum);
+    //manager/managemyinfo 매장관리
+//    Store getInfo(Long storeNum);
 
     default Map<String, Object> dtoToEntity(StoreDTO storeDTO) {
         Map<String, Object> entityMap = new HashMap<>();

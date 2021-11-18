@@ -44,16 +44,16 @@
     <hr>
     <h3>Member</h3>
     <a th:href="@{member/myinfo}">/member/myinfo(내정보보기)</a><br>
-    <span th:onclick="|javascript:goMyInfo('${member}')|">Testing</span><br>
+    <span th:onclick="|javascript:goMyInfo('${memberNum}')|">Testing</span><br>
     <a th:href="@{member/myinfocorrect}">/member/myinfocorrect(내정보수정)</a><br>
     <hr>
     <h3>Pos</h3>
     <a th:href="@{pos/kitchen}">/watchtable/kitchen[주방화면]</a><br>
-    <a th:href="@{pos/loginmng}">/watchtable/loginmng[포스로그인]</a><br>
+    <a th:href="@{pos/loginmng}">/watchtable/loginmng[안쓸거임]</a><br>
     <a th:href="@{pos/menuitem}">/watchtable/menuitem[메뉴]</a><br>
-    <a th:href="@{pos/storeorder}">/watchtable/order[]</a><br>
-    <a th:href="@{pos/setting}">/watchtable/setting[]</a><br>
-    <a th:href="@{pos/storetable}">/watchtable/storetable[가게테이블]</a><br>
+    <a th:href="@{pos/storeorder}">/watchtable/order[메뉴리스트]</a><br>
+    <a th:href="@{pos/setting}">/watchtable/setting[포스세팅]</a><br>
+    <a th:href="@{pos/storetable}">/watchtable/storetable[(포스)가게테이블]</a><br>
     <hr>
     <h3>Review</h3>
     <a th:href="@{review/myreview}">/watchtable/myreview(내리뷰)</a><br>

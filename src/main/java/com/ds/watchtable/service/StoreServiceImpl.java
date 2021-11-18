@@ -3,6 +3,7 @@ package com.ds.watchtable.service;
 import com.ds.watchtable.dto.PageRequestDTO;
 import com.ds.watchtable.dto.PageResultDTO;
 import com.ds.watchtable.dto.StoreDTO;
+import com.ds.watchtable.entity.Member;
 import com.ds.watchtable.entity.MenuImage;
 import com.ds.watchtable.entity.Store;
 import com.ds.watchtable.entity.StoreImage;
@@ -21,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 
 @Service
@@ -77,5 +79,20 @@ public class StoreServiceImpl implements StoreService {
         List<MenuImage> menuImageList = (List<MenuImage>) menuImageRepository.getMenuImageListByStoreNum(store);
         return storeEntityToDTO(store, storeImageList, menuImageList);
     }
+
+/*
+    //manager/managemyinfo
+    @Override
+    public Store getInfo(Long storeNum) {
+        Optional<Store> result = storeRepository.findById(storeNum);
+        if (result.isPresent()) {
+            Store store = result.get();
+            return store;
+        }
+        return null;
+    }
+*/
+
+
 
 }
