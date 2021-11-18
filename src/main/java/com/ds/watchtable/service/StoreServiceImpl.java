@@ -3,7 +3,6 @@ package com.ds.watchtable.service;
 import com.ds.watchtable.dto.PageRequestDTO;
 import com.ds.watchtable.dto.PageResultDTO;
 import com.ds.watchtable.dto.StoreDTO;
-import com.ds.watchtable.entity.Member;
 import com.ds.watchtable.entity.MenuImage;
 import com.ds.watchtable.entity.Store;
 import com.ds.watchtable.entity.StoreImage;
@@ -37,7 +36,6 @@ public class StoreServiceImpl implements StoreService {
     final private MenuImageRepository menuImageRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
-
 
     //    DB저장
     @Transactional
@@ -80,18 +78,17 @@ public class StoreServiceImpl implements StoreService {
         return storeEntityToDTO(store, storeImageList, menuImageList);
     }
 
-/*
     //manager/managemyinfo
     @Override
     public Store getInfo(Long storeNum) {
         Optional<Store> result = storeRepository.findById(storeNum);
+        log.info(">>11"+storeNum);
         if (result.isPresent()) {
             Store store = result.get();
-            return store;
+        log.info(">>22"+result.get());
         }
         return null;
     }
-*/
 
 
 
