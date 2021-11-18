@@ -25,6 +25,7 @@ public class StoreController {
     @Autowired
     private final StoreService storeService;
 
+    //이게모지?
     @GetMapping("/store/detail")
     public void read(Long storeNum, @ModelAttribute("pageRequestDTO")
             PageRequestDTO pageRequestDTO, Model model) {
@@ -32,23 +33,14 @@ public class StoreController {
         model.addAttribute("dto", storeDTO);
     }
 
-//    @RequestMapping("/manager/managemyinfo")
-//    public void getiing(Long storeNum, Model model, Store store) {
-//        Optional<Store> result = Optional.ofNullable(storeService.getInfo(storeNum));
-//        log.info(">>33" + storeNum);
-//        if (result.isPresent()) {
-//            model.addAttribute("store", result.get());
-//            log.info(">>44" + result.get());
-//        }
-//    }
-
-    @RequestMapping("/manager/managemyinfo")
+    //시큐리티로 데이터넘기기
+/*    @RequestMapping("/manager/managemyinfo")
     public void myinfo1(Model model,
                         @AuthenticationPrincipal ClubAuthMemberDTO principal) {
         if (principal != null) {
             model.addAttribute("store", principal.getStore());
             log.info("principal.getStore()" + principal.getStore());
         }
+    }*/
 
-    }
 }

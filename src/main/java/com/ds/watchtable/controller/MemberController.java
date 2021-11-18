@@ -37,32 +37,7 @@ public class MemberController {
         }
     }
 
-
-
-
-
-
-/*
-    //내 정보 불러오기
-    @RequestMapping("/myinfocorrect")
-    private void getMyInfo(Long memberNum, Model model,
-                           @AuthenticationPrincipal Principal principal) {
-
-
-            Optional<Member> result = Optional.ofNullable(memberService.getInfo(memberNum));
-            if (result.isPresent()) {
-                model.addAttribute("member", result.get());
-            }
-            if (result == null) {
-                return;
-            }
-        log.info("result>>"+result);
-        }
-*/
-
-
-
-    }
+  }
 
 
 
