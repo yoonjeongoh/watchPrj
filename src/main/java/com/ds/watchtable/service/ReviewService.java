@@ -11,7 +11,7 @@ public interface ReviewService {
     //리뷰 추가
     Long registerReview(ReviewDTO reviewDTO);
     //리뷰 리스트
-    List<ReviewDTO> getListOfStore(Long storeNum);
+    List<ReviewDTO> getListOfReview(Long storeNum);
 
     void modify(ReviewDTO storeReviewDTO);
 

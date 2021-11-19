@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Log4j2
 @Controller
 @RequiredArgsConstructor
-@RequestMapping
 public class WatchtableController {
 
     private final StoreService storeService;
