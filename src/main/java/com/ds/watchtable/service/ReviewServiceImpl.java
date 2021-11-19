@@ -27,10 +27,14 @@ public class ReviewServiceImpl implements ReviewService{
         return review.getReviewNum();
     }
 
+    //리뷰리스트
     @Override
-    public List<ReviewDTO> getListOfStore(Long storeNum) {
+    public List<ReviewDTO> getListOfReview(Long storeNum) {
+        log.info(">>>>>>>>>>>>ReviewImpl1111111<<<<<<<<<<<<<<<<");
         Store store = Store.builder().storeNum(storeNum).build();
+        log.info(">>>>>>>>>>>>ReviewImpl2222222<<<<<<<<<<<<<<<<");
         List<Review> result = reviewRepository.findByStore(store);
+        log.info(">>>>>>>>>>>>ReviewImp33333333<<<<<<<<<<<<<<<<");
         return result.stream().map(review -> entityToDTO(review)).collect(Collectors.toList());
     }
 

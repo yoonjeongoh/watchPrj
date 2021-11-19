@@ -25,7 +25,7 @@ public class MemberController {
     private final MemberService memberService;
 
     //db 저장
-    @PostMapping("/member/myinfo")
+    @RequestMapping("/member/myinfo")
     public void registerAndMyInfo(MemberDTO memberDTO) {
         log.info("register...........");
         memberService.register(memberDTO);

@@ -144,15 +144,15 @@
             var contextPath = $('#contextPathHolder').attr('data-contextPath') ? $('#contextPathHolder').attr('data-contextPath') : '';
             var memberNum = [[${member.memberNum}]];
             var storeNum = [[${dto.storeNum}]];
-            var review = $('textarea[name="reviewText"]').val();
+            var review = $('textarea[name="reviewText"]');
 
-            //리뷰 데이터 넘기기-완성..아니 미완성 갑자기 외않되
+            //리뷰 데이터 넘기기
             $("#rv-btn").click(function(){
                 alert("benny");
                 var data = {
                     memberNum:memberNum,
                     storeNum:storeNum,
-                    review:review
+                    text:review.val()
                     };
                 console.log(">>>>"+data);
 
@@ -162,12 +162,44 @@
                     data:JSON.stringify(data),
                     contentType:"application/json; charset=utf-8",
                     dataType:"text",
-                    success: function(result){
-                        console.log("result: "+result);
+                    success: function(data){
+                        console.log("result: "+data);
                         self.location.reload();
-                     }
+                     },
+                    error:function(data){
+        		    alert("errorrrrrrrrrrrrrrrr");
+                    }
                 });
             });
+
+            //리뷰 리스트 보기
+            function getStoreReviews() {
+                function formatTime(str) {
+                    var date = new Date(str);
+                    return date.getFullYear()+'/'+
+                    (date.getMonth() + 1)+'/' +
+                    date.getDate() + ' ' +
+                    date.getHours()+':'+
+                    date.getMinutes();
+                }
+
+                $.getJSON(contextPath+'/addReview/list', function(arr) {
+                var str = "";
+
+                    $.each(arr, function(idx, review) {
+                    console.log(review);
+
+                        str += ' <div reviewNum='+review.reviewNum+'>';
+                        str += ' <h5 class="card-title">'+review.text+'</h5>';
+                        str += ' <h6 class="card-subtitle mb-2 text-muted">'+review.memberNum+'</h6>';
+                        str += ' <p class="card-text">'+formatTime(review.regDate)+'</p>';
+                        str += ' </div>';
+                    });
+                    $(".rv-list-table").html(str);
+                });
+                }
+                getStoreReviews();
+
 
             //대기등록 모달
             var modal = $('.modal');

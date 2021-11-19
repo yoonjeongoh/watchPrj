@@ -23,19 +23,27 @@ public class ReviewController {
     @Autowired
     final private ReviewService reviewService;
 
-/*
-    @GetMapping("/{storeNum}/all")
-    public ResponseEntity<List<ReviewDTO>> getList(@PathVariable("storeNum") Long storeNum) {
-        List<ReviewDTO> reviewDTOList = reviewService.getListOfStore(storeNum);
+    //리뷰등록
+    @RequestMapping("/addReview")
+    public ResponseEntity<Long> addReview(@RequestBody ReviewDTO reviewDTO) {
+        log.info("--------------addReview1111---------------");
+        log.info("reviewDTO: " + reviewDTO);
+        Long reviewNum = reviewService.registerReview(reviewDTO);
+        log.info("--------------addReview222---------------");
+        return new ResponseEntity<>(reviewNum, HttpStatus.OK);
+    }
+
+    //스토어별 리뷰 리스트
+    @RequestMapping("/addReview/list")
+    public ResponseEntity<List<ReviewDTO>> reviewlist(@PathVariable("storeNum") Long storeNum) {
+        log.info(">>>>>>>>>>Review11111<<<<<<<<<<<<<");
+        List<ReviewDTO> reviewDTOList = reviewService.getListOfReview(storeNum);
+        log.info(">>>>>>>>>>Review22222<<<<<<<<<<<<<");
         return new ResponseEntity<>(reviewDTOList, HttpStatus.OK);
     }
 
-    @PostMapping("/{storeNum}")
-    public ResponseEntity<Long> addReview(@RequestBody ReviewDTO storeReviewDTO) {
-        Long reviewNum = reviewService.registerReview(storeReviewDTO);
-        return new ResponseEntity<>( reviewNum, HttpStatus.OK );
-    }
 
+    /*
     @PutMapping("/{storeNum}/{reviewnum}")
     public ResponseEntity<Long> modifyReview(@PathVariable Long reviewnum,
                                              @RequestBody ReviewDTO storeReviewDTO){

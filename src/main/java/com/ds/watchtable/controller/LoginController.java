@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @RequestMapping
 public class LoginController {
-    @GetMapping({"/join/login","/pos/loginmng"})
+    @GetMapping("/join/login")
     public void login(String error, String logout, Model model) {
         log.info("login error : "+error);
         log.info("login logout : "+logout);

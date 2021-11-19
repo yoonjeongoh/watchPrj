@@ -27,7 +27,7 @@ public class StoreController {
     private final StoreService storeService;
     private final ReviewService reviewService;
 
-    //이게모지?
+    //store/detail - member, store 정보 넘기기
     @GetMapping("/store/detail")
     public void read(Long storeNum, @ModelAttribute("pageRequestDTO")
             PageRequestDTO pageRequestDTO, Model model,
@@ -42,14 +42,6 @@ public class StoreController {
 
     }
 
-    @RequestMapping("/addReview")
-    public ResponseEntity<Long> addReview(@RequestBody ReviewDTO reviewDTO) {
-        log.info("--------------add MovieReview---------------");
-        log.info("reviewDTO: " + reviewDTO);
-
-        Long reviewNum = reviewService.registerReview(reviewDTO);
-        return new ResponseEntity<>(reviewNum, HttpStatus.OK);
-    }
 
         //시큐리티로 데이터넘기기
 /*    @RequestMapping("/manager/managemyinfo")
