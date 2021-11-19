@@ -36,7 +36,7 @@ public class Store extends BaseEntity {
     @Builder.Default
     private Set<MemberRole> roleSet = new HashSet<>();
 
-    public void addManagerRole(MemberRole memberRole) {
+    public void addMemberRole(MemberRole memberRole) {
         roleSet.add(memberRole);
     }
 

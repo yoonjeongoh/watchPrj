@@ -56,6 +56,7 @@ public class ClubOAuth2UserDetailsService extends DefaultOAuth2UserService {
                         role -> new SimpleGrantedAuthority("ROLE_" + role.name()))
                         .collect(Collectors.toList()), oAuth2User.getAttributes());
         clubAuthMemberDTO.setName(member.getMemberName());
+        clubAuthMemberDTO.setMember(member);
         return clubAuthMemberDTO;
     }
 

@@ -13,5 +13,5 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     Optional<Member> findByMemberId(String Id, boolean social);
 
     @Query("select m from Member m where m.memberName =:memberName")
-    Member findByMemberName(String memberName);
+    Optional<Member> findByMemberName(String memberName);
 }

@@ -47,5 +47,4 @@ public class WatchtableController {
         }
         return "index";
     }
-
 }

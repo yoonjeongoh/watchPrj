@@ -24,12 +24,8 @@ Member getInfo(Long memberNum);
                 .memberPw(memberDTO.getMemberPw())
                 .build();
         member.addMemberRole(MemberRole.USER);
-        member.addMemberRole(MemberRole.MANAGER);
-        member.addMemberRole(MemberRole.ADMIN);
-
         return member;
     }
-
     default MemberDTO entityToDTO(Member member){
         MemberDTO memberDTO = MemberDTO.builder()
                 .memberNum(member.getMemberNum())
