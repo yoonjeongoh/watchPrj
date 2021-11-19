@@ -49,7 +49,7 @@ public class ClubOAuth2UserDetailsService extends DefaultOAuth2UserService {
         Member member = saveSocialMember(email);
 //    return oAuth2User;
         ClubAuthMemberDTO clubAuthMemberDTO = new ClubAuthMemberDTO(
-                member.getMemberId(),
+                member.getMemberEmail(),
                 member.getMemberPw(),
                 true,
                 member.getRoleSet().stream().map(
@@ -64,7 +64,7 @@ public class ClubOAuth2UserDetailsService extends DefaultOAuth2UserService {
         Optional<Member> result = repository.findByMemberId(memberId, true);
         if (result.isPresent()) return result.get(); //있으면 끝
         Member member = Member.builder()
-                .memberId(memberId)
+                .memberEmail(memberId)
                 .memberName(memberId)
                 .memberPw(passwordEncoder.encode("1"))
                 .fromSocial(true)

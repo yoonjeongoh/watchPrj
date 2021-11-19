@@ -30,9 +30,5 @@ public interface StoreRepository extends JpaRepository <Store, Long> {
             "where s.storeNum =:storeNum ")
     Object[] getStoreDetail(Long storeNum);
 
-    @EntityGraph(attributePaths = {"roleSet"}, type = EntityGraph.EntityGraphType.LOAD)
-    @Query("select s from Store m where s.fromSocial =:social and s.StoreName=:storeName")
-    Optional<Store> findByMemberId(String storeName, boolean social);
-
 }
 

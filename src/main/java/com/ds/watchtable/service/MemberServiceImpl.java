@@ -29,8 +29,6 @@ public class MemberServiceImpl implements MemberService {
         return member.getMemberName();
     }
 
-
-
 }
 
 
