@@ -16,7 +16,8 @@ public class StoreOrder extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long storeOrderNum;
 
-    private String storeOrderList;
-
+    private Long StoreNum;
+    private Long TableNum;
+    private Boolean checkOrder;
 
 }

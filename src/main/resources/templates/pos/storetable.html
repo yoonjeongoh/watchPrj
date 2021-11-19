@@ -90,23 +90,31 @@
         var tableFour = $("#tableFourValue").val();
         var tableSix = $("#tableSixValue").val();
 
+        var tableTwoPlus = Number(tableTwo) + 1;
+        var tableFourPlus = Number(tableTwo)+Number(tableFour)+1;
+        console.log(tableTwoPlus);
+
+
+
         var TwoPlusFour = Number(tableTwo)+Number(tableFour);
         var FourPlusSix = Number(tableFour)+Number(tableSix);
 
+
             for(var i=1; i<=tableTwo; i++){
                 var tablePlusNum= "tableTwoOrder"+i;
-                $("#tableTwoBox").append('<div class="flextb2" id='+ tablePlusNum + '>');
+                $("#tableTwoBox").append('<div name=' + i + ' class="flextb2" id='+ tablePlusNum + ' value='+ i +'>');
                 }
             for(var i=1; i<=TwoPlusFour-tableTwo; i++){
                 var tablePlusNum= "tableFourOrder"+i;
                 var tableTwo = $("#tableTwoValue").val();
-                $("#tableFourBox").append('<div class="flextb4" id='+ tablePlusNum + '>');
+                $("#tableFourBox").append('<div name=' + tableTwoPlus + ' class="flextb4" id='+ tablePlusNum + ' value='+ tableTwoPlus++ + '>');
                  }
             for(var i=1; i<=FourPlusSix-tableFour; i++){
                 var tablePlusNum= "tableSixOrder"+i;
                 var tableFour = $("#tableFourValue").val();
-                $("#tableSixBox").append('<div class="flextb6" id='+ tablePlusNum + '>');
+                $("#tableSixBox").append('<div name=' + tableFourPlus + ' class="flextb6" id='+ tablePlusNum + ' value='+ tableFourPlus++ + '>');
                  }
+
 
 
 
