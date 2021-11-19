@@ -23,10 +23,8 @@
         <div class="container">
             <a class="navbar-brand" th:href="@{/}">WATCH TABLE</a>
             <a sec:authorize="isAuthenticated()"><span sec:authentication="name"></span><span> 님 환영합니다.</span></a>
-<!--
             <a sec:authorize="isAuthenticated()" class="btn btn-primary"
-               th:onclick="|javascript:goMyInfo('${mem.memberNum}')|">내정보</a>
--->
+               th:href="@{member/myinfo}">내정보</a>
             <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/logout}">로그아웃</a>
             <a sec:authorize="!isAuthenticated()" class="btn btn-primary" th:href="@{/join/login}">로그인</a>
             <a sec:authorize="!isAuthenticated()" class="btn btn-primary" th:href="@{/join/joinselect}">회원가입</a>

@@ -38,21 +38,17 @@
                                         <div class="profile-usertitle">
                                             <div class="profile-usertitle-name">{{가게이름}}</div>
                                         </div>
+                                        <div th:each="store: ${store}">
+                                            <span>[[${store.storeName}]]</span>
+                                            <span>[[${store.storeNum}]]</span>
+                                        </div>
                                         <div class="profile-usermenu">
                                             <ul class="nav">
                                                 <li class="active">
                                                     <button class="btn11" th:onclick="|location.href='@{/pos/storetable}'|" >포스</button>
-<!--데이터 넘길때 storeNum으로 넘기고싶은데 상황보고 수정가능
-                                                    <button class="btn11"
-                                                            th:onclick="|javascript:goMyPos('${store.storeNum}','${posNum}')|">포스</button>
--->
                                                     <button class="btn11" th:onclick="|location.href='@{/pos/setting}'|">포스 셋팅</button>
-<!--
-                                                    <button class="btn11"
-                                                            th:onclick="|javascript:goPosSetting('${store.storeNum}')|">포스 셋팅</button>
--->
-                                                    <button class="btn11">내 정보 수정</button>
-                                                    <button class="btn11">내 가게 수정</button>
+                                                    <button class="btn11" th:onclick="|location.href='@{/member/myinfocorrect}'|">내 정보 수정</button>
+                                                    <button class="btn11" th:onclick="|location.href='@{/manager/manageinfocorrect}'|">내 가게 수정</button>
                                                 </li>
                                                 <br>
                                             </ul>
@@ -95,28 +91,6 @@
             </div>
         </div>
         <div class="end-pg"></div>
-
-        <script th:inline="javascript">
-            function goMyPos(storeNum, posNum){
-                alert('read');
-                /*[+
-                var urlurl = [[@{/pos/setting}]] +
-                    "?storeNum="+storeNum+"posNum="+posNum;
-                +]*/
-                location.href=urlurl;
-            }
-
-            function goPosSetting(storeNum){
-                alert('read');
-                /*[+
-                var url = [[@{/pos/setting}]] +
-                    "?storeNum="+storeNum;
-                +]*/
-                location.href=url;
-        }
-
-        </script>
-
 
     </th:block>
 </th:blotck>

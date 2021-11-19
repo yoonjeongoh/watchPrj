@@ -6,21 +6,49 @@
         .flex-container{
             display: inline-flex;
         }
-        .flextb{
-            width: 250px;
-            height: 250px;
+        .flextb2{
+            width: 100px;
+            height: 100px;
+            margin: 20px;
+            background-color: darksalmon;
+        }
+         .flextb4{
+            width: 150px;
+            height: 150px;
+            margin: 20px;
+            background-color: darksalmon;
+        }
+        .flextb6{
+            width: 200px;
+            height: 200px;
             margin: 20px;
             background-color: darksalmon;
         }
         </style>
+<!--        th:each="num: ${#numbers.sequence(1,5)}"-->
+
+        <input id="tableTwoValue" th:value="${setting.tableTwo}" readonly>
         <div class="flex-container">
+            <div id="tableTwoBox" >
 
-            <div th:each="setting : ${setting.tableTwo}">
-                <div id = "ftb1" class="flextb" th:onClick="|location.href='@{/pos/order}'|">
-
-                </div>
             </div>
         </div>
+
+        <input id="tableFourValue" th:value="${setting.tableFour}" readonly>
+        <div class="flex-container">
+            <div id="tableFourBox" >
+
+            </div>
+        </div>
+
+        <input id="tableSixValue" th:value="${setting.tableSix}" readonly>
+        <div class="flex-container">
+            <div id="tableSixBox" >
+
+            </div>
+        </div>
+
+
 <!--            <div id = "ftb2" class="flextb" th:onClick="|location.href='@{/pos/posorder}'|">-->
 <!--                2-->
 <!--            </div>-->
@@ -53,6 +81,36 @@
 <!--            </div>-->
 
 <!--        </div>-->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script>
+    $(document).ready(function() {
 
+
+        var tableTwo = $("#tableTwoValue").val();
+        var tableFour = $("#tableFourValue").val();
+        var tableSix = $("#tableSixValue").val();
+
+        var TwoPlusFour = Number(tableTwo)+Number(tableFour);
+        var FourPlusSix = Number(tableFour)+Number(tableSix);
+
+            for(var i=1; i<=tableTwo; i++){
+                var tablePlusNum= "tableTwoOrder"+i;
+                $("#tableTwoBox").append('<div class="flextb2" id='+ tablePlusNum + '>');
+                }
+            for(var i=1; i<=TwoPlusFour-tableTwo; i++){
+                var tablePlusNum= "tableFourOrder"+i;
+                var tableTwo = $("#tableTwoValue").val();
+                $("#tableFourBox").append('<div class="flextb4" id='+ tablePlusNum + '>');
+                 }
+            for(var i=1; i<=FourPlusSix-tableFour; i++){
+                var tablePlusNum= "tableSixOrder"+i;
+                var tableFour = $("#tableFourValue").val();
+                $("#tableSixBox").append('<div class="flextb6" id='+ tablePlusNum + '>');
+                 }
+
+
+
+    });
+    </script>
     </th:block>
 </th:blotck>
