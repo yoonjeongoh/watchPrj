@@ -25,10 +25,10 @@ public interface ReviewService {
                         .memberName(reviewDTO.getMemberName())
                         .memberNickname(reviewDTO.getMemberNickname())
                         .build())
-//                .store(Store.builder()
-//                        .storeNum(reviewDTO.getStoreNum())
-//                        .build())
-                .reviewnum(reviewDTO.getReviewnum())
+                .store(Store.builder()
+                        .storeNum(reviewDTO.getStoreNum())
+                        .build())
+                .reviewNum(reviewDTO.getReviewNum())
                 .text(reviewDTO.getText())
                 .build();
         return review;
@@ -36,12 +36,12 @@ public interface ReviewService {
 
     default ReviewDTO entityToDTO(Review review) {
         ReviewDTO reviewDTO = ReviewDTO.builder()
-                .reviewnum(review.getReviewnum())
+                .reviewNum(review.getReviewNum())
                 .memberNum(review.getMember().getMemberNum())
                 .memberId(review.getMember().getMemberId())
                 .memberName(review.getMember().getMemberName())
                 .memberNickname(review.getMember().getMemberNickname())
-//                .storeNum(review.getStore().getStoreNum())
+                .storeNum(review.getStore().getStoreNum())
                 .text(review.getText())
                 .regDate(review.getRegDate())
                 .modDate(review.getModDate())

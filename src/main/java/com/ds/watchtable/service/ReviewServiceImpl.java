@@ -19,6 +19,14 @@ public class ReviewServiceImpl implements ReviewService{
 
     private final ReviewRepository reviewRepository;
 
+    //DB저장
+    @Override
+    public Long registerReview(ReviewDTO reviewDTO) {
+        Review review = dtoToEntity(reviewDTO);
+        reviewRepository.save(review);
+        return review.getReviewNum();
+    }
+
     @Override
     public List<ReviewDTO> getListOfStore(Long storeNum) {
         Store store = Store.builder().storeNum(storeNum).build();
@@ -26,18 +34,12 @@ public class ReviewServiceImpl implements ReviewService{
         return result.stream().map(review -> entityToDTO(review)).collect(Collectors.toList());
     }
 
-    //DB저장
-    @Override
-    public Long registerReview(ReviewDTO reviewDTO) {
-        Review review = dtoToEntity(reviewDTO);
-        reviewRepository.save(review);
-        return review.getReviewnum();
-    }
+
 
     @Override
     public void modify(ReviewDTO reviewDTO) {
         Optional<Review> result =
-                reviewRepository.findById(reviewDTO.getReviewnum());
+                reviewRepository.findById(reviewDTO.getReviewNum());
         if(result.isPresent()) {
             Review storeReview = result.get();
             storeReview.changeText(reviewDTO.getText());

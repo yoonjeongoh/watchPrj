@@ -17,12 +17,13 @@ import java.util.List;
 @Controller
 @Log4j2
 @RequiredArgsConstructor
-@RequestMapping("/reviews")
+@RequestMapping
 public class ReviewController {
 
     @Autowired
     final private ReviewService reviewService;
 
+/*
     @GetMapping("/{storeNum}/all")
     public ResponseEntity<List<ReviewDTO>> getList(@PathVariable("storeNum") Long storeNum) {
         List<ReviewDTO> reviewDTOList = reviewService.getListOfStore(storeNum);
@@ -52,6 +53,7 @@ public class ReviewController {
         reviewService.remove(reviewnum);
         return new ResponseEntity<>( reviewnum, HttpStatus.OK);
     }
+*/
 //    제이쿼리를 이용한 db저장
 /*    @PostMapping("/watchtable/detail")
     public ResponseEntity<Long> addReview(ReviewDTO reviewDTO){
