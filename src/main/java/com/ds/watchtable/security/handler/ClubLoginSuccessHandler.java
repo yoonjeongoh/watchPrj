@@ -41,7 +41,7 @@ public class ClubLoginSuccessHandler implements AuthenticationSuccessHandler {
     log.info("Need Modify Member?" + fromSocial);
     boolean passwordResult = passwordEncoder.matches("1", authMember.getPassword());
     if (fromSocial && passwordResult) {
-      redirectStrategy.sendRedirect(request, response, "/member/modify?from=social");
+      redirectStrategy.sendRedirect(request, response, "/join/socialJoin");
       return;
     }
 

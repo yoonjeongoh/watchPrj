@@ -22,7 +22,10 @@
     <div th:each="member: ${member}">
       <span>[[${member.memberNum}]]</span>
       <span>[[${member.memberName}]]</span>
+      <span>[[${member.memberEmail}]]</span>
+      <span>[[${member.memberNickname}]]</span>
     </div>
+    <a th:href="@{join/socialJoin}">/watchtable/join/socialJoin</a><br>
 
     <h3>실제 메인화면에 나와야 할 것들</h3>
     <a href="http://localhost:8080/watchtable/">/watchtable/main(All)</a><br>

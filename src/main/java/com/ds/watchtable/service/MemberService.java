@@ -9,7 +9,8 @@ public interface MemberService {
 //    public User add(User user) throws Exception;
 
 //DB 저장
-String register(MemberDTO dto);
+    String register(MemberDTO dto);
+
 
     default Member dtoToEntity(MemberDTO memberDTO){
         Member member = Member.builder()
