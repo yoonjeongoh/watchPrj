@@ -36,11 +36,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin().loginPage("/login").loginProcessingUrl("/login")
+        http.formLogin().loginPage("/join/login").loginProcessingUrl("/login")
+                //로그인 페이지 설정
                 .successHandler(successHandler()).failureUrl("/join/login?error")
                 .defaultSuccessUrl("/");
         http.csrf().disable();
-        http.logout();
+        http.logout().logoutSuccessUrl("/");
         http.oauth2Login().successHandler(successHandler());
         http.rememberMe().tokenValiditySeconds(60 * 60 * 24 * 7).userDetailsService(userDetailsService);
         http.addFilterBefore(apiCheckFilter(), UsernamePasswordAuthenticationFilter.class);

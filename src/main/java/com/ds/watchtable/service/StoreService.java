@@ -40,7 +40,7 @@ public interface StoreService {
                 .bsNum(storeDTO.getBsNum())
                 .build();
         entityMap.put("store", store);
-//                store.addManagerRole(MemberRole.MANAGER);
+        store.addMemberRole(MemberRole.USER);
 
         List<StoreImageDTO> storeImageDTOList = storeDTO.getStoreImageDTOList();
         if (storeImageDTOList != null && storeImageDTOList.size() > 0) {
