@@ -16,6 +16,16 @@
           <th scope="col">영업시간----------</th>
         </tr>
         </thead>
+        <tbody>
+        <tr th:each="dto : ${result.dtoList}" class="tr-list"
+            th:onclick="|javascript:goStore('${dto.storeNum}')|">
+          <th scope="row">[[${dto.storeNum}]]</th>
+          <td>[[${dto.memberName}]]</td>
+          <td>[[${dto.storeName}]]</td>
+          <td>[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</td>
+        </tr>
+        </tbody>
+
       </table>
 
     </div>
@@ -76,11 +86,11 @@
     <script src="/watchtable/js/indexList.js"></script>
 
     <script th:inline="javascript">
-            function goMyInfo(memberNum){
+            function goStore(storeNum){
                 alert('read');
                 /*[+
-                var url = [[@{/member/myinfo}]] +
-                    "?memberNum="+memberNum;
+                var url = [[@{/store/detail}]] +
+                    "?storeNum="+storeNum;
                 +]*/
                 location.href=url;
             }

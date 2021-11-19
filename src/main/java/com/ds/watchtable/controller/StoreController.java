@@ -3,6 +3,7 @@ package com.ds.watchtable.controller;
 import com.ds.watchtable.dto.*;
 import com.ds.watchtable.entity.Store;
 import com.ds.watchtable.security.dto.ClubAuthMemberDTO;
+import com.ds.watchtable.service.ReviewService;
 import com.ds.watchtable.service.StoreService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -24,16 +25,33 @@ import java.util.Optional;
 public class StoreController {
     @Autowired
     private final StoreService storeService;
+    private final ReviewService reviewService;
 
     //이게모지?
     @GetMapping("/store/detail")
     public void read(Long storeNum, @ModelAttribute("pageRequestDTO")
-            PageRequestDTO pageRequestDTO, Model model) {
+            PageRequestDTO pageRequestDTO, Model model,
+                     @AuthenticationPrincipal ClubAuthMemberDTO principal) {
+        if(principal != null) {
+            model.addAttribute("member", principal.getMember());
+            log.info("principal.getMember()"+principal.getMember());
+        }
+
         StoreDTO storeDTO = storeService.getStore(storeNum);
         model.addAttribute("dto", storeDTO);
+
     }
 
-    //시큐리티로 데이터넘기기
+    @RequestMapping("/addReview")
+    public ResponseEntity<Long> addReview(@RequestBody ReviewDTO reviewDTO) {
+        log.info("--------------add MovieReview---------------");
+        log.info("reviewDTO: " + reviewDTO);
+
+        Long reviewNum = reviewService.registerReview(reviewDTO);
+        return new ResponseEntity<>(reviewNum, HttpStatus.OK);
+    }
+
+        //시큐리티로 데이터넘기기
 /*    @RequestMapping("/manager/managemyinfo")
     public void myinfo1(Model model,
                         @AuthenticationPrincipal ClubAuthMemberDTO principal) {
