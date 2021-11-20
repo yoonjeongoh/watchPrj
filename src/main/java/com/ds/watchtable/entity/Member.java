@@ -35,4 +35,14 @@ public class Member extends BaseEntity {
     public void addMemberRole(MemberRole memberRole) {
         roleSet.add(memberRole);
     }
+
+    public void changeName(String memberName){
+        this.memberName = memberName;
+    }
+    public void changeNickname(String memberNickname){
+        this.memberNickname = memberNickname;
+    }
+    public void changeMobile(String memberMobile){
+        this.memberMobile = memberMobile;
+    }
 }

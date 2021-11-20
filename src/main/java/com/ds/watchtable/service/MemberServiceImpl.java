@@ -29,6 +29,21 @@ public class MemberServiceImpl implements MemberService {
         return member.getMemberName();
     }
 
+    @Override
+    public void modify(MemberDTO memberDTO) {
+        Optional<Member> result = memberRepository.findById(memberDTO.getMemberNum());
+        if (result.isPresent()) {
+            Member member = result.get();
+            member.changeName(memberDTO.getMemberName());
+            member.changeNickname(memberDTO.getMemberNickname());
+            member.changeMobile(memberDTO.getMemberMobile());
+            member.getMemberPw();
+            member.getRoleSet();
+            member.getMemberNum();
+            member.getMemberEmail();
+            memberRepository.save(member);
+        }
+    }
 }
 
 
