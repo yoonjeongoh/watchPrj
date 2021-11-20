@@ -12,9 +12,9 @@ public interface ReviewService {
     Long registerReview(ReviewDTO reviewDTO);
     //리뷰 리스트
     List<ReviewDTO> getListOfReview(Long storeNum);
-
-    void modify(ReviewDTO storeReviewDTO);
-
+    //리뷰수정
+    void modify(ReviewDTO reviewDTO);
+    //리뷰 삭제
     void remove(Long reviewNum);
 
     default Review dtoToEntity(ReviewDTO reviewDTO){

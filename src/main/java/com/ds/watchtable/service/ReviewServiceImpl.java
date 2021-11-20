@@ -38,8 +38,7 @@ public class ReviewServiceImpl implements ReviewService{
         return result.stream().map(review -> entityToDTO(review)).collect(Collectors.toList());
     }
 
-
-
+    //리뷰수정
     @Override
     public void modify(ReviewDTO reviewDTO) {
         Optional<Review> result =
@@ -51,6 +50,7 @@ public class ReviewServiceImpl implements ReviewService{
         }
     }
 
+    //리뷰삭제
     @Override
     public void remove(Long reviewNum) {
         reviewRepository.deleteById(reviewNum);
