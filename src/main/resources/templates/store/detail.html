@@ -93,40 +93,6 @@
         <script th:src="@{/js/index.js}"></script>
 <!--        <script th:src="@{/js/indexList.js}"></script>-->
 
-<!--        modal view-->
-        <div class="modal" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">대기 등록하기</h5>
-                        <button type="button" class="btn btn-close waiting-close21" data-dismiss="modal" aria-label="Close"/>
-                    </div>
-                    <div class="modal-body">
-                        <!--<p id="modalMsg"> 번 글이 <span class="modal-title"></span>되었습니다.</p>-->
-                        <div class="form-group" style="margin-bottom:30px;">
-                            <span class="span21">이름</span><input class="form-control" type="text-name" name="memberName">
-                        </div>
-                        <div class="form-group" style="margin-bottom:30px;">
-                            <span class="span21">연락처</span><input class="form-control" type="text-mobile" name="memberMobile">
-                        </div>
-                        <div class="form-group" style="margin-bottom:30px;">
-                            <span class="span21">인원수</span>
-                            <select class="sel21" name="partyMember" id="">
-                                <option class="op21" name="partyMember">1</option>
-                                <option class="op21" name="partyMember">2</option>
-                                <option class="op21" name="partyMember">3</option>
-                                <option class="op21" name="partyMember">4</option>
-                              </select>
-                        </div>
-                    </div >
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary go-modify21">수정하기</button>
-                        <button type="button" class="btn btn-info go-waiting21">등록하기</button>
-<!--                        <button class="btn btn-secondary waiting-close21" data-dismiss="modal">닫기</button>-->
-                    </div>
-                </div>
-            </div>
-        </div>
 
 <!--        스크립트-->
         <link rel="stylesheet"
@@ -157,7 +123,7 @@
                 console.log(">>>>"+data);
 
                 $.ajax({
-                    url: contextPath+'/addReview',
+                    url: contextPath+'/addReview/'+storeNum,
                     type:"POST",
                     data:JSON.stringify(data),
                     contentType:"application/json; charset=utf-8",
@@ -183,22 +149,58 @@
                     date.getMinutes();
                 }
 
-                $.getJSON(contextPath+'/addReview/list', function(arr) {
+                $.getJSON(contextPath+"/addReview/"+storeNum+"/list", function(arr) {
                 var str = "";
 
                     $.each(arr, function(idx, review) {
-                    console.log(review);
-
-                        str += ' <div reviewNum='+review.reviewNum+'>';
-                        str += ' <h5 class="card-title">'+review.text+'</h5>';
-                        str += ' <h6 class="card-subtitle mb-2 text-muted">'+review.memberNum+'</h6>';
-                        str += ' <p class="card-text">'+formatTime(review.regDate)+'</p>';
+                    console.log("review>>>>>>>>>>>"+review);
+						str += ' <div class="card-body" data-reviewNum="'+review.reviewNum+'">';
+                        //str += ' <b class="reviewNum">'+review.reviewNum+'</b>';
+                        str += ' <h5 class="reviewText">'+review.text+'</h5>';
+                        str += ' <p>'+formatTime(review.regDate)+'</p>';
                         str += ' </div>';
                     });
+
                     $(".rv-list-table").html(str);
+                    //console.log(">>>>>>>>>>>"+str);
                 });
                 }
                 getStoreReviews();
+
+                $(".rv-list-table").on("click", ".card-body", function(){
+                    var reviewNum = $(this).data(reviewNum);
+
+                    console.log("this: " + this);
+                    console.log("reviewNum: " + reviewNum);
+
+                    $("input[name='reviewNum']").val(reviewNum);
+                    //$("input[name='reviewNum']").val($(this).find('.reviewNum').html());
+                    $("input[name='text']").val($(this).find('.reviewText').html());
+                $('.reviewModal').modal('show');
+
+                });
+
+
+            $(".rv-del21").on("click", function(){
+                var reviewNum = $("input[name='reviewNum']").val();
+                                console.log(reviewNum);
+                var data = {reviewNum: reviewNum}
+
+                $.ajax({
+                url: contextPath + '/addReview/'+storeNum+"/"+reviewNum ,
+                type:"DELETE",
+                data:JSON.stringify(data),
+                contentType:"application/json; charset=utf-8",
+                dataType:"text",
+                success: function(data){
+                        console.log("result: " + data);
+                        self.location.reload();
+                     },
+                error:function(data){
+                    alert("delete_errorrrrrrrrrrrrrrrr");
+                    }
+            });
+            });
 
 
             //대기등록 모달
@@ -223,8 +225,73 @@
 
         }); //end script
 
-
     </script>
+
+<!--review modal view-->
+        <div class="reviewModal modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">내 리뷰</h5>
+                        <button type="button" class="btn btn-close waiting-close21" data-dismiss="modal" aria-label="Close"/>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>ReviewNum</label>
+                            <input type="text" class="form-control" name="reviewNum">
+                        </div>
+                        <div class="form-group">
+                            <label>내 리뷰</label>
+                            <input type="text" class="form-control" name="text">
+                        </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-primary rv-modify">수정하기</button>
+                        <button type="button" class="btn btn-info rv-del21">삭제하기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--        waiting modal view-->
+        <div class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">대기 등록하기</h5>
+                        <button type="button" class="btn btn-close waiting-close21" data-dismiss="modal" aria-label="Close"/>
+                    </div>
+                    <div class="modal-body">
+                        <!--<p id="modalMsg"> 번 글이 <span class="modal-title"></span>되었습니다.</p>-->
+                        <div class="form-group" style="margin-bottom:30px;">
+                            <span class="span21">이름</span>
+                            <input class="form-control" type="text-name" name="memberName" th:value="${member.memberName}">
+                        </div>
+                        <div class="form-group" style="margin-bottom:30px;">
+                            <span class="span21">연락처</span>
+                            <input class="form-control" type="text-mobile" name="memberMobile" th:value="${member.memberMobile}">
+                        </div>
+                        <div class="form-group" style="margin-bottom:30px;">
+                            <span class="span21">인원수</span>
+                            <select class="sel21" name="partyMember">
+                                <option class="op21" name="partyMember">1</option>
+                                <option class="op21" name="partyMember">2</option>
+                                <option class="op21" name="partyMember">3</option>
+                                <option class="op21" name="partyMember">4</option>
+                            </select>
+                        </div>
+                    </div >
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary go-modify21">수정하기</button>
+                        <button type="button" class="btn btn-info go-waiting21">등록하기</button>
+                        <!--                        <button class="btn btn-secondary waiting-close21" data-dismiss="modal">닫기</button>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
     </th:block>
 </th:block>

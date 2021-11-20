@@ -4,83 +4,83 @@
     <th:block th:fragment="content">
         <link th:href="@{/css2/admin.css}" rel="stylesheet" />
 
-<div class="wrapper">
-    <div class="col-md-6 gedf-main">
-        <div class="card gedf-card">
-            <div class="card-header">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="ml-2">
-                            <div class="h5 m-0">사업장 코드 : [[${dto.storeNum}]]</div>
+        <div class="wrapper">
+            <div class="col-md-6 gedf-main">
+                <div class="card gedf-card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="ml-2">
+                                    <div class="h5 m-0">사업장 코드 : [[${dto.storeNum}]]</div>
+                                </div>
+                            </div>
                         </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>사업장 코드</label>
+                            <input type="text" class="form-control" name="title" th:value="${dto.storeNum}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>회원 이름</label>
+                            <input type="text" class="form-control" name="title" th:value="${dto.memberName}" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label>상호명</label>
+                            <input type="text" class="form-control" name="title" th:value="${dto.storeName}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>사업장 주소</label>
+                            <input type="text" class="form-control" name="title" th:value="${dto.storeAds}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>사업장 연락처</label>
+                            <input type="text" class="form-control" name="title" th:value="${dto.storeTel}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>사업장 영업시간</label>
+                            <input type="text" class="form-control" name="title"
+                                   th:value="${dto.storeOpen} + ' ~ ' + ${dto.storeClose}"
+                                   readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>사업장 소개글</label>
+                            <input type="text" class="form-control" name="title" th:value="${dto.storeText}" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>사업자 등록 번호</label>
+                            <input type="text" class="form-control" name="title" th:value="${dto.bsNum}" readonly>
+                        </div>
+
+                        <div class="form-group">
+                            <label>가입일</label>
+                            <input type="text" class="form-control" name="regDate"
+                                   th:value="${#temporals.format(dto.regDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
+                        </div>
+                        <div class="uploadResult">
+                            <ul>
+                                <li th:each="storeImage: ${dto.storeImageDTOList}"class="storeImage"> 사업자 등록증
+                                    <img th:if="${storeImage.bsPath != null}"
+                                         th:src="|/watchtable/storeDisplay?fileName=${storeImage.getThumbnailURL()}|">
+                                </li>
+                            </ul>
+                            <ul>
+                                <li th:each="menuImage: ${dto.menuImageDTOList}" class="menuImage"> 메뉴 이미지
+                                    <img th:if="${menuImage.menuPath != null}"
+                                         th:src="|/watchtable/menuDisplay?fileName=${menuImage.getThumbnailURL()}|">
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="button-area">
+                            <a class="btn btn-primary" th:href="@{/}">승인</a>
+                            <a class="btn btn-primary" th:href="@{/}">거절</a>
+                        </div>
+
                     </div>
                 </div>
             </div>
-            <div class="card-body">
-                <div class="form-group">
-                    <label>사업장 코드</label>
-                    <input type="text" class="form-control" name="title" th:value="${dto.storeNum}" readonly>
-                </div>
-                <div class="form-group">
-                    <label>회원 이름</label>
-                    <input type="text" class="form-control" name="title" th:value="${dto.memberName}" readonly>
-                </div>
-
-                <div class="form-group">
-                    <label>상호명</label>
-                    <input type="text" class="form-control" name="title" th:value="${dto.storeName}" readonly>
-                </div>
-                <div class="form-group">
-                    <label>사업장 주소</label>
-                    <input type="text" class="form-control" name="title" th:value="${dto.storeAds}" readonly>
-                </div>
-                <div class="form-group">
-                    <label>사업장 연락처</label>
-                    <input type="text" class="form-control" name="title" th:value="${dto.storeTel}" readonly>
-                </div>
-                <div class="form-group">
-                    <label>사업장 영업시간</label>
-                    <input type="text" class="form-control" name="title"
-                           th:value="${dto.storeOpen} + ' ~ ' + ${dto.storeClose}"
-                           readonly>
-                </div>
-                <div class="form-group">
-                    <label>사업장 소개글</label>
-                    <input type="text" class="form-control" name="title" th:value="${dto.storeText}" readonly>
-                </div>
-                <div class="form-group">
-                    <label>사업자 등록 번호</label>
-                    <input type="text" class="form-control" name="title" th:value="${dto.bsNum}" readonly>
-                </div>
-
-                <div class="form-group">
-                    <label>가입일</label>
-                    <input type="text" class="form-control" name="regDate"
-                           th:value="${#temporals.format(dto.regDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
-                </div>
-                <div class="uploadResult">
-                    <ul>
-                        <li th:each="storeImage: ${dto.storeImageDTOList}"class="storeImage"> 사업자 등록증
-                            <img th:if="${storeImage.bsPath != null}"
-                                 th:src="|/watchtable/storeDisplay?fileName=${storeImage.getThumbnailURL()}|">
-                        </li>
-                    </ul>
-                    <ul>
-                        <li th:each="menuImage: ${dto.menuImageDTOList}" class="menuImage"> 메뉴 이미지
-                            <img th:if="${menuImage.menuPath != null}"
-                                 th:src="|/watchtable/menuDisplay?fileName=${menuImage.getThumbnailURL()}|">
-                        </li>
-                    </ul>
-                </div>
-                <div class="button-area">
-                    <a class="btn btn-primary" th:href="@{/}">승인</a>
-                    <a class="btn btn-primary" th:href="@{/}">거절</a>
-                </div>
-
-            </div>
         </div>
-    </div>
-</div>
 
 
         <div style="margin-bottom: 20px;"></div>
