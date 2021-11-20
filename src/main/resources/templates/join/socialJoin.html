@@ -2,33 +2,35 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
-        <link th:href="@{/css2/join.css}" rel="stylesheet" />
+        <link th:href="@{/css2/join.css}" rel="stylesheet"/>
         <div class="wrapper">
+            <link id="contextPathHolder" th:data-contextPath="${#httpServletRequest.getContextPath()}"/>
 
             <div th:each="member: ${member}">
                 <fieldset>
                     <div class="h5 m-0">추가 정보를 입력해주세요.</div>
 
-                    <div class="joinfield" >
+                    <div class="joinfield">
                         <form class="form11" th:action="@{/join/login}" method="post" id="join_form" name="f">
                             <span class="span11">이메일</span> <br>
                             <input class="input11" title="이메일" type="text" name="memberEmail" id="my_add"
                                    placeholder="예>id@domain.com" th:value="${member.memberEmail}" readonly><br>
-
+                            <input id="memberNum" type="hidden" th:value="${member.memberNum}">
                             <span class="span11">이름</span><br>
                             <input class="input11" title="아이디" type="text" name="memberName" id="my_name"
                                    placeholder="2자 이상의 한글로만 입력" maxlength="12"><br>
-                            <div class ="valid-div11">
+                            <div class="valid-div11">
                                 <span class="invalid" id="nameSpace">공백은 사용할 수 없습니다.</span>
                                 <span class="invalid" id="noEnglish">한글로 입력해주세요.</span>
                                 <span class="invalid" id="name_min">2자 이상 입력하세요.</span>
                                 <span class="valid" id="name_ok">확인.</span>
-                            </div><br>
+                            </div>
+                            <br>
 
                             <span class="span11">닉네임</span><br>
                             <input class="input11" title="닉네임" type="text" name="memberNickname" id="my_nick"
                                    placeholder="2~8자로 입력(특수문자 불가)" maxlength="8"><br>
-                            <div class ="valid-div11">
+                            <div class="valid-div11">
                                 <span class="invalid" id="nickSpace">공백은 사용할 수 없습니다.</span>
                                 <span class="invalid" id="noSpecial">특수문자 및 자음은 사용할 수 없습니다.</span>
                                 <span class="invalid" id="nick_min">2자 이상 입력하세요.</span>
@@ -40,13 +42,14 @@
                             <span class="span11">연락처</span> <br>
                             <input class="input11" title="연락처" type="text" name="memberMobile" id="sel-my-tel"><br>
                             <span class="invalid" id="mobile_error">전화번호를 확인해주세요.</span>
-                            <div class ="valid-div11">
+                            <div class="valid-div11">
                                 <span class="valid" id="mobile_ok">확인.</span>
                             </div>
                             <br>
-                            <button id = "coBtn" type="button" class="join_button btn11 colored-btn11">수정하기</button>
+                            <button id="coBtn" type="button" class="join_button btn11 colored-btn11">수정하기</button>
                             <button type="reset" class="reset-btn btn11 uncolored-btn11"
-                                    th:onclick="|location.href='@{/}'|">돌아가기</button>
+                                    th:onclick="|location.href='@{/}'|">돌아가기
+                            </button>
 
                         </form>
                     </div>
@@ -65,6 +68,37 @@
 
         <!--        유효성검사-->
         <script th:inline="javascript">
+            $(document).ready(function() {
+                var contextPath = $('#contextPathHolder').attr('data-contextPath') ? $('#contextPathHolder').attr('data-contextPath') : '';
+                var actionForm = $('form');
+                var memberNum = $("#memberNum").val();
+                var memberName = $("#memberName").val();
+                var memberNickName = $("#memberNickName").val();
+                var memberMobile = $("#memberMobile").val();
+                $('#join_button').on("click",function(){
+                    var data = {memberNum: memberNum, memberName: memberName, memberNickName: memberNickname, memberMobile: memberMobile};
+                    console.log(data)
+                    $.ajax({
+                        url: '/memberNum',
+                        processData: false,
+                        contentType: false,
+                        data: data,
+                        type:'PUT',
+                        dataType: 'json',
+                        success: function(result){
+                            console.log("result: " + result);
+                            showResult(result);
+                        },
+                        error: function(jqXHR, textStatus, errorThrown){
+                            console.log(textStatus);
+                        }
+                    });
+                });
+            });
+
+        </script>
+        <script th:inline="javascript">
+
             $(document).ready(function() {
                 var actionForm = $('form');
                 //회원가입 버튼(회원가입 기능 작동)
@@ -182,6 +216,9 @@
                     }
                  });
             });
+
+
+
         </script>
 
     </th:block>

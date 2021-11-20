@@ -55,17 +55,15 @@ public class ClubOAuth2UserDetailsService extends DefaultOAuth2UserService {
                 member.getRoleSet().stream().map(
                         role -> new SimpleGrantedAuthority("ROLE_" + role.name()))
                         .collect(Collectors.toList()), oAuth2User.getAttributes());
-        clubAuthMemberDTO.setName(member.getMemberName());
         clubAuthMemberDTO.setMember(member);
         return clubAuthMemberDTO;
     }
 
     private Member saveSocialMember(String memberId) {
-        Optional<Member> result = repository.findByMemberId(memberId, true);
+        Optional<Member> result = repository.findByMemberEmail(memberId, true);
         if (result.isPresent()) return result.get(); //있으면 끝
         Member member = Member.builder()
                 .memberEmail(memberId)
-                .memberName(memberId)
                 .memberPw(passwordEncoder.encode("1"))
                 .fromSocial(true)
                 .build();
