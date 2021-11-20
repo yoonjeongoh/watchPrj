@@ -42,4 +42,5 @@ public class AdminController {
         StoreDTO storeDTO = storeService.getStore(storeNum);
         model.addAttribute("dto", storeDTO);
     }
+
 }

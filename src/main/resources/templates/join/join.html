@@ -11,7 +11,8 @@
 
         <fieldset>
             <div class="joinfield">
-                <form class="form11" th:action="@{/join/login}" method="post"
+
+                <form class="form11" action="http://localhost:8080/watchtable/member/myinfo" method="post"
                       id="join_form" name="f">
                     <span class="span11">이름</span><br>
                     <input class="input11" title="아이디" type="text" name="memberName" id="my_name"
@@ -74,9 +75,9 @@
 
                     <span class="span11">연락처</span> <br>
                     <input class="input11" title="연락처" type="text" name="memberMobile" id="sel-my-tel"><br>
-                    <span class="invalid" id="mobile_error">전화번호를 확인해주세요.</span><br>
                     <div class ="valid-div11">
-                        <span class="valid" id="mobile_ok">확인.</span>
+                         <span class="invalid" id="mobile_error">전화번호를 확인해주세요.</span>
+                         <span class="valid" id="mobile_ok">확인.</span>
                     </div>
                     <br>
 

@@ -26,7 +26,8 @@ public class MemberController {
     private final MemberService memberService;
 
     //db 저장
-    @RequestMapping("/join/login")
+
+    @RequestMapping({"/member/myinfo","/join/login"})
     public void registerAndMyInfo(MemberDTO memberDTO) {
         log.info("register...........");
         memberService.register(memberDTO);
