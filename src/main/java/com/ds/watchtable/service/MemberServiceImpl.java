@@ -31,20 +31,21 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public void modify(MemberDTO memberDTO) {
-        Optional<Member> result = memberRepository.findById(memberDTO.getMemberNum());
-        if (result.isPresent()) {
-            Member member = result.get();
-            member.changeName(memberDTO.getMemberName());
-            member.changeNickname(memberDTO.getMemberNickname());
-            member.changeMobile(memberDTO.getMemberMobile());
-            member.getMemberPw();
-            member.getRoleSet();
-            member.getMemberNum();
-            member.getMemberEmail();
-            memberRepository.save(member);
-        }
+        Member member = dtoToEntity(memberDTO);
+        memberDTO.setMemberPw(this.passwordEncoder.encode(memberDTO.getMemberPw()));
+        member.getMemberEmail();
+        member.getMemberId();
+        member.getMemberMobile();
+        member.getMemberNum();
+        member.getMemberNickname();
+        member.getMemberName();
+        member.isFromSocial();
+        member.getRoleSet();
+        memberRepository.save(member);
+        log.info("member member" + member);
     }
 }
+
 
 
 

@@ -36,13 +36,13 @@ public class Member extends BaseEntity {
         roleSet.add(memberRole);
     }
 
-    public void changeName(String memberName){
-        this.memberName = memberName;
+    public void newSocial(String newSocial){
+        this.memberId = newSocial;
+        this.memberName = newSocial;
+        this.memberNickname = newSocial;
+        this.memberMobile = newSocial;
+
+
     }
-    public void changeNickname(String memberNickname){
-        this.memberNickname = memberNickname;
-    }
-    public void changeMobile(String memberMobile){
-        this.memberMobile = memberMobile;
-    }
+
 }

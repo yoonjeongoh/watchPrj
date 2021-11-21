@@ -4,6 +4,7 @@ package com.ds.watchtable.service;
 import com.ds.watchtable.dto.MemberDTO;
 import com.ds.watchtable.entity.Member;
 import com.ds.watchtable.entity.MemberRole;
+import com.ds.watchtable.security.dto.ClubAuthMemberDTO;
 
 public interface MemberService {
 //    public User add(User user) throws Exception;

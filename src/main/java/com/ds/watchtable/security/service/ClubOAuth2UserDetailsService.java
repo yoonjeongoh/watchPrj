@@ -68,7 +68,6 @@ public class ClubOAuth2UserDetailsService extends DefaultOAuth2UserService {
                 .fromSocial(true)
                 .build();
         member.addMemberRole(MemberRole.USER);
-        repository.save(member);
         return member;
     }
 }
