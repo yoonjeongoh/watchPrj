@@ -14,8 +14,15 @@ import javax.persistence.*;
 public class Waiting extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long waitNum;
+    private Long waitingNum;
 
     private String partyMember;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Member member;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Store store;
+
 
 }
