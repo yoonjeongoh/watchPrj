@@ -7,7 +7,8 @@ public interface StoreOrderService {
     default StoreOrder dtoToEntity(StoreOrderDTO storeOrderDTO){
         StoreOrder storeOrder = StoreOrder.builder()
                 .storeOrderNum(storeOrderDTO.getStoreOrderNum())
-                .storeOrderList(storeOrderDTO.getStoreOrderList())
+                .StoreNum(storeOrderDTO.getStoreNum())
+                .TableNum(storeOrderDTO.getStoreTableNum())
                 .build();
         return storeOrder;
     }
@@ -15,7 +16,6 @@ public interface StoreOrderService {
     default StoreOrderDTO entityToDTO(StoreOrder storeOrder){
         StoreOrderDTO storeOrderDTO = StoreOrderDTO.builder()
                 .storeOrderNum(storeOrder.getStoreOrderNum())
-                .storeOrderList(storeOrder.getStoreOrderList())
                 .build();
         return storeOrderDTO;
     }

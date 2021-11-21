@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor //매개변수가 없는 생성자(기본생성자)
 public class ReviewDTO {
-    private Long reviewnum;
+    private Long reviewNum;
 
     private Long memberNum;
     private String memberId;

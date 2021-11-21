@@ -19,25 +19,30 @@ public class ReviewServiceImpl implements ReviewService{
 
     private final ReviewRepository reviewRepository;
 
-    @Override
-    public List<ReviewDTO> getListOfStore(Long storeNum) {
-        Store store = Store.builder().storeNum(storeNum).build();
-        List<Review> result = reviewRepository.findByStore(store);
-        return result.stream().map(review -> entityToDTO(review)).collect(Collectors.toList());
-    }
-
     //DB저장
     @Override
     public Long registerReview(ReviewDTO reviewDTO) {
         Review review = dtoToEntity(reviewDTO);
         reviewRepository.save(review);
-        return review.getReviewnum();
+        return review.getReviewNum();
     }
 
+    //리뷰리스트
+    @Override
+    public List<ReviewDTO> getListOfReview(Long storeNum) {
+        log.info(">>>>>>>>>>>>ReviewImpl1111111<<<<<<<<<<<<<<<<");
+        Store store = Store.builder().storeNum(storeNum).build();
+        log.info(">>>>>>>>>>>>ReviewImpl2222222<<<<<<<<<<<<<<<<");
+        List<Review> result = reviewRepository.findByStore(store);
+        log.info(">>>>>>>>>>>>ReviewImp33333333<<<<<<<<<<<<<<<<");
+        return result.stream().map(review -> entityToDTO(review)).collect(Collectors.toList());
+    }
+
+    //리뷰수정
     @Override
     public void modify(ReviewDTO reviewDTO) {
         Optional<Review> result =
-                reviewRepository.findById(reviewDTO.getReviewnum());
+                reviewRepository.findById(reviewDTO.getReviewNum());
         if(result.isPresent()) {
             Review storeReview = result.get();
             storeReview.changeText(reviewDTO.getText());
@@ -45,6 +50,7 @@ public class ReviewServiceImpl implements ReviewService{
         }
     }
 
+    //리뷰삭제
     @Override
     public void remove(Long reviewNum) {
         reviewRepository.deleteById(reviewNum);

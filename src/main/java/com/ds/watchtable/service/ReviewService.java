@@ -11,10 +11,10 @@ public interface ReviewService {
     //리뷰 추가
     Long registerReview(ReviewDTO reviewDTO);
     //리뷰 리스트
-    List<ReviewDTO> getListOfStore(Long storeNum);
-
-    void modify(ReviewDTO storeReviewDTO);
-
+    List<ReviewDTO> getListOfReview(Long storeNum);
+    //리뷰수정
+    void modify(ReviewDTO reviewDTO);
+    //리뷰 삭제
     void remove(Long reviewNum);
 
     default Review dtoToEntity(ReviewDTO reviewDTO){
@@ -25,10 +25,10 @@ public interface ReviewService {
                         .memberName(reviewDTO.getMemberName())
                         .memberNickname(reviewDTO.getMemberNickname())
                         .build())
-//                .store(Store.builder()
-//                        .storeNum(reviewDTO.getStoreNum())
-//                        .build())
-                .reviewnum(reviewDTO.getReviewnum())
+                .store(Store.builder()
+                        .storeNum(reviewDTO.getStoreNum())
+                        .build())
+                .reviewNum(reviewDTO.getReviewNum())
                 .text(reviewDTO.getText())
                 .build();
         return review;
@@ -36,12 +36,12 @@ public interface ReviewService {
 
     default ReviewDTO entityToDTO(Review review) {
         ReviewDTO reviewDTO = ReviewDTO.builder()
-                .reviewnum(review.getReviewnum())
+                .reviewNum(review.getReviewNum())
                 .memberNum(review.getMember().getMemberNum())
                 .memberId(review.getMember().getMemberId())
                 .memberName(review.getMember().getMemberName())
                 .memberNickname(review.getMember().getMemberNickname())
-//                .storeNum(review.getStore().getStoreNum())
+                .storeNum(review.getStore().getStoreNum())
                 .text(review.getText())
                 .regDate(review.getRegDate())
                 .modDate(review.getModDate())

@@ -1,3 +1,4 @@
+/*
 package com.ds.watchtable.service;
 
 import com.ds.watchtable.dto.SettingDTO;
@@ -31,4 +32,4 @@ SettingDTO getSetting(Long posNum);
                 .build();
         return settingDTO;
     }
-}
+}*/

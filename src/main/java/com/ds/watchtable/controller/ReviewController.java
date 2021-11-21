@@ -17,41 +17,53 @@ import java.util.List;
 @Controller
 @Log4j2
 @RequiredArgsConstructor
-@RequestMapping("/reviews")
+@RequestMapping
 public class ReviewController {
 
     @Autowired
     final private ReviewService reviewService;
 
-    @GetMapping("/{storeNum}/all")
-    public ResponseEntity<List<ReviewDTO>> getList(@PathVariable("storeNum") Long storeNum) {
-        List<ReviewDTO> reviewDTOList = reviewService.getListOfStore(storeNum);
+    //리뷰등록
+    @RequestMapping("/addReview/{storeNum}")
+    public ResponseEntity<Long> addReview(@RequestBody ReviewDTO reviewDTO) {
+        log.info("--------------addReview1111---------------");
+        log.info("reviewDTO: " + reviewDTO);
+        Long reviewNum = reviewService.registerReview(reviewDTO);
+        log.info("--------------addReview222---------------");
+        return new ResponseEntity<>(reviewNum, HttpStatus.OK);
+    }
+
+    //스토어별 리뷰 리스트
+    @GetMapping("/addReview/{storeNum}/list")
+    public ResponseEntity<List<ReviewDTO>> reviewlist(@PathVariable("storeNum") Long storeNum) {
+        log.info(">>>>>>>>>>Review11111<<<<<<<<<<<<<");
+        List<ReviewDTO> reviewDTOList = reviewService.getListOfReview(storeNum);
+        log.info(">>>>>>>>>>Review22222<<<<<<<<<<<<<");
         return new ResponseEntity<>(reviewDTOList, HttpStatus.OK);
     }
 
-    @PostMapping("/{storeNum}")
-    public ResponseEntity<Long> addReview(@RequestBody ReviewDTO storeReviewDTO) {
-        Long reviewNum = reviewService.registerReview(storeReviewDTO);
-        return new ResponseEntity<>( reviewNum, HttpStatus.OK );
+    //리뷰수정
+    @PutMapping("/addReview/{storeNum}/{reviewNum}")
+    public ResponseEntity<Long> modifyReview(@PathVariable Long reviewNum,
+                                             @RequestBody ReviewDTO reviewDTO){
+        log.info("---------------modify MovieReview--------------" + reviewNum);
+        log.info("reviewDTO: " + reviewDTO);
+        reviewService.modify(reviewDTO);
+
+        return new ResponseEntity<>( reviewNum, HttpStatus.OK);
     }
 
-    @PutMapping("/{storeNum}/{reviewnum}")
-    public ResponseEntity<Long> modifyReview(@PathVariable Long reviewnum,
-                                             @RequestBody ReviewDTO storeReviewDTO){
-        log.info("---------------modify MovieReview--------------" + reviewnum);
-        log.info("reviewDTO: " + storeReviewDTO);
-        reviewService.modify(storeReviewDTO);
-
-        return new ResponseEntity<>( reviewnum, HttpStatus.OK);
+    //리뷰 삭제
+    @DeleteMapping("/addReview/{storeNum}/{reviewNum}")
+    public ResponseEntity<Long> removeReview( @PathVariable Long reviewNum){
+        log.info("---------------delete removeReview--------------");
+        log.info("reviewNum: " + reviewNum);
+        reviewService.remove(reviewNum);
+        return new ResponseEntity<>( reviewNum, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{storeNum}/{reviewnum}")
-    public ResponseEntity<Long> removeReview( @PathVariable Long reviewnum){
-        log.info("---------------modify removeReview--------------");
-        log.info("reviewnum: " + reviewnum);
-        reviewService.remove(reviewnum);
-        return new ResponseEntity<>( reviewnum, HttpStatus.OK);
-    }
+
+
 //    제이쿼리를 이용한 db저장
 /*    @PostMapping("/watchtable/detail")
     public ResponseEntity<Long> addReview(ReviewDTO reviewDTO){

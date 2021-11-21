@@ -1,3 +1,4 @@
+/*
 package com.ds.watchtable.service;
 
 
@@ -39,3 +40,4 @@ public class SettingServiceImpl implements SettingService {
     }
 }
 
+*/
