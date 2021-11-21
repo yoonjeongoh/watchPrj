@@ -2,7 +2,6 @@ package com.ds.watchtable.service;
 
 import com.ds.watchtable.dto.*;
 import com.ds.watchtable.entity.*;
-import javafx.geometry.Pos;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,8 +12,10 @@ public interface StoreService {
 
     //DB저장
     Long storeRegister(StoreDTO storeDTO);
+
     //admin/storelist 리스트 목록
     PageResultDTO<StoreDTO, Store> getLGHlist(PageRequestDTO requestDTO);
+
     //admin/storeread 가게 정보 상세보기
     StoreDTO getStore(Long storeNum);
 
@@ -22,22 +23,6 @@ public interface StoreService {
     default Map<String, Object> dtoToEntity(StoreDTO storeDTO) {
         Map<String, Object> entityMap = new HashMap<>();
         Store store = Store.builder()
-                .posTable(PosTable.builder()
-                        .store(Store.builder()
-                                .storeNum(storeDTO.getStoreNum())
-                                .build())
-                        .posTableNum(storeDTO.getPosTableNum())
-                        .orderCount(storeDTO.getOrderCount())
-                        .table1(storeDTO.getTable1())
-                        .table2(storeDTO.getTable2())
-                        .table3(storeDTO.getTable3())
-                        .table4(storeDTO.getTable4())
-                        .table5(storeDTO.getTable5())
-                        .table6(storeDTO.getTable6())
-                        .table7(storeDTO.getTable7())
-                        .table8(storeDTO.getTable8())
-                        .table9(storeDTO.getTable9())
-                        .build())
                 .member(Member.builder()
                         .memberNum(storeDTO.getMemberNum())
                         .memberName(storeDTO.getMemberName())

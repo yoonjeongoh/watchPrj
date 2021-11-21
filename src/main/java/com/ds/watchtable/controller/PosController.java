@@ -2,8 +2,11 @@
 package com.ds.watchtable.controller;
 
 import com.ds.watchtable.dto.MenuItemDTO;
+import com.ds.watchtable.dto.PosTableDTO;
 import com.ds.watchtable.dto.SettingDTO;
+import com.ds.watchtable.dto.StoreDTO;
 import com.ds.watchtable.service.MenuItemService;
+import com.ds.watchtable.service.PosTableService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
@@ -17,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @RequestMapping
 public class PosController {
-    private final MenuItemService menuItemService;
+    private final PosTableService posTableService;
 
     @GetMapping("/pos/setting")
     public void getlist(Long posNum,Model model){
@@ -47,11 +50,11 @@ public class PosController {
 
     }
 
-    @GetMapping("/pos/postable")
-    public void storetable(Long posNum,Model model){
-
-
-    }
+        @GetMapping("/pos/postable")
+        public void storetable(Long storeNum,Model model){
+            PosTableDTO posTableDTO = posTableService.getPosTable(storeNum);
+            model.addAttribute("order", posTableDTO);
+        }
 
 
 
