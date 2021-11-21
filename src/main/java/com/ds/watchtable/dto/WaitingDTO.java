@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class WaitingDTO {
-    private Long waitNum;
+    private Long waitingNum;
     private String partyMember;
 
     private Long memberNum;

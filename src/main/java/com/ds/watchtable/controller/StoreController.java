@@ -30,7 +30,7 @@ public class StoreController {
     //store/detail - member, store 정보 넘기기
     @GetMapping("/store/detail")
     public void read(Long storeNum, @ModelAttribute("pageRequestDTO")
-            PageRequestDTO pageRequestDTO, Model model,
+            PageRequestDTO pageRequestDTO, Model model, Long reviewNum,
                      @AuthenticationPrincipal ClubAuthMemberDTO principal) {
         if(principal != null) {
             model.addAttribute("member", principal.getMember());

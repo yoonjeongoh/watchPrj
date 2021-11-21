@@ -27,9 +27,10 @@ public class ReviewController {
     @RequestMapping("/addReview/{storeNum}")
     public ResponseEntity<Long> addReview(@RequestBody ReviewDTO reviewDTO) {
         log.info("--------------addReview1111---------------");
-        log.info("reviewDTO: " + reviewDTO);
+        log.info("reviewDTO1111: " + reviewDTO);
         Long reviewNum = reviewService.registerReview(reviewDTO);
-        log.info("--------------addReview222---------------");
+        log.info("reviewDTO2222: " + reviewDTO);
+        log.info("--------------addReview222---------------"+reviewNum);
         return new ResponseEntity<>(reviewNum, HttpStatus.OK);
     }
 
@@ -38,7 +39,7 @@ public class ReviewController {
     public ResponseEntity<List<ReviewDTO>> reviewlist(@PathVariable("storeNum") Long storeNum) {
         log.info(">>>>>>>>>>Review11111<<<<<<<<<<<<<");
         List<ReviewDTO> reviewDTOList = reviewService.getListOfReview(storeNum);
-        log.info(">>>>>>>>>>Review22222<<<<<<<<<<<<<");
+        log.info(">>>>>>>>>>Review22222<<<<<<<<<<<<<"+reviewDTOList);
         return new ResponseEntity<>(reviewDTOList, HttpStatus.OK);
     }
 

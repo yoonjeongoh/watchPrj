@@ -7,6 +7,7 @@ import com.ds.watchtable.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +25,7 @@ public class ReviewServiceImpl implements ReviewService{
     public Long registerReview(ReviewDTO reviewDTO) {
         Review review = dtoToEntity(reviewDTO);
         reviewRepository.save(review);
+        log.info("saveReview-----"+review);
         return review.getReviewNum();
     }
 
@@ -44,11 +46,13 @@ public class ReviewServiceImpl implements ReviewService{
         Optional<Review> result =
                 reviewRepository.findById(reviewDTO.getReviewNum());
         if(result.isPresent()) {
-            Review storeReview = result.get();
-            storeReview.changeText(reviewDTO.getText());
-            reviewRepository.save(storeReview);
-        }
+            Review review = result.get();
+            log.info(">>>>>>>>review4444<<<<<<<"+result);
+            review.changeText(reviewDTO.getText());
+            reviewRepository.save(review);
+           }
     }
+
 
     //리뷰삭제
     @Override

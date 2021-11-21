@@ -112,6 +112,11 @@
             var storeNum = [[${dto.storeNum}]];
             var review = $('textarea[name="reviewText"]');
 
+            $(".rv-close21").click(function(){
+                $('.reviewModal').modal('hide')
+            });
+
+
             //리뷰 데이터 넘기기
             $("#rv-btn").click(function(){
                 alert("benny");
@@ -130,6 +135,8 @@
                     dataType:"text",
                     success: function(data){
                         console.log("result: "+data);
+                        var reviewNum = parseInt(data);
+                        console.log("result: "+reviewNum);
                         self.location.reload();
                      },
                     error:function(data){
@@ -155,7 +162,7 @@
                     $.each(arr, function(idx, review) {
                     console.log("review>>>>>>>>>>>"+review);
 						str += ' <div class="card-body" data-reviewNum="'+review.reviewNum+'">';
-                        //str += ' <b class="reviewNum">'+review.reviewNum+'</b>';
+                        str += ' <b class="reviewNum">'+review.reviewNum+'</b>';
                         str += ' <h5 class="reviewText">'+review.text+'</h5>';
                         str += ' <p>'+formatTime(review.regDate)+'</p>';
                         str += ' </div>';
@@ -167,22 +174,22 @@
                 }
                 getStoreReviews();
 
-                $(".rv-list-table").on("click", ".card-body", function(){
-                    var reviewNum = $(this).data(reviewNum);
+            //수정삭제 모달창
+            $(".rv-list-table").on("click", ".card-body", function(){
+                var reviewNum = $(this).data(reviewNum);
+                console.log("this: " + this);
+                console.log("reviewNum: " + reviewNum);
 
-                    console.log("this: " + this);
-                    console.log("reviewNum: " + reviewNum);
+                $("input[name='reviewNum']").val(reviewNum);
+                //$("input[name='reviewNum']").val($(this).find('.reviewNum').html());
+                $("input[name='text']").val($(this).find('.reviewText').html());
+            $('.reviewModal').modal('show');
 
-                    $("input[name='reviewNum']").val(reviewNum);
-                    //$("input[name='reviewNum']").val($(this).find('.reviewNum').html());
-                    $("input[name='text']").val($(this).find('.reviewText').html());
-                $('.reviewModal').modal('show');
+            });
 
-                });
-
-
+            //리뷰삭제
             $(".rv-del21").on("click", function(){
-                var reviewNum = $("input[name='reviewNum']").val();
+                            var reviewNum = $("input[name='reviewNum']").val();
                                 console.log(reviewNum);
                 var data = {reviewNum: reviewNum}
 
@@ -203,24 +210,58 @@
             });
 
 
+            //리뷰수정
+            $(".rv-modify").on("click", function(){
+                var reviewNum = $(this).data(reviewNum);
+                console.log("this: " + this);
+                console.log("reviewNum: " + reviewNum);
+
+                var data = {
+                    reviewNum: reviewNum,
+                    memberNum: memberNum,
+                    storeNum: storeNum,
+                    text: review.val()
+                    };
+                console.log(data);
+
+                $.ajax({
+                url: contextPath + '/addReview/'+storeNum+"/"+reviewNum ,
+                type:"PUT",
+                data:JSON.stringify(data),
+                contentType:"application/json; charset=utf-8",
+                dataType:"text",
+                success: function(data){
+                        console.log("result: " + data);
+                        self.location.reload();
+                    }
+                })
+            $('.reviewModal').modal('hide');
+            });
+
+
             //대기등록 모달
-            var modal = $('.modal');
-            var mobile = $('.memberMobile');
-            var party = $('.partyMember');
+            //var storeName = [[${dto.storeName}]];
+            //var memberName = [[${member.memberName}]];
+
+            //var mobile = $('.memberMobile');
+            //var party = $('.partyMember');
 
             $(".waiting-register21").click(function(){
-                modal.modal('show');
+            $('.waitingModal').modal('show')
                     $('.memberName').val();
                     $('.memberMobile').val();
-                    $('.partyMember').val('');
+                    $('.partyMember').val();
                 });
 
             $(".waiting-close21").click(function(){
-                modal.modal('hide');
-                $('.memberName').val('');
-                $('.memberMobile').val('');
-                $('.partyMember').val('');
+                $('.waitingModal').modal('hide')
+                    $('.memberName').val();
+                    $('.memberMobile').val();
+                    $('.partyMember').val();
             });
+
+
+
 
 
         }); //end script
@@ -233,7 +274,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">내 리뷰</h5>
-                        <button type="button" class="btn btn-close waiting-close21" data-dismiss="modal" aria-label="Close"/>
+                        <button type="button" class="btn btn-close rv-close21" data-dismiss="modal" aria-label="Close"/>
                         </button>
                     </div>
                     <div class="modal-body">
@@ -256,7 +297,7 @@
 
 
         <!--        waiting modal view-->
-        <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal waitingModal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
