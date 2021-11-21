@@ -2,19 +2,39 @@ package com.ds.watchtable.service;
 
 import com.ds.watchtable.dto.PosTableDTO;
 import com.ds.watchtable.dto.StoreDTO;
+import com.ds.watchtable.entity.Member;
 import com.ds.watchtable.entity.PosTable;
 import com.ds.watchtable.entity.Store;
-import javafx.geometry.Pos;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public interface PosTableService {
 
-    Long add(PosTableDTO posTableDTO);
+    PosTableDTO getPosTable(Long posTableDTO);
 
     default PosTable dtoToEntity(PosTableDTO posTableDTO) {
+        Map<String, Object> entityMap = new HashMap<>();
         PosTable posTable = PosTable.builder()
-
+                .member(Member.builder()
+                        .memberNum(posTableDTO.getMemberNum())
+                        .memberName(posTableDTO.getMemberName())
+                        .memberNickname(posTableDTO.getMemberNickname())
+                        .memberId(posTableDTO.getMemberId())
+                        .memberEmail(posTableDTO.getMemberEmail())
+                        .memberPw(posTableDTO.getMemberPw())
+                        .memberMobile(posTableDTO.getMemberMobile())
+                        .build())
+                .store(Store.builder()
+                        .storeNum(posTableDTO.getStoreNum())
+                        .storeName(posTableDTO.getStoreName())
+                        .storeAds(posTableDTO.getStoreAds())
+                        .storeTel(posTableDTO.getStoreTel())
+                        .storeText(posTableDTO.getStoreText())
+                        .storeOpen(posTableDTO.getStoreOpen())
+                        .storeClose(posTableDTO.getStoreClose())
+                        .bsNum(posTableDTO.getBsNum())
+                        .build())
                 .posTableNum(posTableDTO.getPosTableNum())
                 .orderCount(posTableDTO.getOrderCount())
                 .table1(posTableDTO.getTable1())
@@ -27,7 +47,7 @@ public interface PosTableService {
                 .table8(posTableDTO.getTable8())
                 .table9(posTableDTO.getTable9())
                 .build();
-
+        entityMap.put("posTable", posTable);
         return posTable;
     }
     default PosTableDTO entityToDTO(PosTable posTable) {

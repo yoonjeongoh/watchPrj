@@ -20,24 +20,9 @@ public class PosTableDTO {
     private String memberPw;
     private String memberEmail;
     private String memberMobile;
-
-
     private LocalDateTime regDate;
     private LocalDateTime modDate;
 
-    private Long posTableNum;
-
-    private Long orderCount=0l;
-
-    private Long table1 =0l;
-    private Long table2=0l;
-    private Long table3=0l;
-    private Long table4=0l;
-    private Long table5=0l;
-    private Long table6=0l;
-    private Long table7=0l;
-    private Long table8=0l;
-    private Long table9=0l;
 
     private Long storeNum;
 
@@ -47,6 +32,19 @@ public class PosTableDTO {
     private String storeText;
     private String storeOpen;
     private String storeClose;
-
     private String bsNum;
+
+
+    private Long posTableNum;
+
+    private Long orderCount = 0l;
+    private Long table1 = 0l;
+    private Long table2 = 0l;
+    private Long table3 = 0l;
+    private Long table4 = 0l;
+    private Long table5 = 0l;
+    private Long table6 = 0l;
+    private Long table7 = 0l;
+    private Long table8 = 0l;
+    private Long table9 = 0l;
 }
