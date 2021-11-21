@@ -2,11 +2,14 @@ package com.ds.watchtable.service;
 
 import com.ds.watchtable.dto.PageRequestDTO;
 import com.ds.watchtable.dto.PageResultDTO;
+import com.ds.watchtable.dto.PosTableDTO;
 import com.ds.watchtable.dto.StoreDTO;
 import com.ds.watchtable.entity.MenuImage;
+import com.ds.watchtable.entity.PosTable;
 import com.ds.watchtable.entity.Store;
 import com.ds.watchtable.entity.StoreImage;
 import com.ds.watchtable.repository.MenuImageRepository;
+import com.ds.watchtable.repository.PosTableRepository;
 import com.ds.watchtable.repository.StoreImageRepository;
 import com.ds.watchtable.repository.StoreRepository;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +38,11 @@ public class StoreServiceImpl implements StoreService {
     @Autowired
     final private MenuImageRepository menuImageRepository;
     @Autowired
+    final private PosTableRepository posTableRepository;
+
+
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     //    DB저장
@@ -45,6 +53,7 @@ public class StoreServiceImpl implements StoreService {
         storeDTO.setMemberPw(passwordEncoder.encode(storeDTO.getMemberPw()));
         Map<String, Object> entityMap = dtoToEntity(storeDTO);
         Store store = (Store) entityMap.get("store");
+        PosTable posTable = (PosTable) entityMap.get("posTable");
         log.info("오류오류" + store);
         List<StoreImage> storeImageList = (List<StoreImage>) entityMap.get("storeImgList");
         log.info("오류오류" + storeImageList);
@@ -57,6 +66,7 @@ public class StoreServiceImpl implements StoreService {
         menuImageList.forEach(menuImage -> {
             menuImageRepository.save(menuImage);
         });
+        posTableRepository.save(posTable);
         return store.getStoreNum();
     }
 

@@ -32,13 +32,6 @@ public class Store extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     Member member;
 
-    @JoinColumn(name = "posTableNum")
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    PosTable posTable;
-
-
-
-
     @ElementCollection(fetch = FetchType.LAZY)
     @Builder.Default
     private Set<MemberRole> roleSet = new HashSet<>();
