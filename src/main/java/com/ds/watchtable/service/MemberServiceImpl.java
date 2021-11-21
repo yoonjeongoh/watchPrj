@@ -29,7 +29,23 @@ public class MemberServiceImpl implements MemberService {
         return member.getMemberName();
     }
 
+    @Override
+    public void modify(MemberDTO memberDTO) {
+        Member member = dtoToEntity(memberDTO);
+        memberDTO.setMemberPw(this.passwordEncoder.encode(memberDTO.getMemberPw()));
+        member.getMemberEmail();
+        member.getMemberId();
+        member.getMemberMobile();
+        member.getMemberNum();
+        member.getMemberNickname();
+        member.getMemberName();
+        member.isFromSocial();
+        member.getRoleSet();
+        memberRepository.save(member);
+        log.info("member member" + member);
+    }
 }
+
 
 
 

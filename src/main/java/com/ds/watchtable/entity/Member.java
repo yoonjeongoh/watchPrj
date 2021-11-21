@@ -35,4 +35,14 @@ public class Member extends BaseEntity {
     public void addMemberRole(MemberRole memberRole) {
         roleSet.add(memberRole);
     }
+
+    public void newSocial(String newSocial){
+        this.memberId = newSocial;
+        this.memberName = newSocial;
+        this.memberNickname = newSocial;
+        this.memberMobile = newSocial;
+
+
+    }
+
 }

@@ -4,15 +4,17 @@ package com.ds.watchtable.service;
 import com.ds.watchtable.dto.MemberDTO;
 import com.ds.watchtable.entity.Member;
 import com.ds.watchtable.entity.MemberRole;
+import com.ds.watchtable.security.dto.ClubAuthMemberDTO;
 
 public interface MemberService {
 //    public User add(User user) throws Exception;
 
-//DB 저장
+    //DB 저장
     String register(MemberDTO dto);
 
+    void modify(MemberDTO memberDTO);
 
-    default Member dtoToEntity(MemberDTO memberDTO){
+    default Member dtoToEntity(MemberDTO memberDTO) {
         Member member = Member.builder()
                 .memberNum(memberDTO.getMemberNum())
                 .memberName(memberDTO.getMemberName())
@@ -25,7 +27,8 @@ public interface MemberService {
         member.addMemberRole(MemberRole.USER);
         return member;
     }
-    default MemberDTO entityToDTO(Member member){
+
+    default MemberDTO entityToDTO(Member member) {
         MemberDTO memberDTO = MemberDTO.builder()
                 .memberNum(member.getMemberNum())
                 .memberName(member.getMemberName())
