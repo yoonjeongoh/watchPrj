@@ -17,7 +17,6 @@ public class WaitingServiceImpl implements WaitingService{
     private final WaitingRepository waitingRepository;
 
     //DB저장
-/*
     @Override
     public Long registerWaiting(WaitingDTO waitingDTO) {
         Waiting waiting = dtoToEntity(waitingDTO);
@@ -25,7 +24,6 @@ public class WaitingServiceImpl implements WaitingService{
         log.info("savewaiting----"+waiting);
         return waiting.getWaitingNum();
     }
-*/
 
 
 }
