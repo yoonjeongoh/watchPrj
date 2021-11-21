@@ -32,6 +32,10 @@ public class Store extends BaseEntity {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     Member member;
 
+    @JoinColumn(name = "posTableNum")
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    PosTable posTable;
+
 
 
 

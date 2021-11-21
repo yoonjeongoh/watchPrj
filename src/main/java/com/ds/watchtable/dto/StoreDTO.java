@@ -29,6 +29,20 @@ public class StoreDTO {
     private LocalDateTime regDate;
     private LocalDateTime modDate;
 
+    private Long posTableNum;
+
+    private Long orderCount;
+
+    private Long table1 =0l;
+    private Long table2=0l;
+    private Long table3=0l;
+    private Long table4=0l;
+    private Long table5=0l;
+    private Long table6=0l;
+    private Long table7=0l;
+    private Long table8=0l;
+    private Long table9=0l;
+
     private Long storeNum;
 
     private String storeName;
