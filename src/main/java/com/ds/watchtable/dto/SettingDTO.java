@@ -14,11 +14,8 @@ import java.time.LocalDateTime;
 public class SettingDTO {
     private Long posNum;
 
-    private Long tableTwo;
-    private Long tableFour;
-    private Long tableSix;
-
-    private Long storeNum;
+    private Long size;
+    private Long tableNum;
 
     private LocalDateTime regDate;
     private LocalDateTime modDate;

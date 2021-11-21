@@ -14,9 +14,8 @@ SettingDTO getSetting(Long posNum);
     default Setting dtoToEntity(SettingDTO settingDTO){
         Setting setting = Setting.builder()
                 .posNum(settingDTO.getPosNum())
-                .tableTwo(settingDTO.getTableTwo())
-                .tableFour(settingDTO.getTableFour())
-                .tableSix(settingDTO.getTableSix())
+                .tableNum(settingDTO.getTableNum())
+                .size(settingDTO.getSize())
                 .build();
         return setting;
     }
@@ -24,9 +23,8 @@ SettingDTO getSetting(Long posNum);
     default SettingDTO entityToDTO(Setting setting){
         SettingDTO settingDTO = SettingDTO.builder()
                 .posNum(setting.getPosNum())
-                .tableTwo(setting.getTableTwo())
-                .tableFour(setting.getTableFour())
-                .tableSix(setting.getTableSix())
+                .tableNum(setting.getTableNum())
+                .size(setting.getSize())
                 .modDate(setting.getModDate())
                 .regDate(setting.getRegDate())
                 .build();

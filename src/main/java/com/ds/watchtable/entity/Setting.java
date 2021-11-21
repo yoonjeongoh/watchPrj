@@ -17,7 +17,7 @@ public class Setting extends BaseEntity {
     private Long posNum;
     private Long tableNum;
 
-    private String size;
+    private Long size;
 
 
 

@@ -27,26 +27,68 @@
         </style>
 <!--        th:each="num: ${#numbers.sequence(1,5)}"-->
 
-        <input id="tableTwoValue" th:value="${setting.tableTwo}" readonly>
-        <div class="flex-container">
-            <div id="tableTwoBox" >
+<!--        <form id="action-form" class="menu_form" th:action="@{/pos/postable}" method="post">-->
 
+        <div class="flex-container">
+            <div  class="flextb4" name="table1" id="table1" >
+
+                <button id="btn1_1">주문</button>
+                <button id="btn1_2">결제</button>
+            </div>
+            <form id="table_2" th:action="@{/pos/postable}" method="post">
+            <div value="false" class="flextb4" name="table2" id="table2" >
+
+                <button id="btn2_1">주문</button>
+                <button id="btn2_2">결제</button>
+            </div>
+            </form>
+            <div value="false" class="flextb4" name="table3" id="table3" >
+
+                <button id="btn3_1">주문</button>
+                <button id="btn3_2">결제</button>
             </div>
         </div>
 
-        <input id="tableFourValue" th:value="${setting.tableFour}" readonly>
         <div class="flex-container">
-            <div id="tableFourBox" >
+            <div value="false" class="flextb4" name="table4" id="table4" >
 
+                <button id="btn4_1">주문</button>
+                <button id="btn4_2">결제</button>
+            </div>
+            <div value="false" class="flextb4" name="table5" id="table5" >
+
+                <button id="btn5_1">주문</button>
+                <button id="btn5_2">결제</button>
+            </div>
+            <div value="false" class="flextb4" name="table6" id="table6" >
+
+                <button id="btn6_1">주문</button>
+                <button id="btn6_2">결제</button>
+            </div>
+        </div>
+        <div class="flex-container">
+            <div value="false" class="flextb4" name="table7" id="table7" >
+
+                <button id="btn7_1">주문</button>
+                <button id="btn7_2">결제</button>
+            </div>
+            <div value="false" class="flextb4" name="table8" id="table8" >
+
+                <button id="btn8_1">주문</button>
+                <button id="btn8_2">결제</button>
+            </div>
+            <div value="false" class="flextb4" name="table9" id="table9" >
+
+                <button id="btn9_1">주문</button>
+                <button id="btn9_2">결제</button>
             </div>
         </div>
 
-        <input id="tableSixValue" th:value="${setting.tableSix}" readonly>
-        <div class="flex-container">
-            <div id="tableSixBox" >
+            <input id="orderCount" name="orderCount" value=0 readonly>
+        <form>
 
-            </div>
-        </div>
+        </form>
+<!--        </form>-->
 
 
 <!--            <div id = "ftb2" class="flextb" th:onClick="|location.href='@{/pos/posorder}'|">-->
@@ -84,41 +126,14 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script>
     $(document).ready(function() {
+        var value=0;
+       $('#btn1_1').click(function(){
+            var orderCount = $('#orderCount').attr("value",++value);
+            console.log( $('#orderCount').attr("value") );
 
-
-        var tableTwo = $("#tableTwoValue").val();
-        var tableFour = $("#tableFourValue").val();
-        var tableSix = $("#tableSixValue").val();
-
-        var tableTwoPlus = Number(tableTwo) + 1;
-        var tableFourPlus = Number(tableTwo)+Number(tableFour)+1;
-        console.log(tableTwoPlus);
-
-
-
-        var TwoPlusFour = Number(tableTwo)+Number(tableFour);
-        var FourPlusSix = Number(tableFour)+Number(tableSix);
-
-
-            for(var i=1; i<=tableTwo; i++){
-                var tablePlusNum= "tableTwoOrder"+i;
-                $("#tableTwoBox").append('<div name=' + i + ' class="flextb2" id='+ tablePlusNum + ' value='+ i +'>');
-                }
-            for(var i=1; i<=TwoPlusFour-tableTwo; i++){
-                var tablePlusNum= "tableFourOrder"+i;
-                var tableTwo = $("#tableTwoValue").val();
-                $("#tableFourBox").append('<div name=' + tableTwoPlus + ' class="flextb4" id='+ tablePlusNum + ' value='+ tableTwoPlus++ + '>');
-                 }
-            for(var i=1; i<=FourPlusSix-tableFour; i++){
-                var tablePlusNum= "tableSixOrder"+i;
-                var tableFour = $("#tableFourValue").val();
-                $("#tableSixBox").append('<div name=' + tableFourPlus + ' class="flextb6" id='+ tablePlusNum + ' value='+ tableFourPlus++ + '>');
-                 }
-
-
-
-
-    });
+<!--            console.log($("#table1").attr("value"));-->
+        })
+    })
     </script>
     </th:block>
 </th:blotck>
