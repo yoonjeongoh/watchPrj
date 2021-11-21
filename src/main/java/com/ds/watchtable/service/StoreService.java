@@ -18,6 +18,8 @@ public interface StoreService {
 
     //admin/storeread 가게 정보 상세보기
     StoreDTO getStore(Long storeNum);
+    //storetable 정보 가져오기
+
 
 
     default Map<String, Object> dtoToEntity(StoreDTO storeDTO) {
@@ -72,6 +74,22 @@ public interface StoreService {
             }).collect(Collectors.toList());
             entityMap.put("menuImgList", menuImageList);
         }
+        PosTableDTO posTableDTO = storeDTO.getPosTableDTO();
+        PosTable posTable = PosTable.builder()
+                .posTableNum(posTableDTO.getPosTableNum())
+                .orderCount(posTableDTO.getOrderCount())
+                .table1(posTableDTO.getTable1())
+                .table2(posTableDTO.getTable2())
+                .table3(posTableDTO.getTable3())
+                .table4(posTableDTO.getTable4())
+                .table5(posTableDTO.getTable5())
+                .table6(posTableDTO.getTable6())
+                .table7(posTableDTO.getTable7())
+                .table8(posTableDTO.getTable8())
+                .table9(posTableDTO.getTable9())
+                .store(store)
+                .build();
+        entityMap.put("posTable", posTable);
         return entityMap;
     }
 

@@ -28,9 +28,7 @@ public class PosTable {
     private Long table8;
     private Long table9;
 
-    @JoinColumn(name="memberNum")
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    Member member;
+
 
     @JoinColumn(name="storeNum")
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
