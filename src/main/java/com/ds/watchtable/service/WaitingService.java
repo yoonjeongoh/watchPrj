@@ -9,7 +9,7 @@ import com.ds.watchtable.entity.Waiting;
 
 public interface WaitingService {
     //DB저장
-//    Long registerWaiting(WaitingDTO waitingDTO);
+    Long registerWaiting(WaitingDTO waitingDTO);
 
         default Waiting dtoToEntity(WaitingDTO waitingDTO){
         Waiting waiting = Waiting.builder()

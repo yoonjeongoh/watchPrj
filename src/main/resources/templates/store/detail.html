@@ -242,9 +242,10 @@
             //대기등록 모달
             //var storeName = [[${dto.storeName}]];
             //var memberName = [[${member.memberName}]];
+            var partyMember = $('select[name="partyMember"]');
 
-            //var mobile = $('.memberMobile');
-            //var party = $('.partyMember');
+            var memberMobile = $('.memberMobile');
+            var memberName = $('.memberName');
 
             $(".waiting-register21").click(function(){
             $('.waitingModal').modal('show')
@@ -260,6 +261,37 @@
                     $('.partyMember').val();
             });
 
+            //대기등록 데이터 넘기기
+            $(".go-waiting21").click(function(){
+                alert("benny");
+                var data = {
+                    memberNum: memberNum,
+                    memberName: memberName.val(),
+                    memberMobile: memberMobile.val(),
+                    storeNum: storeNum,
+                    //storeName: storeName,
+                    partyMember: partyMember.val()
+                    };
+                console.log("waiting111>>>>"+data);
+
+                $.ajax({
+                    url: contextPath+'/addWaiting/'+storeNum,
+                    type:"POST",
+                    data:JSON.stringify(data),
+                    contentType:"application/json; charset=utf-8",
+                    dataType:"json",
+                    success: function(data){
+                        console.log("waiting222>>>> "+data);
+                        var waitingNum = parseInt(data);
+                        console.log("waiting333>>>>"+waitingNum);
+                        self.location.reload();
+                     },
+                    error:function(data){
+        		    alert("errorrrrrrrrrrrrrrrr");
+                    }
+                });
+                $('.waitingModal').modal('hide')
+            });
 
 
 

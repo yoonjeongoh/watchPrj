@@ -23,7 +23,6 @@ public class WaitingController {
     final private WaitingService waitingService;
 
     //리뷰등록
-/*
     @RequestMapping("/addWaiting/{storeNum}")
     public ResponseEntity<Long> addWaiting(@RequestBody WaitingDTO waitingDTO) {
         log.info("--------------addWaiting1111---------------");
@@ -33,6 +32,5 @@ public class WaitingController {
         log.info("--------------addWaiting222---------------"+waitingNum);
         return new ResponseEntity<>(waitingNum, HttpStatus.OK);
     }
-*/
 
 }
