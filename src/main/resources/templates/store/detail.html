@@ -78,8 +78,11 @@
 
 
             <!--        6열 리뷰 리스트-->
-           <div class="rv-list six-col1">
-                <div id="rv-list-table" class="rv-list-table"> 리뷰리스트
+           <div class="rv-list six-col1 ">
+               <span id="js-memberNum" style="display:none;">[[${member.memberNum}]]</span>
+               <span id="js-memberName" style="display:none;">[[${member.memberName}]]</span>
+               <span id="js-storeNum" style="display:none;">[[${dto.storeNum}]]</span>
+               <div id="rv-list-table" class="rv-list-table"> 리뷰리스트
                 </div>
             </div>
 
@@ -105,139 +108,26 @@
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
                 crossorigin="anonymous"></script>
 
+        <script th:src="@{/js/review.js}"></script>
+
         <script>
+<!--
+            function showModal2( reviewNum, text){
+                //console.log("this: " + this);
+                //console.log("reviewNum: " + reviewNum);
+                //var reviewNum = $(this).data("reviewNum");
+
+                $("input[name='reviewNum']").val(reviewNum);
+                //$("input[name='reviewNum']").val($(this).find('.reviewNum').html());
+                $("input[name='text']").val(reviewText);
+                $('.reviewModal').modal('show');
+            };
+-->
+
         $(document).ready(function(e){
             var contextPath = $('#contextPathHolder').attr('data-contextPath') ? $('#contextPathHolder').attr('data-contextPath') : '';
             var memberNum = [[${member.memberNum}]];
             var storeNum = [[${dto.storeNum}]];
-            var review = $('textarea[name="reviewText"]');
-
-            $(".rv-close21").click(function(){
-                $('.reviewModal').modal('hide')
-            });
-
-
-            //리뷰 데이터 넘기기
-            $("#rv-btn").click(function(){
-                alert("benny");
-                var data = {
-                    memberNum:memberNum,
-                    storeNum:storeNum,
-                    text:review.val()
-                    };
-                console.log(">>>>"+data);
-
-                $.ajax({
-                    url: contextPath+'/addReview/'+storeNum,
-                    type:"POST",
-                    data:JSON.stringify(data),
-                    contentType:"application/json; charset=utf-8",
-                    dataType:"text",
-                    success: function(data){
-                        console.log("result: "+data);
-                        var reviewNum = parseInt(data);
-                        console.log("result: "+reviewNum);
-                        self.location.reload();
-                     },
-                    error:function(data){
-        		    alert("errorrrrrrrrrrrrrrrr");
-                    }
-                });
-            });
-
-            //리뷰 리스트 보기
-            function getStoreReviews() {
-                function formatTime(str) {
-                    var date = new Date(str);
-                    return date.getFullYear()+'/'+
-                    (date.getMonth() + 1)+'/' +
-                    date.getDate() + ' ' +
-                    date.getHours()+':'+
-                    date.getMinutes();
-                }
-
-                $.getJSON(contextPath+"/addReview/"+storeNum+"/list", function(arr) {
-                var str = "";
-
-                    $.each(arr, function(idx, review) {
-                    console.log("review>>>>>>>>>>>"+review);
-						str += ' <div class="card-body" data-reviewNum="'+review.reviewNum+'">';
-                        str += ' <b class="reviewNum">'+review.reviewNum+'</b>';
-                        str += ' <h5 class="reviewText">'+review.text+'</h5>';
-                        str += ' <p>'+formatTime(review.regDate)+'</p>';
-                        str += ' </div>';
-                    });
-
-                    $(".rv-list-table").html(str);
-                    //console.log(">>>>>>>>>>>"+str);
-                });
-                }
-                getStoreReviews();
-
-            //수정삭제 모달창
-            $(".rv-list-table").on("click", ".card-body", function(){
-                var reviewNum = $(this).data(reviewNum);
-                console.log("this: " + this);
-                console.log("reviewNum: " + reviewNum);
-
-                $("input[name='reviewNum']").val(reviewNum);
-                //$("input[name='reviewNum']").val($(this).find('.reviewNum').html());
-                $("input[name='text']").val($(this).find('.reviewText').html());
-            $('.reviewModal').modal('show');
-
-            });
-
-            //리뷰삭제
-            $(".rv-del21").on("click", function(){
-                            var reviewNum = $("input[name='reviewNum']").val();
-                                console.log(reviewNum);
-                var data = {reviewNum: reviewNum}
-
-                $.ajax({
-                url: contextPath + '/addReview/'+storeNum+"/"+reviewNum ,
-                type:"DELETE",
-                data:JSON.stringify(data),
-                contentType:"application/json; charset=utf-8",
-                dataType:"text",
-                success: function(data){
-                        console.log("result: " + data);
-                        self.location.reload();
-                     },
-                error:function(data){
-                    alert("delete_errorrrrrrrrrrrrrrrr");
-                    }
-            });
-            });
-
-
-            //리뷰수정
-            $(".rv-modify").on("click", function(){
-                var reviewNum = $(this).data(reviewNum);
-                console.log("this: " + this);
-                console.log("reviewNum: " + reviewNum);
-
-                var data = {
-                    reviewNum: reviewNum,
-                    memberNum: memberNum,
-                    storeNum: storeNum,
-                    text: review.val()
-                    };
-                console.log(data);
-
-                $.ajax({
-                url: contextPath + '/addReview/'+storeNum+"/"+reviewNum ,
-                type:"PUT",
-                data:JSON.stringify(data),
-                contentType:"application/json; charset=utf-8",
-                dataType:"text",
-                success: function(data){
-                        console.log("result: " + data);
-                        self.location.reload();
-                    }
-                })
-            $('.reviewModal').modal('hide');
-            });
-
 
             //대기등록 모달
             //var storeName = [[${dto.storeName}]];
@@ -293,10 +183,7 @@
                 $('.waitingModal').modal('hide')
             });
 
-
-
-
-        }); //end script
+       }); //end script
 
     </script>
 
@@ -310,13 +197,13 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group">
+                        <div class="form-group none-reviewNum">
                             <label>ReviewNum</label>
-                            <input type="text" class="form-control" name="reviewNum">
+                            <input type="text" class="form-control " name="reviewNum">
                         </div>
                         <div class="form-group">
                             <label>내 리뷰</label>
-                            <input type="text" class="form-control" name="text">
+                            <input type="text" class="form-control modal-text" name="text">
                         </div>
                         <div class="modal-footer">
                         <button type="button" class="btn btn-primary rv-modify">수정하기</button>

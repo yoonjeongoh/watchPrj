@@ -217,6 +217,14 @@ textarea {
     margin-left: -5px;
 }
 
+.form-group.none-reviewNum {
+    display: none;
+}
+
+b.reviewNum {
+    display: none;
+}
+
 /*
 .forth-col1 {
     height: 80px;
