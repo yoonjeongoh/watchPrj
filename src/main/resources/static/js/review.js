@@ -55,9 +55,9 @@ $(document).ready(function(e){
             $.each(arr, function(idx, review) {
                 str += ' <div class="card-body" data-reviewNum="'+review.reviewNum+'">';
                 str += ' <b class="reviewNum">'+review.reviewNum+'</b>';
-                str += ' <h5 class="reviewText">'+review.text+'</h5>';
+                str += ' <p class="reviewText">'+review.text+'</p>';
                 //str += ' <h5 class="reviewText" onclick="showModal2('+review.reviewNum+','+review.text+')">'+review.text+'</h5>';
-                str += ' <p>'+formatTime(review.regDate)+'</p>';
+                str += ' <p class="reviewTime">'+formatTime(review.regDate)+'</p>';
                 str += ' </div>';
             //console.log("review>>>>>>>>>>>"+review);
             });

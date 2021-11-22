@@ -5,6 +5,7 @@ import com.ds.watchtable.entity.Store;
 import com.ds.watchtable.security.dto.ClubAuthMemberDTO;
 import com.ds.watchtable.service.ReviewService;
 import com.ds.watchtable.service.StoreService;
+import com.ds.watchtable.service.WaitingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ import java.util.Optional;
 public class StoreController {
     @Autowired
     private final StoreService storeService;
+    private final WaitingService waitingService;
     private final ReviewService reviewService;
 
     //store/detail - member, store 정보 넘기기

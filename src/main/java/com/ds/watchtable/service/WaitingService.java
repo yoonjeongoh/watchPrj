@@ -1,5 +1,7 @@
 package com.ds.watchtable.service;
 
+import com.ds.watchtable.dto.PageRequestDTO;
+import com.ds.watchtable.dto.PageResultDTO;
 import com.ds.watchtable.dto.ReviewDTO;
 import com.ds.watchtable.dto.WaitingDTO;
 import com.ds.watchtable.entity.Member;
@@ -10,6 +12,10 @@ import com.ds.watchtable.entity.Waiting;
 public interface WaitingService {
     //DB저장
     Long registerWaiting(WaitingDTO waitingDTO);
+    //웨이팅 리스트
+    PageResultDTO<WaitingDTO, Waiting> getWaitingList(PageRequestDTO requestDTO);
+    WaitingDTO getWaiting(Long waitingNum);
+
 
         default Waiting dtoToEntity(WaitingDTO waitingDTO){
         Waiting waiting = Waiting.builder()
