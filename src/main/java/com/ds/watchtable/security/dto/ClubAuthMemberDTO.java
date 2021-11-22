@@ -2,6 +2,8 @@ package com.ds.watchtable.security.dto;
 
 import com.ds.watchtable.dto.MemberDTO;
 import com.ds.watchtable.entity.Member;
+import com.ds.watchtable.entity.PosTable;
+import com.ds.watchtable.entity.Store;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,6 +26,8 @@ public class ClubAuthMemberDTO extends User implements OAuth2User {
   private String name;
   private boolean fromSocial;
   private Member member;
+  private Store store;
+  private PosTable posTable;
 
   private String memberid;
   private String memberName;

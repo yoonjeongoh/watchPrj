@@ -68,10 +68,6 @@
 <!--    <a th:href="@{member/myinfocorrect/{memberNum}">test3(내정보수정)</a><br>-->
     <hr>
     <h3>Pos</h3>
-    <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{pos/kitchen}" class="btn btn-primary">/watchtable/kitchen[주방화면]</a><br>
-    <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{pos/menuitem}" class="btn btn-primary">/watchtable/menuitem[메뉴]</a><br>
-    <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{pos/storeorder}" class="btn btn-primary">/watchtable/order[메뉴리스트]</a><br>
-    <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{pos/setting}" class="btn btn-primary">/watchtable/setting[포스세팅]</a><br>
     <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{pos/postable}" class="btn btn-primary">/watchtable/postable[(포스)가게테이블]</a><br>
     <hr>
     <h3>Review</h3>
@@ -92,6 +88,12 @@
                     "?storeNum="+storeNum;
                 +]*/
                 location.href=url;
+            }
+
+            function goPos(storeNum){
+              var url = [[@{/pos/postable}]] +
+                  "?storeNum="+storeNum;
+                  location.href=url;
             }
         </script>
 
