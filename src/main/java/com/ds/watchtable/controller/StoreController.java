@@ -39,18 +39,16 @@ public class StoreController {
 
         StoreDTO storeDTO = storeService.getStore(storeNum);
         model.addAttribute("dto", storeDTO);
-
     }
 
-
         //시큐리티로 데이터넘기기
-/*    @RequestMapping("/manager/managemyinfo")
+    @RequestMapping("/manager/managemyinfo")
     public void myinfo1(Model model,
                         @AuthenticationPrincipal ClubAuthMemberDTO principal) {
         if (principal != null) {
             model.addAttribute("store", principal.getStore());
             log.info("principal.getStore()" + principal.getStore());
         }
-    }*/
+    }
 
 }

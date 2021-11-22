@@ -5,10 +5,12 @@ import com.ds.watchtable.dto.MenuItemDTO;
 import com.ds.watchtable.dto.PosTableDTO;
 import com.ds.watchtable.dto.SettingDTO;
 import com.ds.watchtable.dto.StoreDTO;
+import com.ds.watchtable.security.dto.ClubAuthMemberDTO;
 import com.ds.watchtable.service.MenuItemService;
 import com.ds.watchtable.service.StoreService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,16 +54,11 @@ public class PosController {
     }
 
     @GetMapping("/pos/postable")
-    public void posTable(Long storeNum,Model model){
-        PosTableDTO posTableDTO = storeService.getOrder(storeNum);
-        model.addAttribute("order", posTableDTO);
+    public void posTable(Long storeNum,Model model,
+                         @AuthenticationPrincipal ClubAuthMemberDTO principal){
+        if (principal != null) {
+            model.addAttribute("order", principal.getPosTable());
+            log.info("principal.getPosTable()  " + principal.getPosTable());
+        }
     }
-
-
-
-
-
-
-
-
 }
