@@ -2,9 +2,9 @@ $(document).ready(function(e){
     var contextPath = $('#contextPathHolder').attr('data-contextPath') ? $('#contextPathHolder').attr('data-contextPath') : '';
     var memberNum = $('#js-memberNum').text();
     var storeNum = $('#js-storeNum').text();
+    var review = $('textarea[name="reviewText"]');
     //var memberNum = [[${member.memberNum}]];
     //var storeNum = [[${dto.storeNum}]];
-    var review = $('textarea[name="reviewText"]');
 
     $(".rv-close21").click(function(){
         $('.reviewModal').modal('hide')
@@ -73,8 +73,8 @@ $(document).ready(function(e){
         //var reviewNum = $(this).data("reviewNum");
         //console.log("this: " + this);
         //console.log("reviewNum: " + reviewNum);
-
         //$("input[name='reviewNum']").val(reviewNum);
+
         $("input[name='reviewNum']").val($(this).find('.reviewNum').html());
         $("input[name='text']").val($(this).find('.reviewText').html());
         $('.reviewModal').modal('show');

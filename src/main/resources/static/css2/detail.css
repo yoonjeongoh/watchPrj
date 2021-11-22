@@ -24,7 +24,7 @@ input:focus, select:focus, option:focus, textarea:focus, button:focus{
     overflow: hidden;
     display: flex;
     justify-content: space-between;
-    background-color: #82817e;
+    //background-color: #82817e;
 }
 
 .card1 {
@@ -42,12 +42,12 @@ input:focus, select:focus, option:focus, textarea:focus, button:focus{
     justify-content: space-between;
     width: auto;
     height: 500px;
-    background-color: #f75931;
+    //background-color: #f75931;
 }
 .sec1 {
     display: inline-block;
     padding: 2px;
-    background-color: #fdb53c;
+    //background-color: #fdb53c;
 }
 
 .sec-left1 {
@@ -157,6 +157,7 @@ textarea {
     width: 890px;
     height: 60px;
     border: 1px solid #fdad3c;
+    color: #75736e;
 }
 
 .form-group.none-reviewNum {
@@ -175,17 +176,26 @@ b.reviewNum {
 .reviewTime {
     text-align: right;
     padding-right: 20px;
+    font-size: 14px;
+}
+
+p {
+    color: #75736e;
+}
+
+.color21 {
+    color: #18191a;
 }
 
 .end-pg {
     width: auto;
-    height: 20px;
+    height: 50px;
  }
 
 /* 이하 모달 css------------------ */
 .waiting-register21 {
     width: 120px;
-    height: 50px;
+    height: 40px;
     //margin-top: 10px;
     text-align: center;
     color: #f2f1ed;

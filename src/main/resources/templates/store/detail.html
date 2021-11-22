@@ -9,7 +9,8 @@
             <div class="detail-content">
             <!--        1열 상단 카드이미지-->
             <div class="top-card1">
-                <div class="card1" >1    <div th:each="member: ${member}">
+                <div class="card1" >
+                    <div th:each="member: ${member}">
                     <span>[[${member.memberNum}]]</span>
                     <span>[[${member.memberName}]]</span>
                 </div>
@@ -23,21 +24,23 @@
             <!--        2열-->
             <div class="sec-col1">
                 <!--        2열 좌측 가게이름, 임티-->
-                <div class="sec1 sec-left1">1
-                    <span><h2>[[${dto.storeName}]]</h2></span><br>
-                    <div>이모티콘</div>
-                    <div>대충 평가 그래프</div>
+                <div class="sec1 sec-left1">
+                    <div class="color21"><h2>[[${dto.storeName}]]</h2></div>
+                    <span class="color21">전화번호 : [[${dto.storeTel}]]</span><br>
+                    <span class="color21">영업시간 : [[${dto.storeOpen} + ' ~ ' + ${dto.storeClose}]]</span><br>
+                    <span class="color21">가게정보 : [[${dto.storeText}]]</span><br>
+                    <span class="color21">가게주소 : [[${dto.storeAds}]]</span><br>
                 </div>
 
                 <!--        2열 중앙 혼잡도 그래프-->
-                <div class="sec1 sec-center1"> 2
+                <div class="sec1 sec-center1">
                     <span>잔여좌석 수 0/13</span>
                     <button>♡</button>
                     <br>
                     <span>현재 대기 팀 0팀</span>
                     <button class="waiting-register21 colored-btn21">대기 등록하기</button>
                     <br>
-                    <span>혼잡도가 80% 이상 일 때 가게 도착 시 만석이 될 수 있습니다</span><br>
+                    <span class="color21">혼잡도가 80% 이상 일 때 가게 도착 시 만석이 될 수 있습니다</span><br>
                   <div class="chartRoom">
                     <div id="piechart"></div>
                   </div>
@@ -51,14 +54,15 @@
             </div>
 
             <!--        3열-->
+<!--
             <div class="thd-col1">
-                <!--        3열 좌측 가게메뉴-->
+                &lt;!&ndash;        3열 좌측 가게메뉴&ndash;&gt;
                 <div class="thd1 thd-left1"> 1
                     <span>메뉴</span>
                     <span></span>
                 </div>
 
-                <!--        3열 우측 가게정보-->
+                &lt;!&ndash;        3열 우측 가게정보&ndash;&gt;
                 <div class="thd1 thd-right1"> 2<br>
                     <span>가게주소 : [[${dto.storeAds}]]</span><br>
                     <span>전화번호 : [[${dto.storeTel}]]</span><br>
@@ -67,6 +71,7 @@
                 </div>
 
             </div>
+-->
 
             <!--5열 리뷰작성칸-->
                 <div id="review" class="rv-field fifth-col1">
@@ -111,19 +116,6 @@
         <script th:src="@{/js/review.js}"></script>
 
         <script>
-<!--
-            function showModal2( reviewNum, text){
-                //console.log("this: " + this);
-                //console.log("reviewNum: " + reviewNum);
-                //var reviewNum = $(this).data("reviewNum");
-
-                $("input[name='reviewNum']").val(reviewNum);
-                //$("input[name='reviewNum']").val($(this).find('.reviewNum').html());
-                $("input[name='text']").val(reviewText);
-                $('.reviewModal').modal('show');
-            };
--->
-
         $(document).ready(function(e){
             var contextPath = $('#contextPathHolder').attr('data-contextPath') ? $('#contextPathHolder').attr('data-contextPath') : '';
             var memberNum = [[${member.memberNum}]];
