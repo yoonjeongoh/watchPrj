@@ -28,8 +28,6 @@ public class PosTable {
     private Long table8;
     private Long table9;
 
-
-
     @JoinColumn(name="storeNum")
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     Store store;

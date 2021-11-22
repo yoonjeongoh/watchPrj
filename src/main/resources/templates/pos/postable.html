@@ -6,21 +6,9 @@
         .flex-container{
             display: inline-flex;
         }
-        .flextb2{
-            width: 100px;
-            height: 100px;
-            margin: 20px;
-            background-color: darksalmon;
-        }
          .flextb4{
             width: 150px;
             height: 150px;
-            margin: 20px;
-            background-color: darksalmon;
-        }
-        .flextb6{
-            width: 200px;
-            height: 200px;
             margin: 20px;
             background-color: darksalmon;
         }
@@ -29,53 +17,54 @@
 
         <!--        <form id="action-form" class="menu_form" th:action="@{/pos/postable}" method="post">-->
 
-
+        <form class="posForm" th:action="@{/pos/postable}" method="post"
+            id="pos_form" name="p">
             <div class="flex-container">
-                <div value="0" class="flextb4" name="table1" id="table1" >
-                    <button id="btn1_1">주문</button>
-                    <button id="btn1_2">결제</button>
+                <div th:value="${order.table1}" class="flextb4" name="table1" id="table1" >
+                    <button class="btn_order" id="btn1_1">주문</button>
+                    <button class="btn_order" id="btn1_2">결제</button>
                 </div>
-                <div value="0" class="flextb4" name="table2" id="table2" >
-                    <button id="btn2_1">주문</button>
-                    <button id="btn2_2">결제</button>
+                <div th:value="${order.table2}" class="flextb4" name="table2" id="table2" >
+                    <button class="btn_order" id="btn2_1">주문</button>
+                    <button class="btn_order" id="btn2_2">결제</button>
                 </div>
-                <div value="0" class="flextb4" name="table3" id="table3" >
-                    <button id="btn3_1">주문</button>
-                    <button id="btn3_2">결제</button>
+                <div th:value="${order.table3}" class="flextb4" name="table3" id="table3" >
+                    <button class="btn_order" id="btn3_1">주문</button>
+                    <button class="btn_order" id="btn3_2">결제</button>
                 </div>
             </div>
 
             <div class="flex-container">
-                <div value="0" class="flextb4" name="table4" id="table4" >
-                    <button id="btn4_1">주문</button>
-                    <button id="btn4_2">결제</button>
+                <div th:value="${order.table4}" class="flextb4" name="table4" id="table4" >
+                    <button class="btn_order" id="btn4_1">주문</button>
+                    <button class="btn_order" id="btn4_2">결제</button>
                 </div>
-                <div value="0" class="flextb4" name="table5" id="table5" >
-                    <button id="btn5_1">주문</button>
-                    <button id="btn5_2">결제</button>
+                <div th:value="${order.table5}" class="flextb4" name="table5" id="table5" >
+                    <button class="btn_order" id="btn5_1">주문</button>
+                    <button class="btn_order" id="btn5_2">결제</button>
                 </div>
-                <div value="0" class="flextb4" name="table6" id="table6" >
-                    <button id="btn6_1">주문</button>
-                    <button id="btn6_2">결제</button>
+                <div th:value="${order.table6}" class="flextb4" name="table6" id="table6" >
+                    <button class="btn_order" id="btn6_1">주문</button>
+                    <button class="btn_order" id="btn6_2">결제</button>
                 </div>
             </div>
             <div class="flex-container">
-                <div value="0" class="flextb4" name="table7" id="table7" >
-                    <button id="btn7_1">주문</button>
-                    <button id="btn7_2">결제</button>
+                <div th:value="${order.table7}" class="flextb4" name="table7" id="table7" >
+                    <button class="btn_order" id="btn7_1">주문</button>
+                    <button class="btn_order" id="btn7_2">결제</button>
                 </div>
-                <div value="0" class="flextb4" name="table8" id="table8" >
-                    <button id="btn8_1">주문</button>
-                    <button id="btn8_2">결제</button>
+                <div th:value="${order.table8}" class="flextb4" name="table8" id="table8" >
+                    <button class="btn_order" id="btn8_1">주문</button>
+                    <button class="btn_order" id="btn8_2">결제</button>
                 </div>
-                <div value="0" class="flextb4" name="table9" id="table9" >
-                    <button id="btn9_1">주문</button>
-                    <button id="btn9_2">결제</button>
+                <div th:value="${order.table9}" class="flextb4" name="table9" id="table9" >
+                    <button class="btn_order" id="btn9_1">주문</button>
+                    <button class="btn_order" id="btn9_2">결제</button>
                 </div>
             </div>
 
-            <input value="0" id="orderCount" name="orderCount" readonly>
-
+            <input th:value="${order.orderCount}" id="orderCount" name="orderCount" readonly>
+        </form>
         <!--        </form>-->
 
 
@@ -110,10 +99,15 @@
         <!--                9-->
         <!--            </div>-->
 
-        <!--        </div>-->
+<!--        </div>-->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script>
     $(document).ready(function() {
+        var actionForm = $('form');
+        $('.btn_order').click(function() {
+            actionForm.submit();
+        })
+
        var orderCount = $('#orderCount').attr("value");
        var order1 = $('#table1').attr("value");
        var order2 = $('#table2').attr("value");
@@ -124,113 +118,181 @@
        var order7 = $('#table7').attr("value");
        var order8 = $('#table8').attr("value");
        var order9 = $('#table9').attr("value");
-       console.log(order1);
 
 
+        console.log(order1);
        $('#btn1_1').click(function(){
          if( order1 == 0 ) {
             order1++;
             console.log(order1);
             orderCount++;
             console.log(orderCount);
+            $("#table1").css("background-color","green");
          }
-        })
-        $('#btn1_2').click(function(){
+       })
+       $('#btn1_2').click(function(){
          if( order1 == 1 ) {
              order1--;
              console.log( order1 );
              orderCount--;
+             console.log(orderCount);
+             $("#table1").css("background-color","darksalmon");
+
+         }
+       })
+
+       $('#btn2_1').click(function(){
+         if( order2 == 0 ) {
+            order2++;
+            console.log(order2);
+            orderCount++;
+            console.log(orderCount);
+            $("#table2").css("background-color","green");
          }
         })
+       $('#btn2_2').click(function(){
+         if( order2 == 1 ) {
+             order2--;
+             console.log( order2 );
+             orderCount--;
+             console.log(orderCount);
+             $("#table2").css("background-color","darksalmon");
 
-        $('#btn2_1').click(function(){
-         if( order2 == 0 ) {order2++;
-         console.log( order2 );
-                  orderCount++;
-                  }
-        })
-        $('#btn2_2').click(function(){
-         if( order2 == 1 ) {order2--;}
-         console.log( order2 );
-        })
+         }
+       })
 
-        $('#btn3_1').click(function(){
-         if( order3 == 0 ) {order3++;
-         console.log( order3 );
-                  orderCount++;
-                  }
-        })
-        $('#btn3_2').click(function(){
-         if( order3 == 1 ) {order3--;}
-         console.log( order3 );
-        })
 
-        $('#btn4_1').click(function(){
-         if( order4 == 0 ) {order4++;
-         console.log( order4 );
-                  orderCount++;
-                  }
+       $('#btn3_1').click(function(){
+         if( order3 == 0 ) {
+            order3++;
+            console.log(order2);
+            orderCount++;
+            console.log(orderCount);
+            $("#table3").css("background-color","green");         }
         })
-        $('#btn4_2').click(function(){
-         if( order4 == 1 ) {order4--;}
-         console.log( order4 );
-        })
+       $('#btn3_2').click(function(){
+         if( order3 == 1 ) {
+             order3--;
+             console.log( order2 );
+             orderCount--;
+             console.log(orderCount);
+             $("#table3").css("background-color","darksalmon");
+         }
+       })
 
-        $('#btn5_1').click(function(){
-         if( order5 == 0 ) {order5++;
-         console.log( order5 );
-                  orderCount++;
-                  }
+       $('#btn4_1').click(function(){
+         if( order4 == 0 ) {
+            order4++;
+            console.log(order4);
+            orderCount++;
+            console.log(orderCount);
+            $("#table4").css("background-color","green");        
+         }
         })
-        $('#btn5_2').click(function(){
-         if( order2 == 1 ) {order5--;}
-         console.log( order5 );
-        })
+       $('#btn4_2').click(function(){
+         if( order4 == 1 ) {
+             order4--;
+             console.log( order4 );
+             orderCount--;
+             console.log(orderCount);
+            $("#table4").css("background-color","darksalmon");
+         }
+       })
 
-        $('#btn6_1').click(function(){
-         if( order6 == 0 ) {order6++;
-         console.log( order6 );
-                  orderCount++;
-                  }
+       $('#btn5_1').click(function(){
+         if( order5 == 0 ) {
+            order5++;
+            console.log(order5);
+            orderCount++;
+            console.log(orderCount);
+            $("#table5").css("background-color","green");
+         }
         })
-        $('#btn6_2').click(function(){
-         if( order6 == 1 ) {order6--;}
-         console.log( order6 );
-        })
+       $('#btn5_2').click(function(){
+         if( order5 == 1 ) {
+             order5--;
+             console.log( order5 );
+             orderCount--;
+             console.log(orderCount);
+            $("#table5").css("background-color","darksalmon");
+         }
+       })
 
-        $('#btn7_1').click(function(){
-         if( order7 == 0 ) {order7++;
-         console.log( order7 );
-                  orderCount++;
-                  }
+       $('#btn6_1').click(function(){
+         if( order6 == 0 ) {
+            order6++;
+            console.log(order6);
+            orderCount++;
+            console.log(orderCount);
+            $("#table6").css("background-color","green");
+         }
         })
-        $('#btn7_2').click(function(){
-         if( order7 == 1 ) {order7--;}
-         console.log( order7 );
-        })
+       $('#btn6_2').click(function(){
+         if( order6 == 1 ) {
+             order6--;
+             console.log( order6 );
+             orderCount--;
+             console.log(orderCount);
+            $("#table6").css("background-color","darksalmon");
+         }
+       })
 
-        $('#btn8_1').click(function(){
-         if( order8 == 0 ) {order8++;
-         console.log( order8 );
-                  orderCount++;
-                  }
+       $('#btn7_1').click(function(){
+         if( order7 == 0 ) {
+            order7++;
+            console.log(order7);
+            orderCount++;
+            console.log(orderCount);
+            $("#table7").css("background-color","green");
+         }
         })
-        $('#btn8_2').click(function(){
-         if( order8 == 1 ) {order8--;}
-         console.log( order8 );
-        })
+       $('#btn7_2').click(function(){
+         if( order7 == 1 ) {
+             order7--;
+             console.log( order7 );
+             orderCount--;
+             console.log(orderCount);
+            $("#table7").css("background-color","darksalmon");
+         }
+       })
 
-        $('#btn9_1').click(function(){
-         if( order9 == 0 ) {order9++;
-         console.log( order9 );
-                  orderCount++;
-                  }
+       $('#btn8_1').click(function(){
+         if( order8 == 0 ) {
+            order8++;
+            console.log(order8);
+            orderCount++;
+            console.log(orderCount);
+            $("#table8").css("background-color","green");
+         }
         })
-        $('#btn9_2').click(function(){
-         if( order9 == 1 ) {order9--;}
-         console.log( order9 );
+       $('#btn8_2').click(function(){
+         if( order8 == 1 ) {
+             order8--;
+             console.log( order8 );
+             orderCount--;
+             console.log(orderCount);
+            $("#table8").css("background-color","darksalmon");
+         }
+       })
+
+       $('#btn9_1').click(function(){
+         if( order9 == 0 ) {
+            order9++;
+            console.log(order9);
+            orderCount++;
+            console.log(orderCount);
+            $("#table9").css("background-color","green");
+         }
         })
-        document.getElementById('#orderCount').value = orderCount;
+       $('#btn9_2').click(function(){
+         if( order9 == 1 ) {
+             order9--;
+             console.log( order9 );
+             orderCount--;
+             console.log(orderCount);
+            $("#table9").css("background-color","darksalmon");
+         }
+       })
     })
     </script>
     </th:block>
