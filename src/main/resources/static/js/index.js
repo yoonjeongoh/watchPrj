@@ -19,8 +19,6 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 
 
 
-
-
 function locationLoadSuccess(pos){
     var orderCount1=2;
     var orderCount2=5;
@@ -49,10 +47,8 @@ function locationLoadSuccess(pos){
 
     // 마커 생성
     var marker = new kakao.maps.Marker({
-
         position: currentPos,
         image:centerMarkerImage //마커이미지 설정
-
     });
 
 // 마커가 표시될 위치입니다
@@ -61,11 +57,18 @@ var macPosition  = new kakao.maps.LatLng(35.153693, 129.058895);
 var momPosition  = new kakao.maps.LatLng(35.154078, 129.058898);
 
 // 마커를 생성합니다
-
 var shakeMarker = new kakao.maps.Marker({
     position: shakePosition,
     image:greenMarkerImage
 });
+if(orderCount3 > 5){
+var shakeMarker = new kakao.maps.Marker({
+    position: shakePosition,
+    image:redMarkerImage
+    });
+}
+console.log(shakeMarker);
+
 
 var macMarker = new kakao.maps.Marker({
     position: macPosition,
@@ -85,7 +88,6 @@ momMarker.setMap(map);
     marker.setMap(null);
     marker.setMap(map);
 };
-
 
 
 
