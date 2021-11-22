@@ -43,6 +43,7 @@ public class Member extends BaseEntity {
         this.memberMobile = newSocial;
 
 
+
     }
 
 }
