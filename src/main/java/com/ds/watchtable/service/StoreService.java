@@ -20,6 +20,8 @@ public interface StoreService {
     StoreDTO getStore(Long storeNum);
     //storetable 정보 가져오기
 
+    //pos 주문정보 가져오기
+    PosTableDTO getOrder(Long posTableNum);
 
 
     default Map<String, Object> dtoToEntity(StoreDTO storeDTO) {
@@ -146,5 +148,23 @@ public interface StoreService {
         storeDTO.setMenuImageDTOList(menuImageDTOList);
 
         return storeDTO;
+    }
+
+    default PosTableDTO posEntityToDTO(PosTable posTable) {
+        PosTableDTO posTableDTO = PosTableDTO.builder()
+                .posTableNum(posTable.getPosTableNum())
+                .orderCount(posTable.getOrderCount())
+                .table1(posTable.getTable1())
+                .table2(posTable.getTable2())
+                .table3(posTable.getTable3())
+                .table4(posTable.getTable4())
+                .table5(posTable.getTable5())
+                .table6(posTable.getTable6())
+                .table7(posTable.getTable7())
+                .table8(posTable.getTable8())
+                .table9(posTable.getTable9())
+                .storeName(posTable.getStore().getStoreName())
+                .build();
+        return posTableDTO;
     }
 }

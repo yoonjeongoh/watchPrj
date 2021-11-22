@@ -88,6 +88,11 @@ public class StoreServiceImpl implements StoreService {
         return storeEntityToDTO(store, storeImageList, menuImageList);
     }
 
+    @Override
+    public PosTableDTO getOrder(Long storeNum) {
+        PosTable posTable = posTableRepository.getById(storeNum);
+        return posEntityToDTO(posTable);
+    }
 
 
 

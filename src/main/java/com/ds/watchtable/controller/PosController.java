@@ -52,9 +52,9 @@ public class PosController {
     }
 
     @GetMapping("/pos/postable")
-    public void getstoretable(Long storeNum,Model model){
-        StoreDTO storeDTO = storeService.getStore(storeNum);
-        model.addAttribute("order", storeDTO);
+    public void posTable(Long storeNum,Model model){
+        PosTableDTO posTableDTO = storeService.getOrder(storeNum);
+        model.addAttribute("order", posTableDTO);
     }
 
 
