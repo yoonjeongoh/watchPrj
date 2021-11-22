@@ -11,13 +11,13 @@
                     <div class="h5 m-0">추가 정보를 입력해주세요.</div>
 
                     <div class="joinfield">
-                        <form class="form11" th:action="@{/join/login}" method="post" id="join_form" name="f">
+                        <form class="form11" th:action="@{/member/myinfo}" method="post" id="join_form" name="f">
                             <span class="span11">이메일</span> <br>
                             <input class="input11" title="이메일" type="text" name="memberEmail" id="my_add"
                                    placeholder="예>id@domain.com" th:value="${member.memberEmail}" readonly><br>
                             <input type="hidden" name="memberNum" th:value="${member.memberNum}">
                             <input type="hidden" name="memberPw" th:value="${member.memberPw}">
-                            <input type="hidden" name="memberPw" th:value="${member.fromSocial}">
+                            <input type="hidden" name="fromSocial" th:value="${member.fromSocial}">
 
                             <span class="span11">아이디</span> <br>
                             <input class="input11" title="아이디" type="text" name="memberId" id="my_id"
@@ -95,22 +95,6 @@
                 const numCheck = /^[0-9]/g;
 
                 $('.join_button').click(function(){
-<!--                    var name = $('#my_name').val();-->
-<!--                    var id = $('#my_id').val();-->
-<!--                    var nick = $('#my_nick').val();-->
-<!--                    var pw = $('#my_pwd').val();-->
-<!--                    var pwch = $('#pwd_check').val();-->
-<!--                    var mail = $('#my_add').val();-->
-<!--                    var mobile = $('#st-tel1').val();-->
-
-<!--                    if( nameCheck.test(name) && name.length > 1-->
-<!--                        && idCheck.test(id) && id.length > 3-->
-<!--                        && nickCheck.test(nick) && nick.length > 1-->
-<!--                        && pwCheck.test(pw) && pw.length > 7-->
-<!--                        && pw == pwch-->
-<!--                        && mailCheck.test(mail)-->
-<!--                        && numCheck.test(mobile) && mobile.length == 11 ) {-->
-<!--                            alert("환영합니다");-->
                             actionForm.submit();
 
                 });

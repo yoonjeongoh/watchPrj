@@ -47,14 +47,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(apiCheckFilter(), UsernamePasswordAuthenticationFilter.class);
         http.headers().frameOptions().disable();
         http.httpBasic().and().authorizeRequests()
-//                .antMatchers("/admin/**").hasRole("ADMIN")
-
-//                .antMatchers("/manager/**").hasRole("MANAGER")
-//                .antMatchers("/member/**").hasRole("USER")
-                .antMatchers("/member/manageinfocorrect").hasRole("MANAGER")
-                .antMatchers("/member/myinfocerrect").hasRole("USER")
+////                .antMatchers("/admin/**").hasRole("ADMIN")
+////                .antMatchers("/manager/**").hasRole("MANAGER")
+////                .antMatchers("/member/**").hasRole("USER")
+//                .antMatchers("/member/manageinfocorrect").hasRole("MANAGER")
+//                .antMatchers("/member/myinfocerrect").hasRole("USER")
+//                .antMatchers("/member/myinfocerrect").hasRole("SOCIAL")
                 .antMatchers("/join/**").permitAll()
-
                 .antMatchers("/").permitAll()
                 .and().logout().permitAll()
                 .and().formLogin();

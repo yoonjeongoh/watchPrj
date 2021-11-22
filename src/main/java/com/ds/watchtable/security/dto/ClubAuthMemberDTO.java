@@ -24,6 +24,14 @@ public class ClubAuthMemberDTO extends User implements OAuth2User {
   private String name;
   private boolean fromSocial;
   private Member member;
+
+  private String memberid;
+  private String memberName;
+  private String memberNickname;
+  private String memberMobile;
+
+
+
   //구글로부터 받아오는 정보 id, picture 등
   private Map<String, Object> attr;
 
@@ -42,10 +50,18 @@ public class ClubAuthMemberDTO extends User implements OAuth2User {
     this.memberId = username;
     this.password = password;
     this.fromSocial = fromSocial;
+
   }
 
   @Override
   public Map<String, Object> getAttributes() {
     return this.attr;
+  }
+
+  public void setMember(String memberid,String memberName,String memberNickname,String memberMobile) {
+    this.memberid = memberid;
+    this.memberName = memberName;
+    this.memberNickname = memberNickname;
+    this.memberMobile = memberMobile;
   }
 }

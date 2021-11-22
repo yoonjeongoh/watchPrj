@@ -31,7 +31,7 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public void modify(MemberDTO memberDTO) {
-        Member member = dtoToEntity(memberDTO);
+        Member member = socialDtoToEntity(memberDTO);
         memberDTO.setMemberPw(this.passwordEncoder.encode(memberDTO.getMemberPw()));
         member.getMemberEmail();
         member.getMemberId();
@@ -44,6 +44,7 @@ public class MemberServiceImpl implements MemberService {
         memberRepository.save(member);
         log.info("member member" + member);
     }
+
 }
 
 

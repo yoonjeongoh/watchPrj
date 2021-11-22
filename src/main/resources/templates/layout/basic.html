@@ -23,8 +23,7 @@
         <div class="container">
             <a class="navbar-brand" th:href="@{/}">WATCH TABLE</a>
             <a sec:authorize="isAuthenticated()"><span sec:authentication="name"></span><span> 님 환영합니다.</span></a>
-            <a sec:authorize="isAuthenticated()" class="btn btn-primary"
-               th:href="@{member/myinfo}">내정보</a>
+            <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{member/myinfo}">내정보</a>
             <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/logout}">로그아웃</a>
             <a sec:authorize="!isAuthenticated()" class="btn btn-primary" th:href="@{/join/login}">로그인</a>
             <a sec:authorize="!isAuthenticated()" class="btn btn-primary" th:href="@{/join/joinselect}">회원가입</a>
@@ -150,19 +149,19 @@
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
     </body>
-<!--
-    <script th:inline="javascript">
-            function goMyInfo(memberNum){
-                alert('goToInfo');
-                /*[+
-                var url = [[@{/member/myinfo}]] +
-                    "?memberNum="+memberNum;
-                +]*/
-                location.href=url;
-            }
+    <!--
+        <script th:inline="javascript">
+                function goMyInfo(memberNum){
+                    alert('goToInfo');
+                    /*[+
+                    var url = [[@{/member/myinfo}]] +
+                        "?memberNum="+memberNum;
+                    +]*/
+                    location.href=url;
+                }
 
-        </script>
--->
+            </script>
+    -->
 
 
 </th:block>

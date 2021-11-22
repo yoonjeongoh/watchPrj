@@ -25,7 +25,7 @@ public class AdminController {
     @GetMapping({"/storelist", "/admin"})
     public void list(PageRequestDTO pageRequestDTO, Model model){
         log.info("pageRequestDTO: "+pageRequestDTO);
-        PageResultDTO result = storeService.getLGHlist(pageRequestDTO);
+        PageResultDTO result = storeService.getStoreList(pageRequestDTO);
         log.info(">>"+result);
         model.addAttribute("result", result);
     }

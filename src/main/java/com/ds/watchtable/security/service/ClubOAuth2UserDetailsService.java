@@ -1,5 +1,6 @@
 package com.ds.watchtable.security.service;
 
+import com.ds.watchtable.dto.MemberDTO;
 import com.ds.watchtable.entity.Member;
 import com.ds.watchtable.entity.MemberRole;
 import com.ds.watchtable.repository.MemberRepository;
@@ -62,12 +63,18 @@ public class ClubOAuth2UserDetailsService extends DefaultOAuth2UserService {
     private Member saveSocialMember(String memberId) {
         Optional<Member> result = repository.findByMemberEmail(memberId, true);
         if (result.isPresent()) return result.get(); //있으면 끝
+        MemberDTO memberDTO = new MemberDTO();
         Member member = Member.builder()
                 .memberEmail(memberId)
                 .memberPw(passwordEncoder.encode("1"))
                 .fromSocial(true)
+                .memberName(memberDTO.getMemberName())
+                .memberNickname(memberDTO.getMemberNickname())
+                .memberId(memberDTO.getMemberId())
+                .memberMobile(memberDTO.getMemberMobile())
                 .build();
-        member.addMemberRole(MemberRole.USER);
+        member.addMemberRole(MemberRole.SOCIAL);
+        repository.save(member);
         return member;
     }
 }

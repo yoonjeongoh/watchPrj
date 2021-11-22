@@ -40,10 +40,6 @@ public class ClubLoginSuccessHandler implements AuthenticationSuccessHandler {
     boolean fromSocial = authMember.isFromSocial();
     log.info("Need Modify Member?" + fromSocial);
     boolean passwordResult = passwordEncoder.matches("1", authMember.getPassword());
-    if (fromSocial && passwordResult) {
-      redirectStrategy.sendRedirect(request, response, "/join/socialJoin");
-      return;
-    }
 
     List<String> roleList = new ArrayList<>();
 //    authMember.getAuthorities().forEach(grantedAuthority -> {
@@ -57,9 +53,10 @@ public class ClubLoginSuccessHandler implements AuthenticationSuccessHandler {
     });
     log.info("getAuthorities: " + roleList);
     String sendUrl = "";
-    if (roleList.contains("ROLE_USER")) sendUrl = "/";
-    if (roleList.contains("ROLE_MANAGER")) sendUrl = "/managemyinfo";
-    if (roleList.contains("ROLE_ADMIN")) sendUrl = "/admin";
+    if (roleList.contains("ROLE_USER") && fromSocial && passwordResult) sendUrl = "/";
+    if (roleList.contains("ROLE_MANAGER") && fromSocial && passwordResult) sendUrl = "/member/managemyinfo";
+    if (roleList.contains("ROLE_ADMIN") && fromSocial && passwordResult) sendUrl = "/admin";
+    if (roleList.contains("ROLE_SOCIAL") && fromSocial && passwordResult) sendUrl = "/join/socialJoin";
     log.info("sendUrl: "+sendUrl);
     redirectStrategy.sendRedirect(request, response, sendUrl);
   }

@@ -27,6 +27,20 @@ public interface MemberService {
         member.addMemberRole(MemberRole.USER);
         return member;
     }
+    default Member socialDtoToEntity(MemberDTO memberDTO) {
+        Member member = Member.builder()
+                .memberNum(memberDTO.getMemberNum())
+                .memberName(memberDTO.getMemberName())
+                .memberNickname(memberDTO.getMemberNickname())
+                .memberId(memberDTO.getMemberId())
+                .memberEmail(memberDTO.getMemberEmail())
+                .memberMobile(memberDTO.getMemberMobile())
+                .memberPw(memberDTO.getMemberPw())
+                .fromSocial(true)
+                .build();
+        member.addMemberRole(MemberRole.USER);
+        return member;
+    }
 
     default MemberDTO entityToDTO(Member member) {
         MemberDTO memberDTO = MemberDTO.builder()

@@ -40,44 +40,43 @@
     <h3>실제 메인화면에 나와야 할 것들</h3>
     <a href="http://localhost:8080/watchtable/">/watchtable/main(All)</a><br>
     <a th:href="@{watchtable/detail}">/watchtable/detailed(All)</a><br>
-    <a th:href="@{join/login}">/join/login(Guest)</a><br>
+    <a sec:authorize="!isAuthenticated()" th:href="@{join/login}">/join/login(Guest)</a><br>
     <a th:href="@{member/myinfo}">/watchtable/myinfo(Member)</a><br>
     <a th:href="@{admin/admin}">/watchtable/admin(Admin)</a><br>
     <hr>
     <h3>Admin</h3>
-    <a th:href="@{admin/admin}">/admin/admin(관리자일체)</a><br>
-    <a th:href="@{admin/storelist}">/admin/storelist(승인대기리스트)</a><br>
-    <a th:href="@{admin/storeread}">/admin/storeread(승인대기 상세보기)[사업자증명서확인]</a><br>
+    <a sec:authorize="hasRole('ADMIN')" th:href="@{admin/admin}" class="btn btn-primary">/admin/admin</a><br>
+    <a sec:authorize="hasRole('ADMIN')" th:href="@{admin/storelist}" class="btn btn-primary">/admin/storelist</a><br>
+    <a sec:authorize="hasRole('ADMIN')" th:href="@{admin/storeread}" class="btn btn-primary">/admin/storeread</a><br>
     <hr>
     <h3>Join</h3>
-    <a th:href="@{join/checkpw}">/watchtable/checkpw(비밀번호확인)</a><br>
-    <a th:href="@{join/join}">/join/join(일반회원가입)</a><br>
-    <a th:href="@{join/joinselect}">/join/joinselect(회원가입선택)</a><br>
-    <a th:href="@{join/login}">/join/login(로그인)</a><br>
-    <a th:href="@{join/managerjoin}">/join/managerjoin(사업자회원가입)</a><br>
+    <a sec:authorize="isAuthenticated()" th:href="@{join/checkpw}" class="btn btn-primary">/watchtable/checkpw(비밀번호확인)</a><br>
+    <a sec:authorize="!isAuthenticated()" th:href="@{join/join}" class="btn btn-primary">/join/join(일반회원가입)</a><br>
+    <a sec:authorize="!isAuthenticated()" th:href="@{join/joinselect}" class="btn btn-primary">/join/joinselect(회원가입선택)</a><br>
+    <a sec:authorize="!isAuthenticated()" th:href="@{join/login}" class="btn btn-primary">/join/login(로그인)</a><br>
+    <a sec:authorize="!isAuthenticated()" th:href="@{join/managerjoin}" class="btn btn-primary">/join/managerjoin(사업자회원가입)</a><br>
     <hr>
     <h3>Manager</h3>
-    <a th:href="@{manager/managemyinfo}">/manager/managemyinfo(가게상황)</a><br>
-    <a th:href="@{manager/manageinfocorrect}">/manager/manageinfocorrect(가게정보수정)</a><br>
+    <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{manager/managemyinfo}" class="btn btn-primary">/manager/managemyinfo(가게상황)</a><br>
+    <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{manager/manageinfocorrect}" class="btn btn-primary">/manager/manageinfocorrect(가게정보수정)</a><br>
     <hr>
     <h3>Member</h3>
-    <a th:href="@{member/myinfo}">/member/myinfo(내정보보기)</a><br>
+    <a sec:authorize="hasAnyRole('USER', 'ADMIN')" th:href="@{member/myinfo}" class="btn btn-primary">/member/myinfo(내정보보기)</a><br>
     <span th:onclick="|location.href='@{/member/myinfo}'|">Testing</span><br>
 <!--    <span th:onclick="|javascript:goMyInfo('${mem.memberNum}')|">Testing</span><br>-->
-    <a th:href="@{member/myinfocorrect}">/member/myinfocorrect(내정보수정)</a><br>
+    <a sec:authorize="hasAnyRole('USER', 'ADMIN')" th:href="@{member/myinfocorrect}" class="btn btn-primary">/member/myinfocorrect(내정보수정)</a><br>
 <!--    <a th:href="@{member/myinfocorrect/{memberNum}">test3(내정보수정)</a><br>-->
     <hr>
     <h3>Pos</h3>
-    <a th:href="@{pos/kitchen}">/watchtable/kitchen[주방화면]</a><br>
-    <a th:href="@{pos/loginmng}">/watchtable/loginmng[안쓸거임]</a><br>
-    <a th:href="@{pos/menuitem}">/watchtable/menuitem[메뉴]</a><br>
-    <a th:href="@{pos/storeorder}">/watchtable/order[메뉴리스트]</a><br>
-    <a th:href="@{pos/setting}">/watchtable/setting[포스세팅]</a><br>
-    <a th:href="@{pos/postable}">/watchtable/postable[(포스)가게테이블]</a><br>
+    <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{pos/kitchen}" class="btn btn-primary">/watchtable/kitchen[주방화면]</a><br>
+    <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{pos/menuitem}" class="btn btn-primary">/watchtable/menuitem[메뉴]</a><br>
+    <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{pos/storeorder}" class="btn btn-primary">/watchtable/order[메뉴리스트]</a><br>
+    <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{pos/setting}" class="btn btn-primary">/watchtable/setting[포스세팅]</a><br>
+    <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{pos/postable}" class="btn btn-primary">/watchtable/postable[(포스)가게테이블]</a><br>
     <hr>
     <h3>Review</h3>
-    <a th:href="@{review/myreview}">/watchtable/myreview(내리뷰)</a><br>
-    <a th:href="@{review/storereview}">/watchtable/storereview(가게리뷰)</a><br>
+    <a sec:authorize="hasAnyRole('ADMIN','USER')"th:href="@{review/myreview}" class="btn btn-primary">/watchtable/myreview(내리뷰)</a><br>
+    <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{review/storereview}" class="btn btn-primary">/watchtable/storereview(가게리뷰)</a><br>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c804c7f02459129ea465ac2bec99e513&libraries=services,clusterer,drawing"></script>
