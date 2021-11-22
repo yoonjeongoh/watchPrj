@@ -35,7 +35,6 @@ public class ClubAuthMemberDTO extends User implements OAuth2User {
   private String memberMobile;
 
 
-
   //구글로부터 받아오는 정보 id, picture 등
   private Map<String, Object> attr;
 

@@ -1,9 +1,6 @@
 package com.ds.watchtable.controller;
 
-import com.ds.watchtable.dto.MemberDTO;
-import com.ds.watchtable.dto.PageRequestDTO;
-import com.ds.watchtable.dto.PageResultDTO;
-import com.ds.watchtable.dto.StoreDTO;
+import com.ds.watchtable.dto.*;
 import com.ds.watchtable.entity.Member;
 import com.ds.watchtable.security.dto.ClubAuthMemberDTO;
 import com.ds.watchtable.security.service.ClubOAuth2UserDetailsService;
@@ -27,15 +24,18 @@ public class WatchtableController {
     private final StoreService storeService;
     private final MemberService memberService;
 
-    @GetMapping({"/manager/manageinfocorrect", "/review/storereview",
-            "/pos/kitchen"})
+
+
+    @GetMapping({"/manager/manageinfocorrect","/manager/managemyinfo",
+            "/review/storereview","/pos/kitchen"})
+
 
     public void list(){
     }
 
 
     @RequestMapping("")
-    public String main (Model model, MemberDTO memberDTO, PageRequestDTO pageRequestDTO,
+    public String main (Model model, MemberDTO memberDTO, Long orderCount, PageRequestDTO pageRequestDTO,
                         @AuthenticationPrincipal ClubAuthMemberDTO principal) {
         if(principal != null) {
             model.addAttribute("member", principal.getMember());
@@ -45,6 +45,7 @@ public class WatchtableController {
         PageResultDTO result = storeService.getStoreList(pageRequestDTO);
         log.info(">>"+result);
         model.addAttribute("result", result);
+
         return "index";
     }
 
