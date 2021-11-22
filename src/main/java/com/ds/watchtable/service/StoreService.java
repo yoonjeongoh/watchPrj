@@ -3,6 +3,7 @@ package com.ds.watchtable.service;
 import com.ds.watchtable.dto.*;
 import com.ds.watchtable.entity.*;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +15,7 @@ public interface StoreService {
     Long storeRegister(StoreDTO storeDTO);
 
     //admin/storelist 리스트 목록
-    PageResultDTO<StoreDTO, Store> getLGHlist(PageRequestDTO requestDTO);
+    PageResultDTO<StoreDTO, Store> getStoreList(PageRequestDTO requestDTO);
 
     //admin/storeread 가게 정보 상세보기
     StoreDTO getStore(Long storeNum);
@@ -35,6 +36,8 @@ public interface StoreService {
                         .memberEmail(storeDTO.getMemberEmail())
                         .memberPw(storeDTO.getMemberPw())
                         .memberMobile(storeDTO.getMemberMobile())
+                        .roleSet(Collections.singleton(MemberRole.USER))
+                        .roleSet(Collections.singleton(MemberRole.MANAGER))
                         .build())
                 .storeNum(storeDTO.getStoreNum())
                 .storeName(storeDTO.getStoreName())
@@ -46,7 +49,6 @@ public interface StoreService {
                 .bsNum(storeDTO.getBsNum())
                 .build();
         entityMap.put("store", store);
-        store.addMemberRole(MemberRole.USER);
 
         List<StoreImageDTO> storeImageDTOList = storeDTO.getStoreImageDTOList();
         if (storeImageDTOList != null && storeImageDTOList.size() > 0) {

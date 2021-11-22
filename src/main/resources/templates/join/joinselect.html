@@ -2,19 +2,23 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
-        <link th:href="@{/css2/login.css}" rel="stylesheet" />
-
-    <div class="wrapper">
-        <fieldset>
-            <div class="field">
+        <link th:href="@{/css2/login.css}" rel="stylesheet"/>
+        <div class="wrapper">
+            <fieldset>
+                <div class="field">
                     <button type="button" name="button2" class="btn1 colored-btn1"
-                                        onclick="location.href='/watchtable/join/join';">일반 회원가입</button> <br>
-                    <button type="button" name="button2" class="btn1 colored-btn1"
-                                        onclick="location.href='/watchtable/join/managerjoin';">사업자 회원가입</button>
-            </div>
-        </fieldset>
-    </div>
-
-
+                            onclick="location.href='/watchtable/join/join';">일반 회원가입
+                    </button>
+                    <br>
+                        <button type="button" name="button2" class="btn1 colored-btn1"
+                                onclick="location.href='/watchtable/join/managerjoin';">사업자 회원가입
+                        </button>
+                    <br>
+                    <button type="button" name="button2" class="btn1 colored-btn1" onclick="location.href='/watchtable/oauth2/authorization/google';">
+                        구글 아이디로 회원가입
+                    </button>
+                </div>
+            </fieldset>
+        </div>
     </th:block>
 </th:blotck>

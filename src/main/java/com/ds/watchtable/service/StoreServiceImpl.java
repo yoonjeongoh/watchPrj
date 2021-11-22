@@ -72,7 +72,7 @@ public class StoreServiceImpl implements StoreService {
 
     //    admin store list
     @Override
-    public PageResultDTO<StoreDTO, Store> getLGHlist(PageRequestDTO requestDTO) {
+    public PageResultDTO<StoreDTO, Store> getStoreList(PageRequestDTO requestDTO) {
         Pageable pageable = requestDTO.getPageable(Sort.by("storeNum").descending());
         Page<Store> result = storeRepository.findAll(pageable);
         Function<Store, StoreDTO> fn = (entity -> entityToDTO(entity));
