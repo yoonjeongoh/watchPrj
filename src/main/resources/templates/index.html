@@ -45,9 +45,9 @@
     <a th:href="@{admin/admin}">/watchtable/admin(Admin)</a><br>
     <hr>
     <h3>Admin</h3>
-    <a sec:authorize="hasRole('ADMIN')" th:href="@{admin/admin}" class="btn btn-primary">/admin/admin</a><br>
-    <a sec:authorize="hasRole('ADMIN')" th:href="@{admin/storelist}" class="btn btn-primary">/admin/storelist</a><br>
-    <a sec:authorize="hasRole('ADMIN')" th:href="@{admin/storeread}" class="btn btn-primary">/admin/storeread</a><br>
+    <a sec:authorize="hasAnyRole('MANAGER','USER')" th:href="@{admin/admin}" class="btn btn-primary">/admin/admin</a><br>
+    <a sec:authorize="hasAnyRole('MANAGER','USER')" th:href="@{admin/storelist}" class="btn btn-primary">/admin/storelist</a><br>
+    <a sec:authorize="hasAnyRole('MANAGER','USER')" th:href="@{admin/storeread}" class="btn btn-primary">/admin/storeread</a><br>
     <hr>
     <h3>Join</h3>
     <a sec:authorize="isAuthenticated()" th:href="@{join/checkpw}" class="btn btn-primary">/watchtable/checkpw(비밀번호확인)</a><br>

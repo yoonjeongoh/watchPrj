@@ -103,29 +103,32 @@ input:focus, select:focus, option:focus, textarea:focus, button:focus{
     width: auto;
     display: flex;
     justify-content: center;
-    background-color: #82817e;
+    //background-color: #82817e;
 }
 
 .rv-ta1 {
     padding: 10px;
-    height: 100px;
+    height: 80px;
     width: auto;
-    background-color: #fdb53c;
     padding: 2px;
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    //background-color: #fdb53c;
 }
 
 .rv-list {
-    overflow: hidden;
+    height: auto;
+    width: auto;
     display: flex;
-    background-color: #f75931;
+    justify-content: center;
+    //background-color: #f75931;
 }
 
 .rv-list-table {
     padding: 2px;
-    background-color: #fdb53c;
+    border-top: 1px solid #fdad3c;
+    //background-color: #fdb53c;
 }
 
 .btn21 {
@@ -148,6 +151,30 @@ textarea {
 
 .ta-btn21 {
     margin: 0px 0px 5px 10px;
+}
+
+#rvInput {
+    width: 890px;
+    height: 60px;
+    border: 1px solid #fdad3c;
+}
+
+.form-group.none-reviewNum {
+    display: none;
+}
+
+b.reviewNum {
+    display: none;
+}
+.card-body {
+    width: 1000px;
+    height: 65px;
+    border-bottom: 1px solid #fdad3c;
+}
+
+.reviewTime {
+    text-align: right;
+    padding-right: 20px;
 }
 
 .end-pg {
@@ -217,13 +244,7 @@ textarea {
     margin-left: -5px;
 }
 
-.form-group.none-reviewNum {
-    display: none;
-}
 
-b.reviewNum {
-    display: none;
-}
 
 /*
 .forth-col1 {

@@ -53,7 +53,7 @@ public class MemberController {
         return "redirect:/";
     }
 
-    @RequestMapping({"/memeber/myinfo", "/member/myinfocorrect", "/manager/manageinfo", "/join/socialJoin"})
+    @RequestMapping({"/memeber/myinfo", "/member/myinfocorrect", "/join/socialJoin"})
     public void myinfo(Model model, MemberDTO memberDTO,
                        @AuthenticationPrincipal ClubAuthMemberDTO principal) {
         if (principal != null) {
@@ -61,6 +61,7 @@ public class MemberController {
             log.info("principal.getMember()1" + principal.getMember());
         }
     }
+
     @RequestMapping(value = "/member/idCheck")
     @ResponseBody
     public String idCheck(HttpServletRequest request, Model model){
