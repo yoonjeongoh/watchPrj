@@ -247,7 +247,9 @@ textarea {
 .div21 {
     display: inline-block;
     text-align: left;
-    padding-right: 7px;
+    padding-right: 17px;
+    color: #75736e;
+
 }
 
 .reviewName {
