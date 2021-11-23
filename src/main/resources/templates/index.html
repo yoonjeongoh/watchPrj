@@ -39,36 +39,35 @@
     <a th:href="@{join/socialJoin}">/watchtable/join/socialJoin</a><br>
 
     <h3>실제 메인화면에 나와야 할 것들</h3>
-    <a href="http://localhost:8080/watchtable/">/watchtable/main(All)</a><br>
+<!--    <a href="http://localhost:8080/watchtable/">/watchtable/main(All)</a><br>-->
     <a th:href="@{watchtable/detail}">/watchtable/detailed(All)</a><br>
-    <a sec:authorize="!isAuthenticated()" th:href="@{join/login}">/join/login(Guest)</a><br>
-    <a th:href="@{member/myinfo}">/watchtable/myinfo(Member)</a><br>
+<!--    <a th:href="@{member/myinfo}">/watchtable/myinfo(Member)</a><br>-->
     <a th:href="@{admin/admin}">/watchtable/admin(Admin)</a><br>
     <hr>
-    <h3>Admin</h3>
-    <a sec:authorize="hasAnyRole('MANAGER','USER')" th:href="@{admin/admin}" class="btn btn-primary">/admin/admin</a><br>
-    <a sec:authorize="hasAnyRole('MANAGER','USER')" th:href="@{admin/storelist}" class="btn btn-primary">/admin/storelist</a><br>
-    <a sec:authorize="hasAnyRole('MANAGER','USER')" th:href="@{admin/storeread}" class="btn btn-primary">/admin/storeread</a><br>
-    <hr>
+    <h3 sec:authorize="hasAnyRole('MANAGER','ADMIN')">Admin</h3>
+    <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{admin/admin}" class="btn btn-primary">/admin/admin</a><br>
+    <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{admin/storelist}" class="btn btn-primary">/admin/storelist</a><br>
+    <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{admin/storeread}" class="btn btn-primary">/admin/storeread</a><br>
+
     <h3>Join</h3>
     <a sec:authorize="isAuthenticated()" th:href="@{join/checkpw}" class="btn btn-primary">/watchtable/checkpw(비밀번호확인)</a><br>
     <a sec:authorize="!isAuthenticated()" th:href="@{join/join}" class="btn btn-primary">/join/join(일반회원가입)</a><br>
     <a sec:authorize="!isAuthenticated()" th:href="@{join/joinselect}" class="btn btn-primary">/join/joinselect(회원가입선택)</a><br>
     <a sec:authorize="!isAuthenticated()" th:href="@{join/login}" class="btn btn-primary">/join/login(로그인)</a><br>
     <a sec:authorize="!isAuthenticated()" th:href="@{join/managerjoin}" class="btn btn-primary">/join/managerjoin(사업자회원가입)</a><br>
-    <hr>
-    <h3>Manager</h3>
+
+    <h3 sec:authorize="hasAnyRole('MANAGER','ADMIN')">Manager</h3>
     <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{manager/managemyinfo}" class="btn btn-primary">/manager/managemyinfo(가게상황)</a><br>
     <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{manager/manageinfocorrect}" class="btn btn-primary">/manager/manageinfocorrect(가게정보수정)</a><br>
-    <hr>
-    <h3>Member</h3>
+
+    <h3 sec:authorize="hasAnyRole('USER','ADMIN')">Member</h3>
     <a sec:authorize="hasAnyRole('USER', 'ADMIN')" th:href="@{member/myinfo}" class="btn btn-primary">/member/myinfo(내정보보기)</a><br>
     <span th:onclick="|location.href='@{/member/myinfo}'|">Testing</span><br>
 <!--    <span th:onclick="|javascript:goMyInfo('${mem.memberNum}')|">Testing</span><br>-->
     <a sec:authorize="hasAnyRole('USER', 'ADMIN')" th:href="@{member/myinfocorrect}" class="btn btn-primary">/member/myinfocorrect(내정보수정)</a><br>
 <!--    <a th:href="@{member/myinfocorrect/{memberNum}">test3(내정보수정)</a><br>-->
-    <hr>
-    <h3>Pos</h3>
+
+    <h3 sec:authorize="hasAnyRole('MANAGER','ADMIN')">Pos</h3>
     <div class="store-list">
       <table>
         <thead>
@@ -91,8 +90,8 @@
       </table>
 
     </div>
-    <hr>
-    <h3>Review</h3>
+
+    <h3 sec:authorize="hasAnyRole('USER','MANAGER','ADMIN')">Review</h3>
     <a sec:authorize="hasAnyRole('ADMIN','USER')"th:href="@{review/myreview}" class="btn btn-primary">/watchtable/myreview(내리뷰)</a><br>
     <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{review/storereview}" class="btn btn-primary">/watchtable/storereview(가게리뷰)</a><br>
 
@@ -111,13 +110,6 @@
                 +]*/
                 location.href=url;
             }
-
-            function goPos(storeNum){
-              var url = [[@{/pos/postable}]] +
-                  "?storeNum="+storeNum;
-                  location.href=url;
-            }
         </script>
-
   </th:block>
 </th:block>

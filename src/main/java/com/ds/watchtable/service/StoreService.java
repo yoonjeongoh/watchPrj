@@ -168,6 +168,7 @@ public interface StoreService {
                 .table7(posTable.getTable7())
                 .table8(posTable.getTable8())
                 .table9(posTable.getTable9())
+                .storeNum(posTable.getStore().getStoreNum())
                 .storeName(posTable.getStore().getStoreName())
                 .build();
         return posTableDTO;
