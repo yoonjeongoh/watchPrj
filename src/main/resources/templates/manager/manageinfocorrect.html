@@ -10,21 +10,21 @@
                 <div class="mngfield">
                     <form class="form11" tH:action="@{/member/managemyinfo}" method="post" name="f">
                         <span class="span11">상호명</span> <br>
-                        <input class="input11" type="text" name="storeName" id="shop_name"><br>
+                        <input class="input11" type="text" name="storeName" id="shop_name" th:value="${member.storeName}"><br>
                         <div class ="valid-div11">
-                            <span class="invalid" id="storeName_error">상호명을 입력해주세요.</span>
-                            <span class="valid" id="storeName_ok">확인.</span>
+<!--                            <span class="invalid" id="storeName_error">상호명을 입력해주세요.</span>-->
+<!--                            <span class="valid" id="storeName_ok">확인.</span>-->
                         </div>
                         <br>
                         <span class="span11">사업자 등록번호</span> <br>
                         <input class="input11" type="text" name="bsNum" id="manager_num"
                                placeholder="11자의 숫자로만 입력" maxlength="11"><br>
                         <div class ="valid-div11">
-                            <span class="invalid" id="bsNumSpace">공백은 사용할 수 없습니다.</span>
-                            <span class="invalid" id="bsNumOnly">숫자만 입력하세요.</span>
-                            <span class="invalid" id="buNum_min">11자리를 입력하세요.</span>
-                            <span class="invalid" id="buNum_check">유효하지 않은 사업자번호입니다.</span>
-                            <span class="valid" id="buNum_ok">확인.</span>
+<!--                            <span class="invalid" id="bsNumSpace">공백은 사용할 수 없습니다.</span>-->
+<!--                            <span class="invalid" id="bsNumOnly">숫자만 입력하세요.</span>-->
+<!--                            <span class="invalid" id="buNum_min">11자리를 입력하세요.</span>-->
+<!--                            <span class="invalid" id="buNum_check">유효하지 않은 사업자번호입니다.</span>-->
+<!--                            <span class="valid" id="buNum_ok">확인.</span>-->
                         </div>
                         <br>
                         <span class="span11">사업장 주소</span><br>
