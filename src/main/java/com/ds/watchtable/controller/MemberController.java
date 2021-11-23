@@ -29,7 +29,6 @@ public class MemberController {
         log.info("register...........");
         memberService.register(memberDTO);
     }
-
 //    @PutMapping("/{memberNum}")
 //    public ResponseEntity<Long> modifySocial(@PathVariable("memberNum") Long memberNum,
 //                                       @RequestBody MemberDTO memberDTO){

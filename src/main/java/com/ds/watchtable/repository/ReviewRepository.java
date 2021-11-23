@@ -12,5 +12,4 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
           EntityGraphType.FETCH)
   List<Review> findByStore(Store store);
 
-
 }

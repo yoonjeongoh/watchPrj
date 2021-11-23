@@ -44,16 +44,6 @@ public class StoreController {
         model.addAttribute("dto", storeDTO);
     }
 
-    //detail 비회원조회
-/*
-    @RequestMapping("/store/detail")
-    public void read(Long storeNum, Model model) {
-        StoreDTO storeDTO = storeService.getStore(storeNum);
-        model.addAttribute("dto", storeDTO);
-    }
-*/
-
-
     //스토어 principal 정보 넘기기
     @RequestMapping("/manager/managemyinfo")
     public void read1(Model model,@AuthenticationPrincipal ClubAuthMemberDTO principal) {
@@ -64,7 +54,6 @@ public class StoreController {
         Store storeDTO = storeService.getStoreMember(principal.getMember());
         log.info("storeDTO.getMember()"+storeDTO);
         model.addAttribute("dto", storeDTO);
-
 
         PosTable posTable1 = storeService.getPosTable(storeDTO);
         log.info("storeDTO.getMember()"+storeDTO);
@@ -83,7 +72,6 @@ public class StoreController {
         Store storeDTO = storeService.getStoreMember(principal.getMember());
         log.info("storeDTO.getMember()11"+storeDTO);
         model.addAttribute("dto", storeDTO);
-
 
         PosTable posTable1 = storeService.getPosTable(storeDTO);
         log.info("storeDTO.getMember()11"+storeDTO);

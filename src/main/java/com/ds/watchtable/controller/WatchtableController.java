@@ -26,9 +26,10 @@ public class WatchtableController {
 
     @GetMapping({"/manager/manageinfocorrect",
             "/review/storereview","/pos/kitchen"})
-    public void list(){}
+    public void list(){
+    }
 
-    //메인페이지에 principal store 리스트
+    //메인페이지
     @RequestMapping("")
     public String main (Model model, MemberDTO memberDTO, Long orderCount, PageRequestDTO pageRequestDTO,
                         @AuthenticationPrincipal ClubAuthMemberDTO principal) {
