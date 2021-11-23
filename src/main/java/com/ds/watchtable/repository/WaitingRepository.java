@@ -1,6 +1,5 @@
 package com.ds.watchtable.repository;
 
-import com.ds.watchtable.entity.Setting;
 import com.ds.watchtable.entity.Waiting;
 import org.springframework.data.jpa.repository.JpaRepository;
 
