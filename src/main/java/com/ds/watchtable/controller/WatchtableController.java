@@ -24,16 +24,11 @@ public class WatchtableController {
     private final StoreService storeService;
     private final MemberService memberService;
 
-
-
     @GetMapping({"/manager/manageinfocorrect",
             "/review/storereview","/pos/kitchen"})
+    public void list(){}
 
-
-    public void list(){
-    }
-
-
+    //메인페이지에 principal store 리스트
     @RequestMapping("")
     public String main (Model model, MemberDTO memberDTO, Long orderCount, PageRequestDTO pageRequestDTO,
                         @AuthenticationPrincipal ClubAuthMemberDTO principal) {
@@ -48,22 +43,5 @@ public class WatchtableController {
 
         return "index";
     }
-
-//         /watchtable
-/*    @GetMapping("")
-    public String list(PageRequestDTO pageRequestDTO, Model model){
-        log.info("pageRequestDTO: "+pageRequestDTO);
-        PageResultDTO result = storeService.getLGHlist(pageRequestDTO);
-        log.info(">>"+result);
-        model.addAttribute("result", result);
-        return "/index";
-    }*/
-
- /*   @GetMapping("/store/datail")
-    public void read(Long storeNum, @ModelAttribute("pageRequestDTO")
-            PageRequestDTO pageRequestDTO , Model model) {
-        StoreDTO storeDTO = storeService.getStore(storeNum);
-        model.addAttribute("dto", storeDTO);
-    }*/
 
 }
