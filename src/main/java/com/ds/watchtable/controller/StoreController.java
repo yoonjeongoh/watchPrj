@@ -55,7 +55,6 @@ public class StoreController {
         log.info("storeDTO.getMember()"+storeDTO);
         model.addAttribute("dto", storeDTO);
 
-
         PosTable posTable1 = storeService.getPosTable(storeDTO);
         log.info("storeDTO.getMember()"+storeDTO);
         model.addAttribute("order", posTable1);
@@ -73,7 +72,6 @@ public class StoreController {
         Store storeDTO = storeService.getStoreMember(principal.getMember());
         log.info("storeDTO.getMember()11"+storeDTO);
         model.addAttribute("dto", storeDTO);
-
 
         PosTable posTable1 = storeService.getPosTable(storeDTO);
         log.info("storeDTO.getMember()11"+storeDTO);
