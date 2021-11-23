@@ -45,7 +45,7 @@ public class StoreController {
     }
 
     //스토어 principal 정보 넘기기
-    @RequestMapping("/manager/managemyinfo")
+    @RequestMapping({"/manager/managemyinfo", "/manager/managemyinfocorrect"})
     public void read1(Model model,@AuthenticationPrincipal ClubAuthMemberDTO principal) {
         if(principal != null) {
             model.addAttribute("member", principal.getMember());

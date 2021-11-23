@@ -62,10 +62,7 @@
 
     <h3 sec:authorize="hasAnyRole('USER','ADMIN')">Member</h3>
     <a sec:authorize="hasAnyRole('USER', 'ADMIN')" th:href="@{member/myinfo}" class="btn btn-primary">/member/myinfo(내정보보기)</a><br>
-    <span th:onclick="|location.href='@{/member/myinfo}'|">Testing</span><br>
-<!--    <span th:onclick="|javascript:goMyInfo('${mem.memberNum}')|">Testing</span><br>-->
     <a sec:authorize="hasAnyRole('USER', 'ADMIN')" th:href="@{member/myinfocorrect}" class="btn btn-primary">/member/myinfocorrect(내정보수정)</a><br>
-<!--    <a th:href="@{member/myinfocorrect/{memberNum}">test3(내정보수정)</a><br>-->
 
     <h3 sec:authorize="hasAnyRole('MANAGER','ADMIN')">Pos</h3>
     <div class="store-list">
@@ -93,7 +90,6 @@
 
     <h3 sec:authorize="hasAnyRole('USER','MANAGER','ADMIN')">Review</h3>
     <a sec:authorize="hasAnyRole('ADMIN','USER')"th:href="@{review/myreview}" class="btn btn-primary">/watchtable/myreview(내리뷰)</a><br>
-    <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{review/storereview}" class="btn btn-primary">/watchtable/storereview(가게리뷰)</a><br>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c804c7f02459129ea465ac2bec99e513&libraries=services,clusterer,drawing"></script>
@@ -101,15 +97,5 @@
     <script src="/watchtable/js/index.js"></script>
     <script src="/watchtable/js/indexList.js"></script>
 
-    <script th:inline="javascript">
-            function goStore(storeNum){
-                //alert('read');
-                /*[+
-                var url = [[@{/store/detail}]] +
-                    "?storeNum="+storeNum;
-                +]*/
-                location.href=url;
-            }
-        </script>
   </th:block>
 </th:block>
