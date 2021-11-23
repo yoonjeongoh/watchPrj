@@ -20,6 +20,7 @@ public interface StoreService {
     //admin/storeread 가게 정보 상세보기
     StoreDTO getStore(Long storeNum);
     Store getStoreMember(Member member);
+    PosTable getPosTable(Store store);
 
     //storetable 정보 가져오기
 

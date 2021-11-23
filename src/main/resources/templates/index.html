@@ -69,7 +69,28 @@
 <!--    <a th:href="@{member/myinfocorrect/{memberNum}">test3(내정보수정)</a><br>-->
     <hr>
     <h3>Pos</h3>
-    <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{pos/postable}" class="btn btn-primary">/watchtable/postable[(포스)가게테이블]</a><br>
+    <div class="store-list">
+      <table>
+        <thead>
+        <tr th:each="order : ${resu}" class="tr-list">
+          <th scope="col">매장이름----------</th>
+          <th scope="col">주소-------------------------------</th>
+          <th scope="col">전화번호----------</th>
+          <th scope="col">영업시간----------</th>
+          <th scope="col">[[${postable.result2}]]</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="dto : ${result.dtoList}" class="tr-list"
+            th:onclick="|javascript:goPos('${dto.storeNum}')|">
+          <th scope="row">posTable</th>
+
+        </tr>
+        </tbody>
+
+      </table>
+
+    </div>
     <hr>
     <h3>Review</h3>
     <a sec:authorize="hasAnyRole('ADMIN','USER')"th:href="@{review/myreview}" class="btn btn-primary">/watchtable/myreview(내리뷰)</a><br>
