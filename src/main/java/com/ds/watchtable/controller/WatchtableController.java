@@ -26,7 +26,7 @@ public class WatchtableController {
 
 
 
-    @GetMapping({"/manager/manageinfocorrect","/manager/managemyinfo",
+    @GetMapping({"/manager/manageinfocorrect",
             "/review/storereview","/pos/kitchen"})
 
 

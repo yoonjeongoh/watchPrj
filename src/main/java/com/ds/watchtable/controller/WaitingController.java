@@ -35,10 +35,6 @@ public class WaitingController {
         return new ResponseEntity<>(waitingNum, HttpStatus.OK);
     }
 
-    @GetMapping("/manager/managemyinfo")
-    public void list(){
-    }
-
     //페이징, 리스트
 /*
     @GetMapping("/manager/managemyinfo")

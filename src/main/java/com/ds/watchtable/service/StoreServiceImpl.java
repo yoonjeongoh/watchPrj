@@ -4,10 +4,7 @@ import com.ds.watchtable.dto.PageRequestDTO;
 import com.ds.watchtable.dto.PageResultDTO;
 import com.ds.watchtable.dto.PosTableDTO;
 import com.ds.watchtable.dto.StoreDTO;
-import com.ds.watchtable.entity.MenuImage;
-import com.ds.watchtable.entity.PosTable;
-import com.ds.watchtable.entity.Store;
-import com.ds.watchtable.entity.StoreImage;
+import com.ds.watchtable.entity.*;
 import com.ds.watchtable.repository.MenuImageRepository;
 import com.ds.watchtable.repository.PosTableRepository;
 import com.ds.watchtable.repository.StoreImageRepository;
@@ -24,7 +21,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.function.Function;
 
 @Service
@@ -89,11 +85,16 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @Override
+    public Store getStoreMember(Member member) {
+        Store store = storeRepository.findByMember(member);
+        store.getMember();
+        log.info("yjyjyjyjyjyjyjyj"+store);
+        return store;
+    }
+
+    @Override
     public PosTableDTO getOrder(Long storeNum) {
         PosTable posTable = posTableRepository.getById(storeNum);
         return posEntityToDTO(posTable);
     }
-
-
-
 }

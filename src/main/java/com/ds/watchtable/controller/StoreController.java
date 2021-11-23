@@ -30,17 +30,16 @@ public class StoreController {
     private final ReviewService reviewService;
 
     //store/detail - member, store 정보 넘기기
-    @GetMapping("/store/detail")
-    public void read(Long storeNum, @ModelAttribute("pageRequestDTO")
-            PageRequestDTO pageRequestDTO, Model model, Long reviewNum,
-                     @AuthenticationPrincipal ClubAuthMemberDTO principal) {
+    @GetMapping({"/store/detail","/manager/managemyinfo"})
+    public void read(Long storeNum, Model model,@AuthenticationPrincipal ClubAuthMemberDTO principal) {
         if(principal != null) {
             model.addAttribute("member", principal.getMember());
             log.info("principal.getMember()"+principal.getMember());
         }
-
-        StoreDTO storeDTO = storeService.getStore(storeNum);
+        Store storeDTO = storeService.getStoreMember(principal.getMember());
+        log.info("storeDTO.getMember()"+storeDTO);
         model.addAttribute("dto", storeDTO);
+        log.info("storeDTO.getMember()"+storeDTO);
     }
 
         //시큐리티로 데이터넘기기

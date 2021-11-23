@@ -30,5 +30,7 @@ public interface StoreRepository extends JpaRepository <Store, Long> {
             "where s.storeNum =:storeNum ")
     Object[] getStoreDetail(Long storeNum);
 
+   @Query("select s from Store s where s.member =:member ")
+    Store findByMember(Member member);
 }
 

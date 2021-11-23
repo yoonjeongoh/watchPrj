@@ -35,12 +35,11 @@
                                         <div class="profile-userpic">
                                             <img src="https://via.placeholder.com/150" class="img-responsive" alt="">
                                         </div>
+                                        <div th:each="member: ${dto}">
                                         <div class="profile-usertitle">
                                             <div class="profile-usertitle-name">{{가게이름}}</div>
                                         </div>
-                                        <div th:each="store: ${store}">
-                                            <span>[[${store.storeName}]]</span>
-                                            <span>[[${store.storeNum}]]</span>
+                                            <span>[[${member.storeNum}]]</span>
                                         </div>
                                         <div class="profile-usermenu">
                                             <ul class="nav">
