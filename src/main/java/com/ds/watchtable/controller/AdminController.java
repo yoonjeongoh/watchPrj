@@ -21,7 +21,7 @@ public class AdminController {
     @Autowired
     private final StoreService storeService;
 
-    //admin/storelist
+    //    //admin/storelist
     @GetMapping({"/storelist", "/admin"})
     public void list(PageRequestDTO pageRequestDTO, Model model){
         log.info("pageRequestDTO: "+pageRequestDTO);
@@ -29,6 +29,12 @@ public class AdminController {
         log.info(">>"+result);
         model.addAttribute("result", result);
     }
+    ////admin/storelist
+//    @GetMapping({"/admin/storelist", "/admin/admin"})
+//    public void list(Model model){
+//        List<StoreDTO> storeList = storeService.getstoreList();
+//        model.addAttribute("storeList", storeList);
+//    }
 
     //admin/storeread
     @GetMapping("/storeread")

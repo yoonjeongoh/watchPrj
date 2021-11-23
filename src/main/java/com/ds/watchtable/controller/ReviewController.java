@@ -64,5 +64,13 @@ public class ReviewController {
     }
 
 
+
+//    제이쿼리를 이용한 db저장
+/*    @PostMapping("/watchtable/detail")
+    public ResponseEntity<Long> addReview(ReviewDTO reviewDTO){
+        Long reviewnum = reviewService.registerReview(reviewDTO);
+        return new ResponseEntity<>( reviewnum, HttpStatus.OK);
+    }*/
+
 }
 

@@ -167,16 +167,9 @@ textarea {
 b.reviewNum {
     display: none;
 }
-
-.reviewName {
-    font-size: 15px;
-}
-
 .card-body {
     width: 1000px;
-    //height: 80px;
-    min-height: 80px;
-    max-height: auto;
+    height: 65px;
     border-bottom: 1px solid #fdad3c;
 }
 
@@ -198,26 +191,6 @@ p {
     width: auto;
     height: 50px;
  }
-
-.modal-text {
-    width: 350px;
-    height: 100px;
-    border-color: #c7c4bf;
-    border-radius: 5px;
-    display:inline-block;
-}
-
-.rv-modal-div {
-    display: flex;
-    align-items: flex-start;
-}
-
-.div21 {
-    display: inline-block;
-    text-align: left;
-    padding-right: 7px;
-
-}
 
 /* 이하 모달 css------------------ */
 .waiting-register21 {
