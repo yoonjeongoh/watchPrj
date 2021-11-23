@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -32,18 +33,24 @@ public class WaitingServiceImpl implements WaitingService{
     //웨이팅 리스트
     @Override
     public PageResultDTO<WaitingDTO, Waiting> getWaitingList(PageRequestDTO requestDTO) {
-        Pageable pageable = requestDTO.getPageable(Sort.by("storeNum").ascending());
+        Pageable pageable = requestDTO.getPageable(Sort.by("waitingNum").descending());
+        log.info("----------waiting1111111-----------"+pageable);
         Page<Waiting> result = waitingRepository.findAll(pageable);
+        log.info("----------waiting2222222-----------"+result);
         Function<Waiting, WaitingDTO> fn = (entity -> entityToDTO(entity));
+        log.info("----------waiting3333333-----------"+fn);
         return new PageResultDTO<>(result, fn);
     }
-
-    //웨이팅 리스트 2
-    @Override
-    public WaitingDTO getWaiting(Long waitingNum) {
-        Waiting waiting = waitingRepository.getById(waitingNum);
-        return entityToDTO(waiting);
-    }
+//
+//
+//    //웨이팅 리스트 2
+//    @Override
+//    public WaitingDTO getWaiting(Long waitingNum) {
+//        Waiting waiting = waitingRepository.getById(waitingNum);
+//        log.info("----------waiting4444444-----------"+waiting);
+//        log.info("----------waiting5555555-----------"+waitingNum);
+//        return entityToDTO(waiting);
+//    }
 
 
 }

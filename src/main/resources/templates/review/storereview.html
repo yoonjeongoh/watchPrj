@@ -3,7 +3,31 @@
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
 
-<!--        상세페이지에 리뷰 뜨는거 그대로 받아오면 되지 않을가..?-->
+        <div th:each="member: ${dto}">
+                <div>[[${member.storeName}]]</div>
+            <span>[[${member.storeNum}]]</span>
+        </div>
+
+
+
+
+            <!--        페이징-->
+        <ul class="pagination h-100 justify-content-center align-items-center">
+            <li class="page-item" th:if="${waitingDTO.prev}">
+            </li>
+
+            <li th:class=" 'page-item ' + ${waitingDTO.page == page?'active':''}"
+                th:each="page: ${waitingDTO.pageList}">
+            </li>
+
+            <li class="page-item" th:if="${waitingDTO.next}">
+            </li>
+        </ul>
+
+
+
+
+        <!--        상세페이지에 리뷰 뜨는거 그대로 받아오면 되지 않을가..?-->
 <!--        예스.... 이 페이지가 굳이 있을 필요가..? 있나..? -->
     </th:block>
 </th:blotck>

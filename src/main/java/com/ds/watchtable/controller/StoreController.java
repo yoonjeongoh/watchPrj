@@ -43,7 +43,8 @@ public class StoreController {
         model.addAttribute("dto", storeDTO);
     }
 
-    @GetMapping({"/manager/managemyinfo","/pos/postable"})
+    //스토어 principal 정보 넘기기
+    @RequestMapping("/manager/managemyinfo")
     public void read1(Model model,@AuthenticationPrincipal ClubAuthMemberDTO principal) {
         if(principal != null) {
             model.addAttribute("member", principal.getMember());
