@@ -36,21 +36,21 @@
                                             <img src="https://via.placeholder.com/150" class="img-responsive" alt="">
                                         </div>
                                         <div th:each="member: ${dto}">
-                                        <div class="profile-usertitle">
-                                            <div class="profile-usertitle-name">{{가게이름}}</div>
-                                        </div>
+                                            <div class="profile-usertitle">
+                                                <div class="profile-usertitle-name">{{가게이름}}</div>
+                                            </div>
                                             <span>[[${member.storeNum}]]</span>
-                                        </div>
-                                        <div class="profile-usermenu">
-                                            <ul class="nav">
-                                                <li class="active">
-                                                    <button class="btn11" th:onclick="|location.href='@{/pos/storetable}'|" >포스</button>
-                                                    <button class="btn11" th:onclick="|location.href='@{/pos/setting}'|">포스 셋팅</button>
-                                                    <button class="btn11" th:onclick="|location.href='@{/member/myinfocorrect}'|">내 정보 수정</button>
-                                                    <button class="btn11" th:onclick="|location.href='@{/manager/manageinfocorrect}'|">내 가게 수정</button>
-                                                </li>
-                                                <br>
-                                            </ul>
+                                            <span>[[${member.storeName}]]</span>
+                                            <div class="profile-usermenu">
+                                                <ul class="nav">
+                                                    <li class="active">
+                                                        <button class="btn11" th:onclick="|javascript:goPos([[${member.storeNum}]])|" >포스</button>
+                                                        <button class="btn11" th:onclick="|location.href='@{/member/myinfocorrect}'|">내 정보 수정</button>
+                                                        <button class="btn11" th:onclick="|location.href='@{/manager/manageinfocorrect}'|">내 가게 수정</button>
+                                                    </li>
+                                                    <br>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -65,14 +65,14 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="ml-2">
                                         <div class="h5 m-0">대기중인 손님</div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">
-                                {{n}}번째 손님 {{n}}명 대기 중입니다.
-                            </p>
-                        </div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    {{n}}번째 손님 {{n}}명 대기 중입니다.
+                                </p>
+                            </div>
                             <div class="card-body">
                                 <table class="table table-striped">
                                     <thead>
@@ -89,21 +89,27 @@
                             </div>
 
                         </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card gedf-card">
-                        <div class="card-header">
-                            <div class="h5 m-0">우리 가게 리뷰
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card gedf-card">
+                            <div class="card-header">
+                                <div class="h5 m-0">우리 가게 리뷰
+                                </div>
                             </div>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">{{리뷰 내용 클릭시 상세페이지로}}</p>
+                            <div class="card-body">
+                                <p class="card-text">{{리뷰 내용 클릭시 상세페이지로}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="end-pg"></div>
-
+            <div class="end-pg"></div>
+            <script th:inline="javascript">
+                function goPos(storeNum){
+                  var url = [[@{/pos/postable}]] +
+                      "?storeNum="+storeNum;
+                      location.href=url;
+                }
+        </script>
     </th:block>
 </th:blotck>

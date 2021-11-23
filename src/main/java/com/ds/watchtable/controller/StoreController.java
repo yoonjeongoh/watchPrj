@@ -1,6 +1,7 @@
 package com.ds.watchtable.controller;
 
 import com.ds.watchtable.dto.*;
+import com.ds.watchtable.entity.PosTable;
 import com.ds.watchtable.entity.Store;
 import com.ds.watchtable.security.dto.ClubAuthMemberDTO;
 import com.ds.watchtable.service.ReviewService;
@@ -30,26 +31,31 @@ public class StoreController {
     private final ReviewService reviewService;
 
     //store/detail - member, store 정보 넘기기
-    @GetMapping({"/store/detail","/manager/managemyinfo"})
-    public void read(Long storeNum, Model model,@AuthenticationPrincipal ClubAuthMemberDTO principal) {
+    @GetMapping("/store/detail")
+    public void read(Long storeNum, @ModelAttribute("pageRequestDTO")
+            PageRequestDTO pageRequestDTO, Model model, Long reviewNum,
+                     @AuthenticationPrincipal ClubAuthMemberDTO principal) {
+        if(principal != null) {
+            model.addAttribute("member", principal.getMember());
+            log.info("principal.getMember()"+principal.getMember());
+        }
+        StoreDTO storeDTO = storeService.getStore(storeNum);
+        model.addAttribute("dto", storeDTO);
+    }
+
+    @GetMapping({"/manager/managemyinfo","/pos/postable"})
+    public void read1(Model model,@AuthenticationPrincipal ClubAuthMemberDTO principal) {
         if(principal != null) {
             model.addAttribute("member", principal.getMember());
             log.info("principal.getMember()"+principal.getMember());
         }
         Store storeDTO = storeService.getStoreMember(principal.getMember());
         log.info("storeDTO.getMember()"+storeDTO);
+        PosTable posTable = storeService.getPosTable(storeDTO);
         model.addAttribute("dto", storeDTO);
         log.info("storeDTO.getMember()"+storeDTO);
-    }
+        model.addAttribute("order", posTable);
+        log.info("posTable>>>>>>>>>>>>"+posTable);
 
-        //시큐리티로 데이터넘기기
-    @RequestMapping("/manager/managemyinfo")
-    public void myinfo1(Model model,
-                        @AuthenticationPrincipal ClubAuthMemberDTO principal) {
-        if (principal != null) {
-            model.addAttribute("store", principal.getStore());
-            log.info("principal.getStore()" + principal.getStore());
-        }
     }
-
 }

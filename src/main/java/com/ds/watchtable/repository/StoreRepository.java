@@ -1,9 +1,6 @@
 package com.ds.watchtable.repository;
 
-import com.ds.watchtable.entity.Member;
-import com.ds.watchtable.entity.MenuImage;
-import com.ds.watchtable.entity.Store;
-import com.ds.watchtable.entity.StoreImage;
+import com.ds.watchtable.entity.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.EntityGraph;
@@ -32,5 +29,7 @@ public interface StoreRepository extends JpaRepository <Store, Long> {
 
    @Query("select s from Store s where s.member =:member ")
     Store findByMember(Member member);
+
+
 }
 

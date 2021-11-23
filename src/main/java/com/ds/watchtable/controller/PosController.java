@@ -3,6 +3,9 @@ package com.ds.watchtable.controller;
 
 import com.ds.watchtable.dto.MenuItemDTO;
 import com.ds.watchtable.dto.SettingDTO;
+import com.ds.watchtable.entity.PosTable;
+import com.ds.watchtable.entity.Store;
+import com.ds.watchtable.security.dto.ClubAuthMemberDTO;
 import com.ds.watchtable.service.MenuItemService;
 import com.ds.watchtable.service.StoreService;
 import lombok.RequiredArgsConstructor;
@@ -50,12 +53,15 @@ public class PosController {
 
     }
 
-    @GetMapping({"/pos/postable"})
-    public void posTable(Long storeNum,Model model,
-                         @AuthenticationPrincipal ClubAuthStoreDTO principal){
-        if (principal != null) {
-            model.addAttribute("order", principal.getPosTable());
-            log.info("principal.getPosTable()  " + principal.getPosTable());
-        }
-    }
+//    @GetMapping({"/pos/postable"})
+//    public void posTable(Model model,@AuthenticationPrincipal ClubAuthMemberDTO principal){
+//        if(principal != null) {
+//            model.addAttribute("order", principal.getPosTable());
+//            log.info("principal.getMember()"+principal.getPosTable());
+//        }
+//        PosTable posTable = storeService.getPosTable(principal.getPosTable());
+//        log.info("storeDTO.getMember()7777"+posTable);
+//        model.addAttribute("order", posTable);
+//        log.info("storeDTO.getMember()8888"+posTable);
+//    }
 }
