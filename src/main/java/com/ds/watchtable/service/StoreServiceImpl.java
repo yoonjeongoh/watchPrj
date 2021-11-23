@@ -1,9 +1,6 @@
 package com.ds.watchtable.service;
 
-import com.ds.watchtable.dto.PageRequestDTO;
-import com.ds.watchtable.dto.PageResultDTO;
-import com.ds.watchtable.dto.PosTableDTO;
-import com.ds.watchtable.dto.StoreDTO;
+import com.ds.watchtable.dto.*;
 import com.ds.watchtable.entity.*;
 import com.ds.watchtable.repository.MenuImageRepository;
 import com.ds.watchtable.repository.PosTableRepository;
@@ -21,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 
 @Service
@@ -40,6 +38,7 @@ public class StoreServiceImpl implements StoreService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+    private StoreDTO storeDTO;
 
     //    DB저장
     @Transactional
@@ -88,7 +87,6 @@ public class StoreServiceImpl implements StoreService {
     public Store getStoreMember(Member member) {
         Store store = storeRepository.findByMember(member);
         store.getMember();
-
         log.info("yjyjyjyjyjyjyjyj"+store);
         return store;
     }
@@ -105,5 +103,28 @@ public class StoreServiceImpl implements StoreService {
     public PosTableDTO getOrder(Long storeNum) {
         PosTable posTable = posTableRepository.getById(storeNum);
         return posEntityToDTO(posTable);
+    }
+
+    @Override
+    public void modify(PosTableDTO posTableDTO, Store store) {
+        log.info("yoonjeong posTableDTO"+posTableDTO);
+        PosTable posTable2 = posTableRepository.findByPosTableToStore(store);
+        posTable2.getStore();
+        PosTable posTable = PosTable.builder()
+                .posTableNum(posTableDTO.getPosTableNum())
+                .orderCount(posTableDTO.getOrderCount())
+                .table1(posTableDTO.getTable1())
+                .table2(posTableDTO.getTable2())
+                .table3(posTableDTO.getTable3())
+                .table4(posTableDTO.getTable4())
+                .table5(posTableDTO.getTable5())
+                .table6(posTableDTO.getTable6())
+                .table7(posTableDTO.getTable7())
+                .table8(posTableDTO.getTable8())
+                .table9(posTableDTO.getTable9())
+                .store(posTable2.getStore())
+        .build();
+        log.info("yoonjeong posTable"+posTable);
+        posTableRepository.save(posTable);
     }
 }

@@ -12,31 +12,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PosTableDTO {
-    private Long memberNum;
-
-    private String memberName;
-    private String memberNickname;
-    private String memberId;
-    private String memberPw;
-    private String memberEmail;
-    private String memberMobile;
-    private LocalDateTime regDate;
-    private LocalDateTime modDate;
-
-
-    private Long storeNum;
-
-    private String storeName;
-    private String storeAds;
-    private String storeTel;
-    private String storeText;
-    private String storeOpen;
-    private String storeClose;
-    private String bsNum;
-
-
     private Long posTableNum;
-
     private Long orderCount = 0l;
     private Long table1 = 0l;
     private Long table2 = 0l;
@@ -47,4 +23,5 @@ public class PosTableDTO {
     private Long table7 = 0l;
     private Long table8 = 0l;
     private Long table9 = 0l;
+    private Long storeNum;
 }

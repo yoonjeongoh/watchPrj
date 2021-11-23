@@ -17,67 +17,80 @@
 
 
 
+
+
+
         </style>
         <!--        th:each="num: ${#numbers.sequence(1,5)}"-->
 
         <!--        <form id="action-form" class="menu_form" th:action="@{/pos/postable}" method="post">-->
 
+        <form class="posForm" th:action="@{/pos/postable}" method="post" id="pos_form" name="p">
+            <div class="flex-container">
+                <div th:each="order: ${order}">
+                    <div class="h5 m-0">가게넘버 : [[${</div>
 
-        <div class="flex-container">
-            <div th:each="order: ${order}">
-                <div class="h5 m-0">가게넘버 : </div>
+                    <div class="flex-container">
+                        <!--                        <div th:value="${order.table1}" class="flextb4" name="table1" id="table1">-->
+                        <!--                            <button class="btn_order" id="btn1_1">주문</button>-->
+                        <!--                            <button class="btn_order" id="btn1_2">결제</button>-->
+                        <!--                        </div>-->
+                        <!--                        <div th:value="${order.table2}" class="flextb4" name="table2" id="table2">-->
+                        <!--                            <button class="btn_order" id="btn2_1">주문</button>-->
+                        <!--                            <button class="btn_order" id="btn2_2">결제</button>-->
+                        <!--                        </div>-->
+                        <!--                        <div th:value="${order.table3}" class="flextb4" name="table3" id="table3">-->
+                        <!--                            <button class="btn_order" id="btn3_1">주문</button>-->
+                        <!--                            <button class="btn_order" id="btn3_2">결제</button>-->
+                        <!--                        </div>-->
+                        <!--                    </div>-->
 
-                <div class="flex-container">
-                    <div th:value="${order.table1}" class="flextb4" name="table1" id="table1">
-                        <button class="btn_order" id="btn1_1">주문</button>
-                        <button class="btn_order" id="btn1_2">결제</button>
-                    </div>
-                    <div th:value="${order.table2}" class="flextb4" name="table2" id="table2">
-                        <button class="btn_order" id="btn2_1">주문</button>
-                        <button class="btn_order" id="btn2_2">결제</button>
-                    </div>
-                    <div th:value="${order.table3}" class="flextb4" name="table3" id="table3">
-                        <button class="btn_order" id="btn3_1">주문</button>
-                        <button class="btn_order" id="btn3_2">결제</button>
-                    </div>
-                </div>
-
-                <div class="flex-container">
-                    <div th:value="${order.table4}" class="flextb4" name="table4" id="table4">
-                        <button class="btn_order" id="btn4_1">주문</button>
-                        <button class="btn_order" id="btn4_2">결제</button>
-                    </div>
-                    <div th:value="${order.table5}" class="flextb4" name="table5" id="table5">
-                        <button class="btn_order" id="btn5_1">주문</button>
-                        <button class="btn_order" id="btn5_2">결제</button>
-                    </div>
-                    <div th:value="${order.table6}" class="flextb4" name="table6" id="table6">
-                        <button class="btn_order" id="btn6_1">주문</button>
-                        <button class="btn_order" id="btn6_2">결제</button>
-                    </div>
-                </div>
-                <div class="flex-container">
-                    <div th:value="${order.table7}" class="flextb4" name="table7" id="table7">
-                        <button class="btn_order" id="btn7_1">주문</button>
-                        <button class="btn_order" id="btn7_2">결제</button>
-                    </div>
-                    <div th:value="${order.table8}" class="flextb4" name="table8" id="table8">
-                        <button class="btn_order" id="btn8_1">주문</button>
-                        <button class="btn_order" id="btn8_2">결제</button>
-                    </div>
-                    <div th:value="${order.table9}" class="flextb4" name="table9" id="table9">
+                        <!--                    <div class="flex-container">-->
+                        <!--                        <div th:value="${order.table4}" class="flextb4" name="table4" id="table4">-->
+                        <!--                            <button class="btn_order" id="btn4_1">주문</button>-->
+                        <!--                            <button class="btn_order" id="btn4_2">결제</button>-->
+                        <!--                        </div>-->
+                        <!--                        <div th:value="${order.table5}" class="flextb4" name="table5" id="table5">-->
+                        <!--                            <button class="btn_order" id="btn5_1">주문</button>-->
+                        <!--                            <button class="btn_order" id="btn5_2">결제</button>-->
+                        <!--                        </div>-->
+                        <!--                        <div th:value="${order.table6}" class="flextb4" name="table6" id="table6">-->
+                        <!--                            <button class="btn_order" id="btn6_1">주문</button>-->
+                        <!--                            <button class="btn_order" id="btn6_2">결제</button>-->
+                        <!--                        </div>-->
+                        <!--                    </div>-->
+                        <!--                    <div class="flex-container">-->
+                        <!--                        <div th:value="${order.table7}" class="flextb4" name="table7" id="table7">-->
+                        <!--                            <button class="btn_order" id="btn7_1">주문</button>-->
+                        <!--                            <button class="btn_order" id="btn7_2">결제</button>-->
+                        <!--                        </div>-->
+                        <!--                        <div th:value="${order.table8}" class="flextb4" name="table8" id="table8">-->
+                        <!--                            <button class="btn_order" id="btn8_1">주문</button>-->
+                        <!--                            <button class="btn_order" id="btn8_2">결제</button>-->
+                        <!--                        </div>-->
+                        <input class="flextb4" name="table1" id="table1">
+                        <input class="flextb4" name="table2" id="table2">
+                        <input class="flextb4" name="table3" id="table3">
+                        <input class="flextb4" name="table4" id="table4">
+                        <input class="flextb4" name="table5" id="table5">
+                        <input class="flextb4" name="table6" id="table6">
+                        <input class="flextb4" name="table7" id="table7">
+                        <input class="flextb4" name="table8" id="table8">
+                        <input class="flextb4" name="table9" id="table9">
+                        <input class="flextb4" name="storeNum">
                         <button class="btn_order" id="btn9_1">주문</button>
                         <button class="btn_order" id="btn9_2">결제</button>
                     </div>
+                    <input th:value="${order.posTableNum}">
+                    <input th:value="${order.orderCount}" id="orderCount" name="orderCount" readonly>
+                    <div th:each="dto : ${dto}">
+                        <input th:value="${dto.storeNum}" name="storeNum">
+                    </div>
+                    <button class="btn_order" id="btn_order1">반영</button>
                 </div>
-
-                <input th:value="${order.orderCount}" id="orderCount" name="orderCount" readonly>
-
-                <form class="posForm" th:action="@{/pos/postable}" method="post"
-                      id="pos_form" name="p">
-                    <button class="btn_order" id="btn_order">반영</button>
-                </form>
             </div>
+        </form>
+        </div>
         </div>
         <!--        </form>-->
 
@@ -120,7 +133,7 @@
         <script>
     $(document).ready(function() {
         var actionForm = $('form');
-        $('#btn_order').click(function() {
+        $('#btn_order1').click(function() {
             actionForm.submit();
         })
 
@@ -136,7 +149,7 @@
        var order9 = $('#table9').attr("value");
 
 
-        console.log(order1);
+        console.log(order9);
        $('#btn1_1').click(function(){
          if( order1 == 0 ) {
             order1++;
@@ -311,6 +324,9 @@
          }
        })
     })
+
+
+
 
 
 

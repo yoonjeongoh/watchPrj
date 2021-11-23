@@ -11,4 +11,5 @@ public interface PosTableRepository extends JpaRepository<PosTable, Long> {
 
     @Query("select p from PosTable p where p.store =:store ")
     PosTable findByPosTableToStore(Store store);
+
 }
