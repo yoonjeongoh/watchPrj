@@ -19,8 +19,12 @@ public interface StoreService {
 
     //admin/storeread 가게 정보 상세보기
     StoreDTO getStore(Long storeNum);
+
     Store getStoreMember(Member member);
+
     PosTable getPosTable(Store store);
+
+    void modify(PosTableDTO posTableDTO, Store store);
 
     //storetable 정보 가져오기
 
@@ -99,6 +103,23 @@ public interface StoreService {
         entityMap.put("posTable", posTable);
         return entityMap;
     }
+//    default PosTable posDtoToEntity(PosTableDTO posTableDTO) {
+//        PosTable posTable = PosTable.builder()
+//                .posTableNum(posTableDTO.getPosTableNum())
+//                .orderCount(posTableDTO.getOrderCount())
+//                .table1(posTableDTO.getTable1())
+//                .table2(posTableDTO.getTable2())
+//                .table3(posTableDTO.getTable3())
+//                .table4(posTableDTO.getTable4())
+//                .table5(posTableDTO.getTable5())
+//                .table6(posTableDTO.getTable6())
+//                .table7(posTableDTO.getTable7())
+//                .table8(posTableDTO.getTable8())
+//                .table9(posTableDTO.getTable9())
+//                .build();
+//        return posTable;
+//    }
+
 
     default StoreDTO entityToDTO(Store store) {
         StoreDTO storeDTO = StoreDTO.builder()
@@ -168,8 +189,6 @@ public interface StoreService {
                 .table7(posTable.getTable7())
                 .table8(posTable.getTable8())
                 .table9(posTable.getTable9())
-                .storeNum(posTable.getStore().getStoreNum())
-                .storeName(posTable.getStore().getStoreName())
                 .build();
         return posTableDTO;
     }

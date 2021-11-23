@@ -27,6 +27,7 @@ import java.util.Optional;
 public class StoreController {
     @Autowired
     private final StoreService storeService;
+
     private final WaitingService waitingService;
     private final ReviewService reviewService;
 
@@ -52,11 +53,37 @@ public class StoreController {
         }
         Store storeDTO = storeService.getStoreMember(principal.getMember());
         log.info("storeDTO.getMember()"+storeDTO);
-        PosTable posTable = storeService.getPosTable(storeDTO);
         model.addAttribute("dto", storeDTO);
-        log.info("storeDTO.getMember()"+storeDTO);
-        model.addAttribute("order", posTable);
-        log.info("posTable>>>>>>>>>>>>"+posTable);
 
+
+        PosTable posTable1 = storeService.getPosTable(storeDTO);
+        log.info("storeDTO.getMember()"+storeDTO);
+        model.addAttribute("order", posTable1);
+        log.info("posTable>>>>>>>>>>>>"+posTable1);
+        log.info("posTable>>>>>>>>>>>>"+posTable1);
+    }
+
+    @PostMapping("/pos/postable")
+    public void update(Model model,@AuthenticationPrincipal ClubAuthMemberDTO principal,
+                       PosTableDTO posTableDTO) {
+        if(principal != null) {
+            model.addAttribute("member", principal.getMember());
+            log.info("principal.getMember()11"+principal.getMember());
+        }
+        Store storeDTO = storeService.getStoreMember(principal.getMember());
+        log.info("storeDTO.getMember()11"+storeDTO);
+        model.addAttribute("dto", storeDTO);
+
+
+        PosTable posTable1 = storeService.getPosTable(storeDTO);
+        log.info("storeDTO.getMember()11"+storeDTO);
+        model.addAttribute("order", posTable1);
+        log.info("posTable>>>>>>>>>>>>11"+posTable1);
+        log.info("posTable>>>>>>>>>>>>11"+posTable1);
+        posTableDTO.setPosTableNum(posTable1.getPosTableNum());
+        log.info("posTableDTO..........>>11"+posTableDTO);
+        posTableDTO.setStoreNum(storeDTO.getStoreNum());
+        log.info("posTableDTO..........>>11"+posTableDTO);
+        storeService.modify(posTableDTO, storeDTO);
     }
 }
