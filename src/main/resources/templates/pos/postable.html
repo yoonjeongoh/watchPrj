@@ -25,10 +25,10 @@
 
         <!--        <form id="action-form" class="menu_form" th:action="@{/pos/postable}" method="post">-->
 
-        <form class="posForm" th:action="@{/pos/postable}" method="post" id="pos_form" name="p">
+        <form class="posForm" th:action="@{/pos/postable2}" method="post" id="pos_form" name="p">
             <div class="flex-container">
                 <div th:each="order: ${order}">
-                    <div class="h5 m-0">가게넘버 : [[${</div>
+                    <div class="h5 m-0"></div>
 
                     <div class="flex-container">
                         <!--                        <div th:value="${order.table1}" class="flextb4" name="table1" id="table1">-->
@@ -68,16 +68,15 @@
                         <!--                            <button class="btn_order" id="btn8_1">주문</button>-->
                         <!--                            <button class="btn_order" id="btn8_2">결제</button>-->
                         <!--                        </div>-->
-                        <input class="flextb4" name="table1" id="table1">
-                        <input class="flextb4" name="table2" id="table2">
-                        <input class="flextb4" name="table3" id="table3">
-                        <input class="flextb4" name="table4" id="table4">
-                        <input class="flextb4" name="table5" id="table5">
-                        <input class="flextb4" name="table6" id="table6">
-                        <input class="flextb4" name="table7" id="table7">
-                        <input class="flextb4" name="table8" id="table8">
-                        <input class="flextb4" name="table9" id="table9">
-                        <input class="flextb4" name="storeNum">
+                        <input class="flextb4" name="table1" id="table1" th:value="${order.table1}">
+                        <input class="flextb4" name="table2" id="table2" th:value="${order.table2}">
+                        <input class="flextb4" name="table3" id="table3" th:value="${order.table3}">
+                        <input class="flextb4" name="table4" id="table4" th:value="${order.table4}">
+                        <input class="flextb4" name="table5" id="table5" th:value="${order.table5}">
+                        <input class="flextb4" name="table6" id="table6" th:value="${order.table6}">
+                        <input class="flextb4" name="table7" id="table7" th:value="${order.table7}">
+                        <input class="flextb4" name="table8" id="table8" th:value="${order.table8}">
+                        <input class="flextb4" name="table9" id="table9" th:value="${order.table9}">
                         <button class="btn_order" id="btn9_1">주문</button>
                         <button class="btn_order" id="btn9_2">결제</button>
                     </div>

@@ -29,7 +29,7 @@
             <span>[[${member.memberNum}]]</span>
             <span>[[${member.memberName}]]</span>
 
-        <div class="container-fluid gedf-wrapper">
+        <div class="container-fluid gedf-wrapper" th:each="store: ${dto}">
             <div class="row">
                 <div class="col-md-3">
                     <div class="card">
@@ -73,7 +73,7 @@
                         </div>
                         <div class="card-body">
                             <p class="card-text">
-                                {{윤정이네}} {{N}}번째 대기 중입니다.
+<!--                                [[${store.storeName}]] {{N}}번째 대기 중입니다.-->
                             </p>
                         </div>
                     </div>
@@ -103,6 +103,6 @@
         </div>
         <div class="end-pg"></div>
 
-
+        </div>
     </th:block>
 </th:blotck>

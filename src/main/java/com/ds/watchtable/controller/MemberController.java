@@ -2,12 +2,17 @@ package com.ds.watchtable.controller;
 
 import com.ds.watchtable.dto.MemberDTO;
 import com.ds.watchtable.entity.Member;
+import com.ds.watchtable.entity.PosTable;
+import com.ds.watchtable.entity.Store;
 import com.ds.watchtable.repository.MemberRepository;
 import com.ds.watchtable.security.dto.ClubAuthMemberDTO;
 import com.ds.watchtable.service.MemberService;
+import com.ds.watchtable.service.StoreService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,9 +25,12 @@ import java.util.Optional;
 @Log4j2
 @RequiredArgsConstructor
 public class MemberController {
-
+    @Autowired
     private final MemberService memberService;
     private MemberRepository memberRepository;
+    @Autowired
+    private final StoreService storeService;
+
     //db 저장
     @PostMapping("/join/login")
     public void registerAndMyInfo(MemberDTO memberDTO) {
@@ -58,14 +66,6 @@ public class MemberController {
             model.addAttribute("member", principal.getMember());
             log.info("principal.getMember()1" + principal.getMember());
         }
-    }
-
-    @RequestMapping(value = "/member/idCheck")
-    @ResponseBody
-    public String idCheck(HttpServletRequest request, Model model){
-        String memberId = request.getParameter("memberId");
-        int rowcount = memberRepository.idCheck(memberId);
-        return String.valueOf(rowcount);
     }
 }
 

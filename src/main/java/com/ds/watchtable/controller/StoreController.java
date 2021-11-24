@@ -4,6 +4,9 @@ import com.ds.watchtable.dto.PageRequestDTO;
 import com.ds.watchtable.dto.PageResultDTO;
 import com.ds.watchtable.dto.PosTableDTO;
 import com.ds.watchtable.dto.StoreDTO;
+import com.ds.watchtable.dto.*;
+import com.ds.watchtable.entity.Member;
+import com.ds.watchtable.entity.MemberRole;
 import com.ds.watchtable.entity.PosTable;
 import com.ds.watchtable.entity.Store;
 import com.ds.watchtable.security.dto.ClubAuthMemberDTO;
@@ -23,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @Log4j2
 @RequiredArgsConstructor
-@RequestMapping()
+@RequestMapping
 public class StoreController {
     @Autowired
     private final StoreService storeService;
@@ -35,41 +38,42 @@ public class StoreController {
     public void read(Long storeNum, @ModelAttribute("pageRequestDTO")
             PageRequestDTO pageRequestDTO, Model model, Long reviewNum,
                      @AuthenticationPrincipal ClubAuthMemberDTO principal) {
-        if(principal != null) {
+        if (principal != null) {
             model.addAttribute("member", principal.getMember());
-            log.info("principal.getMember()"+principal.getMember());
+            log.info("principal.getMember()" + principal.getMember());
         }
         StoreDTO storeDTO = storeService.getStore(storeNum);
         model.addAttribute("dto", storeDTO);
     }
 
     //스토어 principal 정보 넘기기
-    @RequestMapping("/manager/managemyinfo")
+    @RequestMapping({"/manager/managemyinfo", "/pos/postable"})
     public void read1(Model model, @AuthenticationPrincipal ClubAuthMemberDTO principal,
                       PageRequestDTO pageRequestDTO) {
-        if(principal != null) {
+        if (principal != null) {
             model.addAttribute("member", principal.getMember());
-            log.info("principal.getMember()"+principal.getMember());
         }
         Store store = storeService.getStoreMember(principal.getMember());
-        log.info("store.getMember()"+store);
+        log.info("store.getMember()" + store);
         model.addAttribute("dto", store);
 
 //        웨이팅리스트
         PageResultDTO waitingDTO = waitingService.getWaitingList(pageRequestDTO, store);
-        log.info("waitinglist>>11111"+waitingDTO);
+        log.info("waitinglist>>11111" + waitingDTO);
         model.addAttribute("waitingDTO", waitingDTO);
 
-        PosTable posTable1 = storeService.getPosTable(store);
-        log.info("storeDTO.getMember()"+store);
+        Store storeDTO = storeService.getStoreMember(principal.getMember());
+        model.addAttribute("dto", storeDTO);
+        log.info("yjyj1" + storeDTO);
+
+        PosTable posTable1 = storeService.getPosTable(storeDTO);
+        log.info("yjyj12" + posTable1);
         model.addAttribute("order", posTable1);
-        log.info("posTable>>>>>>>>>>>>"+posTable1);
-        log.info("posTable>>>>>>>>>>>>"+posTable1);
     }
 
-    //스토어 principal 정보 넘기기
+
     @RequestMapping("/manager/manageinfocorrect")
-    public void read2(Model model,@AuthenticationPrincipal ClubAuthMemberDTO principal) {
+    public void read2(Model model, @AuthenticationPrincipal ClubAuthMemberDTO principal) {
         if (principal != null) {
             model.addAttribute("member", principal.getMember());
             log.info("principal.getMember()" + principal.getMember());
@@ -79,26 +83,26 @@ public class StoreController {
         log.info("storeDTO.getMember22222()" + storeDTO);
     }
 
-        @PostMapping("/pos/postable")
-    public void update(Model model,@AuthenticationPrincipal ClubAuthMemberDTO principal,
+    @RequestMapping("/pos/postable2")
+    public String update(Model model, @AuthenticationPrincipal ClubAuthMemberDTO principal,
                        PosTableDTO posTableDTO) {
-        if(principal != null) {
+        if (principal != null) {
             model.addAttribute("member", principal.getMember());
-            log.info("principal.getMember()11"+principal.getMember());
         }
         Store storeDTO = storeService.getStoreMember(principal.getMember());
-        log.info("storeDTO.getMember()11"+storeDTO);
         model.addAttribute("dto", storeDTO);
 
+        log.info("yjyj13" + storeDTO);
+
         PosTable posTable1 = storeService.getPosTable(storeDTO);
-        log.info("storeDTO.getMember()11"+storeDTO);
         model.addAttribute("order", posTable1);
-        log.info("posTable>>>>>>>>>>>>11"+posTable1);
-        log.info("posTable>>>>>>>>>>>>11"+posTable1);
+
+        log.info("yjyj14" + posTable1);
         posTableDTO.setPosTableNum(posTable1.getPosTableNum());
-        log.info("posTableDTO..........>>11"+posTableDTO);
         posTableDTO.setStoreNum(storeDTO.getStoreNum());
-        log.info("posTableDTO..........>>11"+posTableDTO);
+
+        log.info("yjyj15" + posTableDTO);
         storeService.modify(posTableDTO, storeDTO);
+        return "redirect:/pos/postable";
     }
 }

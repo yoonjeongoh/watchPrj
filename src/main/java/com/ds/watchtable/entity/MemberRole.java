@@ -4,5 +4,5 @@ public enum MemberRole {
     USER,
     MANAGER,
     ADMIN,
-    SOCIAL
+    SOCIAL,
 }

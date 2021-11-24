@@ -3,7 +3,7 @@
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
         <link th:href="@{/css2/admin.css}" rel="stylesheet" />
-
+        <form class="form11" th:action="@{/admin/storelist}" method="post" id="join_form" name="f">
         <div class="wrapper">
             <div class="col-md-6 gedf-main">
                 <div class="card gedf-card">
@@ -52,7 +52,6 @@
                             <label>사업자 등록 번호</label>
                             <input type="text" class="form-control" name="title" th:value="${dto.bsNum}" readonly>
                         </div>
-
                         <div class="form-group">
                             <label>가입일</label>
                             <input type="text" class="form-control" name="regDate"
@@ -73,14 +72,15 @@
                             </ul>
                         </div>
                         <div class="button-area">
-                            <a class="btn btn-primary" th:href="@{/}">승인</a>
-                            <a class="btn btn-primary" th:href="@{/}">거절</a>
+                            <button class="btn btn-primary join_button"> 승인 </button>
+                            <button class="btn btn-primary">거절</button>
                         </div>
 
                     </div>
                 </div>
             </div>
         </div>
+        </form>
 
 
         <div style="margin-bottom: 20px;"></div>
@@ -103,6 +103,10 @@
 
         <script>
             $(document).ready(function(e) {
+                var actionForm = $('form');
+                $('.join_button').click(function(){
+                    actionForm.submit();
+                }
                 var modal = $('.modal');
 
                 $(".storeImage").click(function(){
@@ -124,6 +128,12 @@
         });
 
         </script>
+        <script th:inline="javascript">
+            $(document).ready(function() {
+
+            });
+        </script>
+
         <div class="modal imageModal" tabindex="-2" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">

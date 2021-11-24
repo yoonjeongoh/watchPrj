@@ -41,9 +41,6 @@ public class Member extends BaseEntity {
         this.memberName = newSocial;
         this.memberNickname = newSocial;
         this.memberMobile = newSocial;
-
-
-
     }
 
 }
