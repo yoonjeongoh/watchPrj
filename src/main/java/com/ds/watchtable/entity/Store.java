@@ -31,5 +31,5 @@ public class Store extends BaseEntity {
     @JoinColumn(name = "memberNum")
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     Member member;
-    
+
 }
