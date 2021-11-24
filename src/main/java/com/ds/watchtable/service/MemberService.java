@@ -13,7 +13,6 @@ public interface MemberService {
     String register(MemberDTO dto);
 
     void modify(MemberDTO memberDTO);
-
     default Member dtoToEntity(MemberDTO memberDTO) {
         Member member = Member.builder()
                 .memberNum(memberDTO.getMemberNum())
@@ -27,6 +26,7 @@ public interface MemberService {
         member.addMemberRole(MemberRole.USER);
         return member;
     }
+
     default Member socialDtoToEntity(MemberDTO memberDTO) {
         Member member = Member.builder()
                 .memberNum(memberDTO.getMemberNum())

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +34,7 @@ public class StoreServiceImpl implements StoreService {
     final private MenuImageRepository menuImageRepository;
     @Autowired
     final private PosTableRepository posTableRepository;
+
 
 
 
@@ -94,15 +96,20 @@ public class StoreServiceImpl implements StoreService {
     @Override
     public PosTable getPosTable(Store store) {
         PosTable posTable = posTableRepository.findByPosTableToStore(store);
-        posTable.getStore();
-        log.info("jcjcjcjcjcjcjcjcjc"+posTable);
+        log.info("yoonjeong posTable>>"+posTable);
+        posTable.getPosTableNum();
+        posTable.getTable1();
+        posTable.getTable2();
+        posTable.getTable3();
+        posTable.getTable4();
+        posTable.getTable5();
+        posTable.getTable6();
+        posTable.getTable7();
+        posTable.getTable8();
+        posTable.getTable9();
+        posTable.getOrderCount();
+        log.info("yoonjeong posTable>>"+posTable);
         return posTable;
-    }
-
-    @Override
-    public PosTableDTO getOrder(Long storeNum) {
-        PosTable posTable = posTableRepository.getById(storeNum);
-        return posEntityToDTO(posTable);
     }
 
     @Override
@@ -123,7 +130,7 @@ public class StoreServiceImpl implements StoreService {
                 .table8(posTableDTO.getTable8())
                 .table9(posTableDTO.getTable9())
                 .store(posTable2.getStore())
-        .build();
+                .build();
         log.info("yoonjeong posTable"+posTable);
         posTableRepository.save(posTable);
     }

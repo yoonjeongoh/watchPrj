@@ -44,7 +44,6 @@ public class MemberServiceImpl implements MemberService {
         memberRepository.save(member);
         log.info("member member" + member);
     }
-
 }
 
 

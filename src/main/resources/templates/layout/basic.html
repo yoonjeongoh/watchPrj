@@ -2,20 +2,22 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <th:block th:fragment="setContent(content)">
     <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <meta name="description" content=""/>
+        <meta name="author" content=""/>
         <!-- 메인화면-->
         <title>WATCH TABLE</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" th:href="@{assets/favicon.png}" />
+        <link rel="icon" type="image/x-icon" th:href="@{assets/favicon.png}"/>
         <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"
+              type="text/css"/>
         <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
+              rel="stylesheet" type="text/css"/>
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link th:href="@{css/styles.css}" rel="stylesheet" />
+        <link th:href="@{css/styles.css}" rel="stylesheet"/>
     </head>
     <body>
     <!-- Navigation-->
@@ -46,54 +48,73 @@
                         <!-- To make this form functional, sign up at-->
                         <!-- https://startbootstrap.com/solution/contact-forms-->
 
-                        <form class="form-subscribe" th:action="@{/}" method="get" id="searchForm">
-                            <div class ="input-group row">
+                        <form  class="form-subscribe" th:action="@{/}" method="get" id="searchForm">
+                            <div class="input-group row">
                                 <input type="hidden" name="page" value="1">
-                                <div class="input-group-prepend col">
-                                    <input class="form-control form-control-lg" id="emailAddress" placeholder="식당을 찾아보세요!" />
-                                </div>
-                                <!--                            <input class="form-control" name="keyword" th:value="${pageRequestDTO.keyword}">-->
 
-                                <div class="input-group-append col-auto" id="button-addon4">
-                                    <button class="btn-search btn btn-primary btn-lg" id="submitButton"
-                                            type="button">검색</button>
+                                <div class="container bg-light border pb-2">
+                                    <nav class="navbar navbar-light ">
+                                        <form class="form-inline">
+                                            <div class="input-group-prepend col">
+                                                <input class="form-control form-control-lg mr-sm-2 srch" type="text"  id="emailAddress"
+                                                       placeholder="식당을 찾아보세요!"/>
+                                            </div>
+                                        </form>
+                                    </nav>
+                                    <div id="accordion" role="tablist">
+                                        <div class="card">
+                                            <div class="card-header" role="tab" id="headingOne">
+                                                <span class="badge badge-primary badge-pill incat-count" style="background:orange;">0</span>
+                                                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
+                                                   style="text-decoration:none;">
+                                                    ☆
+                                                </a>
+                                            </div>
+                                            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                                                <div class="card-body p-0">
+                                                    <ul class="list-group cat-list" >
+                                                        <li class="list-group-item" th:each="dto : ${result.dtoList}" th:onclick="|javascript:read('${dto.storeNum}')|"
+                                                        >[[${dto.storeName}]]</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </form>
 
 
+                        <!--&lt;!&ndash; to get an API token!-->
+                        <!--                        <form class="form-subscribe" id="contactForm" data-sb-form-api-token="API_TOKEN">-->
+                        <!--                            &lt;!&ndash; Email address input&ndash;&gt;-->
+                        <!--                            <div class="row">-->
+                        <!--                                <div class="col">-->
+                        <!--                                    <input class="form-control form-control-lg" id="emailAddress" type="email" placeholder="식당을 찾아보세요!" data-sb-validations="required,email" />-->
+                        <!--                                    <div class="invalid-feedback text-white" data-sb-feedback="emailAddress:required">Email Address is required.</div>-->
+                        <!--                                    <div class="invalid-feedback text-white" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>-->
+                        <!--                                </div>-->
+                        <!--                                <div class="col-auto"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">검색</button></div>-->
+                        <!--                            </div>-->
 
+                        <!--                            &lt;!&ndash; Submit success message&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;&ndash;&gt;-->
+                        <!--                            &lt;!&ndash; This is what your users will see when the form&ndash;&gt;-->
+                        <!--                            &lt;!&ndash; has successfully submitted&ndash;&gt;-->
 
-                        <!--&lt;!&ndash; to get an API token!&ndash;&gt;
-                        <form class="form-subscribe" id="contactForm" data-sb-form-api-token="API_TOKEN">
-                            &lt;!&ndash; Email address input&ndash;&gt;
-                            <div class="row">
-                                <div class="col">
-                                    <input class="form-control form-control-lg" id="emailAddress" type="email" placeholder="식당을 찾아보세요!" data-sb-validations="required,email" />
-                                    <div class="invalid-feedback text-white" data-sb-feedback="emailAddress:required">Email Address is required.</div>
-                                    <div class="invalid-feedback text-white" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>
-                                </div>
-                                <div class="col-auto"><button class="btn btn-primary btn-lg disabled" id="submitButton" type="submit">검색</button></div>
-                            </div>
-
-                            &lt;!&ndash; Submit success message&ndash;&gt;
-                            &lt;!&ndash;&ndash;&gt;
-                            &lt;!&ndash; This is what your users will see when the form&ndash;&gt;
-                            &lt;!&ndash; has successfully submitted&ndash;&gt;
-
-                            <div class="d-none" id="submitSuccessMessage">
-                                <div class="text-center mb-3">
-                                    <div class="fw-bolder">Form submission successful!</div>
-                                    <p>To activate this form, sign up at</p>
-                                    <a class="text-white" href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
-                                </div>
-                            </div>
-                            &lt;!&ndash; Submit error message&ndash;&gt;
-                            &lt;!&ndash;&ndash;&gt;
-                            &lt;!&ndash; This is what your users will see when there is&ndash;&gt;
-                            &lt;!&ndash; an error submitting the form&ndash;&gt;
-                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
-                        </form>-->
+                        <!--                            <div class="d-none" id="submitSuccessMessage">-->
+                        <!--                                <div class="text-center mb-3">-->
+                        <!--                                    <div class="fw-bolder">Form submission successful!</div>-->
+                        <!--                                    <p>To activate this form, sign up at</p>-->
+                        <!--                                    <a class="text-white" href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>-->
+                        <!--                                </div>-->
+                        <!--                            </div>-->
+                        <!--                            &lt;!&ndash; Submit error message&ndash;&gt;-->
+                        <!--                            &lt;!&ndash;&ndash;&gt;-->
+                        <!--                            &lt;!&ndash; This is what your users will see when there is&ndash;&gt;-->
+                        <!--                            &lt;!&ndash; an error submitting the form&ndash;&gt;-->
+                        <!--                            <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>-->
+                        <!--                        </form>&ndash;&gt;-->
 
 
                     </div>
@@ -163,6 +184,41 @@
             </script>
     -->
 
+
+    <script>
+      $(document).ready(function(){
+          $('.cat-list li').addClass('fnd');
+          function counter_set()
+          {
+              $('.cat-list').each(function() {
+              var cnt = $(this).children('.cat-list li.fnd').length;
+
+              $(this).parent().parent().parent().find('.incat-count').text(cnt);
+              });
+          }
+          counter_set();
+          $('.srch').keyup(function(){
+              var txt = $(this).val().toLowerCase();
+              $('.cat-list li').filter(function(){
+                  var mt = $(this).text().toLowerCase().indexOf(txt) > -1;
+                  $(this).toggle(mt);
+                  $(this).toggleClass('fnd', mt);
+              });
+              counter_set();
+          });
+      });
+    </script>
+
+    <script th:inline="javascript">
+        function read(storeNum){
+            //alert('read');
+            /*[+
+            var urlword = [[@{/store/detail}]] +
+                "?storeNum="+storeNum;
+            +]*/
+            location.href=urlword;
+        }
+    </script>
 
 </th:block>
 </html>

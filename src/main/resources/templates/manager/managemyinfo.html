@@ -36,11 +36,19 @@
                                             <img src="https://via.placeholder.com/150" class="img-responsive" alt="">
                                         </div>
                                         <input type="text" th:value="${dto.storeNum}">
+                                        <div th:each="member: ${dto}">
+                                        <div class="profile-usertitle">
+                                            <div class="profile-usertitle-name">
+                                            </div>
+                                        </div>
+                                            <span th:value="${member.storeNum}"></span>
+                                            <span>[[${member.storeNum}]]</span>
+                                        </div>
                                         <div class="profile-usermenu">
                                             <ul class="nav">
                                                 <li class="active">
                                                     <button class="btn11"
-                                                            th:onclick="|location.href='@{/pos/storetable}'|">포스
+                                                            th:onclick="|location.href='@{/pos/postable}'|">포스
                                                     </button>
                                                     <button class="btn11"
                                                             th:onclick="|location.href='@{/pos/setting}'|">포스 셋팅
@@ -70,14 +78,14 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="ml-2">
                                         <div class="h5 m-0">대기중인 손님</div>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="card-body">
-                                <p class="card-text">
-                                    {{n}}번째 손님 {{n}}명 대기 중입니다.
-                                </p>
-                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                {{n}}번째 손님 {{n}}명 대기 중입니다.
+                            </p>
+                        </div>
                             <div class="card-body">
                                 <table class="table table-striped">
                                     <thead>
