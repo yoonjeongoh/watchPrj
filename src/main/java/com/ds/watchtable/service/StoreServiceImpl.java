@@ -17,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -115,8 +116,8 @@ public class StoreServiceImpl implements StoreService {
     @Override
     public void modify(PosTableDTO posTableDTO, Store store) {
         log.info("yoonjeong posTableDTO"+posTableDTO);
-        PosTable posTable2 = posTableRepository.findByPosTableToStore(store);
-        posTable2.getStore();
+        PosTable posTable1 = posTableRepository.findByPosTableToStore(store);
+        posTable1.getStore();
         PosTable posTable = PosTable.builder()
                 .posTableNum(posTableDTO.getPosTableNum())
                 .orderCount(posTableDTO.getOrderCount())
@@ -129,9 +130,34 @@ public class StoreServiceImpl implements StoreService {
                 .table7(posTableDTO.getTable7())
                 .table8(posTableDTO.getTable8())
                 .table9(posTableDTO.getTable9())
-                .store(posTable2.getStore())
+                .store(posTable1.getStore())
                 .build();
         log.info("yoonjeong posTable"+posTable);
         posTableRepository.save(posTable);
+    }
+
+    @Override
+    public void manageModify(StoreDTO storeDTO) {
+        Store store = Store.builder()
+                .member(Member.builder()
+                        .memberNum(storeDTO.getMemberNum())
+                        .memberName(storeDTO.getMemberName())
+                        .memberNickname(storeDTO.getMemberNickname())
+                        .memberId(storeDTO.getMemberId())
+                        .memberEmail(storeDTO.getMemberEmail())
+                        .memberPw(storeDTO.getMemberPw())
+                        .memberMobile(storeDTO.getMemberMobile())
+                        .roleSet(Collections.singleton(MemberRole.MANAGER))
+                        .build())
+                .storeNum(storeDTO.getStoreNum())
+                .storeName(storeDTO.getStoreName())
+                .storeAds(storeDTO.getStoreAds())
+                .storeTel(storeDTO.getStoreTel())
+                .storeText(storeDTO.getStoreText())
+                .storeOpen(storeDTO.getStoreOpen())
+                .storeClose(storeDTO.getStoreClose())
+                .bsNum(storeDTO.getBsNum())
+                .build();
+        storeRepository.save(store);
     }
 }
