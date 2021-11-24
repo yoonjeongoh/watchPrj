@@ -1,6 +1,9 @@
 package com.ds.watchtable.controller;
 
-import com.ds.watchtable.dto.*;
+import com.ds.watchtable.dto.PageRequestDTO;
+import com.ds.watchtable.dto.PageResultDTO;
+import com.ds.watchtable.dto.PosTableDTO;
+import com.ds.watchtable.dto.StoreDTO;
 import com.ds.watchtable.entity.PosTable;
 import com.ds.watchtable.entity.Store;
 import com.ds.watchtable.security.dto.ClubAuthMemberDTO;
@@ -10,15 +13,13 @@ import com.ds.watchtable.service.WaitingService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @Log4j2
@@ -42,10 +43,12 @@ public class StoreController {
         }
         StoreDTO storeDTO = storeService.getStore(storeNum);
         model.addAttribute("dto", storeDTO);
+
+
     }
 
     //스토어 principal 정보 넘기기
-    @RequestMapping({"/manager/managemyinfo", "/manager/managemyinfocorrect"})
+    @RequestMapping("/manager/managemyinfo")
     public void read1(Model model,@AuthenticationPrincipal ClubAuthMemberDTO principal) {
         if(principal != null) {
             model.addAttribute("member", principal.getMember());
@@ -55,6 +58,8 @@ public class StoreController {
         log.info("storeDTO.getMember()"+storeDTO);
         model.addAttribute("dto", storeDTO);
 
+
+
         PosTable posTable1 = storeService.getPosTable(storeDTO);
         log.info("storeDTO.getMember()"+storeDTO);
         model.addAttribute("order", posTable1);
@@ -62,7 +67,19 @@ public class StoreController {
         log.info("posTable>>>>>>>>>>>>"+posTable1);
     }
 
-    @PostMapping("/pos/postable")
+    //스토어 principal 정보 넘기기
+    @RequestMapping("/manager/manageinfocorrect")
+    public void read2(Model model,@AuthenticationPrincipal ClubAuthMemberDTO principal) {
+        if (principal != null) {
+            model.addAttribute("member", principal.getMember());
+            log.info("principal.getMember()" + principal.getMember());
+        }
+        model.addAttribute("store", storeService.getStoreMember(principal.getMember()));
+        Store storeDTO = storeService.getStoreMember(principal.getMember());
+        log.info("storeDTO.getMember22222()" + storeDTO);
+    }
+
+        @PostMapping("/pos/postable")
     public void update(Model model,@AuthenticationPrincipal ClubAuthMemberDTO principal,
                        PosTableDTO posTableDTO) {
         if(principal != null) {

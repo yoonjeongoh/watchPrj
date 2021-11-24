@@ -15,10 +15,8 @@ public interface WaitingService {
     //DB저장
     Long registerWaiting(WaitingDTO waitingDTO);
     //웨이팅 리스트
-    PageResultDTO<WaitingDTO, Waiting> getWaitingList(PageRequestDTO pageRequestDTO);
-/*
-    WaitingDTO getWaiting(Long waitingNum);
-*/
+    PageResultDTO<WaitingDTO, Waiting> getWaitingList(PageRequestDTO requestDTO);
+//    WaitingDTO getWaiting(Long waitingNum);
 
 
         default Waiting dtoToEntity(WaitingDTO waitingDTO){

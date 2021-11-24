@@ -97,5 +97,16 @@
     <script src="/watchtable/js/index.js"></script>
     <script src="/watchtable/js/indexList.js"></script>
 
+    <script th:inline="javascript">
+            function goStore(storeNum){
+                //alert('read');
+                /*[+
+                var url = [[@{/store/detail}]] +
+                    "?storeNum="+storeNum;
+                +]*/
+                location.href=url;
+            }
+        </script>
+
   </th:block>
 </th:block>

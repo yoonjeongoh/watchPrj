@@ -24,8 +24,7 @@ public class WatchtableController {
     private final StoreService storeService;
     private final MemberService memberService;
 
-    @GetMapping({"/manager/manageinfocorrect",
-            "/review/storereview","/pos/kitchen"})
+    @GetMapping({"/review/storereview","/pos/kitchen"})
     public void list(){
     }
 
