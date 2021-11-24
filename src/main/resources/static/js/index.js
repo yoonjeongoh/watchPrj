@@ -20,9 +20,12 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 
 
 function locationLoadSuccess(pos){
-    var orderCount1=2;
-    var orderCount2=5;
-    var orderCount3=8;
+    var orderCount1 = $('#0').attr("value");
+    console.log(orderCount1);
+    var orderCount2= $('#1').attr("value");
+    console.log(orderCount2);
+    var orderCount3= $('#2').attr("value");
+    console.log(orderCount3);
 
     var centerImageSrc = 'https://cdn-icons-png.flaticon.com/512/1673/1673221.png', // 마커이미지의 주소입니다
         centerImageSize = new kakao.maps.Size(35, 30) // 마커이미지의 크기입니다
@@ -62,24 +65,70 @@ var shakeMarker = new kakao.maps.Marker({
     position: shakePosition,
     image:greenMarkerImage
 });
-if(orderCount3 > 5){
+if(orderCount1 < 4){
 var shakeMarker = new kakao.maps.Marker({
     position: shakePosition,
-    image:redMarkerImage
+    image:greenMarkerImage
     });
 }
-console.log(shakeMarker);
+if(orderCount1 > 3 && orderCount1 < 7){
+var shakeMarker = new kakao.maps.Marker({
+    position: shakePosition,
+    image:blueMarkerImage
+    });
+}
+if(orderCount1 > 6){
+ var shakeMarker = new kakao.maps.Marker({
+     position: shakePosition,
+     image:redMarkerImage
+     });
+ }
 
 
 var macMarker = new kakao.maps.Marker({
     position: macPosition,
     image:greenMarkerImage
 });
+if(orderCount2 < 4){
+var macMarker = new kakao.maps.Marker({
+    position: macPosition,
+    image:greenMarkerImage
+    });
+}
+if(orderCount2 > 3 && orderCount2 < 7){
+var macMarker = new kakao.maps.Marker({
+    position: macPosition,
+    image:blueMarkerImage
+    });
+}
+if(orderCount2 > 6){
+ var macMarker = new kakao.maps.Marker({
+     position: macPosition,
+     image:redMarkerImage
+     });
+ }
 var momMarker = new kakao.maps.Marker({
     position: momPosition,
     image:greenMarkerImage
 });
-
+if(orderCount3 < 4){
+var momMarker = new kakao.maps.Marker({
+    position: momPosition,
+    image:greenMarkerImage
+    });
+}
+if(orderCount3 > 3 && orderCount3 < 7){
+var momMarker = new kakao.maps.Marker({
+    position: momPosition,
+    image:blueMarkerImage
+    });
+}
+if(orderCount3 > 6){
+ var momMarker = new kakao.maps.Marker({
+     position: momPosition,
+     image:redMarkerImage
+     });
+ }
 
 
 // 마커가 지도 위에 표시되도록 설정합니다
@@ -93,9 +142,8 @@ momMarker.setMap(map);
 
 // 마커를 클릭했을 때 마커 위에 표시할 인포윈도우를 생성합니다
 var macContent = '<div class="wrap">' +
-                   '    <div class="info">' +
-                   '        <div class="title">' +
-                   '            노브랜드버거 서면점' +
+                   '<div class="info">' +
+                   '        <div class="title"> <a href="http://localhost:8080/watchtable/store/detail?storeNum=2" target="_blank" class="link">노브랜드버거 서면점</a>  ' +
                    '            <div class="close" onclick="macCloseOverlay()" title="닫기"></div>' +
                    '        </div>' +
                    '        <div class="body">' +
@@ -113,8 +161,7 @@ var macContent = '<div class="wrap">' +
 
     var shakeContent = '<div class="wrap">' +
                                           '    <div class="info">' +
-                                          '        <div class="title">' +
-                                          '            쉐이크쉑 서면점' +
+                                          '        <div class="title"> <a href="http://localhost:8080/watchtable/store/detail?storeNum=1" target="_blank" class="link">쉐이크쉑 서면점</a>  ' +
                                           '            <div class="close" onclick="macCloseOverlay()" title="닫기"></div>' +
                                           '        </div>' +
                                           '        <div class="body">' +
@@ -123,7 +170,6 @@ var macContent = '<div class="wrap">' +
                                           '           </div>' +
                                           '            <div class="desc">' +
                                           '                <div class="ellipsis">부산광역시 부산진구 부전2동 중앙대로 672 삼정타워 1F</div>' +
-                                          '                <div><a href="http://localhost:8080/watchtable/join/managerjoin" target="_blank" class="link">상세페이지</a></div>' +
                                           '            </div>' +
                                           '        </div>' +
                                           '    </div>' +
@@ -132,8 +178,8 @@ var macContent = '<div class="wrap">' +
 
         var momContent = '<div class="wrap">' +
                                                                    '    <div class="info">' +
-                                                                   '        <div class="title">' +
-                                                                   '            맘스터치 서면점' +
+                                                                   '    <div class="info">' +
+                                                                   '        <div class="title"> <a href="http://localhost:8080/watchtable/store/detail?storeNum=3" target="_blank" class="link">맘스터치 서면점</a>  ' +
                                                                    '            <div class="close" onclick="macCloseOverlay()" title="닫기"></div>' +
                                                                    '        </div>' +
                                                                    '        <div class="body">' +

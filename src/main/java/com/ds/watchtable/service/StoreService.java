@@ -22,6 +22,8 @@ public interface StoreService {
     //admin/storeread 가게 정보 상세보기
     StoreDTO getStore(Long storeNum);
 
+    List<PosTable> findAll();
+
     Store getStoreMember(Member member);
 
     PosTable getPosTable(Store store);
@@ -99,6 +101,10 @@ public interface StoreService {
         entityMap.put("posTable", posTable);
         return entityMap;
     }
+
+
+
+
     default
     StoreDTO entityToDTO (Store store){
         StoreDTO storeDTO = StoreDTO.builder()
@@ -115,6 +121,24 @@ public interface StoreService {
                 .modDate(store.getModDate())
                 .build();
         return storeDTO;
+    }
+
+    default PosTableDTO posentityToDTO (PosTable posTable){
+        PosTableDTO posTableDTO = PosTableDTO.builder()
+                .posTableNum(posTable.getPosTableNum())
+                .orderCount(posTable.getOrderCount())
+                .table1(posTable.getTable1())
+                .table2(posTable.getTable2())
+                .table3(posTable.getTable3())
+                .table4(posTable.getTable4())
+                .table5(posTable.getTable5())
+                .table6(posTable.getTable6())
+                .table7(posTable.getTable7())
+                .table8(posTable.getTable8())
+                .table9(posTable.getTable9())
+                .build();
+        System.out.printf(">>>>>>>>>>>>>>>>>>>>>>>" + posTableDTO);
+        return posTableDTO;
     }
 
     default StoreDTO storeEntityToDTO(Store store, List<StoreImage> storeImageList, List<MenuImage> menuImageList) {
