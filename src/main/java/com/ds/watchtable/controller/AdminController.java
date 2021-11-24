@@ -24,7 +24,7 @@ public class AdminController {
     @Autowired
     private final StoreService storeService;
 
-    //    //admin/storelist
+    // admin/storelist
     @GetMapping({"/storelist", "/admin"})
     public void list(PageRequestDTO pageRequestDTO, Model model){
         log.info("pageRequestDTO: "+pageRequestDTO);

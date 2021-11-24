@@ -28,7 +28,7 @@ public class MemberServiceImpl implements MemberService {
         memberRepository.save(member);
         return member.getMemberName();
     }
-
+    //정보수정
     @Override
     public void modify(MemberDTO memberDTO) {
         Member member = socialDtoToEntity(memberDTO);

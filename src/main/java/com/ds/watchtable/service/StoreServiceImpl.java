@@ -36,9 +36,6 @@ public class StoreServiceImpl implements StoreService {
     @Autowired
     final private PosTableRepository posTableRepository;
 
-
-
-
     @Autowired
     private PasswordEncoder passwordEncoder;
     private StoreDTO storeDTO;

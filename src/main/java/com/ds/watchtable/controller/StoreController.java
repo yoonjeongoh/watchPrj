@@ -57,7 +57,7 @@ public class StoreController {
         log.info("store.getMember()" + store);
         model.addAttribute("dto", store);
 
-//        웨이팅리스트
+        //웨이팅리스트
         PageResultDTO waitingDTO = waitingService.getWaitingList(pageRequestDTO, store);
         log.info("waitinglist>>11111" + waitingDTO);
         model.addAttribute("waitingDTO", waitingDTO);
@@ -71,7 +71,7 @@ public class StoreController {
         model.addAttribute("order", posTable1);
     }
 
-
+    //사업자 정보수정 principal 넘기기
     @RequestMapping("/manager/manageinfocorrect")
     public void read2(Model model, @AuthenticationPrincipal ClubAuthMemberDTO principal) {
         if (principal != null) {

@@ -53,7 +53,6 @@ public class ReviewServiceImpl implements ReviewService{
            }
     }
 
-
     //리뷰삭제
     @Override
     public void remove(Long reviewNum) {

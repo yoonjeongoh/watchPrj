@@ -22,10 +22,12 @@ public class Review extends BaseEntity {
         this.text = text;
     }
 
+    @JoinColumn(name = "memberNum")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Member member;
+    Member member;
 
+    @JoinColumn(name = "storeNum")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Store store;
+    Store store;
 
 }
