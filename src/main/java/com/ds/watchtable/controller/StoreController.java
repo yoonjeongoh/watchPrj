@@ -7,7 +7,6 @@ import com.ds.watchtable.dto.StoreDTO;
 import com.ds.watchtable.entity.PosTable;
 import com.ds.watchtable.entity.Store;
 import com.ds.watchtable.security.dto.ClubAuthMemberDTO;
-import com.ds.watchtable.service.ReviewService;
 import com.ds.watchtable.service.StoreService;
 import com.ds.watchtable.service.WaitingService;
 import lombok.RequiredArgsConstructor;
@@ -28,9 +27,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class StoreController {
     @Autowired
     private final StoreService storeService;
-
+    @Autowired
     private final WaitingService waitingService;
-    private final ReviewService reviewService;
 
     //store/detail - member, store 정보 넘기기
     @GetMapping("/store/detail")
@@ -43,25 +41,27 @@ public class StoreController {
         }
         StoreDTO storeDTO = storeService.getStore(storeNum);
         model.addAttribute("dto", storeDTO);
-
-
     }
 
     //스토어 principal 정보 넘기기
     @RequestMapping("/manager/managemyinfo")
-    public void read1(Model model,@AuthenticationPrincipal ClubAuthMemberDTO principal) {
+    public void read1(Model model, @AuthenticationPrincipal ClubAuthMemberDTO principal,
+                      PageRequestDTO pageRequestDTO) {
         if(principal != null) {
             model.addAttribute("member", principal.getMember());
             log.info("principal.getMember()"+principal.getMember());
         }
-        Store storeDTO = storeService.getStoreMember(principal.getMember());
-        log.info("storeDTO.getMember()"+storeDTO);
-        model.addAttribute("dto", storeDTO);
+        Store store = storeService.getStoreMember(principal.getMember());
+        log.info("store.getMember()"+store);
+        model.addAttribute("dto", store);
 
+//        웨이팅리스트
+        PageResultDTO waitingDTO = waitingService.getWaitingList(pageRequestDTO, store);
+        log.info("waitinglist>>11111"+waitingDTO);
+        model.addAttribute("waitingDTO", waitingDTO);
 
-
-        PosTable posTable1 = storeService.getPosTable(storeDTO);
-        log.info("storeDTO.getMember()"+storeDTO);
+        PosTable posTable1 = storeService.getPosTable(store);
+        log.info("storeDTO.getMember()"+store);
         model.addAttribute("order", posTable1);
         log.info("posTable>>>>>>>>>>>>"+posTable1);
         log.info("posTable>>>>>>>>>>>>"+posTable1);

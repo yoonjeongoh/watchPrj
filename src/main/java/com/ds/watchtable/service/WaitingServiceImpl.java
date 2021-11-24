@@ -1,7 +1,11 @@
 package com.ds.watchtable.service;
 
-import com.ds.watchtable.dto.*;
-import com.ds.watchtable.entity.*;
+import com.ds.watchtable.dto.PageRequestDTO;
+import com.ds.watchtable.dto.PageResultDTO;
+import com.ds.watchtable.dto.StoreDTO;
+import com.ds.watchtable.dto.WaitingDTO;
+import com.ds.watchtable.entity.Store;
+import com.ds.watchtable.entity.Waiting;
 import com.ds.watchtable.repository.WaitingRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -10,9 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -32,28 +34,15 @@ public class WaitingServiceImpl implements WaitingService{
 
     //웨이팅 리스트
     @Override
-    public PageResultDTO<WaitingDTO, Waiting> getWaitingList(PageRequestDTO requestDTO) {
-        Pageable pageable = requestDTO.getPageable(Sort.by("waitingNum").descending());
+    public PageResultDTO<WaitingDTO, Waiting> getWaitingList(PageRequestDTO requestDTO, Store store) {
+        Pageable pageable = requestDTO.getPageable(Sort.by("waitingNum").ascending());
         log.info("----------waiting1111111-----------"+pageable);
-        Page<Waiting> result = waitingRepository.findAll(pageable);
+        Page<Waiting> result = waitingRepository.getWaitingByStore(pageable, store);
         log.info("----------waiting2222222-----------"+result);
         Function<Waiting, WaitingDTO> fn = (entity -> entityToDTO(entity));
         log.info("----------waiting3333333-----------"+fn);
         return new PageResultDTO<>(result, fn);
     }
-/*
-    @Override
-    public PageResultDTO<WaitingDTO, Waiting> getWaitingList(PageRequestDTO requestDTO) {
-        Pageable pageable = requestDTO.getPageable(Sort.by("waitingNum").descending());
-        log.info("----------waiting1111111-----------"+pageable);
-        Page<Waiting> result = waitingRepository.getWaitingByStore(pageable);
-        log.info("----------waiting2222222-----------"+result);
-        Function<Waiting, WaitingDTO> fn = (entity -> entityToDTO(entity));
-        log.info("----------waiting3333333-----------"+fn);
-        return new PageResultDTO<>(result, fn);
-    }
-*/
-
 
 //
 //

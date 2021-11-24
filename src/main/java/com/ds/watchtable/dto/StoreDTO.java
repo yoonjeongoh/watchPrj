@@ -25,7 +25,6 @@ public class StoreDTO {
     private String memberEmail;
     private String memberMobile;
 
-
     private LocalDateTime regDate;
     private LocalDateTime modDate;
 
