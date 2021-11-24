@@ -24,22 +24,4 @@ public class ManagerController {
         storeService.storeRegister(storeDTO);
     }
 
-    //매장 정보 불러오기..
-/*    @GetMapping("/managemyinfo")
-    public void managerinfo(StoreDTO storeDTO,Long storeNum, Model model,
-                            @AuthenticationPrincipal Principal principal){
-        log.info("Register............");
-        storeService.storeRegister(storeDTO);
-
-        log.info("storeNum>>"+storeNum);
-        Optional<Store> result = Optional.ofNullable(storeService.getInfo(storeNum));
-        if (result != null) {
-            model.addAttribute("store", result.get());
-        }
-        if (result == null) {
-            return;
-        }
-        log.info("result>>"+result);
-    }*/
-
 }

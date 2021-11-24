@@ -2,7 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
-        <link th:href="@{/css2/join.css}" rel="stylesheet" />
+        <link th:href="@{/css2/join.css}" rel="stylesheet"/>
 
 
         <div class="wrapper">
@@ -10,28 +10,35 @@
                 <div class="mngfield">
                     <form class="form11" tH:action="@{/member/managemyinfo}" method="post" name="f">
                         <span class="span11">상호명</span> <br>
-                        <input class="input11" type="text" name="storeName" id="shop_name" th:value="${store.storeNum}" readonly>
+                        <input class="input11" type="text" name="storeName" id="shop_name" th:value="${store.storeNum}"
+                               readonly>
                         <br>
                         <span class="span11">사업자 등록번호</span> <br>
-                        <input class="input11" type="text" name="bsNum" id="manager_num" maxlength="11" th:value="${store.bsNum}" readonly>
+                        <input class="input11" type="text" name="bsNum" id="manager_num" maxlength="11"
+                               th:value="${store.bsNum}" readonly>
                         <br>
                         <span class="span11">사업장 주소</span><br>
-                        <input class="input11" type="text" name="storeAds" id="sample2_postcode" th:value="${store.storeAds}" readonly>
+                        <input class="input11" type="text" name="storeAds" id="sample2_postcode"
+                               th:value="${store.storeAds}" readonly>
                         <br>
                         <span class="span11">가게 연락처</span> <br>
-                        <input class="input11" title="가게연락처" type="text" name="storeTel" id="sel-store-tel" th:value="${store.storeTel}">
+                        <input class="input11" title="가게연락처" type="text" name="storeTel" id="sel-store-tel"
+                               th:value="${store.storeTel}">
                         <br>
                         <span class="span11">가게 영업시간</span> <br>
-                        <input class="input13" type="time" value="00:00" name="storeOpen" id="st-bh1" th:value="${store.storeOpen}"> ~
-                        <input class="input13" type="time" value="00:00" name="storeClose" id="st-bh2" th:value="${store.storeClose}">
+                        <input class="input13" type="time" value="00:00" name="storeOpen" id="st-bh1"
+                               th:value="${store.storeOpen}"> ~
+                        <input class="input13" type="time" value="00:00" name="storeClose" id="st-bh2"
+                               th:value="${store.storeClose}">
                         <br>
                         <span class="span11">가게 소개</span> <br>
                         <input class="input11" type="text" name="storeText" id="st-epl" th:value="${store.storeText}">
                         <br>
                         <br>
-                    <button type="button" class="join_button btn11 colored-btn11">수정하기</button>
-                    <button type="button" class="reset-btn btn11 uncolored-btn11"
-                            onclick="location.href='/member/manage';">취소</button>
+                        <button type="button" class="join_button btn11 colored-btn11">수정하기</button>
+                        <button type="button" class="reset-btn btn11 uncolored-btn11"
+                                onclick="location.href='/member/manage';">취소
+                        </button>
                     </form>
                 </div>
             </fieldset>
