@@ -1,7 +1,7 @@
 $(document).ready(function(e){
     var contextPath = $('#contextPathHolder').attr('data-contextPath') ? $('#contextPathHolder').attr('data-contextPath') : '';
     var reviewMemberNum = $('#js-memberNum').text();
-    var reviewMemberName = $('#js-memberName').text();
+    var reviewMemberNickname = $('#js-memberNickname').text();
     var storeNum = $('#js-storeNum').text();
     var review = $('textarea[name="reviewText"]');
     //var memberNum = [[${member.memberNum}]];
@@ -56,7 +56,7 @@ $(document).ready(function(e){
             $.each(arr, function(idx, review) {
                 str += ' <div class="card-body" data-reviewNum="'+review.reviewNum+'">';
                 str += ' <b class="reviewNum">'+review.reviewNum+'</b>';
-                str += ' <p class="reviewName">'+review.memberName+'</p>';
+                str += ' <p class="reviewNickname">'+review.memberNickname+'</p>';
                 str += ' <p class="reviewText">'+review.text+'</p>';
                 //str += ' <h5 class="reviewText" onclick="showModal2('+review.reviewNum+','+review.text+')">'+review.text+'</h5>';
                 str += ' <p class="reviewTime">'+formatTime(review.regDate)+'</p>';
@@ -79,7 +79,7 @@ $(document).ready(function(e){
 
         //$("input[name='text']").val($(this).find('.reviewText').html());
         $("input[name='reviewNum']").val($(this).find('.reviewNum').html());
-        $("input[name='reviewName']").val($(this).find('.reviewName').html());
+        $("input[name='reviewNickname']").val($(this).find('.reviewNickname').html());
         $("textarea[name='modal-text']").val($(this).find('.reviewText').html());
         $('.reviewModal').modal('show');
     });
@@ -110,13 +110,13 @@ $(document).ready(function(e){
     $(".rv-modify").on("click", function(){
         var reviewNum = $("input[name='reviewNum']").val();
         //var review = $("input[name='text']");
-        var reviewName = $("input[name='reviewName']").val();
+        var reviewNickname = $("input[name='reviewNickname']").val();
         var review = $("textarea[name='modal-text']");
 
         var data = {
             reviewNum: reviewNum,
             memberNum: reviewMemberNum,
-            memberName: reviewName,
+            memberName: reviewNickname,
             storeNum: storeNum,
             text: review.val()
             };
