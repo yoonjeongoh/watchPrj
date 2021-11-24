@@ -86,7 +86,7 @@
             <!--        6열 리뷰 리스트-->
            <div class="rv-list six-col1 ">
                <span id="js-memberNum" style="display:none;">[[${member.memberNum}]]</span>
-               <span id="js-memberName" style="display:none;">[[${member.memberName}]]</span>
+               <span id="js-memberNickname" style="display:none;">[[${member.memberNickname}]]</span>
                <span id="js-storeNum" style="display:none;">[[${dto.storeNum}]]</span>
                <div id="rv-list-table" class="rv-list-table"> 리뷰리스트
                 </div>
@@ -124,22 +124,22 @@
 
             //대기등록 모달
             //var storeName = [[${dto.storeName}]];
-            //var memberName = [[${member.memberName}]];
+            //var memberNickame = [[${member.memberNickname}]];
             var partyMember = $('select[name="partyMember"]');
 
             var memberMobile = $('.memberMobile');
-            var memberName = $('.memberName');
+            var memberNickname = $('.memberNickname');
 
             $(".waiting-register21").click(function(){
             $('.waitingModal').modal('show')
-                    $('.memberName').val();
+                    $('.memberNickname').val();
                     $('.memberMobile').val();
                     $('.partyMember').val();
                 });
 
             $(".waiting-close21").click(function(){
                 $('.waitingModal').modal('hide')
-                    $('.memberName').val();
+                    $('.memberNickname').val();
                     $('.memberMobile').val();
                     $('.partyMember').val();
             });
@@ -149,7 +149,7 @@
                 //alert("benny");
                 var data = {
                     memberNum: memberNum,
-                    memberName: memberName.val(),
+                    memberName: memberNickname.val(),
                     memberMobile: memberMobile.val(),
                     storeNum: storeNum,
                     //storeName: storeName,
@@ -196,7 +196,7 @@
                         </div>
                         <div class="form-group" style="margin-bottom:30px;">
                             <span class="span21">닉네임</span>
-                            <input type="text" class="form-control" name="reviewName">
+                            <input type="text" class="form-control" name="reviewNickname">
                         </div>
                         <div class="form-group rv-modal-div" style="margin-bottom:30px;">
                             <div class="div21"><span lass="span21">내리뷰</span></div>
@@ -224,8 +224,8 @@
                     <div class="modal-body">
                         <!--<p id="modalMsg"> 번 글이 <span class="modal-title"></span>되었습니다.</p>-->
                         <div class="form-group" style="margin-bottom:30px;">
-                            <span class="span21">이름</span>
-                            <input class="form-control" type="text-name" name="memberName" th:value="${member.memberName}">
+                            <span class="span21">닉네임</span>
+                            <input class="form-control" type="text-name" name="memberNickname" th:value="${member.memberNickname}">
                         </div>
                         <div class="form-group" style="margin-bottom:30px;">
                             <span class="span21">연락처</span>

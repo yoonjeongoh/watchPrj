@@ -7,49 +7,48 @@
 
         <div th:each="member: ${member}">
         <fieldset>
-<!--            <div class="h5 m-0">멤버넘버 : [[${member.memberNum}]]</div>-->
+            <div class="h5 m-0"></div>
 
             <div class="joinfield" >
-                <form class="form11" th:action="@{/member/myinfo3}" method="post" id="join_form" name="f">
-                    <label><span class="span11"><input type="radio" class="ch-box1" name="name">이름</span></label><br>
-                    <input class="input11" type="text" name="memberName" id="my_name" th:value="${member.memberName}"><br>
-                    <span class="invalid" id="nameSpace">공백은 사용할 수 없습니다.</span>
-                    <span class="invalid" id="noEnglish">한글로 입력해주세요.</span>
-                    <span class="invalid" id="name_min">2자 이상 입력하세요.</span>
-                    <span class="valid" id="name_ok">확인.</span><br>
+                <form class="form11" th:action="@{/member/myinfo}" method="post" id="join_form" name="f">
+                    <span class="span11">이름</span><br>
+                    <input class="input11" type="text" id="my_name" th:value="${member.memberName}" readonly><br>
+<!--                    <span class="invalid" id="nameSpace">공백은 사용할 수 없습니다.</span>-->
+<!--                    <span class="invalid" id="noEnglish">한글로 입력해주세요.</span>-->
+<!--                    <span class="invalid" id="name_min">2자 이상 입력하세요.</span>-->
+<!--                    <span class="valid" id="name_ok">확인.</span><br>-->
 
-
-                    <label><span class="span11"><input type="radio" class="ch-box1" name="name" value="nick">닉네임</span></label><br>
-                    <input class="input11" type="text" name="memberNickname" id="my_nick" th:value="${member.memberNickname}" ><br>
-                    <span class="invalid" id="nickSpace">공백은 사용할 수 없습니다.</span>
-                    <span class="invalid" id="noSpecial">특수문자 및 자음은 사용할 수 없습니다.</span>
-                    <span class="invalid" id="nick_min">2자 이상 입력하세요.</span>
-                    <span class="valid" id="nick_ok">사용 가능한 닉네임 입니다.</span><br>
+                    <span class="span11">닉네임</span><br>
+                    <input class="input11" type="text" name="membernick" id="my_nick" th:value="${member.memberNickname}" ><br>
+<!--                    <span class="invalid" id="nickSpace">공백은 사용할 수 없습니다.</span>-->
+<!--                    <span class="invalid" id="noSpecial">특수문자 및 자음은 사용할 수 없습니다.</span>-->
+<!--                    <span class="invalid" id="nick_min">2자 이상 입력하세요.</span>-->
+<!--                    <span class="valid" id="nick_ok">사용 가능한 닉네임 입니다.</span><br>-->
 
                     <span class="span11">비밀번호</span> <br>
                     <input class="input11" title="비밀번호" type="password" name="memberPw" id="my_pwd"
                            placeholder="최소 8자리에 숫자, 문자, 특수문자 각각 1개 이상 포함" maxlength="16"><br>
-                    <span class="invalid" id="pw_min">8자 이상 입력하세요.</span>
-                    <span class="valid" id="pw_ok">사용 가능한 비밀번호 입니다.</span>
-                    <span class="invalid" id="pw_error">비밀번호 형식이 올바르지 않습니다.</span><br>
+<!--                    <span class="invalid" id="pw_min">8자 이상 입력하세요.</span>-->
+<!--                    <span class="valid" id="pw_ok">사용 가능한 비밀번호 입니다.</span>-->
+<!--                    <span class="invalid" id="pw_error">비밀번호 형식이 올바르지 않습니다.</span><br>-->
 
                     <span class="span11">비밀번호 재입력</span> <br>
                     <input class="input11" title="비밀번호 확인" type="password" name="memberPw2" id="pwd_check" maxlength="16"><br>
-                    <span class="valid" id="pwck_ok">확인.</span>
-                    <span class="invalid" id="pwck_error">비밀번호가 다릅니다.</span><br>
+<!--                    <span class="valid" id="pwck_ok">확인.</span>-->
+<!--                    <span class="invalid" id="pwck_error">비밀번호가 다릅니다.</span><br>-->
 
                     <span class="span11">이메일</span> <br>
                     <input class="input11" title="이메일" type="text" name="memberEmail" id="my_add"
                            placeholder="예>id@domain.com" th:value="${member.memberEmail}"><br>
-                    <span class="invalid" id="mail_error">유효하지 않은 이메일 입니다.</span>
-                    <span class="valid" id="mail_ok">사용 가능한 이메일 입니다.</span><br>
+<!--                    <span class="invalid" id="mail_error">유효하지 않은 이메일 입니다.</span>-->
+<!--                    <span class="valid" id="mail_ok">사용 가능한 이메일 입니다.</span><br>-->
 
                     <span class="span11">연락처</span> <br>
                     <input class="input11" title="연락처" type="text" name="memberMobile" id="sel-my-tel" th:value="${member.memberMobile}" ><br>
-                    <span class="invalid" id="mobile_error">전화번호를 확인해주세요.</span>
-                    <span class="valid" id="mobile_ok">확인.</span><br>
-
-                    <button id="coBtn" type="button" class="join_button btn11 colored-btn11">수정하기</button>
+<!--                    <span class="invalid" id="mobile_error">전화번호를 확인해주세요.</span>-->
+<!--                    <span class="valid" id="mobile_ok">확인.</span><br>-->
+                    <br>
+                    <button id = "coBtn" type="button" class="join_button btn11 colored-btn11">수정하기</button>
                     <button type="reset" class="reset-btn btn11 uncolored-btn11"
                             th:onclick="|location.href='@{/member/myinfo}'|">돌아가기</button>
 

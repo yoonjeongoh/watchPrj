@@ -245,6 +245,10 @@ button {
     //border: 1px solid #c7c4bf;
 }
 
+.span11 {
+    font-weight: bold;
+}
+
 .end-pg {
    height: 150px;
 }
