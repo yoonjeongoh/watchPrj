@@ -36,9 +36,11 @@
       <span>[[${member.memberEmail}]]</span>
       <span>[[${member.memberNickname}]]</span>
     </div>
+
     <a th:href="@{join/socialJoin}">/watchtable/join/socialJoin</a><br>
 
-    <h3>실제 메인화면에 나와야 할 것들</h3>
+    <h3>실제 메인화면에 나와야 할 것들  </h3>
+
     <a href="http://localhost:8080/watchtable/">/watchtable/main(All)</a><br>
     <a th:href="@{watchtable/detail}">/watchtable/detailed(All)</a><br>
     <a sec:authorize="!isAuthenticated()" th:href="@{join/login}">/join/login(Guest)</a><br>
@@ -71,6 +73,18 @@
     <h3>Review</h3>
     <a sec:authorize="hasAnyRole('ADMIN','USER')"th:href="@{review/myreview}" class="btn btn-primary">/watchtable/myreview(내리뷰)</a><br>
 
+
+    <!--      아래 each구문 지도 혼잡도 좌석 수 뽑아오는 구문이니 지우시면 안됩니다 히든으로 가려놨습니다-->
+    <table>
+      <tbody>
+    <tr th:each="postable, i : ${postable}" >
+      <td th:attrappend="id=${i.index}" name="orderCnt" th:value="${postable.orderCount}"  hidden>[[${postable.orderCount}]]</td>
+    </tr>
+      </tbody>
+    </table>
+<!--    여기까지입니다-->
+
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c804c7f02459129ea465ac2bec99e513&libraries=services,clusterer,drawing"></script>
 
@@ -78,6 +92,13 @@
     <script src="/watchtable/js/indexList.js"></script>
 
     <script th:inline="javascript">
+
+
+	function noti(testValue, tmpValue){
+		console.log(testValue, tmpValue);
+	}
+
+
             function goStore(storeNum){
                 //alert('read');
                 /*[+
@@ -92,6 +113,7 @@
                   "?storeNum="+storeNum;
                   location.href=url;
             }
+
         </script>
 
   </th:block>

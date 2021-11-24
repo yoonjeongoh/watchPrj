@@ -81,7 +81,7 @@
                         <button class="btn_order" id="btn9_2">결제</button>
                     </div>
                     <input th:value="${order.posTableNum}">
-                    <input th:value="${order.orderCount}" id="orderCount" name="orderCount" readonly>
+                    <input th:value="${order.orderCount}" id="orderCount" name="orderCount" >
                     <div th:each="dto : ${dto}">
                         <input th:value="${dto.storeNum}" name="storeNum">
                     </div>

@@ -84,6 +84,11 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @Override
+    public List<PosTable> findAll() {
+       return posTableRepository.findAll();
+    }
+
+    @Override
     public Store getStoreMember(Member member) {
         Store store = storeRepository.findByMember(member);
         store.getMember();
