@@ -14,6 +14,8 @@ public interface StoreService {
     //DB저장
     Long storeRegister(StoreDTO storeDTO);
 
+    void manageModify(StoreDTO storeDTO);
+
     //admin/storelist 리스트 목록
     PageResultDTO<StoreDTO, Store> getStoreList(PageRequestDTO requestDTO);
 
@@ -39,7 +41,6 @@ public interface StoreService {
                         .memberPw(storeDTO.getMemberPw())
                         .memberMobile(storeDTO.getMemberMobile())
                         .roleSet(Collections.singleton(MemberRole.USER))
-                        .roleSet(Collections.singleton(MemberRole.MANAGER))
                         .build())
                 .storeNum(storeDTO.getStoreNum())
                 .storeName(storeDTO.getStoreName())
@@ -98,8 +99,8 @@ public interface StoreService {
         entityMap.put("posTable", posTable);
         return entityMap;
     }
-
-    default StoreDTO entityToDTO(Store store) {
+    default
+    StoreDTO entityToDTO (Store store){
         StoreDTO storeDTO = StoreDTO.builder()
                 .storeNum(store.getStoreNum())
                 .storeName(store.getStoreName())

@@ -101,29 +101,24 @@
                                         <th scope="row">[[${LYJ.memberName}]]</th>
                                         <td>[[${LYJ.partyMember}]]</td>
                                         <td>[[${LYJ.memberMobile}]]</td>
-                                        <td>[[${#temporals.format(LYJ.regDate, 'yyyy/MM/dd hh:mm')}]]</td>
+                                        <td>[[${#temporals.format(LYJ.regDate, 'yyyy/MM/dd')}]]</td>
                                     </tr>
                                     </tbody>
 
                                 </table>
                             </div>
-                            <!--   --------------------------------- card-body end -------------------------->
-                            <ul class="pagination h-100 justify-content-center align-items-center">
-                                <li class="page-item" th:if="${waitingDTO.prev}">
-                                    <a class="page-link" th:href="@{/mamager/managemyinfo(page=${waitingDTO.start-1})}"
-                                       tabindex="-1">이전으로</a>
+                        <!--                            card-body end-->
+                                <ul class="pagination h-100 justify-content-center align-items-center">
+                                    <li class="page-item" th:if="${waitingDTO.prev}">
+                                    </li>
 
-                                </li>
+                                    <li th:class=" 'page-item ' + ${waitingDTO.page == page?'active':''}"
+                                        th:each="page: ${waitingDTO.pageList}">
+                                    </li>
 
-                                <li th:class=" 'page-item ' + ${waitingDTO.page == page?'active':''}"
-                                    th:each="page: ${waitingDTO.pageList}">
-                                    <a class="page-link" th:href="@{/mamager/managemyinfo(page=${page})}">[[${page}]]</a>
-                                </li>
-
-                                <li class="page-item" th:if="${waitingDTO.next}">
-                                    <a class="page-link" th:href="@{/mamager/managemyinfo(page=${waitingDTO.end+1})}">다음으로</a>
-                                </li>
-                            </ul>
+                                    <li class="page-item" th:if="${waitingDTO.next}">
+                                    </li>
+                                </ul>
 
                         </div>
                     </div>
