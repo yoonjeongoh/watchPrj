@@ -4,6 +4,7 @@ import com.ds.watchtable.dto.PageRequestDTO;
 import com.ds.watchtable.dto.PageResultDTO;
 import com.ds.watchtable.dto.StoreDTO;
 import com.ds.watchtable.dto.WaitingDTO;
+import com.ds.watchtable.entity.Member;
 import com.ds.watchtable.entity.Store;
 import com.ds.watchtable.entity.Waiting;
 import com.ds.watchtable.repository.WaitingRepository;
@@ -14,7 +15,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -32,7 +36,7 @@ public class WaitingServiceImpl implements WaitingService{
         return waiting.getWaitingNum();
     }
 
-    //웨이팅 리스트
+    //웨이팅 리스트 (사업자)
     @Override
     public PageResultDTO<WaitingDTO, Waiting> getWaitingList(PageRequestDTO requestDTO, Store store) {
         Pageable pageable = requestDTO.getPageable(Sort.by("waitingNum").ascending());
@@ -44,16 +48,7 @@ public class WaitingServiceImpl implements WaitingService{
         return new PageResultDTO<>(result, fn);
     }
 
-//
-//
-//    //웨이팅 리스트 2
-//    @Override
-//    public WaitingDTO getWaiting(Long waitingNum) {
-//        Waiting waiting = waitingRepository.getById(waitingNum);
-//        log.info("----------waiting4444444-----------"+waiting);
-//        log.info("----------waiting5555555-----------"+waitingNum);
-//        return entityToDTO(waiting);
-//    }
+    //웨이팅리스트 (유저)
 
 
 }
