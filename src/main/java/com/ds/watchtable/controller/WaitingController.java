@@ -41,13 +41,8 @@ public class WaitingController {
         return new ResponseEntity<>(waitingNum, HttpStatus.OK);
     }
 
-/*
-    @GetMapping("/review/storereview")
-    public void list() {
-    }
-*/
-
     //페이징, 리스트
+/*
     @GetMapping("/manager/managemyinfo")
     public void waitingList(Model model, Long waitingNum,@ModelAttribute("pageRequestDTO")
                             PageRequestDTO pageRequestDTO) {
@@ -56,14 +51,17 @@ public class WaitingController {
         PageResultDTO waitingDTO = waitingService.getWaitingList(pageRequestDTO);
         log.info("waitinglist>>11111"+waitingDTO);
         model.addAttribute("waitingDTO", waitingDTO);
+
+*/
 /*
         //정보부르기
         WaitingDTO waiting = waitingService.getWaiting(waitingNum);
         log.info("waitinglist>>22222"+waiting);
         model.addAttribute("waiting", waiting);
-*/
-    }
+*//*
 
+    }
+*/
 
 /*
     @GetMapping("/review/storereview")
