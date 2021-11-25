@@ -16,6 +16,7 @@ import java.util.Optional;
 @Log4j2
 @RequiredArgsConstructor
 public class MemberServiceImpl implements MemberService {
+    @Autowired
     final private MemberRepository memberRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -43,6 +44,12 @@ public class MemberServiceImpl implements MemberService {
         member.getRoleSet();
         memberRepository.save(member);
         log.info("member member" + member);
+    }
+    //중복체크
+    @Override
+    public int idCheck(String memberId) {
+        int cnt = memberRepository.idCheck(memberId);
+        return cnt;
     }
 }
 

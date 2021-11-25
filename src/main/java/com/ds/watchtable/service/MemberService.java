@@ -9,6 +9,7 @@ import com.ds.watchtable.security.dto.ClubAuthMemberDTO;
 public interface MemberService {
 //    public User add(User user) throws Exception;
 
+    public int idCheck(String memberId);
     //DB 저장
     String register(MemberDTO dto);
 

@@ -4,9 +4,6 @@ import com.ds.watchtable.dto.PageRequestDTO;
 import com.ds.watchtable.dto.PageResultDTO;
 import com.ds.watchtable.dto.PosTableDTO;
 import com.ds.watchtable.dto.StoreDTO;
-import com.ds.watchtable.dto.*;
-import com.ds.watchtable.entity.Member;
-import com.ds.watchtable.entity.MemberRole;
 import com.ds.watchtable.entity.PosTable;
 import com.ds.watchtable.entity.Store;
 import com.ds.watchtable.security.dto.ClubAuthMemberDTO;
@@ -21,7 +18,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -89,7 +85,7 @@ public class StoreController {
 
     @RequestMapping("/pos/postable2")
     public String update(Model model, @AuthenticationPrincipal ClubAuthMemberDTO principal,
-                       PosTableDTO posTableDTO) {
+                         PosTableDTO posTableDTO) {
         if (principal != null) {
             model.addAttribute("member", principal.getMember());
         }
