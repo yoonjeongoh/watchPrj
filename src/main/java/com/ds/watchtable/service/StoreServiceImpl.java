@@ -114,7 +114,12 @@ public class StoreServiceImpl implements StoreService {
         log.info("yoonjeong posTable>>"+posTable);
         return posTable;
     }
-
+    @Override
+    public Store getPosTable1(Long storeNum) {
+        Store store = storeRepository.getById(storeNum);
+        log.info("yoonjeong posTable>>"+store);
+        return store;
+    }
     @Override
     public void modify(PosTableDTO posTableDTO, Store store) {
         log.info("yoonjeong posTableDTO"+posTableDTO);
@@ -136,30 +141,5 @@ public class StoreServiceImpl implements StoreService {
                 .build();
         log.info("yoonjeong posTable"+posTable);
         posTableRepository.save(posTable);
-    }
-
-    @Override
-    public void manageModify(StoreDTO storeDTO) {
-        Store store = Store.builder()
-                .member(Member.builder()
-                        .memberNum(storeDTO.getMemberNum())
-                        .memberName(storeDTO.getMemberName())
-                        .memberNickname(storeDTO.getMemberNickname())
-                        .memberId(storeDTO.getMemberId())
-                        .memberEmail(storeDTO.getMemberEmail())
-                        .memberPw(storeDTO.getMemberPw())
-                        .memberMobile(storeDTO.getMemberMobile())
-                        .roleSet(Collections.singleton(MemberRole.MANAGER))
-                        .build())
-                .storeNum(storeDTO.getStoreNum())
-                .storeName(storeDTO.getStoreName())
-                .storeAds(storeDTO.getStoreAds())
-                .storeTel(storeDTO.getStoreTel())
-                .storeText(storeDTO.getStoreText())
-                .storeOpen(storeDTO.getStoreOpen())
-                .storeClose(storeDTO.getStoreClose())
-                .bsNum(storeDTO.getBsNum())
-                .build();
-        storeRepository.save(store);
     }
 }
