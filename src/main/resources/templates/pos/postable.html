@@ -14,6 +14,18 @@
             background-color: darksalmon;
         }
 
+        .table {
+            display: none;
+        }
+
+
+
+
+
+
+
+
+
         </style>
         <!--        th:each="num: ${#numbers.sequence(1,5)}"-->
 
@@ -29,315 +41,327 @@
                         가게 번호 : <span th:value="${dto.storeNum}" name="storeNum">[[${dto.storeNum}]]</span>
                     </div>
                     <div class="flex-container">
-
                         <div>
-                            <input class="flextb4" name="table1" id="table1" th:value="${order.table1}"><br>
+                            <div class="flextb4" id="tb1">1
+                                <button class="btn_order" id="btn1_1">주문</button>
+                                <button class="btn_order" id="btn1_2">결제</button>
+                                <input type="text" name="table1" class="table" id="table1" th:value="${order.table1}"><br>
+                            </div>
+
+                            <div class="flextb4" id="tb2">2
+                                <button class="btn_order" id="btn2_1">주문</button>
+                                <button class="btn_order" id="btn2_2">결제</button>
+                                <input type="text" name="table2" class="table" id="table2" th:value="${order.table2}"><br>
+                            </div>
+
+                            <div class="flextb4" id="tb3">3
+                                <button class="btn_order" id="btn3_1">주문</button>
+                                <button class="btn_order" id="btn3_2">결제</button>
+                                <input type="text" name="table3" class="table"id="table3" th:value="${order.table3}"><br>
+                            </div>
                         </div>
-
                         <div>
-                            <input class="flextb4" name="table2" id="table2" th:value="${order.table2}"><br>
+                            <div class="flextb4" id="tb4">4
+                                <button class="btn_order" id="btn4_1">주문</button>
+                                <button class="btn_order" id="btn4_2">결제</button>
+                                <input type="text" name="table4" class="table" id="table4" th:value="${order.table4}"><br>
+                            </div>
+
+                            <div class="flextb4" id="tb5">5
+                                <button class="btn_order" id="btn5_1">주문</button>
+                                <button class="btn_order" id="btn5_2">결제</button>
+                                <input type="text" name="table5" class="table" id="table5" th:value="${order.table5}"><br>
+                            </div>
+
+                            <div class="flextb4" id="tb6">6
+                                <button class="btn_order" id="btn6_1">주문</button>
+                                <button class="btn_order" id="btn6_2">결제</button>
+                                <input type="text" name="table6" class="table" id="table6" th:value="${order.table6}"><br>
+                            </div>
                         </div>
-
                         <div>
-                            <input class="flextb4" name="table3" id="table3" th:value="${order.table3}"><br>
-                        </div>
+                            <div class="flextb4" id="tb7">7
+                                <button class="btn_order" id="btn7_1">주문</button>
+                                <button class="btn_order" id="btn7_2">결제</button>
+                                <input type="text" name="table7" class="table" id="table7" th:value="${order.table7}"><br>
+                            </div>
 
-                        <div>
-                            <input class="flextb4" name="table4" id="table4" th:value="${order.table4}"><br>
-                        </div>
+                            <div class="flextb4" id="tb8">8
+                                <button class="btn_order" id="btn8_1">주문</button>
+                                <button class="btn_order" id="btn8_2">결제</button>
+                                <input type="text" name="table8" class="table" id="table8" th:value="${order.table8}"><br>
+                            </div>
 
-                        <div>
-                            <input class="flextb4" name="table5" id="table5" th:value="${order.table5}"><br>
-                        </div>
-
-                        <div>
-                            <input class="flextb4" name="table6" id="table6" th:value="${order.table6}"><br>
-                        </div>
-
-                        <div>
-                            <input class="flextb4" name="table7" id="table7" th:value="${order.table7}"><br>
-                        </div>
-
-                        <div>
-                            <input class="flextb4" name="table8" id="table8" th:value="${order.table8}"><br>
-                        </div>
-
-                        <div>
-                            <input class="flextb4" name="table9" id="table9" th:value="${order.table9}"><br>
+                            <div class="flextb4" id="tb9">9
+                                <button class="btn_order" id="btn9_1">주문</button>
+                                <button class="btn_order" id="btn9_2">결제</button>
+                                <input type="text" name="table9" class="table" id="table9" th:value="${order.table9}"><br>
+                            </div>
                         </div>
                     </div>
-                    <button class="btn_order" id="btn_order1">반영</button>
+                    <button class="btn_order" id="btn_submit">반영</button>
                 </div>
             </div>
         </form>
-        <div>
-            1번 테이블
-            <button class="btn_order" id="btn1_1">주문</button>
-            <button class="btn_order" id="btn1_2">결제</button>
-        </div>
-        <div>
-            2번 테이블
-            <button class="btn_order" id="btn2_1">주문</button>
-            <button class="btn_order" id="btn2_2">결제</button>
-        </div>
-        <div>
-            3번 테이블
-            <button class="btn_order" id="btn3_1">주문</button>
-            <button class="btn_order" id="btn3_2">결제</button>
-        </div>
-        <div>
-            4번 테이블
-            <button class="btn_order" id="btn4_1">주문</button>
-            <button class="btn_order" id="btn4_2">결제</button>
-        </div>
-        <div>
-            5번 테이블
-            <button class="btn_order" id="btn5_1">주문</button>
-            <button class="btn_order" id="btn5_2">결제</button>
-        </div>
-        <div>
-            6번 테이블
-            <button class="btn_order" id="btn6_1">주문</button>
-            <button class="btn_order" id="btn6_2">결제</button>
-        </div>
-        <div>
-            7번 테이블
-            <button class="btn_order" id="btn7_1">주문</button>
-            <button class="btn_order" id="btn7_2">결제</button>
-        </div>
-        <div>
-            8번 테이블
-            <button class="btn_order" id="btn8_1">주문</button>
-            <button class="btn_order" id="btn8_2">결제</button>
-        </div>
-        <div>
-            9번 테이블
-            <button class="btn_order" id="btn9_1">주문</button>
-            <button class="btn_order" id="btn9_2">결제</button>
-        </div>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-                crossorigin="anonymous"></script>
+<!--        <div>-->
+<!--            1번 테이블-->
+<!--            <button class="btn_order" id="btn1_1">주문</button>-->
+<!--            <button class="btn_order" id="btn1_2">결제</button>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            2번 테이블-->
+<!--            <button class="btn_order" id="btn2_1">주문</button>-->
+<!--            <button class="btn_order" id="btn2_2">결제</button>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            3번 테이블-->
+<!--            <button class="btn_order" id="btn3_1">주문</button>-->
+<!--            <button class="btn_order" id="btn3_2">결제</button>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            4번 테이블-->
+<!--            <button class="btn_order" id="btn4_1">주문</button>-->
+<!--            <button class="btn_order" id="btn4_2">결제</button>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            5번 테이블-->
+<!--            <button class="btn_order" id="btn5_1">주문</button>-->
+<!--            <button class="btn_order" id="btn5_2">결제</button>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            6번 테이블-->
+<!--            <button class="btn_order" id="btn6_1">주문</button>-->
+<!--            <button class="btn_order" id="btn6_2">결제</button>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            7번 테이블-->
+<!--            <button class="btn_order" id="btn7_1">주문</button>-->
+<!--            <button class="btn_order" id="btn7_2">결제</button>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            8번 테이블-->
+<!--            <button class="btn_order" id="btn8_1">주문</button>-->
+<!--            <button class="btn_order" id="btn8_2">결제</button>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            9번 테이블-->
+<!--            <button class="btn_order" id="btn9_1">주문</button>-->
+<!--            <button class="btn_order" id="btn9_2">결제</button>-->
+<!--        </div>-->
+<!--        <script src="https://code.jquery.com/jquery-3.6.0.min.js"-->
+<!--                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="-->
+<!--                crossorigin="anonymous"></script>-->
         <script>
-    $(document).ready(function() {
-       var actionForm = $('form');
-       $('#btn_order1').click(function() {
-           actionForm.submit();
-       })
+                $(document).ready(function() {
+                   var actionForm = $('form');
+                   $('#btn_submit').click(function() {
+                       actionForm.submit();
+                   })
 
-       $('#orderCount').val( Number($('#table1').val()) + Number($('#table2').val()) + Number($('#table3').val()) + Number($('#table4').val()) +
-                            Number($('#table5').val()) + Number($('#table6').val()) + Number($('#table7').val()) + Number($('#table8').val()) + Number($('#table9').val()) );
-
-
-        if(Number($('#table1').val()) == 1){
-            $("#table1").css("background-color","green");
-        } else if(Number($('#table1').val()) == 0){
-            $("#table1").css("background-color","darksalmon");
-        }
-        if(Number($('#table2').val()) == 1){
-            $("#table2").css("background-color","green");
-        } else if(Number($('#table2').val()) == 0){
-            $("#table2").css("background-color","darksalmon");
-        }
-        if(Number($('#table3').val()) == 1){
-            $("#table3").css("background-color","green");
-        } else if(Number($('#table3').val()) == 0){
-            $("#table3").css("background-color","darksalmon");
-        }
-        if(Number($('#table4').val()) == 1){
-            $("#table4").css("background-color","green");
-        } else if(Number($('#table4').val()) == 0){
-            $("#table4").css("background-color","darksalmon");
-        }
-        if(Number($('#table5').val()) == 1){
-            $("#table5").css("background-color","green");
-        } else if(Number($('#table5').val()) == 0){
-            $("#table5").css("background-color","darksalmon");
-        }
-        if(Number($('#table6').val()) == 1){
-            $("#table6").css("background-color","green");
-        } else if(Number($('#table6').val()) == 0){
-            $("#table6").css("background-color","darksalmon");
-        }
-        if(Number($('#table7').val()) == 1){
-            $("#table7").css("background-color","green");
-        } else if(Number($('#table7').val()) == 0){
-            $("#table7").css("background-color","darksalmon");
-        }
-        if(Number($('#table8').val()) == 1){
-            $("#table8").css("background-color","green");
-        } else if(Number($('#table8').val()) == 0){
-            $("#table8").css("background-color","darksalmon");
-        }
-        if(Number($('#table9').val()) == 1){
-            $("#table9").css("background-color","green");
-        } else if(Number($('#table9').val()) == 0){
-            $("#table9").css("background-color","darksalmon");
-        }
-
-       $('#btn1_1').click(function(){
-         if( $('#table1').val() == 0 ) {
-            $('#table1').val(Number( $('#table1').val() )+1);
-            $('#orderCount').val( Number( $('#orderCount').val() ) +1 );
-            $("#table1").css("background-color","green");
-         }
-       })
-       $('#btn1_2').click(function(){
-         if( $('#table1').val() == 1 && $('#orderCount').val() > 0) {
-            $('#table1').val(Number( $('#table1').val() )-1);
-            $('#orderCount').val( Number( $('#orderCount').val() ) -1 );
-            $("#table1").css("background-color","darksalmon");
-         } else if($('#table1').val() == 1 && $('#orderCount').val() == 0) {
-                $('#table1').val(Number( $('#table1').val() )-1);
-                $("#table1").css("background-color","darksalmon");
-         }
-       })
-       $('#btn2_1').click(function(){
-         if( $('#table2').val() == 0 ) {
-            $('#table2').val(Number( $('#table2').val() )+1);
-            $('#orderCount').val( Number( $('#orderCount').val() ) +1 );
-            $("#table2").css("background-color","green");
-         }
-        })
-       $('#btn2_2').click(function(){
-         if( $('#table2').val() == 1 && $('#orderCount').val() > 0) {
-            $('#table2').val( Number( $('#table2').val() ) -1 );
-            $('#orderCount').val( Number( $('#orderCount').val() ) -1 );
-            $("#table2").css("background-color","darksalmon");
-         } else if( $('#table2').val() == 1 && $('#orderCount').val() == 0 ) {
-                $('#table2').val(Number( $('#table2').val() )-1);
-                $("#table2").css("background-color","darksalmon");
-         }
-       })
-       $('#btn3_1').click(function(){
-         if( $('#table3').val() == 0 ) {
-            $('#table3').val(Number( $('#table3').val() )+1);
-            $('#orderCount').val( Number( $('#orderCount').val() ) +1 );
-            $("#table3").css("background-color","green");
-         }
-        })
-       $('#btn3_2').click(function(){
-         if( $('#table3').val() == 1 && $('#orderCount').val() > 0) {
-            $('#table3').val( Number( $('#table3').val() ) -1 );
-            $('#orderCount').val( Number( $('#orderCount').val() ) -1 );
-            $("#table3").css("background-color","darksalmon");
-         } else if( $('#table3').val() == 1 && $('#orderCount').val() == 0 ) {
-                $('#table3').val(Number( $('#table2').val() )-1);
-                $("#table3").css("background-color","darksalmon");
-         }
-       })
-       $('#btn4_1').click(function(){
-         if( $('#table4').val() == 0 ) {
-            $('#table4').val(Number( $('#table4').val() )+1);
-            $('#orderCount').val( Number( $('#orderCount').val() ) +1 );
-            $("#table4").css("background-color","green");
-         }
-        })
-       $('#btn4_2').click(function(){
-         if( $('#table4').val() == 1 && $('#orderCount').val() > 0) {
-            $('#table4').val( Number( $('#table4').val() ) -1 );
-            $('#orderCount').val( Number( $('#orderCount').val() ) -1 );
-            $("#table4").css("background-color","darksalmon");
-         } else if( $('#table4').val() == 1 && $('#orderCount').val() == 0 ) {
-                $('#table4').val(Number( $('#table4').val() )-1);
-                $("#table4").css("background-color","darksalmon");
-         }
-       })
-       $('#btn5_1').click(function(){
-         if( $('#table5').val() == 0 ) {
-            $('#table5').val(Number( $('#table5').val() )+1);
-            $('#orderCount').val( Number( $('#orderCount').val() ) +1 );
-            $("#table5").css("background-color","green");
-         }
-        })
-       $('#btn5_2').click(function(){
-         if( $('#table5').val() == 1 && $('#orderCount').val() > 0) {
-            $('#table5').val( Number( $('#table5').val() ) -1 );
-            $('#orderCount').val( Number( $('#orderCount').val() ) -1 );
-            $("#table5").css("background-color","darksalmon");
-         } else if( $('#table5').val() == 1 && $('#orderCount').val() == 0 ) {
-                $('#table5').val(Number( $('#table5').val() )-1);
-                $("#table5").css("background-color","darksalmon");
-         }
-       })
-       $('#btn6_1').click(function(){
-         if( $('#table6').val() == 0 ) {
-            $('#table6').val(Number( $('#table6').val() )+1);
-            $('#orderCount').val( Number( $('#orderCount').val() ) +1 );
-            $("#table6").css("background-color","green");
-         }
-        })
-       $('#btn6_2').click(function(){
-         if( $('#table6').val() == 1 && $('#orderCount').val() > 0) {
-            $('#table6').val( Number( $('#table6').val() ) -1 );
-            $('#orderCount').val( Number( $('#orderCount').val() ) -1 );
-            $("#table6").css("background-color","darksalmon");
-         } else if( $('#table6').val() == 1 && $('#orderCount').val() == 0 ) {
-                $('#table6').val(Number( $('#table6').val() )-1);
-                $("#table6").css("background-color","darksalmon");
-         }
-       })
-       $('#btn7_1').click(function(){
-         if( $('#table7').val() == 0 ) {
-            $('#table7').val(Number( $('#table7').val() )+1);
-            $('#orderCount').val( Number( $('#orderCount').val() ) +1 );
-            $("#table7").css("background-color","green");
-         }
-        })
-       $('#btn7_2').click(function(){
-         if( $('#table7').val() == 1 && $('#orderCount').val() > 0) {
-            $('#table7').val( Number( $('#table7').val() ) -1 );
-            $('#orderCount').val( Number( $('#orderCount').val() ) -1 );
-            $("#table7").css("background-color","darksalmon");
-         } else if( $('#table7').val() == 1 && $('#orderCount').val() == 0 ) {
-                $('#table7').val(Number( $('#table7').val() )-1);
-                $("#table7").css("background-color","darksalmon");
-         }
-       })
-       $('#btn8_1').click(function(){
-         if( $('#table8').val() == 0 ) {
-            $('#table8').val(Number( $('#table8').val() )+1);
-            $('#orderCount').val( Number( $('#orderCount').val() ) +1 );
-            $("#table8").css("background-color","green");
-         }
-        })
-       $('#btn8_2').click(function(){
-         if( $('#table8').val() == 1 && $('#orderCount').val() > 0) {
-            $('#table8').val( Number( $('#table8').val() ) -1 );
-            $('#orderCount').val( Number( $('#orderCount').val() ) -1 );
-            $("#table2").css("background-color","darksalmon");
-         } else if( $('#table8').val() == 1 && $('#orderCount').val() == 0 ) {
-                $('#table8').val(Number( $('#table2').val() )-1);
-                $("#table8").css("background-color","darksalmon");
-         }
-       })
-       $('#btn9_1').click(function(){
-         if( $('#table9').val() == 0 ) {
-            $('#table9').val(Number( $('#table9').val() )+1);
-            $('#orderCount').val( Number( $('#orderCount').val() ) +1 );
-            $("#table9").css("background-color","green");
-         }
-        })
-       $('#btn9_2').click(function(){
-         if( $('#table9').val() == 1 && $('#orderCount').val() > 0) {
-            $('#table9').val( Number( $('#table9').val() ) -1 );
-            $('#orderCount').val( Number( $('#orderCount').val() ) -1 );
-            $("#table9").css("background-color","darksalmon");
-         } else if( $('#table9').val() == 1 && $('#orderCount').val() == 0 ) {
-                $('#table9').val(Number( $('#table9').val() )-1);
-                $("#table9").css("background-color","darksalmon");
-         }
-       })
-    })
+                $('#orderCount').val( Number($('#table1').val()) + Number($('#table2').val()) + Number($('#table3').val()) + Number($('#table4').val()) +
+                                    Number($('#table5').val()) + Number($('#table6').val()) + Number($('#table7').val()) + Number($('#table8').val()) + Number($('#table9').val()) );
 
 
+                if(Number($('#table1').val()) == 1){
+                    $("#tb1").css("background-color","green");
+                } else if(Number($('#table1').val()) == 0){
+                    $("#tb1").css("background-color","darksalmon");
+                }
+                if(Number($('#table2').val()) == 1){
+                    $("#tb2").css("background-color","green");
+                } else if(Number($('#table2').val()) == 0){
+                    $("#tb2").css("background-color","darksalmon");
+                }
+                if(Number($('#table3').val()) == 1){
+                    $("#tb3").css("background-color","green");
+                } else if(Number($('#table3').val()) == 0){
+                    $("#tb3").css("background-color","darksalmon");
+                }
+                if(Number($('#table4').val()) == 1){
+                    $("#tb4").css("background-color","green");
+                } else if(Number($('#table4').val()) == 0){
+                    $("#tb4").css("background-color","darksalmon");
+                }
+                if(Number($('#table5').val()) == 1){
+                    $("#tb5").css("background-color","green");
+                } else if(Number($('#table5').val()) == 0){
+                    $("#tb5").css("background-color","darksalmon");
+                }
+                if(Number($('#table6').val()) == 1){
+                    $("#tb6").css("background-color","green");
+                } else if(Number($('#table6').val()) == 0){
+                    $("#tb6").css("background-color","darksalmon");
+                }
+                if(Number($('#table7').val()) == 1){
+                    $("#tb7").css("background-color","green");
+                } else if(Number($('#table7').val()) == 0){
+                    $("#tb7").css("background-color","darksalmon");
+                }
+                if(Number($('#table8').val()) == 1){
+                    $("#tb8").css("background-color","green");
+                } else if(Number($('#table8').val()) == 0){
+                    $("#tb8").css("background-color","darksalmon");
+                }
+                if(Number($('#table9').val()) == 1){
+                    $("#tb9").css("background-color","green");
+                } else if(Number($('#table9').val()) == 0){
+                    $("#tb9").css("background-color","darksalmon");
+                }
 
-
-
-
-
-
-
+                $('#btn1_1').click(function(){
+                  if( $('#table1').val() == 0 ) {
+                    $('#table1').val(Number( $('#table1').val() )+1);
+                    $('#orderCount').val( Number( $('#orderCount').val() ) +1 );
+                    $("#tb1").css("background-color","green");
+                  }
+                })
+                $('#btn1_2').click(function(){
+                    if( $('#table1').val() == 1 && $('#orderCount').val() > 0) {
+                        $('#table1').val(Number( $('#table1').val() )-1);
+                        $('#orderCount').val( Number( $('#orderCount').val() ) -1 );
+                        $("#tb1").css("background-color","darksalmon");
+                    } else if($('#table1').val() == 1 && $('#orderCount').val() == 0) {
+                        $('#table1').val(Number( $('#table1').val() )-1);
+                        $("#tb1").css("background-color","darksalmon");
+                    }
+                })
+               $('#btn2_1').click(function(){
+                 if( $('#table2').val() == 0 ) {
+                    $('#table2').val(Number( $('#table2').val() )+1);
+                    $('#orderCount').val( Number( $('#orderCount').val() ) +1 );
+                    $("#tb2").css("background-color","green");
+                 }
+                })
+               $('#btn2_2').click(function(){
+                 if( $('#table2').val() == 1 && $('#orderCount').val() > 0) {
+                    $('#table2').val( Number( $('#table2').val() ) -1 );
+                    $('#orderCount').val( Number( $('#orderCount').val() ) -1 );
+                    $("#tb2").css("background-color","darksalmon");
+                 } else if( $('#table2').val() == 1 && $('#orderCount').val() == 0 ) {
+                        $('#table2').val(Number( $('#table2').val() )-1);
+                        $("#tb2").css("background-color","darksalmon");
+                 }
+               })
+               $('#btn3_1').click(function(){
+                 if( $('#table3').val() == 0 ) {
+                    $('#table3').val(Number( $('#table3').val() )+1);
+                    $('#orderCount').val( Number( $('#orderCount').val() ) +1 );
+                    $("#tb3").css("background-color","green");
+                 }
+                })
+               $('#btn3_2').click(function(){
+                 if( $('#table3').val() == 1 && $('#orderCount').val() > 0) {
+                    $('#table3').val( Number( $('#table3').val() ) -1 );
+                    $('#orderCount').val( Number( $('#orderCount').val() ) -1 );
+                    $("#tb3").css("background-color","darksalmon");
+                 } else if( $('#table3').val() == 1 && $('#orderCount').val() == 0 ) {
+                        $('#table3').val(Number( $('#table2').val() )-1);
+                        $("#tb3").css("background-color","darksalmon");
+                 }
+               })
+               $('#btn4_1').click(function(){
+                 if( $('#table4').val() == 0 ) {
+                    $('#table4').val(Number( $('#table4').val() )+1);
+                    $('#orderCount').val( Number( $('#orderCount').val() ) +1 );
+                    $("#tb4").css("background-color","green");
+                 }
+                })
+               $('#btn4_2').click(function(){
+                 if( $('#table4').val() == 1 && $('#orderCount').val() > 0) {
+                    $('#table4').val( Number( $('#table4').val() ) -1 );
+                    $('#orderCount').val( Number( $('#orderCount').val() ) -1 );
+                    $("#tb4").css("background-color","darksalmon");
+                 } else if( $('#table4').val() == 1 && $('#orderCount').val() == 0 ) {
+                        $('#table4').val(Number( $('#table4').val() )-1);
+                        $("#tb4").css("background-color","darksalmon");
+                 }
+               })
+               $('#btn5_1').click(function(){
+                 if( $('#table5').val() == 0 ) {
+                    $('#table5').val(Number( $('#table5').val() )+1);
+                    $('#orderCount').val( Number( $('#orderCount').val() ) +1 );
+                    $("#tb5").css("background-color","green");
+                 }
+                })
+               $('#btn5_2').click(function(){
+                 if( $('#table5').val() == 1 && $('#orderCount').val() > 0) {
+                    $('#table5').val( Number( $('#table5').val() ) -1 );
+                    $('#orderCount').val( Number( $('#orderCount').val() ) -1 );
+                    $("#tb5").css("background-color","darksalmon");
+                 } else if( $('#table5').val() == 1 && $('#orderCount').val() == 0 ) {
+                        $('#table5').val(Number( $('#table5').val() )-1);
+                        $("#tb5").css("background-color","darksalmon");
+                 }
+               })
+               $('#btn6_1').click(function(){
+                 if( $('#table6').val() == 0 ) {
+                    $('#table6').val(Number( $('#table6').val() )+1);
+                    $('#orderCount').val( Number( $('#orderCount').val() ) +1 );
+                    $("#tb6").css("background-color","green");
+                 }
+                })
+               $('#btn6_2').click(function(){
+                 if( $('#table6').val() == 1 && $('#orderCount').val() > 0) {
+                    $('#table6').val( Number( $('#table6').val() ) -1 );
+                    $('#orderCount').val( Number( $('#orderCount').val() ) -1 );
+                    $("#tb6").css("background-color","darksalmon");
+                 } else if( $('#table6').val() == 1 && $('#orderCount').val() == 0 ) {
+                        $('#table6').val(Number( $('#table6').val() )-1);
+                        $("#tb6").css("background-color","darksalmon");
+                 }
+               })
+               $('#btn7_1').click(function(){
+                 if( $('#table7').val() == 0 ) {
+                    $('#table7').val(Number( $('#table7').val() )+1);
+                    $('#orderCount').val( Number( $('#orderCount').val() ) +1 );
+                    $("#tb7").css("background-color","green");
+                 }
+                })
+               $('#btn7_2').click(function(){
+                 if( $('#table7').val() == 1 && $('#orderCount').val() > 0) {
+                    $('#table7').val( Number( $('#table7').val() ) -1 );
+                    $('#orderCount').val( Number( $('#orderCount').val() ) -1 );
+                    $("#tb7").css("background-color","darksalmon");
+                 } else if( $('#table7').val() == 1 && $('#orderCount').val() == 0 ) {
+                        $('#table7').val(Number( $('#table7').val() )-1);
+                        $("#tb7").css("background-color","darksalmon");
+                 }
+               })
+               $('#btn8_1').click(function(){
+                 if( $('#table8').val() == 0 ) {
+                    $('#table8').val(Number( $('#table8').val() )+1);
+                    $('#orderCount').val( Number( $('#orderCount').val() ) +1 );
+                    $("#tb8").css("background-color","green");
+                 }
+                })
+               $('#btn8_2').click(function(){
+                 if( $('#table8').val() == 1 && $('#orderCount').val() > 0) {
+                    $('#table8').val( Number( $('#table8').val() ) -1 );
+                    $('#orderCount').val( Number( $('#orderCount').val() ) -1 );
+                    $("#tb8").css("background-color","darksalmon");
+                 } else if( $('#table8').val() == 1 && $('#orderCount').val() == 0 ) {
+                        $('#table8').val(Number( $('#table2').val() )-1);
+                        $("#tb8").css("background-color","darksalmon");
+                 }
+               })
+               $('#btn9_1').click(function(){
+                 if( $('#table9').val() == 0 ) {
+                    $('#table9').val(Number( $('#table9').val() )+1);
+                    $('#orderCount').val( Number( $('#orderCount').val() ) +1 );
+                    $("#tb9").css("background-color","green");
+                 }
+                })
+               $('#btn9_2').click(function(){
+                 if( $('#table9').val() == 1 && $('#orderCount').val() > 0) {
+                    $('#table9').val( Number( $('#table9').val() ) -1 );
+                    $('#orderCount').val( Number( $('#orderCount').val() ) -1 );
+                    $("#tb9").css("background-color","darksalmon");
+                 } else if( $('#table9').val() == 1 && $('#orderCount').val() == 0 ) {
+                        $('#table9').val(Number( $('#table9').val() )-1);
+                        $("#tb9").css("background-color","darksalmon");
+                 }
+               })
+            })
         </script>
     </th:block>
 </th:blotck>

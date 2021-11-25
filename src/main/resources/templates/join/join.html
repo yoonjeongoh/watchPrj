@@ -25,11 +25,13 @@
                     </div>
                     <br>
 
-                    <span class="span11">아이디</span> <br>
+                    <span class="span11">아이디    <button type="button" id="checkId" class="idCheck_btn">중복검사</button></span> <br>
                     <input class="input11" title="아이디" type="text" name="memberId" id="my_id"
                            placeholder="4~12자의 영문 대소문자와 숫자로만 입력" maxlength="12"/><br>
+
                     <div class="valid-div11">
                         <span class="invalid" id="idSpace">공백은 사용할 수 없습니다.</span>
+                        <span class="invalid" id="memberIdCheck">ID를 입력하세요.</span>
                         <span class="invalid" id="noKor">유효하지 않은 형식입니다.</span>
                         <span class="invalid" id="id_min">4자 이상 입력하세요.</span>
                         <span class="invalid" id="id_already">사용중인 ID입니다.</span>
@@ -95,14 +97,39 @@
 
 
         <script th:inline="javascript">
-                    $(document).ready(function() {
-                        var actionForm = $('form');
-                        //회원가입 버튼(회원가입 기능 작동)
-                        $('.join_button').click(function(){
-                            actionForm.submit();
-                        });
+                $(document).ready(function() {
+                    var actionForm = $('form');
+                    //회원가입 버튼(회원가입 기능 작동)
+                    $('.join_button').click(function(){
+                        actionForm.submit();
                     });
-                </script>
+
+                    $('.idCheck_btn').click(function() {
+                            if($('#my_id').val() == null || $('#my_id').val() =="") {
+                                $('#memberIdCheck').show();
+                            } else {
+                                $('memberIdCheck').hide();
+                                var id = $('#my_id').val();
+                                $.ajax({
+                                    url:'/watchtable/member/idCheck',
+                                    type:'post',
+                                    data:{id:id},
+                                    success:function(cnt){             //컨트롤러에서 넘어온 cnt값을 받는다
+                                        if(cnt != 1){                  //cnt가 1이 아니면(=0일 경우) -> 사용 가능한 아이디
+                                            alert("사용 가능합니다.");
+                                        } else {                        // cnt가 1일 경우 -> 이미 존재하는 아이디
+                                            alert("이미 사용중입니다.");
+                                            $('#my_id').val("");
+                                        }
+                                    },
+                                    error:function(){
+                                        alert("에러입니다");
+                                    }
+                                });
+                            }
+                    });
+                })
+        </script>
 
 
         <!--                const blank = /[\s]/g;-->
@@ -180,8 +207,7 @@
         <!--                        $('#idSpace').hide();-->
         <!--                    }-->
         <!--                });-->
-
-        <!--                $('#my_nick').keyup(function(){-->
+        <!--               $('#my_nick').keyup(function(){-->
         <!--                    var nick = $('#my_nick').val();-->
         <!--                    if(nickCheck.test(nick) && nick.length > 1){-->
         <!--                        $('#nick_ok').show();-->

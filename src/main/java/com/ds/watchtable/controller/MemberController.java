@@ -1,9 +1,8 @@
 package com.ds.watchtable.controller;
 
-import com.ds.watchtable.dto.*;
-import com.ds.watchtable.entity.Member;
-import com.ds.watchtable.entity.PosTable;
-import com.ds.watchtable.entity.Store;
+import com.ds.watchtable.dto.MemberDTO;
+import com.ds.watchtable.dto.PageRequestDTO;
+import com.ds.watchtable.dto.PageResultDTO;
 import com.ds.watchtable.security.dto.ClubAuthMemberDTO;
 import com.ds.watchtable.service.MemberService;
 import com.ds.watchtable.service.ReviewService;
@@ -15,13 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
-
-import static com.ds.watchtable.entity.QMember.member;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @Log4j2
@@ -58,9 +54,6 @@ public class MemberController {
         log.info("userReview>>11111" + userReview);
         model.addAttribute("userReview", userReview);
 
-//        StoreDTO storeDTO = storeService.getStore(storeNum);
-//        model.addAttribute("dto", storeDTO);
-
 /*
         Store store = storeService.getStoreMember(principal.getMember());
         model.addAttribute("dto", store);
@@ -87,7 +80,6 @@ public class MemberController {
     }
 
 
-
     //    @PutMapping("/{memberNum}")
 //    public ResponseEntity<Long> modifySocial(@PathVariable("memberNum") Long memberNum,
 //                                       @RequestBody MemberDTO memberDTO){
@@ -103,7 +95,15 @@ public class MemberController {
 //        log.info("member.isFromSocial()"+member.isFromSocial());
 //        memberRepository.save(member);
 //    }
-
+    @PostMapping("/member/idCheck")
+    @ResponseBody
+    public int idCheck(@RequestParam("id") String id){
+        log.info("userIdCheck 진입");
+        log.info("전달받은 id:"+id);
+        int cnt = memberService.idCheck(id);
+        log.info("확인 결과:"+cnt);
+        return cnt;
+    }
 }
 
 
