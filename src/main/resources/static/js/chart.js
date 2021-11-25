@@ -5,8 +5,7 @@
       function drawChart() {
             var use = $('#orderCountBasket2').attr('value');
                 console.log(use);
-            var nine = 9;
-            var left = nine-use;
+            var left = 9-use;
             console.log(left);
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
