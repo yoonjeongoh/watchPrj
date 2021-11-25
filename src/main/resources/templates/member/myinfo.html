@@ -79,10 +79,18 @@
                                         <tr>
                                             <th scope="col">대기자명</th>
                                             <th scope="col">대기인원</th>
-                                            <th scope="col">전화번호</th>
+                                            <th scope="col">가게넘버</th>
                                             <th scope="col">예약시간</th>
                                         </tr>
                                         </thead>
+                                        <tbody>
+                                        <tr th:each="STB :${userWaiting.dtoList}" class="tr-list">
+                                            <th scope="row">[[${STB.memberName}]]</th>
+                                            <td>[[${STB.partyMember}]]</td>
+                                            <td>[[${STB.storeNum}]]</td>
+                                            <td>[[${#temporals.format(STB.regDate, 'yyyy/MM/dd hh:mm')}]]</td>
+                                        </tr>
+                                        </tbody>
 
                                     </table>
 

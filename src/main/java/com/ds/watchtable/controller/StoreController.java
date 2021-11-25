@@ -62,11 +62,7 @@ public class StoreController {
         log.info("waitinglist>>11111" + waitingDTO);
         model.addAttribute("waitingDTO", waitingDTO);
 
-        Store storeDTO = storeService.getStoreMember(principal.getMember());
-        model.addAttribute("dto", storeDTO);
-        log.info("yjyj1" + storeDTO);
-
-        PosTable posTable1 = storeService.getPosTable(storeDTO);
+        PosTable posTable1 = storeService.getPosTable(store);
         log.info("yjyj12" + posTable1);
         model.addAttribute("order", posTable1);
     }

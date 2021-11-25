@@ -40,15 +40,22 @@ public class WaitingServiceImpl implements WaitingService{
     @Override
     public PageResultDTO<WaitingDTO, Waiting> getWaitingList(PageRequestDTO requestDTO, Store store) {
         Pageable pageable = requestDTO.getPageable(Sort.by("waitingNum").ascending());
-        log.info("----------waiting1111111-----------"+pageable);
         Page<Waiting> result = waitingRepository.getWaitingByStore(pageable, store);
+        Function<Waiting, WaitingDTO> fn = (entity -> entityToDTO(entity));
+        return new PageResultDTO<>(result, fn);
+    }
+
+    //웨이팅리스트 (유저)
+    @Override
+    public PageResultDTO<WaitingDTO, Waiting> getUserWaiting(PageRequestDTO requestDTO, Member member) {
+        Pageable pageable = requestDTO.getPageable(Sort.by("waitingNum").ascending());
+        log.info("----------waiting1111111-----------"+pageable);
+        Page<Waiting> result = waitingRepository.getWaitingByUser(pageable, member);
         log.info("----------waiting2222222-----------"+result);
         Function<Waiting, WaitingDTO> fn = (entity -> entityToDTO(entity));
         log.info("----------waiting3333333-----------"+fn);
         return new PageResultDTO<>(result, fn);
     }
-
-    //웨이팅리스트 (유저)
 
 
 }
