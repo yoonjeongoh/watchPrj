@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <th:block th:fragment="setContent(content)">
 <head>
     <meta charset="utf-8" />
@@ -21,10 +21,15 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">Contact</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">Services</a></li>
+                <a sec:authorize="isAuthenticated()" class="nav-link active" th:href="@{/logout}">로그아웃</a>
+                <a sec:authorize="hasRole('USER')" class="nav-link" th:href="@{/member/myinfo}">내정보</a>
+                <a sec:authorize="!isAuthenticated()" class="nav-link" th:href="@{/join/login}">로그인</a>
+                <a sec:authorize="!isAuthenticated()" class="nav-link" th:href="@{/join/joinselect}">회원가입</a>
+                <a sec:authorize="hasRole('MANAGER')" th:href="@{/manager/managemyinfo}" class="nav-link">내 가게정보</a>
+                <a sec:authorize="hasRole('MANAGER')" th:href="@{/manager/manageinfocorrect}" class="nav-link">가게정보수정</a>
+                <a sec:authorize="hasRole('MANAGER')" th:href="@{/pos/postable}" class="nav-link">POS</a>
+                <a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/admin}" class="nav-link">관리 홈</a>
+                <a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/storelist}" class="nav-link">승인대기</a>
             </ul>
         </div>
     </div>

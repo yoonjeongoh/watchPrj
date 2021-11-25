@@ -26,14 +26,15 @@
             <a class="navbar-brand" th:href="@{/}">WATCH TABLE</a>
             <a sec:authorize="isAuthenticated()"><span sec:authentication="name"></span><span> 님 환영합니다.</span></a>
             <div class="navbar-orange">
-            <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/logout}">로그아웃</a>
-            <a sec:authorize="hasRole('USER')" class="btn btn-primary" th:href="@{member/myinfo}">내정보</a>
-            <a sec:authorize="!isAuthenticated()" class="btn btn-primary" th:href="@{/join/login}">로그인</a>
-            <a sec:authorize="!isAuthenticated()" class="btn btn-primary" th:href="@{/join/joinselect}">회원가입</a>
-            <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{manager/managemyinfo}" class="btn btn-primary">내 가게정보</a>
-            <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{manager/manageinfocorrect}" class="btn btn-primary">가게정보수정</a>
-            <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{pos/postable}" class="btn btn-primary">POS</a>
-
+                <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/logout}">로그아웃</a>
+                <a sec:authorize="hasRole('USER')" class="btn btn-primary" th:href="@{member/myinfo}">내정보</a>
+                <a sec:authorize="!isAuthenticated()" class="btn btn-primary" th:href="@{/join/login}">로그인</a>
+                <a sec:authorize="!isAuthenticated()" class="btn btn-primary" th:href="@{/join/joinselect}">회원가입</a>
+                <a sec:authorize="hasRole('MANAGER')" th:href="@{manager/managemyinfo}" class="btn btn-primary">내
+                    가게정보</a>
+                <a sec:authorize="hasRole('MANAGER')" th:href="@{pos/postable}" class="btn btn-primary">POS</a>
+                <a sec:authorize="hasRole('ADMIN')" th:href="@{admin/admin}" class="btn btn-primary">관리 홈</a>
+                <a sec:authorize="hasRole('ADMIN')" th:href="@{admin/storelist}" class="btn btn-primary">승인대기</a>
             </div>
         </div>
     </nav>
@@ -53,7 +54,7 @@
                         <!-- To make this form functional, sign up at-->
                         <!-- https://startbootstrap.com/solution/contact-forms-->
 
-                        <form  class="form-subscribe" th:action="@{/}" method="get" id="searchForm">
+                        <form class="form-subscribe" th:action="@{/}" method="get" id="searchForm">
                             <div class="input-group row">
                                 <input type="hidden" name="page" value="1">
 
@@ -61,23 +62,29 @@
                                     <nav class="navbar navbar-light ">
                                         <form class="form-inline">
                                             <div class="input-group-prepend col">
-                                                <input class="form-control form-control-lg mr-sm-2 srch" type="text"  id="emailAddress"
-                                                       />
+                                                <input class="form-control form-control-lg mr-sm-2 srch" type="text"
+                                                       id="emailAddress"
+                                                />
                                             </div>
                                         </form>
                                     </nav>
                                     <div id="accordion" role="tablist" style="display: none;">
                                         <div class="card">
                                             <div class="card-header" role="tab" id="headingOne">
-                                                <span class="badge badge-primary badge-pill incat-count" style="background:orange;">0</span>
-                                                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
+                                                <span class="badge badge-primary badge-pill incat-count"
+                                                      style="background:orange;">0</span>
+                                                <a data-toggle="collapse" href="#collapseOne" aria-expanded="true"
+                                                   aria-controls="collapseOne"
                                                    style="text-decoration:none;"></a>
                                             </div>
-                                            <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                                            <div id="collapseOne" class="collapse show" role="tabpanel"
+                                                 aria-labelledby="headingOne">
                                                 <div class="card-body p-0">
-                                                    <ul class="list-group cat-list" >
-                                                        <li class="list-group-item" th:each="dto : ${result.dtoList}" th:onclick="|javascript:read('${dto.storeNum}')|"
-                                                        >[[${dto.storeName}]]</li>
+                                                    <ul class="list-group cat-list">
+                                                        <li class="list-group-item" th:each="dto : ${result.dtoList}"
+                                                            th:onclick="|javascript:read('${dto.storeNum}')|"
+                                                        >[[${dto.storeName}]]
+                                                        </li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -130,39 +137,42 @@
     </div>
     <!-- Icons Grid-->
     <!-- Footer-->
-    <footer class="footer bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
-                    <!--                <ul class="list-inline mb-2">-->
-                    <!--                    <li class="list-inline-item"><a href="#!">About</a></li>-->
-                    <!--                    <li class="list-inline-item">⋅</li>-->
-                    <!--                    <li class="list-inline-item"><a href="#!">Contact</a></li>-->
-                    <!--                    <li class="list-inline-item">⋅</li>-->
-                    <!--                    <li class="list-inline-item"><a href="#!">Terms of Use</a></li>-->
-                    <!--                    <li class="list-inline-item">⋅</li>-->
-                    <!--                    <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>-->
-                    <!--                </ul>-->
-                    <p class="text-muted small mb-4 mb-lg-0">&copy;Watch table 2021. All Rights Reserved.</p>
-                </div>
-
-                <!--            social networks-->
-                <!--            <div class="col-lg-6 h-100 text-center text-lg-end my-auto">-->
-                <!--                <ul class="list-inline mb-0">-->
-                <!--                    <li class="list-inline-item me-4">-->
-                <!--                        <a href="#!"><i class="bi-facebook fs-3"></i></a>-->
-                <!--                    </li>-->
-                <!--                    <li class="list-inline-item me-4">-->
-                <!--                        <a href="#!"><i class="bi-twitter fs-3"></i></a>-->
-                <!--                    </li>-->
-                <!--                    <li class="list-inline-item">-->
-                <!--                        <a href="#!"><i class="bi-instagram fs-3"></i></a>-->
-                <!--                    </li>-->
+<!--    <footer class="footer bg-light" style="text-align:center;">-->
+<!--        <div class="container">-->
+<!--            <div class="col-lg-6 h-100 text-center text-lg-start my-auto">-->
+                <!--                <ul class="list-inline mb-2">-->
+                <!--                    <li class="list-inline-item"><a href="#!">About</a></li>-->
+                <!--                    <li class="list-inline-item">⋅</li>-->
+                <!--                    <li class="list-inline-item"><a href="#!">Contact</a></li>-->
+                <!--                    <li class="list-inline-item">⋅</li>-->
+                <!--                    <li class="list-inline-item"><a href="#!">Terms of Use</a></li>-->
+                <!--                    <li class="list-inline-item">⋅</li>-->
+                <!--                    <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>-->
                 <!--                </ul>-->
-                <!--            </div>-->
-            </div>
-        </div>
+<!--                <p class="text-muted small mb-4 mb-lg-0">&copy;Watch table 2021. All Rights Reserved.</p>-->
+<!--            </div>-->
+
+            <!--            social networks-->
+            <!--            <div class="col-lg-6 h-100 text-center text-lg-end my-auto">-->
+            <!--                <ul class="list-inline mb-0">-->
+            <!--                    <li class="list-inline-item me-4">-->
+            <!--                        <a href="#!"><i class="bi-facebook fs-3"></i></a>-->
+            <!--                    </li>-->
+            <!--                    <li class="list-inline-item me-4">-->
+            <!--                        <a href="#!"><i class="bi-twitter fs-3"></i></a>-->
+            <!--                    </li>-->
+            <!--                    <li class="list-inline-item">-->
+            <!--                        <a href="#!"><i class="bi-instagram fs-3"></i></a>-->
+            <!--                    </li>-->
+            <!--                </ul>-->
+            <!--            </div>-->
+    <div class="end-pg"></div>
     </footer>
+    <div id="body-wrapper">
+        <div id="body-content">
+            <p class="text-center text-color text-muted small mb-4 mb-lg-0">&copy;Watch table 2021. All Rights Reserved.</p>
+        </div>
+    </div>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
@@ -186,7 +196,18 @@
 
             </script>
     -->
+    <script th:inline="javascript">
 
+            function goStore(storeNum){
+                //alert('read');
+                /*[+
+                var url = [[@{/store/detail}]] +
+                    "?storeNum="+storeNum;
+                +]*/
+                location.href=url;
+            }
+
+    </script>
 
     <script>
       $(document).ready(function(){
@@ -221,6 +242,8 @@
               counter_set();
           });
       });
+
+
     </script>
 
     <script th:inline="javascript">
@@ -232,6 +255,8 @@
             +]*/
             location.href=urlword;
         }
+
+
     </script>
 
 </th:block>

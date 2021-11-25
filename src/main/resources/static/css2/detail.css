@@ -24,7 +24,6 @@ input:focus, select:focus, option:focus, textarea:focus, button:focus{
     overflow: hidden;
     display: flex;
     justify-content: space-between;
-    //background-color: #82817e;
 }
 
 .card1 {
@@ -33,7 +32,7 @@ input:focus, select:focus, option:focus, textarea:focus, button:focus{
     overflow: hidden;
     float: center;
     padding: 2px;
-    background-color: #fdb53c;
+    background-color: #f9f9f9;
 }
 
 .sec-col1 {

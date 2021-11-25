@@ -24,46 +24,41 @@
                 integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
                 crossorigin="anonymous"></script>
 
-        <div class="container-fluid gedf-wrapper">
+        <div class="container-fluid gedf-wrapper" style="text-align: center;">
             <div class="row">
-                <div class="col-md-3">
-                    <div class="card">
+                <div class="col-md-3" style="margin-left:auto;">
+                    <div class="card" style="width:240px;text-align:center;">
                         <div class="container">
                             <div class="row profile">
                                 <div class="col-md-9">
                                     <div class="profile-sidebar">
-                                        <div class="profile-userpic">
-                                            <img src="https://via.placeholder.com/150" class="img-responsive" alt="">
-                                        </div>
-                                        <input type="text" th:value="${dto.storeNum}">
                                         <div th:each="member: ${dto}">
-                                        <div class="profile-usertitle">
-                                            <div class="profile-usertitle-name">
+                                            <div class="profile-usertitle">
+                                                <div class="profile-usertitle-name">
+                                                    <h3>[[${member.storeName}]]</h3>
+                                                </div>
                                             </div>
                                         </div>
-                                            <span th:value="${member.storeNum}"></span>
-                                            <span>[[${member.storeNum}]]</span>
-                                        </div>
-                                        <div class="profile-usermenu">
-                                            <ul class="nav">
-                                                <li class="active">
-                                                    <button class="btn11"
-                                                            th:onclick="|location.href='@{/pos/postable}'|">포스
-                                                    </button>
-                                                    <button class="btn11"
-                                                            th:onclick="|location.href='@{/pos/setting}'|">포스 셋팅
-                                                    </button>
-                                                    <button class="btn11"
-                                                            th:onclick="|location.href='@{/member/myinfocorrect}'|">내 정보
-                                                        수정
-                                                    </button>
-                                                    <button class="btn11"
-                                                            th:onclick="|location.href='@{/manager/manageinfocorrect}'|">
-                                                        내 가게 수정
-                                                    </button>
-                                                </li>
-                                                <br>
-                                            </ul>
+                                        <div class="profile-usermenu" style="text-align:center;">
+                                            <button class="btn11"
+                                                    th:onclick="|location.href='@{/pos/postable}'|"
+                                                    style="margin-bottom:10px;">포스
+                                            </button>
+                                            <button class="btn11"
+                                                    th:onclick="|location.href='@{/member/myinfocorrect}'|"
+                                                    style="margin-bottom:10px;">내 정보
+                                                수정
+                                            </button>
+                                            <button class="btn11"
+                                                    th:onclick="|location.href='@{/manager/manageinfocorrect}'|"
+                                                    style="margin-bottom:10px;">
+                                                내 가게 수정
+                                            </button>
+                                            <button class="btn11"
+                                                    th:onclick="|javascript:goStore('${dto.storeNum}')|"
+                                                    style="margin-bottom:10px;">
+                                                내 가게 보기
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -71,79 +66,89 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 gedf-main">
+                <div class="col-md-7" style="margin-right:150px;">
                     <div class="card gedf-card">
                         <div class="card-header">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="ml-2">
                                         <div class="h5 m-0">대기중인 손님</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="card-body">
-                            <p class="card-text">
-                                {{n}}번째 손님 {{n}}명 대기 중입니다.
-                            </p>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th scope="col">대기자명</th>
+                                    <th scope="col">대기인원</th>
+                                    <th scope="col">전화번호</th>
+                                    <th scope="col">예약시간</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="LYJ :${waitingDTO.dtoList}" class="tr-list">
+                                    <th scope="row">[[${LYJ.memberName}]]</th>
+                                    <td>[[${LYJ.partyMember}]]</td>
+                                    <td>[[${LYJ.memberMobile}]]</td>
+                                    <td>[[${#temporals.format(LYJ.regDate, 'yyyy/MM/dd')}]]</td>
+                                </tr>
+                                </tbody>
+
+                            </table>
+
+                            <ul class="pagination h-100 justify-content-center align-items-center">
+                                <li class="page-item" th:if="${waitingDTO.prev}">
+                                    <a class="page-link"
+                                       th:href="@{/manager/managemyinfo(page=${waitingDTO.start-1})}"
+                                       tabindex="-1">Previous</a>
+                                </li>
+
+                                <li th:class=" 'page-item ' + ${waitingDTO.page == page?'active':''}"
+                                    th:each="page: ${waitingDTO.pageList}">
+                                    <a class="page-link"
+                                       th:href="@{/manager/managemyinfo(page=${page})}">[[${page}]]</a>
+                                </li>
+
+                                <li class="page-item" th:if="${waitingDTO.next}">
+                                    <a class="page-link"
+                                       th:href="@/manager/managemyinfo(page=${waitingDTO.end+1})}">Next</a>
+                                </li>
+                            </ul>
+
+
                         </div>
-                            <div class="card-body">
-                                <table class="table table-striped">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">대기자명</th>
-                                        <th scope="col">대기인원</th>
-                                        <th scope="col">전화번호</th>
-                                        <th scope="col">예약시간</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr th:each="LYJ :${waitingDTO.dtoList}" class="tr-list">
-                                        <th scope="row">[[${LYJ.memberName}]]</th>
-                                        <td>[[${LYJ.partyMember}]]</td>
-                                        <td>[[${LYJ.memberMobile}]]</td>
-                                        <td>[[${#temporals.format(LYJ.regDate, 'yyyy/MM/dd')}]]</td>
-                                    </tr>
-                                    </tbody>
-
-                                </table>
-
-                                <ul class="pagination h-100 justify-content-center align-items-center">
-                                    <li class="page-item" th:if="${waitingDTO.prev}">
-                                        <a class="page-link" th:href="@{/manager/managemyinfo(page=${waitingDTO.start-1})}"
-                                           tabindex="-1">Previous</a>
-                                    </li>
-
-                                    <li th:class=" 'page-item ' + ${waitingDTO.page == page?'active':''}"
-                                        th:each="page: ${waitingDTO.pageList}">
-                                        <a class="page-link" th:href="@{/manager/managemyinfo(page=${page})}">[[${page}]]</a>
-                                    </li>
-
-                                    <li class="page-item" th:if="${waitingDTO.next}">
-                                        <a class="page-link" th:href="@/manager/managemyinfo(page=${waitingDTO.end+1})}">Next</a>
-                                    </li>
-                                </ul>
-
-
-                            </div>
                         <!--                            card-body end-->
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card gedf-card">
-                        <div class="card-header">
-                            <div class="h5 m-0">우리 가게 리뷰
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">{{리뷰 내용 클릭시 상세페이지로}}</p>
-                        </div>
                     </div>
                 </div>
             </div>
+            <!--                <div class="col-md-3">-->
+            <!--                    <div class="card gedf-card">-->
+            <!--                        <div class="card-header">-->
+            <!--                            <div class="h5 m-0">우리 가게 리뷰-->
+            <!--                            </div>-->
+            <!--                        </div>-->
+            <!--                        <div class="card-body">-->
+            <!--                            <p class="card-text">{{리뷰 내용 클릭시 상세페이지로}}</p>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+        </div>
         </div>
         <div class="end-pg"></div>
+        <script th:inline="javascript">
 
+            function goStore(storeNum){
+                //alert('read');
+                /*[+
+                var url = [[@{/store/detail}]] +
+                    "?storeNum="+storeNum;
+                +]*/
+                location.href=url;
+            }
+
+        </script>
     </th:block>
 </th:blotck>
