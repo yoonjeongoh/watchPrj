@@ -1,114 +1,110 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <th:block th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
-        <link th:href="@{/css2/detail.css}" rel="stylesheet" />
-        <link th:href="@{/css2/modal.css}" rel="stylesheet" />
+        <link th:href="@{/css2/detail.css}" rel="stylesheet"/>
+        <link th:href="@{/css2/modal.css}" rel="stylesheet"/>
         <link id="contextPathHolder" th:data-contextPath="${#httpServletRequest.getContextPath()}"/>
 
         <div class="wrapper">
             <div class="detail-content">
-            <!--        1열 상단 카드이미지-->
-            <div class="top-card1">
-                <div class="card1" >
-                    <div th:each="member: ${member}">
-                    <span>[[${member.memberNum}]]</span>
-                    <span>[[${member.memberName}]]</span>
-                </div>
-                </div>
-                <div class="card1">2</div>
-                <div class="card1">3</div>
-                <div class="card1">4</div>
-                <div class="card1">5</div>
-            </div>
-
-            <!--        2열-->
-            <div class="sec-col1">
-                <!--        2열 좌측 가게이름, 임티-->
-                <div class="sec1 sec-left1">
-                    <div class="color21"><h2>[[${dto.storeName}]]</h2></div>
-                    <span class="color21">전화번호 : [[${dto.storeTel}]]</span><br>
-                    <span class="color21">영업시간 : [[${dto.storeOpen} + ' ~ ' + ${dto.storeClose}]]</span><br>
-                    <span class="color21">가게정보 : [[${dto.storeText}]]</span><br>
-                    <span class="color21">가게주소 : [[${dto.storeAds}]]</span><br>
-
-                </div>
-
-                <!--        2열 중앙 혼잡도 그래프-->
-                <div class="sec1 sec-center1">
-                    <span>잔여좌석 수</span>
-                    <span id="orderCountBasket">[[${order.orderCount}]] </span>
-
-                    <span>/9</span>
-                    <button>♡</button>
-                    <br>
-                    <span>현재 대기 팀 0팀</span>
-                    <button class="waiting-register21 colored-btn21">대기 등록하기</button>
-                    <br>
-                    <span class="color21">혼잡도가 80% 이상 일 때 가게 도착 시 만석이 될 수 있습니다</span><br>
-                  <div class="chartRoom">
-                    <div id="piechart"></div>
-                  </div>
-                </div>
-
-                <!--        2열 우측 지도-->
-                <div class="sec1 sec-right1">
-                    <div class="map" id="map" style="width: 440px; height: 500px;">
+                <!--        1열 상단 카드이미지-->
+                <div class="top-card1">
+                    <div class="card1" th:each="menuImage: ${dto.menuImageDTOList}">
+                        <img th:if="${menuImage.menuPath != null}"
+                             th:src="|/watchtable/menuDisplay?fileName=${menuImage.getThumbnailURL()}|">
                     </div>
                 </div>
-            </div>
 
-            <!--        3열-->
-<!--
-            <div class="thd-col1">
-                &lt;!&ndash;        3열 좌측 가게메뉴&ndash;&gt;
-                <div class="thd1 thd-left1"> 1
-                    <span>메뉴</span>
-                    <span></span>
-                </div>
+                <!--        2열-->
+                <div class="sec-col1">
+                    <!--        2열 좌측 가게이름, 임티-->
+                    <div class="sec1 sec-left1">
+                        <div class="color21" style="text-align:center;"><h2>[[${dto.storeName}]]</h2></div><br><br>
+                        <img th:src="@{/assets2/call.png}"><span class="color21">  [[${dto.storeTel}]]</span><br><br>
+                        <img th:src="@{/assets2/time.png}"><span class="color21">  [[${dto.storeOpen} + ' ~ ' + ${dto.storeClose}]]</span><br><br>
+                        <img th:src="@{/assets2/text.png}"><span class="color21">  [[${dto.storeText}]]</span><br><br>
+                        <img th:src="@{/assets2/adress.png}"><span class="color21">  [[${dto.storeAds}]]</span><br><br>
 
-                &lt;!&ndash;        3열 우측 가게정보&ndash;&gt;
-                <div class="thd1 thd-right1"> 2<br>
-                    <span>가게주소 : [[${dto.storeAds}]]</span><br>
-                    <span>전화번호 : [[${dto.storeTel}]]</span><br>
-                    <span>영업시간 : [[${dto.storeOpen} + ' ~ ' + ${dto.storeClose}]]</span><br>
-                    <span>가게정보 : [[${dto.storeText}]]</span>
-                </div>
+                    </div>
 
-            </div>
--->
-
-            <!--5열 리뷰작성칸-->
-                <div id="review" class="rv-field fifth-col1">
-                        <div class="rv-ta1">
-                           <div class="ta21"><textarea name="reviewText" id="rvInput"></textarea></div>
-                           <div class="ta-btn21"><button type="button" name="button" id="rv-btn" class="add-review btn21 colored-btn21">리뷰등록</button></div>
+                    <!--        2열 중앙 혼잡도 그래프-->
+                    <div class="sec1 sec-center1">
+                        <span>잔여좌석 수</span>
+                        <span id="orderCountBasket">[[${order.orderCount}]] </span>
+                        <span>/ 9    </span>
+                        <button class="waiting-register21 colored-btn21">대기 등록하기</button>
+                        <br><br><br>
+                        <span class="color21">※ 혼잡도가 80% 이상 일 때 도착 시 만석이 될 수 있습니다. </span><br>
+                        <div class="chartRoom">
+                            <div id="piechart"></div>
                         </div>
+                    </div>
+
+                    <!--        2열 우측 지도-->
+                    <div class="sec1 sec-right1" style="margin-left:50px;">
+                        <div class="map" id="map" style="width: 400px; height: 400px;">
+                        </div>
+                    </div>
+                </div>
+
+                <!--        3열-->
+                <!--
+                            <div class="thd-col1">
+                                &lt;!&ndash;        3열 좌측 가게메뉴&ndash;&gt;
+                                <div class="thd1 thd-left1"> 1
+                                    <span>메뉴</span>
+                                    <span></span>
+                                </div>
+
+                                &lt;!&ndash;        3열 우측 가게정보&ndash;&gt;
+                                <div class="thd1 thd-right1"> 2<br>
+                                    <span>가게주소 : [[${dto.storeAds}]]</span><br>
+                                    <span>전화번호 : [[${dto.storeTel}]]</span><br>
+                                    <span>영업시간 : [[${dto.storeOpen} + ' ~ ' + ${dto.storeClose}]]</span><br>
+                                    <span>가게정보 : [[${dto.storeText}]]</span>
+                                </div>
+
+                            </div>
+                -->
+
+                <!--5열 리뷰작성칸-->
+                <div id="review" class="rv-field fifth-col1">
+                    <div class="rv-ta1">
+                        <div class="ta21"><textarea name="reviewText" id="rvInput" sec:authorize="hasAnyRole('USER','ADMIN','MANAGER')"></textarea></div>
+                        <div class="ta-btn21">
+                            <button type="button" name="button" id="rv-btn" class="add-review btn21 colored-btn21"
+                                    sec:authorize="hasAnyRole('USER','ADMIN','MANAGER')">
+                                리뷰등록
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
 
-            <!--        6열 리뷰 리스트-->
-           <div class="rv-list six-col1 ">
-               <span id="js-memberNum" style="display:none;">[[${member.memberNum}]]</span>
-               <span id="js-memberNickname" style="display:none;">[[${member.memberNickname}]]</span>
-               <span id="js-storeNum" style="display:none;">[[${dto.storeNum}]]</span>
-               <div id="rv-list-table" class="rv-list-table"> 리뷰리스트
+                <!--        6열 리뷰 리스트-->
+                <div class="rv-list six-col1 ">
+                    <span id="js-memberNum" style="display:none;">[[${member.memberNum}]]</span>
+                    <span id="js-memberNickname" style="display:none;">[[${member.memberNickname}]]</span>
+                    <span id="js-storeNum" style="display:none;">[[${dto.storeNum}]]</span>
+                    <div id="rv-list-table" class="rv-list-table"> 리뷰리스트
+                    </div>
                 </div>
-            </div>
 
-<!--    margin for end of page-->
-            <div class="end-pg"></div>
+                <!--    margin for end of page-->
+                <div class="end-pg"></div>
             </div>
         </div>
-        <div id="orderCountBasket2" th:value="${order.orderCount}" hidden  >[[${order.orderCount}]] </div>
+        <div id="orderCountBasket2" th:value="${order.orderCount}" hidden>[[${order.orderCount}]]</div>
 
-<!--        map api-->
-        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c804c7f02459129ea465ac2bec99e513&libraries=services,clusterer,drawing"></script>
+        <!--        map api-->
+        <script type="text/javascript"
+                src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c804c7f02459129ea465ac2bec99e513&libraries=services,clusterer,drawing"></script>
         <script th:src="@{/js/detail.js}"></script>
-<!--        <script th:src="@{/js/indexList.js}"></script>-->
+        <!--        <script th:src="@{/js/indexList.js}"></script>-->
 
 
-<!--        스크립트-->
+        <!--        스크립트-->
         <link rel="stylesheet"
               href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
 
@@ -186,9 +182,12 @@
 
        }); //end script
 
-    </script>
 
-<!--review modal view-->
+
+
+        </script>
+
+        <!--review modal view-->
         <div class="reviewModal modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -227,17 +226,20 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">대기 등록하기</h5>
-                        <button type="button" class="btn btn-close waiting-close21" data-dismiss="modal" aria-label="Close"/>
+                        <button type="button" class="btn btn-close waiting-close21" data-dismiss="modal"
+                                aria-label="Close"/>
                     </div>
                     <div class="modal-body">
                         <!--<p id="modalMsg"> 번 글이 <span class="modal-title"></span>되었습니다.</p>-->
                         <div class="form-group" style="margin-bottom:30px;">
                             <span class="span21">닉네임</span>
-                            <input class="form-control" type="text-name" name="memberNickname" th:value="${member.memberNickname}">
+                            <input class="form-control" type="text-name" name="memberNickname"
+                                   th:value="${member.memberNickname}">
                         </div>
                         <div class="form-group" style="margin-bottom:30px;">
                             <span class="span21">연락처</span>
-                            <input class="form-control" type="text-mobile" name="memberMobile" th:value="${member.memberMobile}">
+                            <input class="form-control" type="text-mobile" name="memberMobile"
+                                   th:value="${member.memberMobile}">
                         </div>
                         <div class="form-group" style="margin-bottom:30px;">
                             <span class="span21">인원수</span>
@@ -248,7 +250,7 @@
                                 <option class="op21" name="partyMember">4</option>
                             </select>
                         </div>
-                    </div >
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-info go-waiting21">등록하기</button>
                     </div>
@@ -258,8 +260,10 @@
         <!--      아래 each구문 지도 혼잡도 좌석 수 뽑아오는 구문이니 지우시면 안됩니다 히든으로 가려놨습니다-->
         <table>
             <tbody>
-            <tr th:each="postable, i : ${postable}" >
-                <td th:attrappend="id=${i.index}" name="orderCnt" th:value="${postable.orderCount}"  hidden>[[${postable.orderCount}]]</td>
+            <tr th:each="postable, i : ${postable}">
+                <td th:attrappend="id=${i.index}" name="orderCnt" th:value="${postable.orderCount}" hidden>
+                    [[${postable.orderCount}]]
+                </td>
             </tr>
             </tbody>
         </table>

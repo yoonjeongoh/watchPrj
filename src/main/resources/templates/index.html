@@ -4,40 +4,7 @@
 <th:block th:replace="~{/layout/basic :: setContent(~{this::content})}">
   <th:block th:fragment="content">
     <link rel="stylesheet" href="/watchtable/css2/index.css"/>
-
     <div class="map" id="map"></div>
-    <div class="store-list">
-      <table>
-        <thead>
-        <tr th:each="order : ${resu}" class="tr-list" sec:authorize="hasAnyRole('MANAGER','ADMIN')">
-          <th scope="col">매장이름----------</th>
-          <th scope="col">주소-------------------------------</th>
-          <th scope="col">전화번호----------</th>
-          <th scope="col">영업시간----------</th>
-          <th scope="col">[[${postable.result2}]]</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="dto : ${result.dtoList}" class="tr-list"
-            th:onclick="|javascript:goStore('${dto.storeNum}')|" sec:authorize="hasAnyRole('MANAGER','ADMIN')">
-          <th scope="row">[[${dto.storeNum}]]</th>
-          <td>[[${dto.memberName}]]</td>
-          <td>[[${dto.storeName}]]</td>
-          <td>[[${#temporals.format(dto.regDate, 'yyyy/MM/dd')}]]</td>
-        </tr>
-        </tbody>
-      </table>
-    </div>
-    <hr sec:authorize="hasAnyRole('MANAGER','ADMIN')">
-
-    <hr sec:authorize="hasRole('ADMIN')">
-    <h3 sec:authorize="hasRole('ADMIN')">Admin</h3>
-    <a sec:authorize="hasRole('ADMIN')" th:href="@{admin/admin}" class="btn btn-primary">/admin/admin</a><br>
-    <a sec:authorize="hasRole('ADMIN')" th:href="@{admin/storelist}" class="btn btn-primary">/admin/storelist</a><br>
-    <a sec:authorize="hasRole('ADMIN')" th:href="@{admin/storeread}" class="btn btn-primary">/admin/storeread</a><br>
-    <hr>
-
-
     <!--      아래 each구문 지도 혼잡도 좌석 수 뽑아오는 구문이니 지우시면 안됩니다 히든으로 가려놨습니다-->
     <table>
       <tbody>
