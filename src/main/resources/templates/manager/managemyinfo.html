@@ -106,19 +106,26 @@
                                     </tbody>
 
                                 </table>
-                            </div>
-                        <!--                            card-body end-->
+
                                 <ul class="pagination h-100 justify-content-center align-items-center">
                                     <li class="page-item" th:if="${waitingDTO.prev}">
+                                        <a class="page-link" th:href="@{/manager/managemyinfo(page=${waitingDTO.start-1})}"
+                                           tabindex="-1">Previous</a>
                                     </li>
 
                                     <li th:class=" 'page-item ' + ${waitingDTO.page == page?'active':''}"
                                         th:each="page: ${waitingDTO.pageList}">
+                                        <a class="page-link" th:href="@{/manager/managemyinfo(page=${page})}">[[${page}]]</a>
                                     </li>
 
                                     <li class="page-item" th:if="${waitingDTO.next}">
+                                        <a class="page-link" th:href="@/manager/managemyinfo(page=${waitingDTO.end+1})}">Next</a>
                                     </li>
                                 </ul>
+
+
+                            </div>
+                        <!--                            card-body end-->
 
                         </div>
                     </div>
