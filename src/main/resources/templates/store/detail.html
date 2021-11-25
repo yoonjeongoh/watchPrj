@@ -36,9 +36,9 @@
 
                 <!--        2열 중앙 혼잡도 그래프-->
                 <div class="sec1 sec-center1">
-                    <div class="color21"><h2>[[${order.orderCount}]]</h2></div>
                     <span>잔여좌석 수</span>
                     <span id="orderCountBasket">[[${order.orderCount}]] </span>
+
                     <span>/13</span>
                     <button>♡</button>
                     <br>
@@ -100,6 +100,7 @@
             <div class="end-pg"></div>
             </div>
         </div>
+        <div id="orderCountBasket2" th:value="${order.orderCount}" hidden  >[[${order.orderCount}]] </div>
 
 <!--        map api-->
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c804c7f02459129ea465ac2bec99e513&libraries=services,clusterer,drawing"></script>

@@ -1,12 +1,17 @@
+     window.onload = function () {
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-
+            var use = $('#orderCountBasket2').attr('value');
+                console.log(use);
+            var nine = 9;
+            var left = nine-use;
+            console.log(left);
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['잔여좌석',     1],
-          ['사용좌석',     1],
+          ['잔여좌석',   left  ],
+          ['사용좌석',    use ],
         ]);
 
         var options = {
@@ -30,3 +35,4 @@
 
         chart.draw(data, options);
       }
+}
