@@ -25,4 +25,10 @@ public class Waiting extends BaseEntity {
     @JoinColumn(name = "storeNum")
     @ManyToOne(fetch = FetchType.LAZY)
     Store store;
+
+    public void changePartyMember(String partyMember){
+        this.partyMember = partyMember;
+    }
+
+
 }

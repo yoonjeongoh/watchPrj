@@ -11,8 +11,10 @@ public interface WaitingService {
     //웨이팅 리스트(manager)
     PageResultDTO<WaitingDTO, Waiting> getWaitingList(PageRequestDTO requestDTO, Store store);
     //웨이팅 리스트 (user)
-//    PageResultDTO<WaitingDTO, Waiting> getUserWaiting(PageRequestDTO requestDTO, Long memberNum);
     PageResultDTO<WaitingDTO, Waiting> getUserWaiting(PageRequestDTO requestDTO, Member member);
+    //웨이팅 수정
+    void modify(WaitingDTO waitingDTO);
+
 
         default Waiting dtoToEntity(WaitingDTO waitingDTO){
         Waiting waiting = Waiting.builder()

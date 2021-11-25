@@ -54,9 +54,9 @@ $(document).ready(function(e){
         var str = "";
 
             $.each(arr, function(idx, review) {
-                str += ' <div class="card-body" data-reviewNum="'+review.reviewNum+'">';
+                str += ' <div class="review-body" data-reviewNum="'+review.reviewNum+'">';
                 str += ' <b class="reviewNum">'+review.reviewNum+'</b>';
-                str += ' <p class="reviewNickname">'+review.memberNickname+'</p>';
+                str += ' <p class="reviewNickname rv-bold">'+review.memberNickname+'</p>';
                 str += ' <p class="reviewText">'+review.text+'</p>';
                 //str += ' <h5 class="reviewText" onclick="showModal2('+review.reviewNum+','+review.text+')">'+review.text+'</h5>';
                 str += ' <p class="reviewTime">'+formatTime(review.regDate)+'</p>';
@@ -71,7 +71,7 @@ $(document).ready(function(e){
     getStoreReviews();
 
     //수정삭제 모달창 띄우기
-     $(".rv-list-table").on("click", ".card-body", function(){
+     $(".rv-list-table").on("click", ".review-body", function(){
         //var reviewNum = $(this).data("reviewNum");
         //console.log("this: " + this);
         //console.log("reviewNum: " + reviewNum);

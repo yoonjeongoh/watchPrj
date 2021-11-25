@@ -3,6 +3,7 @@
 <th:block th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
         <link th:href="@{/css2/detail.css}" rel="stylesheet" />
+        <link th:href="@{/css2/modal.css}" rel="stylesheet" />
         <link id="contextPathHolder" th:data-contextPath="${#httpServletRequest.getContextPath()}"/>
 
         <div class="wrapper">
@@ -243,9 +244,7 @@
                         </div>
                     </div >
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary go-modify21">수정하기</button>
                         <button type="button" class="btn btn-info go-waiting21">등록하기</button>
-                        <!--                        <button class="btn btn-secondary waiting-close21" data-dismiss="modal">닫기</button>-->
                     </div>
                 </div>
             </div>
