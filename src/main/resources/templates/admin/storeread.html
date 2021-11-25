@@ -2,87 +2,104 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
-        <link th:href="@{/css2/admin.css}" rel="stylesheet" />
-        <form class="form11" th:action="@{/admin/storelist}" method="post" id="join_form" name="f">
-        <div class="wrapper">
-            <div class="col-md-6 gedf-main">
-                <div class="card gedf-card">
-                    <div class="card-header">
-                        <div class="d-flex justify-content-between align-items-center">
+        <link th:href="@{/css2/admin.css}" rel="stylesheet"/>
+        <form class="form11" th:action="@{/admin/storelist2}" method="post" id="join_form" name="f">
+            <div class="wrapper">
+                <div class="col-md-6 gedf-main">
+                    <div class="card gedf-card">
+                        <div class="card-header">
                             <div class="d-flex justify-content-between align-items-center">
-                                <div class="ml-2">
-                                    <div class="h5 m-0">사업장 코드 : [[${dto.storeNum}]]</div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="ml-2">
+                                        <div class="h5 m-0">사업장 코드 : [[${dto.storeNum}]]</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label>사업장 코드</label>
-                            <input type="text" class="form-control" name="title" th:value="${dto.storeNum}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>회원 이름</label>
-                            <input type="text" class="form-control" name="title" th:value="${dto.memberName}" readonly>
-                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>사업장 코드</label>
+                                <input type="text" class="form-control" name="title" th:value="${dto.storeNum}"
+                                       readonly>
 
-                        <div class="form-group">
-                            <label>상호명</label>
-                            <input type="text" class="form-control" name="title" th:value="${dto.storeName}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>사업장 주소</label>
-                            <input type="text" class="form-control" name="title" th:value="${dto.storeAds}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>사업장 연락처</label>
-                            <input type="text" class="form-control" name="title" th:value="${dto.storeTel}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>사업장 영업시간</label>
-                            <input type="text" class="form-control" name="title"
-                                   th:value="${dto.storeOpen} + ' ~ ' + ${dto.storeClose}"
-                                   readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>사업장 소개글</label>
-                            <input type="text" class="form-control" name="title" th:value="${dto.storeText}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>사업자 등록 번호</label>
-                            <input type="text" class="form-control" name="title" th:value="${dto.bsNum}" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label>가입일</label>
-                            <input type="text" class="form-control" name="regDate"
-                                   th:value="${#temporals.format(dto.regDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
-                        </div>
-                        <div class="uploadResult">
-                            <ul>
-                                <li th:each="storeImage: ${dto.storeImageDTOList}"class="storeImage"> 사업자 등록증
-                                    <img th:if="${storeImage.bsPath != null}"
-                                         th:src="|/watchtable/storeDisplay?fileName=${storeImage.getThumbnailURL()}|">
-                                </li>
-                            </ul>
-                            <ul>
-                                <li th:each="menuImage: ${dto.menuImageDTOList}" class="menuImage"> 메뉴 이미지
-                                    <img th:if="${menuImage.menuPath != null}"
-                                         th:src="|/watchtable/menuDisplay?fileName=${menuImage.getThumbnailURL()}|">
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="button-area">
-                            <button class="btn btn-primary join_button"> 승인 </button>
-                            <button class="btn btn-primary">거절</button>
-                        </div>
+                                <input type="hidden" class="form-control" name="title" th:value="${dto.memberNum}"
+                                       readonly>
+                                <input type="hidden" class="form-control" name="title" th:value="${dto.memberNickname}"
+                                       readonly>
+                                <input type="hidden" class="form-control" name="title" th:value="${dto.memberId}"
+                                       readonly>
+                                <input type="hidden" class="form-control" name="title" th:value="${dto.memberPw}"
+                                       readonly>
+                                <input type="hidden" class="form-control" name="title" th:value="${dto.memberEmail}"
+                                       readonly>
+                                <input type="hidden" class="form-control" name="title" th:value="${dto.memberMobile}"
+                                       readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>회원 이름</label>
+                                <input type="text" class="form-control" name="title" th:value="${dto.memberName}"
+                                       readonly>
+                            </div>
 
+                            <div class="form-group">
+                                <label>상호명</label>
+                                <input type="text" class="form-control" name="title" th:value="${dto.storeName}"
+                                       readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>사업장 주소</label>
+                                <input type="text" class="form-control" name="title" th:value="${dto.storeAds}"
+                                       readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>사업장 연락처</label>
+                                <input type="text" class="form-control" name="title" th:value="${dto.storeTel}"
+                                       readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>사업장 영업시간</label>
+                                <input type="text" class="form-control" name="title"
+                                       th:value="${dto.storeOpen} + ' ~ ' + ${dto.storeClose}"
+                                       readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>사업장 소개글</label>
+                                <input type="text" class="form-control" name="title" th:value="${dto.storeText}"
+                                       readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>사업자 등록 번호</label>
+                                <input type="text" class="form-control" name="title" th:value="${dto.bsNum}" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>가입일</label>
+                                <input type="text" class="form-control" name="regDate"
+                                       th:value="${#temporals.format(dto.regDate, 'yyyy/MM/dd HH:mm:ss')}" readonly>
+                            </div>
+                            <div class="uploadResult">
+                                <ul>
+                                    <li th:each="storeImage: ${dto.storeImageDTOList}" class="storeImage"> 사업자 등록증
+                                        <img th:if="${storeImage.bsPath != null}"
+                                             th:src="|/watchtable/storeDisplay?fileName=${storeImage.getThumbnailURL()}|">
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li th:each="menuImage: ${dto.menuImageDTOList}" class="menuImage"> 메뉴 이미지
+                                        <img th:if="${menuImage.menuPath != null}"
+                                             th:src="|/watchtable/menuDisplay?fileName=${menuImage.getThumbnailURL()}|">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="button-area">
+                                <button class="btn btn-primary"> 승인</button>
+                                <button class="btn btn-primary">거절</button>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </form>
-
-
         <div style="margin-bottom: 20px;"></div>
 
         <style>
@@ -95,6 +112,7 @@
             .uploadResult ul li img{ width:100px;}
 
 
+
         </style>
 
 
@@ -104,51 +122,42 @@
         <script>
             $(document).ready(function(e) {
                 var actionForm = $('form');
-                $('.join_button').click(function(){
-                    actionForm.submit();
-                }
-                var modal = $('.modal');
-
-                $(".storeImage").click(function(){
-                var file = $(this).data('file');
-                console.log(file);
-                $('.imageModal .modal-body').html("<img style='width:400px', 'height:300px' src='/watchtable/storeDisplay?fileName="+file+"&size=1' >")
-                $(".imageModal").modal("show");
-            });
-                $(".menuImage").click(function(){
-                var file = $(this).data('file');
-                console.log(file);
-                $('.imageModal .modal-body').html("<img style='width:400px', 'height:300px' src='/watchtable/menuDisplay?fileName="+file+"&size=1' >")
-                $(".imageModal").modal("show");
-            });
-                $(".waiting-close21").click(function(){
-                modal.modal('hide');
-            });
+<!--                var modal = $('.modal');-->
+<!--                $(".storeImage").click(function(){-->
+<!--                var file = $(this).data('file');-->
+<!--                console.log(file);-->
+<!--                $('.imageModal .modal-body').html("<img style='width:400px', 'height:300px' src='/watchtable/storeDisplay?fileName="+file+"&size=1' >")-->
+<!--                $(".imageModal").modal("show");-->
+<!--            });-->
+<!--                $(".menuImage").click(function(){-->
+<!--                var file = $(this).data('file');-->
+<!--                console.log(file);-->
+<!--                $('.imageModal .modal-body').html("<img style='width:400px', 'height:300px' src='/watchtable/menuDisplay?fileName="+file+"&size=1' >")-->
+<!--                $(".imageModal").modal("show");-->
+<!--            });-->
+<!--                $(".waiting-close21").click(function(){-->
+<!--                modal.modal('hide');-->
+<!--            });-->
 
         });
 
-        </script>
-        <script th:inline="javascript">
-            $(document).ready(function() {
 
-            });
         </script>
-
-        <div class="modal imageModal" tabindex="-2" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">이미지파일</h5>
-                        <button type="button" class="btn btn-close waiting-close21" data-dismiss="modal"
-                                aria-label="Close"/>
-                    </div>
-                    <div class="modal-body">
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary waiting-close21" data-dismiss="modal">닫기</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!--        <div class="modal imageModal" tabindex="-2" role="dialog">-->
+        <!--            <div class="modal-dialog" role="document">-->
+        <!--                <div class="modal-content">-->
+        <!--                    <div class="modal-header">-->
+        <!--                        <h5 class="modal-title">이미지파일</h5>-->
+        <!--                        <button type="button" class="btn btn-close waiting-close21" data-dismiss="modal"-->
+        <!--                                aria-label="Close"/>-->
+        <!--                    </div>-->
+        <!--                    <div class="modal-body">-->
+        <!--                    </div>-->
+        <!--                    <div class="modal-footer">-->
+        <!--                        <button class="btn btn-secondary waiting-close21" data-dismiss="modal">닫기</button>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
     </th:block>
 </th:blotck>

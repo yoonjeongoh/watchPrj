@@ -16,6 +16,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,8 +44,16 @@ public class StoreController {
             log.info("principal.getMember()" + principal.getMember());
         }
         StoreDTO storeDTO = storeService.getStore(storeNum);
+        log.info("storeDTO()>>" + storeDTO);
         model.addAttribute("dto", storeDTO);
+
+        Store posTable1 = storeService.getPosTable1(storeNum);
+        log.info("storeDTO()>>" + posTable1);
+        PosTable posTable = storeService.getPosTable(posTable1);
+        log.info("ewrwererwrew" + posTable1);
+        model.addAttribute("order", posTable);
     }
+
 
     //스토어 principal 정보 넘기기
     @RequestMapping({"/manager/managemyinfo", "/pos/postable"})
@@ -85,20 +94,20 @@ public class StoreController {
         if (principal != null) {
             model.addAttribute("member", principal.getMember());
         }
-        Store storeDTO = storeService.getStoreMember(principal.getMember());
-        model.addAttribute("dto", storeDTO);
+        Store store = storeService.getStoreMember(principal.getMember());
+        model.addAttribute("dto", store);
 
-        log.info("yjyj13" + storeDTO);
+        log.info("yjyj13" + store);
 
-        PosTable posTable1 = storeService.getPosTable(storeDTO);
+        PosTable posTable1 = storeService.getPosTable(store);
         model.addAttribute("order", posTable1);
 
         log.info("yjyj14" + posTable1);
         posTableDTO.setPosTableNum(posTable1.getPosTableNum());
-        posTableDTO.setStoreNum(storeDTO.getStoreNum());
+        posTableDTO.setStoreNum(store.getStoreNum());
 
         log.info("yjyj15" + posTableDTO);
-        storeService.modify(posTableDTO, storeDTO);
+        storeService.modify(posTableDTO, store);
         return "redirect:/pos/postable";
     }
 }
