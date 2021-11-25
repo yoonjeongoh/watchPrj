@@ -26,7 +26,6 @@
             <a class="navbar-brand" th:href="@{/}">WATCH TABLE</a>
             <a sec:authorize="isAuthenticated()"><span sec:authentication="name"></span><span> 님 환영합니다.</span></a>
             <div class="navbar-orange">
-            <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{member/myinfo}">내정보</a>
             <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/logout}">로그아웃</a>
             <a sec:authorize="hasRole('USER')" class="btn btn-primary" th:href="@{member/myinfo}">내정보</a>
             <a sec:authorize="!isAuthenticated()" class="btn btn-primary" th:href="@{/join/login}">로그인</a>
@@ -72,9 +71,7 @@
                                             <div class="card-header" role="tab" id="headingOne">
                                                 <span class="badge badge-primary badge-pill incat-count" style="background:orange;">0</span>
                                                 <a data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne"
-                                                   style="text-decoration:none;">
-                                                    ☆
-                                                </a>
+                                                   style="text-decoration:none;"></a>
                                             </div>
                                             <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
                                                 <div class="card-body p-0">

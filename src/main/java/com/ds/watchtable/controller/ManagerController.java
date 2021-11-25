@@ -12,16 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @Log4j2
 @RequiredArgsConstructor
-@RequestMapping("/manager")
 public class ManagerController {
     @Autowired
     private final StoreService storeService;
 
     //DB저장
-    @PostMapping("/managemyinfo")
-    public void registerPost(StoreDTO storeDTO){
+    @PostMapping("/join/login2")
+    public String registerPost(StoreDTO storeDTO){
         log.info("Register............");
         storeService.storeRegister(storeDTO);
+        return "redirect:/join/login";
     }
-
 }
