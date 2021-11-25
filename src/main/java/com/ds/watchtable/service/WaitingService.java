@@ -14,9 +14,11 @@ public interface WaitingService {
     PageResultDTO<WaitingDTO, Waiting> getUserWaiting(PageRequestDTO requestDTO, Member member);
     //웨이팅 수정
     void modify(WaitingDTO waitingDTO);
+    //웨이팅 취소
+    void remove(Long waitingNum);
 
 
-        default Waiting dtoToEntity(WaitingDTO waitingDTO){
+    default Waiting dtoToEntity(WaitingDTO waitingDTO){
         Waiting waiting = Waiting.builder()
                 .member(Member.builder()
                         .memberNum(waitingDTO.getMemberNum())

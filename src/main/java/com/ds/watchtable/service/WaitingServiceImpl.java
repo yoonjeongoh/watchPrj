@@ -69,5 +69,12 @@ public class WaitingServiceImpl implements WaitingService{
         }
     }
 
+    //웨이팅 취소
+    @Override
+    public void remove(Long waitingNum) {
+        log.info("waitingremoveimpl====="+waitingNum);
+        waitingRepository.deleteById(waitingNum);
+    }
+
 
 }

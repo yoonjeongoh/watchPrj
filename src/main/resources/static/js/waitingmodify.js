@@ -12,7 +12,8 @@ $(document).ready(function(e){
         $("#memberMobile").val($(this).find('.wt-memberMobile').html());
         $("#partyMember").val($(this).find('.wt-partyMember').html());
         $("#modal-waitingNum").val($(this).find('.wt-waitingNum').html());
-//        storeNum 마저하기
+        $("#modal-storeNum").val($(this).find('.wt-storeNum').html());
+        $("#modal-memberNum").val($(this).find('.wt-memberNum').html());
         $('.waitingModal').modal('show');
     });
 
@@ -24,8 +25,9 @@ $(document).ready(function(e){
     $(".go-modify21").on("click", function(){
         var waitingNum = $("#modal-waitingNum").val();
         var waitingMobile = $("#modal-memberMobile").val();
+        var waitingMemberNum = $("#modal-memberNum").val();
         var waitingNickname = $("#memberNickname").val();
-        var waitingStoreNum = $(".wt-waitingStoreNum").val();
+        var waitingStoreNum = $(".wt-storeNum").val();
         var waitingPartyMember = $("#partyMember");
 
         var data = {
@@ -47,10 +49,42 @@ $(document).ready(function(e){
         success: function(data){
                 console.log("result: " + data);
                 self.location.reload();
+            },
+        error:function(data){
+            alert("delete_errorrrrrrrrrrrrrrrr");
             }
+
         })
     $('.waitingModal').modal('hide');
     });
+
+    //웨이팅 취소
+    $(".go-cancel21").on("click", function(){
+        var waitingNum = $("#modal-waitingNum").val();
+        console.log(waitingNum);
+        var data = {
+            waitingNum: waitingNum
+            }
+        console.log(data);
+
+        $.ajax({
+        url: contextPath + '/modifyWaiting/'+waitingNum,
+        type:"DELETE",
+        data:JSON.stringify(data),
+        contentType:"application/json; charset=utf-8",
+        dataType:"text",
+        success: function(data){
+                console.log("result: " + data);
+                self.location.reload();
+             },
+        error:function(data){
+            alert("delete_errorrrrrrrrrrrrrrrr");
+            }
+    });
+    $('.waitingModal').modal('hide');
+
+    });
+
 
 
 
