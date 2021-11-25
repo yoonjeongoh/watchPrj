@@ -3,6 +3,7 @@
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
         <link th:href="@{/css2/join.css}" rel="stylesheet"/>
+        <link th:href="@{/css2/modal.css}" rel="stylesheet"/>
         <link id="contextPathHolder" th:data-contextPath="${#httpServletRequest.getContextPath()}"/>
 
 
@@ -64,7 +65,11 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="ml-2">
-                                        <div class="h5 m-0">대기중인 가게</div>
+                                        <div class="h5 m-0">대기중인 가게
+                                            <span id="js-memberNum" style="display:none;">[[${member.memberNum}]]</span>
+                                            <span id="js-memberNickname" style="display:none;">[[${member.memberNickname}]]</span>
+
+                                            </div>
                                         <div class="h7 text-muted">대기중인 가게 이름</div>
                                     </div>
                                 </div>
@@ -74,21 +79,25 @@
                             <p class="card-text">
                                 {{N}}번째 대기 중입니다.
                             </p>
-                            <table class="table table-striped">
+                            <table class="table table-striped waiting-table">
                                 <thead>
                                 <tr>
+                                    <th scope="col">가게이름</th>
                                     <th scope="col">대기자명</th>
                                     <th scope="col">대기인원</th>
-                                    <th scope="col">가게넘버</th>
                                     <th scope="col">예약시간</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="STB :${userWaiting.dtoList}" class="tr-list">
-                                    <th scope="row">[[${STB.memberName}]]</th>
-                                    <td>[[${STB.partyMember}]]</td>
-                                    <td>[[${STB.storeNum}]]</td>
-                                    <td>[[${#temporals.format(STB.regDate, 'yyyy/MM/dd hh:mm')}]]</td>
+                                <tr th:each="STB :${userWaiting.dtoList}" class="waiting-box">
+                                    <th scope="row" class="waiting-body wt-storeName">[[${STB.storeName}]]</th>
+                                    <td class="waiting-body wt-nickName">[[${STB.memberNickname}]]</td>
+                                    <td class="waiting-body wt-partyMember">[[${STB.partyMember}]]</td>
+                                    <td class="waiting-body">[[${#temporals.format(STB.regDate, 'yyyy/MM/dd hh:mm')}]]</td>
+                                    <td class="waiting-body wt-memberMobile" style="display:none;">[[${STB.memberMobile}]]</td>
+                                    <td class="waiting-body wt-waitingNum" style="display:none;">[[${STB.waitingNum}]]</td>
+                                    <td class="waiting-body wt-waitingStoreNum" style="display:none;">[[${STB.storeNum}]]</td>
+                                    <td class="waiting-body wt-waitingMemberNum" style="display:none;">[[${STB.memberNum}]]</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -99,17 +108,14 @@
                 <div class="col-md-3">
                     <div class="card gedf-card">
                         <div class="card-header">
-                            <div class="h5 m-0">리뷰 남긴 가게
-                                <button style="float:right;">내 리뷰 관리</button>
+                            <div class="h5 m-0">내 리뷰 관리
+<!--                                <button style="float:right;">내 리뷰 관리</button>-->
                             </div>
                         </div>
                         <div class="card-body">
-                            <p class="card-text">{{가게이름}}</p>
-
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <th scope="col">작성자명</th>
                                     <th scope="col">가게이름</th>
                                     <th scope="col">리뷰내용</th>
                                     <th scope="col">등록일자</th>
@@ -117,9 +123,8 @@
                                 </thead>
                                 <tbody>
                                 <tr th:each="SST :${userReview.dtoList}" class="tr-list">
-                                    <th scope="row">[[${SST.memberName}]]</th>
+                                    <th scope="row">[[${SST.storeNum}]]</th>
                                     <td>[[${SST.text}]]</td>
-                                    <td>[[${SST.storeNum}]]</td>
                                     <td>[[${#temporals.format(SST.regDate, 'yyyy/MM/dd')}]]</td>
                                 </tr>
                                 </tbody>
@@ -161,6 +166,60 @@
         </div>
         <div class="end-pg"></div>
 
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                crossorigin="anonymous"></script>
+
+        <script th:src="@{/js/waitingmodify.js}"></script>
+
+
+        <!--        waiting modal view-->
+        <div class="modal waitingModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">대기 등록 보기</h5>
+                        <button type="button" class="btn btn-close waiting-close21" data-dismiss="modal" aria-label="Close"/>
+                    </div>
+                    <div class="modal-body">
+                        <!--<p id="modalMsg"> 번 글이 <span class="modal-title"></span>되었습니다.</p>-->
+                        <div class="form-group" style="margin-bottom:30px; display:none;">
+                            <span class="span21">waitingNum</span>
+                            <input class="form-control" type="text" id="modal-waitingNum" name="modal-waitingNum">
+                        </div>
+                        <div class="form-group" style="margin-bottom:30px; display:none;">
+                            <span class="span21">storeNum</span>
+                            <input class="form-control" type="text" id="modal-storeNum" name="modal-storeNum">
+                        </div>
+                        <div class="form-group" style="margin-bottom:30px;">
+                            <span class="span21">상호명</span>
+                            <input class="form-control" type="text-name" id="storeName" name="storeName" readonly>
+                        </div>
+                        <div class="form-group" style="margin-bottom:30px;">
+                            <span class="span21">닉네임</span>
+                            <input class="form-control" type="text-name" id="memberNickname" th:value="${member.memberNickname}">
+                        </div>
+                        <div class="form-group" style="margin-bottom:30px;">
+                            <span class="span21">연락처</span>
+                            <input class="form-control" type="text-mobile" id="modal-memberMobile" th:value="${member.memberMobile}">
+                        </div>
+                        <div class="form-group" style="margin-bottom:30px;">
+                            <span class="span21">인원수</span>
+                            <select class="sel21" name="partyMember" id="partyMember">
+                                <option class="op21" name="partyMember">1</option>
+                                <option class="op21" name="partyMember">2</option>
+                                <option class="op21" name="partyMember">3</option>
+                                <option class="op21" name="partyMember">4</option>
+                            </select>
+                        </div>
+                    </div >
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary go-modify21">수정하기</button>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
     </th:block>
 </th:blotck>

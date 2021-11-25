@@ -14,10 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @Log4j2
@@ -35,5 +32,14 @@ public class WaitingController {
         Long waitingNum = waitingService.registerWaiting(waitingDTO);
         return new ResponseEntity<>(waitingNum, HttpStatus.OK);
     }
+
+    //웨이팅 수정
+    @PutMapping("/modifyWaiting/{waitingNum}")
+    public ResponseEntity<Long> modifyWaiting(@PathVariable Long waitingNum,
+                                             @RequestBody WaitingDTO waitingDTO){
+        waitingService.modify(waitingDTO);
+        return new ResponseEntity<>( waitingNum, HttpStatus.OK);
+    }
+
 
 }

@@ -1,10 +1,8 @@
 package com.ds.watchtable.service;
 
-import com.ds.watchtable.dto.PageRequestDTO;
-import com.ds.watchtable.dto.PageResultDTO;
-import com.ds.watchtable.dto.StoreDTO;
-import com.ds.watchtable.dto.WaitingDTO;
+import com.ds.watchtable.dto.*;
 import com.ds.watchtable.entity.Member;
+import com.ds.watchtable.entity.Review;
 import com.ds.watchtable.entity.Store;
 import com.ds.watchtable.entity.Waiting;
 import com.ds.watchtable.repository.WaitingRepository;
@@ -17,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
@@ -55,6 +54,19 @@ public class WaitingServiceImpl implements WaitingService{
         Function<Waiting, WaitingDTO> fn = (entity -> entityToDTO(entity));
         log.info("----------waiting3333333-----------"+fn);
         return new PageResultDTO<>(result, fn);
+    }
+
+    //웨이팅 수정
+    @Override
+    public void modify(WaitingDTO waitingDTO) {
+        Optional<Waiting> result =
+                waitingRepository.findById(waitingDTO.getWaitingNum());
+        if(result.isPresent()) {
+            Waiting waiting = result.get();
+            log.info(">>>>>>>>waiting4444<<<<<<<"+result);
+            waiting.changePartyMember(waitingDTO.getPartyMember());
+            waitingRepository.save(waiting);
+        }
     }
 
 

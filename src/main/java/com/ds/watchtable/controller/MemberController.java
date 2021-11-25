@@ -1,9 +1,6 @@
 package com.ds.watchtable.controller;
 
-import com.ds.watchtable.dto.MemberDTO;
-import com.ds.watchtable.dto.PageRequestDTO;
-import com.ds.watchtable.dto.PageResultDTO;
-import com.ds.watchtable.dto.WaitingDTO;
+import com.ds.watchtable.dto.*;
 import com.ds.watchtable.entity.Member;
 import com.ds.watchtable.entity.PosTable;
 import com.ds.watchtable.entity.Store;
@@ -46,7 +43,7 @@ public class MemberController {
 
     //principal, waiting list
     @RequestMapping("/member/myinfo")
-    public void myinfo(Model model, PageRequestDTO pageRequestDTO,
+    public void myinfo(Model model, PageRequestDTO pageRequestDTO, Long storeNum,
                        @AuthenticationPrincipal ClubAuthMemberDTO principal) {
         if (principal != null) {
             model.addAttribute("member", principal.getMember());
@@ -60,6 +57,9 @@ public class MemberController {
         PageResultDTO userReview = reviewService.getUserReview(pageRequestDTO, principal.getMember());
         log.info("userReview>>11111" + userReview);
         model.addAttribute("userReview", userReview);
+
+//        StoreDTO storeDTO = storeService.getStore(storeNum);
+//        model.addAttribute("dto", storeDTO);
 
 /*
         Store store = storeService.getStoreMember(principal.getMember());
