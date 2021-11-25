@@ -4136,6 +4136,7 @@ textarea.form-control-lg {
   .navbar-expand-sm .offcanvas-header {
     display: none;
   }
+
   .navbar-expand-sm .offcanvas {
     position: inherit;
     bottom: 0;
