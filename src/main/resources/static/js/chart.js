@@ -7,31 +7,24 @@
                 console.log(use);
             var left = 9-use;
             console.log(left);
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['잔여좌석',   left  ],
-          ['사용좌석',    use ],
-        ]);
+        new Chart(document.getElementById("piechart"), {
+            type: 'pie',
+            data: {
+              labels: ["사용중", "사용가능"],
+              datasets: [{
+                label: "Population (millions)",
+                backgroundColor: ["#CE2B38", "#5A8F5E"],
+                data: [use,left]
+              }]
+            },
+            options: {
+            responsive:false,
+              title: {
+                display: true,
 
-        var options = {
-          title: '혼잡도',
-          width: 470,
-//          height: 400,
-//          backgroundColor: {
-//            fill: 'none',
-//          },
-          chartArea: {
-            width: 300,
-            height: 300,
-            top: 30,
-            backgroundColor: {
-                stoke: 'none'
+              }
+
             }
-          }
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data, options);
-      }
+        });
+}
 }

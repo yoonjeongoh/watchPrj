@@ -16,15 +16,6 @@
                     </div>
                 </div>
 
-                <!--        2열-->
-                <div class="sec-col1">
-                    <!--        2열 좌측 가게이름, 임티-->
-                    <div class="sec1 sec-left1">
-                        <div class="color21" style="text-align:center;"><h2>[[${dto.storeName}]]</h2></div><br><br>
-                        <img th:src="@{/assets2/call.png}"><span class="color21">  [[${dto.storeTel}]]</span><br><br>
-                        <img th:src="@{/assets2/time.png}"><span class="color21">  [[${dto.storeOpen} + ' ~ ' + ${dto.storeClose}]]</span><br><br>
-                        <img th:src="@{/assets2/text.png}"><span class="color21">  [[${dto.storeText}]]</span><br><br>
-                        <img th:src="@{/assets2/adress.png}"><span class="color21">  [[${dto.storeAds}]]</span><br><br>
 
                     </div>
 
@@ -97,9 +88,6 @@
         </div>
         <div id="orderCountBasket2" th:value="${order.orderCount}" hidden>[[${order.orderCount}]]</div>
 
-        <!--        map api-->
-        <script type="text/javascript"
-                src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c804c7f02459129ea465ac2bec99e513&libraries=services,clusterer,drawing"></script>
         <script th:src="@{/js/detail.js}"></script>
         <!--        <script th:src="@{/js/indexList.js}"></script>-->
 
