@@ -9,6 +9,7 @@ import com.ds.watchtable.entity.PosTable;
 import com.ds.watchtable.entity.Store;
 import com.ds.watchtable.security.dto.ClubAuthMemberDTO;
 import com.ds.watchtable.service.MemberService;
+import com.ds.watchtable.service.ReviewService;
 import com.ds.watchtable.service.StoreService;
 import com.ds.watchtable.service.WaitingService;
 import lombok.RequiredArgsConstructor;
@@ -34,6 +35,7 @@ public class MemberController {
     @Autowired
     private final StoreService storeService;
     private final WaitingService waitingService;
+    private final ReviewService reviewService;
 
     //db 저장
     @PostMapping("/join/login")
@@ -54,6 +56,11 @@ public class MemberController {
         PageResultDTO userWaiting = waitingService.getUserWaiting(pageRequestDTO, principal.getMember());
         log.info("userWaiting>>11111" + userWaiting);
         model.addAttribute("userWaiting", userWaiting);
+
+        PageResultDTO userReview = reviewService.getUserReview(pageRequestDTO, principal.getMember());
+        log.info("userReview>>11111" + userReview);
+        model.addAttribute("userReview", userReview);
+
 /*
         Store store = storeService.getStoreMember(principal.getMember());
         model.addAttribute("dto", store);
