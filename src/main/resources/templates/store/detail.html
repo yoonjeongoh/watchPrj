@@ -38,7 +38,6 @@
                 <div class="sec1 sec-center1">
                     <span>잔여좌석 수</span>
                     <span id="orderCountBasket">[[${order.orderCount}]] </span>
-
                     <span>/9</span>
                     <button>♡</button>
                     <br>
@@ -47,7 +46,9 @@
                     <br>
                     <span class="color21">혼잡도가 80% 이상 일 때 가게 도착 시 만석이 될 수 있습니다</span><br>
                   <div class="chartRoom">
-                    <div id="piechart"></div>
+                      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+                      <canvas id="piechart" style="width: 350px; height:350px;"></canvas>
+<!--                    <div id="piechart" style="width: 300px; height: 300px;"></div>-->
                   </div>
                 </div>
 
@@ -104,6 +105,7 @@
 
 <!--        map api-->
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c804c7f02459129ea465ac2bec99e513&libraries=services,clusterer,drawing"></script>
+
         <script th:src="@{/js/detail.js}"></script>
 <!--        <script th:src="@{/js/indexList.js}"></script>-->
 
