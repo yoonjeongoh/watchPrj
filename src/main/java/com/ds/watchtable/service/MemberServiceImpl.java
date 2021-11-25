@@ -46,11 +46,6 @@ public class MemberServiceImpl implements MemberService {
         log.info("member member" + member);
     }
     //중복체크
-    @Override
-    public int idCheck(String memberId) {
-        int cnt = memberRepository.idCheck(memberId);
-        return cnt;
-    }
 }
 
 

@@ -16,8 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @Log4j2
@@ -95,15 +93,15 @@ public class MemberController {
 //        log.info("member.isFromSocial()"+member.isFromSocial());
 //        memberRepository.save(member);
 //    }
-    @PostMapping("/member/idCheck")
-    @ResponseBody
-    public int idCheck(@RequestParam("id") String id){
-        log.info("userIdCheck 진입");
-        log.info("전달받은 id:"+id);
-        int cnt = memberService.idCheck(id);
-        log.info("확인 결과:"+cnt);
-        return cnt;
-    }
+//    @PostMapping("/member/idCheck")
+//    @ResponseBody
+//    public int idCheck(@RequestParam("id") String id){
+//        log.info("userIdCheck 진입");
+//        log.info("전달받은 id:"+id);
+//        int cnt = memberService.idCheck(id);
+//        log.info("확인 결과:"+cnt);
+//        return cnt;
+//    }
 }
 
 

@@ -54,8 +54,8 @@ public class ClubLoginSuccessHandler implements AuthenticationSuccessHandler {
     log.info("getAuthorities: " + roleList);
     String sendUrl = "";
     if (roleList.contains("ROLE_USER") && fromSocial && passwordResult) sendUrl = "/";
-    if (roleList.contains("ROLE_MANAGER")) sendUrl = "/member/managemyinfo";
-    if (roleList.contains("ROLE_ADMIN")) sendUrl = "/admin";
+    if (roleList.contains("ROLE_MANAGER")) sendUrl = "/";
+    if (roleList.contains("ROLE_ADMIN")) sendUrl = "/";
     if (roleList.contains("ROLE_SOCIAL") && fromSocial && passwordResult) sendUrl = "/join/socialJoin";
     log.info("sendUrl: "+sendUrl);
     redirectStrategy.sendRedirect(request, response, sendUrl);
