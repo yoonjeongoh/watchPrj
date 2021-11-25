@@ -341,6 +341,10 @@ sup {
   top: -0.5em;
 }
 
+navbar-orange {
+    text-align:right;
+}
+
 a {
   color: #fdb53c;
   text-decoration: underline;

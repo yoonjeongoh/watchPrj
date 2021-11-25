@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @Log4j2
 @RequiredArgsConstructor
@@ -47,6 +49,9 @@ public class StoreController {
         PosTable posTable = storeService.getPosTable(posTable1);
         log.info("ewrwererwrew" + posTable);
         model.addAttribute("order", posTable);
+
+        List<PosTable> posTableList = storeService.findAll();
+        model.addAttribute("postable", posTableList);
     }
 
 

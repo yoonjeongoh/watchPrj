@@ -37,7 +37,9 @@
                 <!--        2열 중앙 혼잡도 그래프-->
                 <div class="sec1 sec-center1">
                     <div class="color21"><h2>[[${order.orderCount}]]</h2></div>
-                    <span>잔여좌석 수 0/13</span>
+                    <span>잔여좌석 수</span>
+                    <span id="orderCountBasket">[[${order.orderCount}]] </span>
+                    <span>/13</span>
                     <button>♡</button>
                     <br>
                     <span>현재 대기 팀 0팀</span>
@@ -101,7 +103,7 @@
 
 <!--        map api-->
         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c804c7f02459129ea465ac2bec99e513&libraries=services,clusterer,drawing"></script>
-        <script th:src="@{/js/index.js}"></script>
+        <script th:src="@{/js/detail.js}"></script>
 <!--        <script th:src="@{/js/indexList.js}"></script>-->
 
 
@@ -129,8 +131,11 @@
             //var memberNickame = [[${member.memberNickname}]];
             var partyMember = $('select[name="partyMember"]');
 
+
+
             var memberMobile = $('.memberMobile');
             var memberNickname = $('.memberNickname');
+
 
             $(".waiting-register21").click(function(){
             $('.waitingModal').modal('show')
@@ -249,7 +254,15 @@
                 </div>
             </div>
         </div>
-
+        <!--      아래 each구문 지도 혼잡도 좌석 수 뽑아오는 구문이니 지우시면 안됩니다 히든으로 가려놨습니다-->
+        <table>
+            <tbody>
+            <tr th:each="postable, i : ${postable}" >
+                <td th:attrappend="id=${i.index}" name="orderCnt" th:value="${postable.orderCount}"  hidden>[[${postable.orderCount}]]</td>
+            </tr>
+            </tbody>
+        </table>
+        <!--    여기까지입니다-->
 
     </th:block>
 </th:block>
