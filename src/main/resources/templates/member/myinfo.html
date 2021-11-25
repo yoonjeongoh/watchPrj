@@ -91,7 +91,6 @@
                                     <td>[[${#temporals.format(STB.regDate, 'yyyy/MM/dd hh:mm')}]]</td>
                                 </tr>
                                 </tbody>
-
                             </table>
 
                         </div>
@@ -110,10 +109,10 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <th scope="col">대기자명</th>
-                                    <th scope="col">대기인원</th>
-                                    <th scope="col">가게넘버</th>
-                                    <th scope="col">예약시간</th>
+                                    <th scope="col">작성자명</th>
+                                    <th scope="col">가게이름</th>
+                                    <th scope="col">리뷰내용</th>
+                                    <th scope="col">등록일자</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -121,11 +120,27 @@
                                     <th scope="row">[[${SST.memberName}]]</th>
                                     <td>[[${SST.text}]]</td>
                                     <td>[[${SST.storeNum}]]</td>
-                                    <td>[[${#temporals.format(SST.regDate, 'yyyy/MM/dd hh:mm')}]]</td>
+                                    <td>[[${#temporals.format(SST.regDate, 'yyyy/MM/dd')}]]</td>
                                 </tr>
                                 </tbody>
 
                             </table>
+
+                            <ul class="pagination h-100 justify-content-center align-items-center">
+                                <li class="page-item" th:if="${userReview.prev}">
+                                    <a class="page-link" th:href="@{/member/myinfo(page=${userReview.start-1})}"
+                                       tabindex="-1">Previous</a>
+                                </li>
+
+                                <li th:class=" 'page-item ' + ${userReview.page == page?'active':''}"
+                                    th:each="page: ${userReview.pageList}">
+                                    <a class="page-link" th:href="@{/member/myinfo(page=${page})}">[[${page}]]</a>
+                                </li>
+
+                                <li class="page-item" th:if="${userReview.next}">
+                                    <a class="page-link" th:href="@/member/myinfo(page=${userReview.end+1})}">Next</a>
+                                </li>
+                            </ul>
 
 
                         </div>
