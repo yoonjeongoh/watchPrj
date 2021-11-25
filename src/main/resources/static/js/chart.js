@@ -5,8 +5,8 @@
 
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Hours per Day'],
-          ['occupied',     11],
-          ['available',      4],
+          ['잔여좌석',     1],
+          ['사용좌석',     1],
         ]);
 
         var options = {

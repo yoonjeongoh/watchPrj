@@ -25,6 +25,8 @@
         <div class="container">
             <a class="navbar-brand" th:href="@{/}">WATCH TABLE</a>
             <a sec:authorize="isAuthenticated()"><span sec:authentication="name"></span><span> 님 환영합니다.</span></a>
+            <div class="navbar-orange">
+            <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{member/myinfo}">내정보</a>
             <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/logout}">로그아웃</a>
             <a sec:authorize="hasRole('USER')" class="btn btn-primary" th:href="@{member/myinfo}">내정보</a>
             <a sec:authorize="!isAuthenticated()" class="btn btn-primary" th:href="@{/join/login}">로그인</a>
@@ -32,7 +34,7 @@
             <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{manager/manageinfocorrect}" class="btn btn-primary">가게정보수정</a><br>
             <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{pos/postable}" class="btn btn-primary">POS</a><br>
             <a sec:authorize="!isAuthenticated()" class="btn btn-primary" th:href="@{/join/joinselect}">회원가입</a>
-
+            </div>
         </div>
     </nav>
     <!-- Masthead-->
@@ -60,11 +62,11 @@
                                         <form class="form-inline">
                                             <div class="input-group-prepend col">
                                                 <input class="form-control form-control-lg mr-sm-2 srch" type="text"  id="emailAddress"
-                                                       placeholder="식당을 찾아보세요!"/>
+                                                       />
                                             </div>
                                         </form>
                                     </nav>
-                                    <div id="accordion" role="tablist">
+                                    <div id="accordion" role="tablist" style="display: none;">
                                         <div class="card">
                                             <div class="card-header" role="tab" id="headingOne">
                                                 <span class="badge badge-primary badge-pill incat-count" style="background:orange;">0</span>
@@ -190,6 +192,14 @@
 
     <script>
       $(document).ready(function(){
+            var con = accodion;
+            console.log(con);
+            var con2 = $('#emailAddress').val();
+                if(con2 == "" || con2 == null ){
+                    con.style.display = 'none';
+                }else{
+                    con.style.display = 'block';
+                }
           $('.cat-list li').addClass('fnd');
           function counter_set()
           {
