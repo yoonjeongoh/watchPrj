@@ -1,5 +1,7 @@
 package com.ds.watchtable.service;
 
+import com.ds.watchtable.dto.PageRequestDTO;
+import com.ds.watchtable.dto.PageResultDTO;
 import com.ds.watchtable.dto.ReviewDTO;
 import com.ds.watchtable.entity.Member;
 import com.ds.watchtable.entity.Review;
@@ -10,14 +12,17 @@ import java.util.List;
 public interface ReviewService {
     //리뷰 추가
     Long registerReview(ReviewDTO reviewDTO);
-    //리뷰 리스트
+    //상세페이지 리뷰 리스트
     List<ReviewDTO> getListOfReview(Long storeNum);
     //리뷰수정
     void modify(ReviewDTO reviewDTO);
     //리뷰 삭제
     void remove(Long reviewNum);
+    //유저 리뷰 리스트
+    PageResultDTO<ReviewDTO, Review> getUserReview(PageRequestDTO requestDTO, Member member);
 
-    default Review dtoToEntity(ReviewDTO reviewDTO){
+
+        default Review dtoToEntity(ReviewDTO reviewDTO){
         Review review = Review.builder()
                 .member(Member.builder()
                         .memberNum(reviewDTO.getMemberNum())
