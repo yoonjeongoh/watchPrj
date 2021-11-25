@@ -30,10 +30,11 @@
             <a sec:authorize="isAuthenticated()" class="btn btn-primary" th:href="@{/logout}">로그아웃</a>
             <a sec:authorize="hasRole('USER')" class="btn btn-primary" th:href="@{member/myinfo}">내정보</a>
             <a sec:authorize="!isAuthenticated()" class="btn btn-primary" th:href="@{/join/login}">로그인</a>
+            <a sec:authorize="!isAuthenticated()" class="btn btn-primary" th:href="@{/join/joinselect}">회원가입</a>
             <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{manager/managemyinfo}" class="btn btn-primary">내 가게정보</a><br>
             <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{manager/manageinfocorrect}" class="btn btn-primary">가게정보수정</a><br>
             <a sec:authorize="hasAnyRole('MANAGER','ADMIN')" th:href="@{pos/postable}" class="btn btn-primary">POS</a><br>
-            <a sec:authorize="!isAuthenticated()" class="btn btn-primary" th:href="@{/join/joinselect}">회원가입</a>
+
             </div>
         </div>
     </nav>
@@ -192,14 +193,7 @@
 
     <script>
       $(document).ready(function(){
-            var con = accodion;
-            console.log(con);
-            var con2 = $('#emailAddress').val();
-                if(con2 == "" || con2 == null ){
-                    con.style.display = 'none';
-                }else{
-                    con.style.display = 'block';
-                }
+
           $('.cat-list li').addClass('fnd');
           function counter_set()
           {
@@ -212,6 +206,16 @@
           counter_set();
           $('.srch').keyup(function(){
               var txt = $(this).val().toLowerCase();
+              var con = accordion;
+            console.log(con);
+            var con2 = $("#emailAddress").val();
+            console.log(con2);
+                if(con2 == "" || con2 == null ){
+                    con.style.display = 'none';
+                }else{
+                    con.style.display = 'block';
+                }
+                console.log(con.style.display);
               $('.cat-list li').filter(function(){
                   var mt = $(this).text().toLowerCase().indexOf(txt) > -1;
                   $(this).toggle(mt);

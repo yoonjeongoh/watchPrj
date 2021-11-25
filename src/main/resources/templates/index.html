@@ -29,12 +29,7 @@
       </table>
     </div>
     <hr sec:authorize="hasAnyRole('MANAGER','ADMIN')">
-    <div th:each="member: ${member}" sec:authorize="hasAnyRole('MANAGER','USER','ADMIN')">
-      <span>[[${member.memberNum}]]</span>
-      <span>[[${member.memberName}]]</span>
-      <span>[[${member.memberEmail}]]</span>
-      <span>[[${member.memberNickname}]]</span>
-    </div>
+
     <hr sec:authorize="hasRole('ADMIN')">
     <h3 sec:authorize="hasRole('ADMIN')">Admin</h3>
     <a sec:authorize="hasRole('ADMIN')" th:href="@{admin/admin}" class="btn btn-primary">/admin/admin</a><br>
