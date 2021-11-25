@@ -24,7 +24,6 @@ public class WaitingController {
 
     @Autowired
     final private WaitingService waitingService;
-    private final StoreService storeService;
 
     //웨이팅 등록
     @RequestMapping("/addWaiting/{storeNum}")
@@ -38,6 +37,14 @@ public class WaitingController {
     public ResponseEntity<Long> modifyWaiting(@PathVariable Long waitingNum,
                                              @RequestBody WaitingDTO waitingDTO){
         waitingService.modify(waitingDTO);
+        return new ResponseEntity<>( waitingNum, HttpStatus.OK);
+    }
+
+    //웨이팅 취소
+    @DeleteMapping("/modifyWaiting/{waitingNum}")
+    public ResponseEntity<Long> cancelWaiting( @PathVariable Long waitingNum){
+        waitingService.remove(waitingNum);
+        log.info("removewaitingcontroller======"+waitingNum);
         return new ResponseEntity<>( waitingNum, HttpStatus.OK);
     }
 

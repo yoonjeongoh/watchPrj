@@ -24,12 +24,12 @@
 }
 
 .go-modify21 {
-    background-color: #c7c4bf;
-    border-color: #c7c4bf;
-    color: #75736e;
+    background-color: #fdb53c;
+    border-color: #fdb53c;
+    color: #f2f1ed;
 }
 
-.go-waiting21 {
+.go-waiting21, .go-cancel21 {
     background-color: #fdb53c;
     border-color: #fdb53c;
     color: #f2f1ed;
