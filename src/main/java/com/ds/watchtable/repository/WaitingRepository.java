@@ -15,5 +15,7 @@ public interface WaitingRepository extends JpaRepository<Waiting, Long > {
     @Query("select w from Waiting w where w.store =:store")
     Page<Waiting> getWaitingByStore(Pageable pageable, Store store);
 
+    @Query("select w from Waiting w where w.member =:member")
+    Page<Waiting> getWaitingByUser(Pageable pageable, Member member);
 
 }

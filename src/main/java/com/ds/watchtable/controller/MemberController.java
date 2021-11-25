@@ -42,7 +42,7 @@ public class MemberController {
         memberService.register(memberDTO);
     }
 
-    //principal
+    //principal, waiting list
     @RequestMapping("/member/myinfo")
     public void myinfo(Model model, PageRequestDTO pageRequestDTO,
                        @AuthenticationPrincipal ClubAuthMemberDTO principal) {
@@ -51,11 +51,16 @@ public class MemberController {
             log.info("principal.getMember()1" + principal.getMember());
         }
 
+        PageResultDTO userWaiting = waitingService.getUserWaiting(pageRequestDTO, principal.getMember());
+        log.info("userWaiting>>11111" + userWaiting);
+        model.addAttribute("userWaiting", userWaiting);
+/*
         Store store = storeService.getStoreMember(principal.getMember());
         model.addAttribute("dto", store);
 
         PosTable posTable1 = storeService.getPosTable(store);
         model.addAttribute("order", posTable1);
+*/
     }
 
     @PostMapping("/member/myinfo")
