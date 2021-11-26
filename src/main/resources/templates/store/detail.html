@@ -11,8 +11,10 @@
                 <!--        1열 상단 카드이미지-->
                 <div class="top-card1">
                     <div class="card1" th:each="menuImage: ${dto.menuImageDTOList}">
+                        <div>
                         <img th:if="${menuImage.menuPath != null}"
-                             th:src="|/watchtable/menuDisplay?fileName=${menuImage.getThumbnailURL()}|">
+                             th:src="|/watchtable/menuDisplay?fileName=${menuImage.getImageURL()}|">
+                        </div>
                     </div>
                 </div>
 
@@ -21,6 +23,11 @@
                     <!--        2열 좌측 가게이름, 임티-->
                     <div class="sec1 sec-left1">
                         <div class="color21" style="text-align:center;"><h2>[[${dto.storeName}]]</h2></div><br><br>
+                        <h3 style="display:inline;">잔여좌석 수</h3>
+                        <h4 id="orderCountBasket" style="display:inline;">[[${order.orderCount}]] </h4>
+                        <h4 style="display:inline;">/ 9    </h4>
+                        <button class="waiting-register21 colored-btn21" sec:authorize="hasRole('USER')">대기 등록하기</button>
+                        <br><br>
                         <img th:src="@{/assets2/call.png}"><span class="color21">  [[${dto.storeTel}]]</span><br><br>
                         <img th:src="@{/assets2/time.png}"><span class="color21">  [[${dto.storeOpen} + ' ~ ' + ${dto.storeClose}]]</span><br><br>
                         <img th:src="@{/assets2/text.png}"><span class="color21">  [[${dto.storeText}]]</span><br><br>
@@ -29,24 +36,20 @@
 
                     <!--        2열 중앙 혼잡도 그래프-->
                     <div class="sec1 sec-center1">
-                        <span>잔여좌석 수</span>
-                        <span id="orderCountBasket">[[${order.orderCount}]] </span>
-                        <span>/ 9    </span>
-                        <button class="waiting-register21 colored-btn21">대기 등록하기</button>
-                        <br><br><br>
-                        <span class="color21">※ 혼잡도가 80% 이상 일 때 도착 시 만석이 될 수 있습니다. </span><br>
+
+                        <span class="color21">※ 80% 이상 사용 중일 때 도착 시 만석이 될 수 있습니다. </span><br>
                         <div class="chartRoom">
-                            <div id="piechart"></div>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+                            <canvas id="piechart" style="width: 350px; height:350px;"></canvas>
+                            <!--                    <div id="piechart" style="width: 300px; height: 300px;"></div>-->
                         </div>
                     </div>
-
                     <!--        2열 우측 지도-->
                     <div class="sec1 sec-right1" style="margin-left:50px;">
                         <div class="map" id="map" style="width: 400px; height: 400px;">
                         </div>
                     </div>
                 </div>
-
                 <!--        3열-->
                 <!--
                             <div class="thd-col1">
@@ -55,7 +58,6 @@
                                     <span>메뉴</span>
                                     <span></span>
                                 </div>
-
                                 &lt;!&ndash;        3열 우측 가게정보&ndash;&gt;
                                 <div class="thd1 thd-right1"> 2<br>
                                     <span>가게주소 : [[${dto.storeAds}]]</span><br>
@@ -63,10 +65,8 @@
                                     <span>영업시간 : [[${dto.storeOpen} + ' ~ ' + ${dto.storeClose}]]</span><br>
                                     <span>가게정보 : [[${dto.storeText}]]</span>
                                 </div>
-
                             </div>
                 -->
-
                 <!--5열 리뷰작성칸-->
                 <div id="review" class="rv-field fifth-col1">
                     <div class="rv-ta1">
