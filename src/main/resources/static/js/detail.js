@@ -21,15 +21,16 @@ var mapContainer = document.getElementById('map'), // 지도를 표시할 div
 
 function locationLoadSuccess(pos){
     var orderCount1 = $('#0').attr("value");
-    console.log(orderCount1);
-    var orderCount2= $('#1').attr("value");
-    console.log(orderCount2);
-    var orderCount3= $('#2').attr("value");
-    console.log(orderCount3);
-    var orderCount4= $('#3').attr("value");
-        console.log(orderCount4);
-    var orderCount5= $('#4').attr("value");
-        console.log(orderCount5);
+    var orderCount2 = $('#1').attr("value");
+    var orderCount3 = $('#2').attr("value");
+    var orderCount4 = $('#3').attr("value");
+    var orderCount5 = $('#4').attr("value");
+    var orderCount6 = $('#5').attr("value");
+    var orderCount7 = $('#6').attr("value");
+    var orderCount8 = $('#7').attr("value");
+    var orderCount9 = $('#8').attr("value");
+    var orderCount10 = $('#9').attr("value");
+    var orderCount11 = $('#10').attr("value");
 
     var centerImageSrc = 'https://cdn-icons-png.flaticon.com/512/1673/1673221.png', // 마커이미지의 주소입니다
         centerImageSize = new kakao.maps.Size(35, 30) // 마커이미지의 크기입니다
@@ -64,10 +65,162 @@ function locationLoadSuccess(pos){
 var shakePosition  = new kakao.maps.LatLng(35.153103, 129.059581);
 var macPosition  = new kakao.maps.LatLng(35.153693, 129.058895);
 var momPosition  = new kakao.maps.LatLng(35.154078, 129.058898);
-var ricePosition  = new kakao.maps.LatLng(35.153101, 129.058325);
+var ricePosition  = new kakao.maps.LatLng(35.152721, 129.058867);
 var obackPosition  = new kakao.maps.LatLng(35.151950, 129.058617);
+var gobongPosition  = new kakao.maps.LatLng(35.152414, 129.059606);
+var sigolPosition  = new kakao.maps.LatLng(35.152275, 129.057613);
+var issuePosition  = new kakao.maps.LatLng(35.152817, 129.058326);
+var subPosition  = new kakao.maps.LatLng(35.154147, 129.059392);
+var angelPosition  = new kakao.maps.LatLng(35.152927, 129.058844);
+var kfcPosition  = new kakao.maps.LatLng(35.153554, 129.058893);
+
+
 
 // 마커를 생성합니다
+var kfcMarker = new kakao.maps.Marker({
+    position: kfcPosition,
+    image:greenMarkerImage
+});
+if(orderCount11 < 4){
+var kfcMarker = new kakao.maps.Marker({
+    position: kfcPosition,
+    image:greenMarkerImage
+    });
+}
+if(orderCount11 > 3 && orderCount11 < 7){
+var kfcMarker = new kakao.maps.Marker({
+    position: kfcPosition,
+    image:blueMarkerImage
+    });
+}
+if(orderCount11 > 6){
+ var kfcMarker = new kakao.maps.Marker({
+     position: kfcPosition,
+     image:redMarkerImage
+     });
+ }
+
+
+var angelMarker = new kakao.maps.Marker({
+    position: angelPosition,
+    image:greenMarkerImage
+});
+if(orderCount10 < 4){
+var angelMarker = new kakao.maps.Marker({
+    position: angelPosition,
+    image:greenMarkerImage
+    });
+}
+if(orderCount10 > 3 && orderCount10 < 7){
+var angelMarker = new kakao.maps.Marker({
+    position: angelPosition,
+    image:blueMarkerImage
+    });
+}
+if(orderCount10 > 6){
+ var angelMarker = new kakao.maps.Marker({
+     position: angelPosition,
+     image:redMarkerImage
+     });
+ }
+
+
+var subMarker = new kakao.maps.Marker({
+    position: subPosition,
+    image:greenMarkerImage
+});
+if(orderCount9 < 4){
+var subMarker = new kakao.maps.Marker({
+    position: subPosition,
+    image:greenMarkerImage
+    });
+}
+if(orderCount9 > 3 && orderCount9 < 7){
+var subMarker = new kakao.maps.Marker({
+    position: subPosition,
+    image:blueMarkerImage
+    });
+}
+if(orderCount9 > 6){
+ var subMarker = new kakao.maps.Marker({
+     position: subPosition,
+     image:redMarkerImage
+     });
+ }
+
+
+var issueMarker = new kakao.maps.Marker({
+    position: issuePosition,
+    image:greenMarkerImage
+});
+if(orderCount8 < 4){
+var issueMarker = new kakao.maps.Marker({
+    position: issuePosition,
+    image:greenMarkerImage
+    });
+}
+if(orderCount8 > 3 && orderCount8 < 7){
+var issueMarker = new kakao.maps.Marker({
+    position: issuePosition,
+    image:blueMarkerImage
+    });
+}
+if(orderCount8 > 6){
+ var issueMarker = new kakao.maps.Marker({
+     position: issuePosition,
+     image:redMarkerImage
+     });
+ }
+
+
+var sigolMarker = new kakao.maps.Marker({
+    position: sigolPosition,
+    image:greenMarkerImage
+});
+if(orderCount7 < 4){
+var sigolMarker = new kakao.maps.Marker({
+    position: sigolPosition,
+    image:greenMarkerImage
+    });
+}
+if(orderCount7 > 3 && orderCount7 < 7){
+var sigolMarker = new kakao.maps.Marker({
+    position: sigolPosition,
+    image:blueMarkerImage
+    });
+}
+if(orderCount7 > 6){
+ var sigolMarker = new kakao.maps.Marker({
+     position: sigolPosition,
+     image:redMarkerImage
+     });
+ }
+
+
+var gobongMarker = new kakao.maps.Marker({
+    position: gobongPosition,
+    image:greenMarkerImage
+});
+if(orderCount6 < 4){
+var obackMarker = new kakao.maps.Marker({
+    position: gobongPosition,
+    image:greenMarkerImage
+    });
+}
+if(orderCount6 > 3 && orderCount6 < 7){
+var obackMarker = new kakao.maps.Marker({
+    position: gobongPosition,
+    image:blueMarkerImage
+    });
+}
+if(orderCount6 > 6){
+ var obackMarker = new kakao.maps.Marker({
+     position: gobongPosition,
+     image:redMarkerImage
+     });
+ }
+
+
 var obackMarker = new kakao.maps.Marker({
     position: obackPosition,
     image:greenMarkerImage
@@ -91,6 +244,7 @@ if(orderCount5 > 6){
      });
  }
 
+
 var riceMarker = new kakao.maps.Marker({
     position: ricePosition,
     image:greenMarkerImage
@@ -113,6 +267,8 @@ if(orderCount4 > 6){
      image:redMarkerImage
      });
  }
+
+
 var shakeMarker = new kakao.maps.Marker({
     position: shakePosition,
     image:greenMarkerImage
@@ -159,6 +315,8 @@ if(orderCount2 > 6){
      image:redMarkerImage
      });
  }
+
+
 var momMarker = new kakao.maps.Marker({
     position: momPosition,
     image:greenMarkerImage
@@ -189,6 +347,13 @@ macMarker.setMap(map);
 momMarker.setMap(map);
 riceMarker.setMap(map);
 obackMarker.setMap(map);
+gobongMarker.setMap(map);
+sigolMarker.setMap(map);
+issueMarker.setMap(map);
+subMarker.setMap(map);
+angelMarker.setMap(map);
+kfcMarker.setMap(map);
+
 
     // 기존에 마커가 있다면 제거 후 생성 내위치 마커임 지우면 안댐
     marker.setMap(null);
@@ -287,6 +452,133 @@ var macContent = '<div class="wrap">' +
                                                                                                       '</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
                                               obackRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 
+                                              var gobongContent = '<div class="wrap">' +
+                                                                                                                                                    '    <div class="info">' +
+                                                                                                                                                    '    <div class="info">' +
+                                                                                                                                                    '        <div class="title"> <a href="http://localhost:8080/watchtable/store/detail?storeNum=6" target="_blank" class="link">고봉민김밥 서면점</a>  '+
+                                                                                                                                                    '            <div class="close" onclick="macCloseOverlay()" title="닫기"></div>' +
+                                                                                                                                                    '        </div>' +
+                                                                                                                                                    '        <div class="body">' +
+                                                                                                                                                    '            <div class="img">' +
+                                                                                                                                                    '                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxAREhUTEREVEhIWFRYYFxYXGBsbExYYFxcYFhcYFhMZKCggGB0lGxMaIjEhJSkrLi4uFx80OTQvOCgtLisBCgoKDg0OGxAQGi0mICItLi0wLS0rLS0tLSstKy0vKy8tKy0tNi0tLS0vLS0wLSstLSstLSstLS0tLS0tLS0tLf/AABEIAKcBLwMBIgACEQEDEQH/xAAbAAEAAwEBAQEAAAAAAAAAAAAAAwQFBgIBB//EADwQAAIBAQMKBQMCBAUFAAAAAAABAhEDBCEFEhMxQVFSkaGxFDJhcYEGIsGS0UJiwvAjY3LS8RUzU6Ky/8QAGgEBAAMBAQEAAAAAAAAAAAAAAAECAwQFBv/EADIRAAIBAwEFBwIFBQAAAAAAAAABAgMRITEEEkFR8BNhcYGRobEiwQUUQtHhIzJSYvH/2gAMAwEAAhEDEQA/AP2mxso5sftWpbFuPehhwrkj7YeWPsuxIARaGHCuSGhhwrkiUAEWhhwrkhoYcK5IlABFoYcK5IaGHCuSJQARaGHCuSGhhwrkiUAEWhhwrkhoYcK5IlABFoYcK5IaGHCuSJQARaGHCuSGhhwrkiUAEWhhwrkhoYcK5IlABFoYcK5IaGHCuSJQARaGHCuSGhhwrkiUAEWhhwrkhoYcK5IlABFoYcK5IaGHCuSJQARaGHCuSGhhwrkiUAEWhhwrkhoYcK5IlABFoYcK5IaGHCuSJQARaGHCuSGhhwrkiUAEWhhwrkhoYcK5IlABFoYcK5IhvllFQdIpatnqi2V795H8d0ASWHlj7LsSEdh5Y+y7EgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK9+8j+O6LBXv3kfx3QBJYeWPsuxIR2Hlj7LsSAAAAAAAAAAAAAAFa9XyzslW0ko937LWZk/qWxWqM360X5ZjU2ilTdpyS8ybM3DxaTUU23RLFso3HK1jbYRbUuF4P9mfMvzpd5+qS5tIOtF03Ug00k/YWzYu3e2jOKlBqSe1Epg/SjpZTbeGd2Sqebvl92lvGEYrMbpXb7mMNsh2cJTw58OuBNsnQA+N0PkZJ4p1R2FT0D4mmZzypFXhWGbjTzeubnUp7FJ1IwtvO12l5vQGkAC4BFa2qiqt/u/ZbSSplWdZSc3qlqW1KiVK7NWpbzOc92yXElK5bV8/y5L9P7hXxV+6More6U+aPAqWt7s4ukpxT3NntzqqwpL5wfyjLtHwengWsjTBTydTMpqabqt1XWnsXDeLukygABYAAAAAAAAAAr37yP47osFe/eR/HdAElh5Y+y7EhHYeWPsuxIAAAAAAAAAAAAAYF6yA7W0lOdrg3gqYpbESP6asaYOSe+v4NsHKth2e7e4m3zu/uTvM4G6wlC3jFeZTS/9qHT/VEqWD9ZR71/BiZJstJeq7FKUuTdPwdJla56azcE6PBr3R52x0m9mqqHG6Xp16Fm8o5mx0/hpZrirGrrik3vRJ9LXXOtc/ZBdWqLpU+RyLOGNvJQso4ujq36Jb2a/wBP3WmdaJOEJ+WH8q1N+rM9n2ecq1Nzi8cG84vm1sRvZJcfUlvB6+pptWDptkk/Yxck3S2t4uCtc2zi9Xq8dSOgy/Y51hOmyj5HP/T+UYWLnnvB0p6tVw69DXa1H85HtHaLjbW3N5tw0IWhLkizlZXvRqTaWcnuapXV70JLJ52UH6N9LOhb+nbvJudvNUc26V3N1b7ciDIkc+82tpsTfXV0RWnS+iktN6pvJcktPbPmLnSgA9woDDy/nRzMx5rm81v3pjTfQ3Cjf7PGEqVUW/hywT60+TDaI71NrrXPtcmOpgS+nv8AM5rmROwtbq01LOhL7cNdWsMN5u2U5OtVSmr1I83SZlY4qcWsNVHV6/RHnvZKazTVnw1L3L11sJRbcmm2orD0rj1LYB6yio4RmAASAAAAAAAAAAV795H8d0WCvfvI/jugCSw8sfZdiQjsPLH2XYkAAAAAAAAAAAAAPknQzsj3520ZNpJKTSpu2VLt4s86EorCqa5o5XJ9teLs5Qdi5Jvc9e9NHFtFd0qsG77ub2TeeGhZLBt5GyXoFKrzpSevctiNQw1eb5a+SzViuKWv+/gv3C5uzq5TlOb1tvD4Wwts8oqKhTg1FcXj5y/S3eQ+8zsuZOtraazWtGlte3a2iG93SUEtPeJybwjZwwbexL/g6G0lRN7k2cXbXqMo6VzfiM/BbIpaqHHtkaVGTl+qWcydsW4Xs3nEX8XJjc6jJN3nCyUbRtyx1utE9ldp7sMm2MHnRgk/71bjzkm3naWUZTVJOvzjg/kvHoUoQcItLCStfX34kGVlW9yqrGy/7k9uyMdr5FrJ9yjYwzY47W9re8x8sXC3VrprGrfprTpTVtVCpKxv1vhKqj6/avmms4pbRKFWTlTk5aRssW8e96+XBFrYOuBVyfdtFZxhWtFr6k85JJt6kq8j0ottJyVvt5lCG1vKTok5PovdmQ71a2lvKzlRQjGtFvdKVe2lehdhWlXreL92ZN5tc285rebGcVnPU8FKmOzE4q9R/S28byx48H52LpEt4vDTlV5q8sq1SwWxrXWtcKayW92s42elg6SSTWGFNtV6lmEYKOams33r3MrLUIQg3CVJywf3Vzl6oxrKUISlfh6Pu592FxJNyxvjotIksPMvL8rWi+Ztm6pPekTXF0Thu1ez1L41HfCb0ZVouAA2KgAAAAAAAAAr37yP47osFe/eR/HdAElh5Y+y7EhHYeWPsuxIAAAAAAAAAAAAAAY+W8r6CkYpObVcdSXrvMF5evLdc9L0UY06o4a/4jRoz3Hdvu/losotnbGLeMoTd5hYwdIp/fhrwrT0wPWQ8rO2rGaSmscNTW+hSyKs+9Ws91erouiZFXaO1jT7N/3S87LLXtkWsdDa2kYqsmopbXqM+xu11tm5xhCbTxdMK+q1Mzvq62f2Q2YyfZFnJS0VzclhLNnP5xp2QddT2h0nFOMVdtq+fjiLYubEpRiqtqMUvZJH2Mk0msU8Uc3f7zO1u9jFv7rSVH60dNXvQ6WEUkktSVDejX7WTssWi/Nq/srepFj0Ac5C+S8e4ptxeFNmEK6v9SLVq6pbt/1SUfUJXOjKt9eCW90+Nf4LRSvUqzS3KvzKqX/y+Zeo/p660uEQW1ooxcpOiSqzmMuWilbOmKpHtX8mpl28zUXFQea8G2sPhrA5xtvX/ew8L8Qr3/prx+f4NEAAeXYk6jJV+UlCG3Mq3uo6UNKzdLSPrWPTO/p6nLZCtJK0+2Oc3FrXSmKda/B0zeMd+dHq0n0bPoNkqupTTfD7FWaYAPUMwAAAAAAAAAV795H8d0WCvfvI/jugCSw8sfZdiQjsPLH2XYkAAAAAAAAAAAAAKN6yZY2slKcatKmt0p6owvqeNlDMhCKi9botmpf36HR329RsoOctS6vYkcvccnzvVo7W0wg3Vvf/ACx7VPL29J/0qcVvz18Fq2/K17/sXjzLf0pdGs61eCpSPrvZ7+kF9tpLfJLkm/6jdjZpRzYqiSokc59PTto2UnZxjJZ1XVtPUgqKoVKMdbKbwr5aSvbz+EL3ue/q6xf2T2Yr8oo2tpZysIUlLS0zMxPZV4uPqmbOTsoRvSlZzs6UWONU8ejLNzyRYWUs6Mfu2NutPYzls/5ibq0mnGas76rvXfjGgvbBnZSu7sbKxkqZ1m/K/wCJypqW3EuZPsby5KdtaUX/AI0sPllN3uDt52tq6QsqRiqVxe2m/BjIeUp2lrNSlWFHJV/hVcPijLQnS7ZJN5dkk/8AHG8+52slpi9s4cDbvV4VnCU5akq/sjmfpy1Tt3KfmmpOL2Nt49n1LN6c75NRhVWEXjLifpv9CxljJVYRdkqSs/Klra9PWuJarKdWaq01eMMr/Z8beC0fPQhWWDcKd8hT71sVJe2/4/LMvJ31BHyW/wBk1hXY/dbGbljaxmqxakt61HXTr0toj9Ev3XiiMozr1ZZ8JR3o4u0g4tpqjTo0dreP8L/Q/L6Ph9PQw8vXKddLg8EpUWrc/X3PN/EKW9HeWsdfDrPgXWTFALuS8nu1lugtb/CPIhCU5KMdWWNjINyzI5780lyRrWEM6df4YdZU/CfVFeEptuKWc8Pupgq7/b8mnZWaikls672fTbPSjGKjHRfPWpm2SAA7CoAAAAAAAAAK9+8j+O6LBXv3kfx3QBJYeWPsuxIR2Hlj7LsSAAAAAAAAAAAAAFa9XOFrRTVUnWmyvqtpPGCSolRbthTyhfHZZtI51c74oq19iK2ykoqVFVxTx2NqKlq10o9Zg6lOEnzxf0x44JsaZy9pcL1ZudnZL/DnJutVqeyuzDA2HlKPC9brisKNL51rUFlJcDrVJYrGrkq12eRmVdUq1k5NNctc6+TJWD5kfJqsIU1yeMn+F6GiZjyqqJqDaaT1rhzuyZ6llFJ+VvFqq2JSUe7RpTnRpx3YvCIsyjO5W9laTlYpSjab3jF+z3FnImStAm5NOcte5Ld6kt7vrhJrBKKi3WtXnNrCmxU1ieUaOmY26tYU4nFa/VGEadCE967w3ZcFd5su9p8ycmgkfTMs8qJvGP2tJp1VcYZ9Gvh4nz/qq15rp91d6pm6q68JHT+Yp8+umRZl61u8J+aMZe6T7nqys4xVIpRW5Ki5FNZRVUs1urpXYqzcFh7o0C0ZRk7oFS/y+3NSq5V16lRa+3Mq6aNFtrs903Toz1lS0rSKwaxct3ovV9jPdlPXnJ1dcV+V64nNVqNTx111oWRQtslqVpnRpGyrGq2/dTCK+ToLOMYqiSSWzcZ7har+KFHRtUex1wZ6nYzdVVRzlvx1y/3dDnpRVNtxjl+H/LaYJL9xtmlFSilnY1Txq8cV7YfBomLcVmTTlLPWqrb+1792OrkbR3UJNxyUYABuQAAAAAAAAACvfvI/juiwV795H8d0ASWHlj7LsSEdh5Y+y7EgAAAAAAAAAAAAB5cUzxoYcK1U1LVu9iUEWBFoY4fasNWCw9jza3eElRrD0w1Y617k4DinhoEMLCCSSSolRe1Kdj1mR3Ll8/gkASS0BHOyi6NxTa1VWoZkdy5fJIBYESsYcK1U1LVuGhhwx5IlA3UCPRx3Ll617kgBIK9pdYN1davXRtdj54OHr+qX7lkFdyPIm5W8HD+b9cv3Hg4ev6pfuWQRuR5IXKvgLPc/1S/ctAExio6IgAAsAAAAAAAAAAV795H8d0WCvfvI/jugCSw8sfZdiQjsPLH2XYkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABXv3kfx3RYK9+8j+O6APFjeoKKTexbHuPfjIcXRgADxkOLox4yHF0YAA8ZDi6MeMhxdGAAPGQ4ujHjIcXRgADxkOLox4yHF0YAA8ZDi6MeMhxdGAAPGQ4ujHjIcXRgADxkOLox4yHF0YAA8ZDi6MeMhxdGAAPGQ4ujHjIcXRgADxkOLox4yHF0YAA8ZDi6MeMhxdGAAPGQ4ujHjIcXRgADxkOLox4yHF0YAA8ZDi6MeMhxdGAAPGQ4ujHjIcXRgADxkOLox4yHF0YAA8ZDi6MeMhxdGAAPGQ4ujIb5eoODSe7Y96AAP/Z" width="73" height="70">' +
+                                                                                                                                                    '           </div>' +
+                                                                                                                                                    '            <div class="desc">' +
+                                                                                                                                                    '                <div class="ellipsis">부산광역시 부산진구 부전2동 중앙대로 668</div>' +
+
+                                                                                                                                                    '            </div>' +
+                                                                                                                                                    '        </div>' +
+                                                                                                                                                    '    </div>' +
+                                                                                                                                                    '</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+                                                                                            gobongRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+                                                                                            var sigolContent = '<div class="wrap">' +
+                                                                                                                                                                  '    <div class="info">' +
+                                                                                                                                                                  '    <div class="info">' +
+                                                                                                                                                                  '        <div class="title"> <a href="http://localhost:8080/watchtable/store/detail?storeNum=7" target="_blank" class="link">시골한우시골돼지 서면점</a>  '+
+                                                                                                                                                                  '            <div class="close" onclick="macCloseOverlay()" title="닫기"></div>' +
+                                                                                                                                                                  '        </div>' +
+                                                                                                                                                                  '        <div class="body">' +
+                                                                                                                                                                  '            <div class="img">' +
+                                                                                                                                                                  '                <img src="https://mblogthumb-phinf.pstatic.net/MjAxODA5MTJfMjIw/MDAxNTM2NzEwOTM3NzMz.SOX1mqoTv0D8gvtX83j4tsAhdfaiEBxtcVajYyFM5hAg.E63yjYQ1cQz9pgLAfdg62lWUbIZ42Hv9UyJTnAg3j9gg.JPEG.dlrldus9212/IMG_4165.jpg?type=w800" width="73" height="70">' +
+                                                                                                                                                                  '           </div>' +
+                                                                                                                                                                  '            <div class="desc">' +
+                                                                                                                                                                  '                <div class="ellipsis">부산광역시 부산진구 부전2동 서면로 17</div>' +
+
+                                                                                                                                                                  '            </div>' +
+                                                                                                                                                                  '        </div>' +
+                                                                                                                                                                  '    </div>' +
+                                                                                                                                                                  '</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+                                                                                                                                                                                        sigolRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+                                                                                                                                                                                                var issueContent = '<div class="wrap">' +
+                                                                                                                                                                                                                                                                                                                                            '    <div class="info">' +
+                                                                                                                                                                                                                                                                                                                                            '    <div class="info">' +
+                                                                                                                                                                                                                                                                                                                                            '        <div class="title"> <a href="http://localhost:8080/watchtable/store/detail?storeNum=8" target="_blank" class="link">이슈모리</a>  '+
+                                                                                                                                                                                                                                                                                                                                            '            <div class="close" onclick="macCloseOverlay()" title="닫기"></div>' +
+                                                                                                                                                                                                                                                                                                                                            '        </div>' +
+                                                                                                                                                                                                                                                                                                                                            '        <div class="body">' +
+                                                                                                                                                                                                                                                                                                                                            '            <div class="img">' +
+                                                                                                                                                                                                                                                                                                                                            '                <img src="https://s3-ap-northeast-1.amazonaws.com/dcreviewsresized/20200413065509546_photo_4edf91cf4b71.jpg" width="73" height="70">' +
+                                                                                                                                                                                                                                                                                                                                            '           </div>' +
+                                                                                                                                                                                                                                                                                                                                            '            <div class="desc">' +
+                                                                                                                                                                                                                                                                                                                                            '                <div class="ellipsis">부산광역시 부산진구 부전동 233-15</div>' +
+
+                                                                                                                                                                                                                                                                                                                                            '            </div>' +
+                                                                                                                                                                                                                                                                                                                                            '        </div>' +
+                                                                                                                                                                                                                                                                                                                                            '    </div>' +
+                                                                                                                                                                                                                                                                                                                                            '</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+                                                                                                                                                                                                                                                                                    issueRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+                                                                                                                                                                                                                                                                                    var subContent = '<div class="wrap">' +
+                                                                                                                                                                                                                                                                                                                                            '    <div class="info">' +
+                                                                                                                                                                                                                                                                                                                                            '    <div class="info">' +
+                                                                                                                                                                                                                                                                                                                                            '        <div class="title"> <a href="http://localhost:8080/watchtable/store/detail?storeNum=9" target="_blank" class="link">써브웨이 서면점</a>  '+
+                                                                                                                                                                                                                                                                                                                                            '            <div class="close" onclick="macCloseOverlay()" title="닫기"></div>' +
+                                                                                                                                                                                                                                                                                                                                            '        </div>' +
+                                                                                                                                                                                                                                                                                                                                            '        <div class="body">' +
+                                                                                                                                                                                                                                                                                                                                            '            <div class="img">' +
+                                                                                                                                                                                                                                                                                                                                            '                <img src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FoRfXF%2FbtqwUD0pkG9%2FoKW7last16X2QkJjhBvy30%2Fimg.jpg" width="73" height="70">' +
+                                                                                                                                                                                                                                                                                                                                            '           </div>' +
+                                                                                                                                                                                                                                                                                                                                            '            <div class="desc">' +
+                                                                                                                                                                                                                                                                                                                                            '                <div class="ellipsis">부산광역시 부산진구 부전동 중앙대로 690</div>' +
+
+                                                                                                                                                                                                                                                                                                                                            '            </div>' +
+                                                                                                                                                                                                                                                                                                                                            '        </div>' +
+                                                                                                                                                                                                                                                                                                                                            '    </div>' +
+                                                                                                                                                                                                                                                                                                                                            '</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+                                                                                                                                                                                                                                                                                    subRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+                                                                                                                                                                                                                                                                                    var angelContent = '<div class="wrap">' +
+                                                                                                                                                                                                                                                                                                                                            '    <div class="info">' +
+                                                                                                                                                                                                                                                                                                                                            '    <div class="info">' +
+                                                                                                                                                                                                                                                                                                                                            '        <div class="title"> <a href="http://localhost:8080/watchtable/store/detail?storeNum=10" target="_blank" class="link">엔제리너스 서면점</a>  '+
+                                                                                                                                                                                                                                                                                                                                            '            <div class="close" onclick="macCloseOverlay()" title="닫기"></div>' +
+                                                                                                                                                                                                                                                                                                                                            '        </div>' +
+                                                                                                                                                                                                                                                                                                                                            '        <div class="body">' +
+                                                                                                                                                                                                                                                                                                                                            '            <div class="img">' +
+                                                                                                                                                                                                                                                                                                                                            '                <img src="https://w.namu.la/s/5a382c8f5a12a61260c8ec675cc2dfd2d7e9307b5e15f9f515472cea73932be17ba1e020ee5fa79689991ac1a96d3aba2d11e373164ae5b49697c612bdaa2cf80ec2397b3645f70d891320aa8fd55635" width="73" height="70">' +
+                                                                                                                                                                                                                                                                                                                                            '           </div>' +
+                                                                                                                                                                                                                                                                                                                                            '            <div class="desc">' +
+                                                                                                                                                                                                                                                                                                                                            '                <div class="ellipsis">부산광역시 부산진구 부전2동 232-24</div>' +
+
+                                                                                                                                                                                                                                                                                                                                            '            </div>' +
+                                                                                                                                                                                                                                                                                                                                            '        </div>' +
+                                                                                                                                                                                                                                                                                                                                            '    </div>' +
+                                                                                                                                                                                                                                                                                                                                            '</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+                                                                                                                                                                                                                                                                                    angelRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+                                                                                                                                                                                                                                                                                    var kfcContent = '<div class="wrap">' +
+                                                                                                                                                                                                                                                                                                                                            '    <div class="info">' +
+                                                                                                                                                                                                                                                                                                                                            '    <div class="info">' +
+                                                                                                                                                                                                                                                                                                                                            '        <div class="title"> <a href="http://localhost:8080/watchtable/store/detail?storeNum=11" target="_blank" class="link">kfc 서면점</a>  '+
+                                                                                                                                                                                                                                                                                                                                            '            <div class="close" onclick="macCloseOverlay()" title="닫기"></div>' +
+                                                                                                                                                                                                                                                                                                                                            '        </div>' +
+                                                                                                                                                                                                                                                                                                                                            '        <div class="body">' +
+                                                                                                                                                                                                                                                                                                                                            '            <div class="img">' +
+                                                                                                                                                                                                                                                                                                                                            '                <img src="https://t1.daumcdn.net/thumb/R550x0/?fname=http%3A%2F%2Ft1.daumcdn.net%2Fencyclop%2Fm149%2FeKDfQHga0oIRA20hCe2XdU34l8sjnGAYzpxgzKjx%3Ft%3D1476410598000" width="73" height="70">' +
+                                                                                                                                                                                                                                                                                                                                            '           </div>' +
+                                                                                                                                                                                                                                                                                                                                            '            <div class="desc">' +
+                                                                                                                                                                                                                                                                                                                                            '                <div class="ellipsis">부산광역시 부산진구 부전동 중앙대로 681-1</div>' +
+
+                                                                                                                                                                                                                                                                                                                                            '            </div>' +
+                                                                                                                                                                                                                                                                                                                                            '        </div>' +
+                                                                                                                                                                                                                                                                                                                                            '    </div>' +
+                                                                                                                                                                                                                                                                                                                                            '</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+                                                                                                                                                                                                                                                                                    kfcRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // 인포윈도우를 생성합니다
 var macInfowindow = new kakao.maps.InfoWindow({
     content : macContent,
@@ -308,6 +600,32 @@ var obackInfowindow = new kakao.maps.InfoWindow({
     content : obackContent,
     removable : obackRemoveable
 });
+var gobongInfowindow = new kakao.maps.InfoWindow({
+    content : gobongContent,
+    removable : gobongRemoveable
+});
+var sigolInfowindow = new kakao.maps.InfoWindow({
+    content : sigolContent,
+    removable : sigolRemoveable
+});
+var issueInfowindow = new kakao.maps.InfoWindow({
+    content : issueContent,
+    removable : issueRemoveable
+});
+var subInfowindow = new kakao.maps.InfoWindow({
+    content : subContent,
+    removable : subRemoveable
+});
+var angelInfowindow = new kakao.maps.InfoWindow({
+    content : angelContent,
+    removable : angelRemoveable
+});
+var kfcInfowindow = new kakao.maps.InfoWindow({
+    content : kfcContent,
+    removable : kfcRemoveable
+});
+
+
 
 // 마커에 클릭이벤트를 등록합니다
 kakao.maps.event.addListener(macMarker, 'click', function() {
@@ -329,6 +647,30 @@ kakao.maps.event.addListener(riceMarker, 'click', function() {
 kakao.maps.event.addListener(obackMarker, 'click', function() {
       // 마커 위에 인포윈도우를 표시합니다
       obackInfowindow.open(map, obackMarker);
+});
+kakao.maps.event.addListener(gobongMarker, 'click', function() {
+      // 마커 위에 인포윈도우를 표시합니다
+      gobongInfowindow.open(map, gobongMarker);
+});
+kakao.maps.event.addListener(sigolMarker, 'click', function() {
+      // 마커 위에 인포윈도우를 표시합니다
+      sigolInfowindow.open(map, sigolMarker);
+});
+kakao.maps.event.addListener(issueMarker, 'click', function() {
+      // 마커 위에 인포윈도우를 표시합니다
+      issueInfowindow.open(map, issueMarker);
+});
+kakao.maps.event.addListener(subMarker, 'click', function() {
+      // 마커 위에 인포윈도우를 표시합니다
+      subInfowindow.open(map, subMarker);
+});
+kakao.maps.event.addListener(angelMarker, 'click', function() {
+      // 마커 위에 인포윈도우를 표시합니다
+      angelInfowindow.open(map, angelMarker);
+});
+kakao.maps.event.addListener(kfcMarker, 'click', function() {
+      // 마커 위에 인포윈도우를 표시합니다
+      kfcInfowindow.open(map, kfcMarker);
 });
 
 };
