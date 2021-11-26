@@ -31,6 +31,7 @@ function locationLoadSuccess(pos){
     var orderCount9 = $('#8').attr("value");
     var orderCount10 = $('#9').attr("value");
     var orderCount11 = $('#10').attr("value");
+    var orderCount12 = $('#11').attr("value");
 
     var centerImageSrc = 'https://cdn-icons-png.flaticon.com/512/1673/1673221.png', // 마커이미지의 주소입니다
         centerImageSize = new kakao.maps.Size(35, 30) // 마커이미지의 크기입니다
@@ -73,10 +74,35 @@ var issuePosition  = new kakao.maps.LatLng(35.152817, 129.058326);
 var subPosition  = new kakao.maps.LatLng(35.154147, 129.059392);
 var angelPosition  = new kakao.maps.LatLng(35.152927, 129.058844);
 var kfcPosition  = new kakao.maps.LatLng(35.153554, 129.058893);
+var abamPosition  = new kakao.maps.LatLng(35.152939, 129.059564);
 
 
 
 // 마커를 생성합니다
+var abamMarker = new kakao.maps.Marker({
+    position: abamPosition,
+    image:greenMarkerImage
+});
+if(orderCount12 < 4){
+var abamMarker = new kakao.maps.Marker({
+    position: abamPosition,
+    image:greenMarkerImage
+    });
+}
+if(orderCount12 > 3 && orderCount12 < 7){
+var abamMarker = new kakao.maps.Marker({
+    position: abamPosition,
+    image:blueMarkerImage
+    });
+}
+if(orderCount12 > 6){
+ var abamMarker = new kakao.maps.Marker({
+     position: abamPosition,
+     image:redMarkerImage
+     });
+ }
+
+
 var kfcMarker = new kakao.maps.Marker({
     position: kfcPosition,
     image:greenMarkerImage
@@ -353,6 +379,7 @@ issueMarker.setMap(map);
 subMarker.setMap(map);
 angelMarker.setMap(map);
 kfcMarker.setMap(map);
+abamMarker.setMap(map);
 
 
     // 기존에 마커가 있다면 제거 후 생성 내위치 마커임 지우면 안댐
@@ -562,7 +589,24 @@ var macContent = '<div class="wrap">' +
                                                                                                                                                                                                                                                                                                                                             '    </div>' +
                                                                                                                                                                                                                                                                                                                                             '</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
                                                                                                                                                                                                                                                                                     kfcRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+                                                                                                                                                                                                                                                                                    var abamContent = '<div class="wrap">' +
+                                                                                                                                                                                                                                                                                                                                            '    <div class="info">' +
+                                                                                                                                                                                                                                                                                                                                            '    <div class="info">' +
+                                                                                                                                                                                                                                                                                                                                            '        <div class="title"> <a href="http://localhost:8080/watchtable/store/detail?storeNum=33" target="_blank" class="link">어밤부 서면삼정타워점</a>  '+
+                                                                                                                                                                                                                                                                                                                                            '            <div class="close" onclick="macCloseOverlay()" title="닫기"></div>' +
+                                                                                                                                                                                                                                                                                                                                            '        </div>' +
+                                                                                                                                                                                                                                                                                                                                            '        <div class="body">' +
+                                                                                                                                                                                                                                                                                                                                            '            <div class="img">' +
+                                                                                                                                                                                                                                                                                                                                            '                <img src="https://mblogthumb-phinf.pstatic.net/MjAxOTA5MDZfMTk2/MDAxNTY3Nzc4ODg2NTQw.1umi_3UJ-Uxqsb-zNYBzqTKAVCptnnnixrvHmNYdpOUg.kSVDA8HW49gE_py1V4T8LdyLw-WT_HQQMrdZWW-hZI0g.JPEG.bbangyujin/%EC%96%B4%EB%B0%A4%EB%B6%80_(1).jpg?type=w800" width="73" height="70">' +
+                                                                                                                                                                                                                                                                                                                                            '           </div>' +
+                                                                                                                                                                                                                                                                                                                                            '            <div class="desc">' +
+                                                                                                                                                                                                                                                                                                                                            '                <div class="ellipsis">부산광역시 부산진구 부전2동 중앙대로 672 삼정타워 5F</div>' +
 
+                                                                                                                                                                                                                                                                                                                                            '            </div>' +
+                                                                                                                                                                                                                                                                                                                                            '        </div>' +
+                                                                                                                                                                                                                                                                                                                                            '    </div>' +
+                                                                                                                                                                                                                                                                                                                                            '</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+                                                                                                                                                                                                                                                                                    abamRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
 
 
 
@@ -624,6 +668,10 @@ var kfcInfowindow = new kakao.maps.InfoWindow({
     content : kfcContent,
     removable : kfcRemoveable
 });
+var abamInfowindow = new kakao.maps.InfoWindow({
+    content : abamContent,
+    removable : abamRemoveable
+});
 
 
 
@@ -671,6 +719,10 @@ kakao.maps.event.addListener(angelMarker, 'click', function() {
 kakao.maps.event.addListener(kfcMarker, 'click', function() {
       // 마커 위에 인포윈도우를 표시합니다
       kfcInfowindow.open(map, kfcMarker);
+});
+kakao.maps.event.addListener(abamMarker, 'click', function() {
+      // 마커 위에 인포윈도우를 표시합니다
+      abamInfowindow.open(map, abamMarker);
 });
 
 };
