@@ -50,6 +50,9 @@ public class StoreController {
         PosTable posTable = storeService.getPosTable(posTable1);
         log.info("ewrwererwrew" + posTable1);
         model.addAttribute("order", posTable);
+
+        List<PosTable> posTableList = storeService.findAll();
+        model.addAttribute("postable", posTableList);
     }
 
 
