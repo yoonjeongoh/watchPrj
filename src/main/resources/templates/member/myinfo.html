@@ -110,7 +110,8 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="SST :${userReview.dtoList}" class="tr-list">
+                                <tr th:each="SST :${userReview.dtoList}" class="tr-list"
+                                    th:onclick="|javascript:goStore('${SST.storeNum}')|">
                                     <th scope="row">[[${SST.storeName}]]</th>
                                     <td>[[${SST.text}]]</td>
                                     <td>[[${#temporals.format(SST.regDate, 'yyyy/MM/dd')}]]</td>
@@ -160,6 +161,16 @@
 
         <script th:src="@{/js/waitingmodify.js}"></script>
 
+        <script th:inline="javascript">
+            function goStore(storeNum){
+                //alert('read');
+                /*[+
+                var url = [[@{/store/detail}]] +
+                    "?storeNum="+storeNum;
+                +]*/
+                location.href=url;
+            }
+        </script>
 
         <!--        waiting modal view-->
         <div class="modal waitingModal" tabindex="-1" role="dialog">
@@ -214,7 +225,6 @@
                 </div>
             </div>
         </div>
-
 
     </th:block>
 </th:blotck>
