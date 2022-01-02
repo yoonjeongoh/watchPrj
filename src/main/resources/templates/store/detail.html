@@ -58,13 +58,6 @@
                                     <span>메뉴</span>
                                     <span></span>
                                 </div>
-                                &lt;!&ndash;        3열 우측 가게정보&ndash;&gt;
-                                <div class="thd1 thd-right1"> 2<br>
-                                    <span>가게주소 : [[${dto.storeAds}]]</span><br>
-                                    <span>전화번호 : [[${dto.storeTel}]]</span><br>
-                                    <span>영업시간 : [[${dto.storeOpen} + ' ~ ' + ${dto.storeClose}]]</span><br>
-                                    <span>가게정보 : [[${dto.storeText}]]</span>
-                                </div>
                             </div>
                 -->
                 <!--5열 리뷰작성칸-->
@@ -127,11 +120,8 @@
             //var memberNickame = [[${member.memberNickname}]];
             var partyMember = $('select[name="partyMember"]');
 
-
-
             var memberMobile = $('.memberMobile');
             var memberNickname = $('.memberNickname');
-
 
             $(".waiting-register21").click(function(){
             $('.waitingModal').modal('show')
@@ -180,10 +170,6 @@
             });
 
        }); //end script
-
-
-
-
         </script>
 
         <!--review modal view-->
@@ -199,6 +185,10 @@
                         <div class="form-group none-reviewNum">
                             <label>ReviewNum</label>
                             <input type="text" class="form-control " name="reviewNum">
+                        </div>
+                        <div class="form-group" style="display:none;">
+                            <label>MemberNum</label>
+                            <input type="text" class="form-control " id="modal-rv-memberNum" name="modal-rv-memberNum">
                         </div>
                         <div class="form-group" style="margin-bottom:30px;">
                             <span class="span21">닉네임</span>

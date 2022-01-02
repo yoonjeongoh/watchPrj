@@ -89,9 +89,10 @@
     display: none;
 }
 
-b.reviewNum {
+b.reviewNum, b.rv-memberNum {
     display: none;
 }
+
 .review-body {
     width: 1000px;
   //height: 80px;
