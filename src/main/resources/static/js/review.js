@@ -4,7 +4,8 @@ $(document).ready(function(e){
     var reviewMemberNickname = $('#js-memberNickname').text();
     var storeNum = $('#js-storeNum').text();
     var review = $('textarea[name="reviewText"]');
-    //var memberNum = [[${member.memberNum}]];
+//    var memberNum = $('#modal-rv-memberNum').text();
+//    var memberNum = [[${member.memberNum}]];
     //var storeNum = [[${dto.storeNum}]];
 
     $(".rv-close21").click(function(){
@@ -56,6 +57,7 @@ $(document).ready(function(e){
             $.each(arr, function(idx, review) {
                 str += ' <div class="review-body" data-reviewNum="'+review.reviewNum+'">';
                 str += ' <b class="reviewNum">'+review.reviewNum+'</b>';
+                str += ' <b class="rv-memberNum">'+review.memberNum+'</b>';
                 str += ' <p class="reviewNickname rv-bold">'+review.memberNickname+'</p>';
                 str += ' <p class="reviewText">'+review.text+'</p>';
                 //str += ' <h5 class="reviewText" onclick="showModal2('+review.reviewNum+','+review.text+')">'+review.text+'</h5>';
@@ -70,18 +72,27 @@ $(document).ready(function(e){
     }
     getStoreReviews();
 
-    //수정삭제 모달창 띄우기
-     $(".rv-list-table").on("click", ".review-body", function(){
+    //수정삭제 모달창 띄우기+ 본인만 가능
+    $(".rv-list-table").on("click", ".review-body", function(){
+        var memberNum = $(this).find('.rv-memberNum').html();
+//            console.log("reviewmemberNum: " + reviewMemberNum);
+//            console.log("memberNum2: " + memberNum);
+
+    if (reviewMemberNum == memberNum) {
+        //데이터로 불러오기
         //var reviewNum = $(this).data("reviewNum");
         //console.log("this: " + this);
         //console.log("reviewNum: " + reviewNum);
         //$("input[name='reviewNum']").val(reviewNum);
 
-        //$("input[name='text']").val($(this).find('.reviewText').html());
+        //직접 불러오기
         $("input[name='reviewNum']").val($(this).find('.reviewNum').html());
         $("input[name='reviewNickname']").val($(this).find('.reviewNickname').html());
         $("textarea[name='modal-text']").val($(this).find('.reviewText').html());
         $('.reviewModal').modal('show');
+    } else {
+        console.log("not yours");
+    }
     });
 
     //리뷰삭제
