@@ -18,6 +18,7 @@ public class ReviewDTO {
     private String memberNickname;
 
     private Long storeNum;
+    private String storeName;
 
     private String text;
     private LocalDateTime regDate, modDate;

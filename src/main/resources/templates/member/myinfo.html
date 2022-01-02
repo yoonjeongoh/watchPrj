@@ -104,14 +104,14 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <th scope="col">가게번호</th>
+                                    <th scope="col">가게이름</th>
                                     <th scope="col">리뷰내용</th>
                                     <th scope="col">등록일자</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr th:each="SST :${userReview.dtoList}" class="tr-list">
-                                    <th scope="row">[[${SST.storeNum}]]</th>
+                                    <th scope="row">[[${SST.storeName}]]</th>
                                     <td>[[${SST.text}]]</td>
                                     <td>[[${#temporals.format(SST.regDate, 'yyyy/MM/dd')}]]</td>
                                 </tr>
