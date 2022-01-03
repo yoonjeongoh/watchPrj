@@ -4,17 +4,14 @@ $(document).ready(function(e){
     var reviewMemberNickname = $('#js-memberNickname').text();
     var storeNum = $('#js-storeNum').text();
     var review = $('textarea[name="reviewText"]');
-//    var memberNum = $('#modal-rv-memberNum').text();
-//    var memberNum = [[${member.memberNum}]];
-    //var storeNum = [[${dto.storeNum}]];
 
+    //모달창 닫기
     $(".rv-close21").click(function(){
         $('.reviewModal').modal('hide')
     });
 
     //리뷰 데이터 넘기기
     $("#rv-btn").click(function(){
-        //alert("benny");
         var data = {
             memberNum: reviewMemberNum,
             storeNum: storeNum,
@@ -60,7 +57,6 @@ $(document).ready(function(e){
                 str += ' <b class="rv-memberNum">'+review.memberNum+'</b>';
                 str += ' <p class="reviewNickname rv-bold">'+review.memberNickname+'</p>';
                 str += ' <p class="reviewText">'+review.text+'</p>';
-                //str += ' <h5 class="reviewText" onclick="showModal2('+review.reviewNum+','+review.text+')">'+review.text+'</h5>';
                 str += ' <p class="reviewTime">'+formatTime(review.regDate)+'</p>';
                 str += ' </div>';
             //console.log("review>>>>>>>>>>>"+review);
@@ -79,13 +75,6 @@ $(document).ready(function(e){
 //            console.log("memberNum2: " + memberNum);
 
     if (reviewMemberNum == memberNum) {
-        //데이터로 불러오기
-        //var reviewNum = $(this).data("reviewNum");
-        //console.log("this: " + this);
-        //console.log("reviewNum: " + reviewNum);
-        //$("input[name='reviewNum']").val(reviewNum);
-
-        //직접 불러오기
         $("input[name='reviewNum']").val($(this).find('.reviewNum').html());
         $("input[name='reviewNickname']").val($(this).find('.reviewNickname').html());
         $("textarea[name='modal-text']").val($(this).find('.reviewText').html());

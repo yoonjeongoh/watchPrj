@@ -67,29 +67,6 @@ input:focus, select:focus, option:focus, textarea:focus, button:focus{
     align-items: flex-end;
     text-align: center;
 }
-.thd-col1 {
-    overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-    width: auto;
-    height: 400px;
-    background-color: #f75931;
-}
-
-.thd1 {
-    display: inline-block;
-    padding: 2px;
-    background-color: #fdb53c;
-}
-.thd-left1 {
-    width: 590px;
-    height: 400px;
-}
-
-.thd-right1 {
-    width: 590px;
-    height: 400px;
-}
 
 .rv-grade {
     overflow: hidden;
@@ -167,16 +144,6 @@ textarea {
     width: auto;
     height: 50px;
  }
-
-/*
-.forth-col1 {
-    height: 80px;
-    width: auto;
-    display: flex;
-    float: center;
-    background-color: #f75931;
-    position: relative;
-}*/
 
 /* 디테일 페이지의 지도 css입니다 여기 아래코드 */
 .wrap .info {width: 286px;height: 120px;border-radius: 5px;border-bottom: 2px solid #ccc;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
