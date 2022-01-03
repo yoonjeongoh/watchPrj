@@ -8,6 +8,7 @@
 
         <div class="wrapper">
             <div class="detail-content">
+
                 <!--        1열 상단 카드이미지-->
                 <div class="top-card1">
                     <div class="card1" th:each="menuImage: ${dto.menuImageDTOList}">
@@ -41,25 +42,16 @@
                         <div class="chartRoom">
                             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
                             <canvas id="piechart" style="width: 350px; height:350px;"></canvas>
-                            <!--                    <div id="piechart" style="width: 300px; height: 300px;"></div>-->
                         </div>
                     </div>
+
                     <!--        2열 우측 지도-->
                     <div class="sec1 sec-right1" style="margin-left:50px;">
                         <div class="map" id="map" style="width: 400px; height: 400px;">
                         </div>
                     </div>
                 </div>
-                <!--        3열-->
-                <!--
-                            <div class="thd-col1">
-                                &lt;!&ndash;        3열 좌측 가게메뉴&ndash;&gt;
-                                <div class="thd1 thd-left1"> 1
-                                    <span>메뉴</span>
-                                    <span></span>
-                                </div>
-                            </div>
-                -->
+
                 <!--5열 리뷰작성칸-->
                 <div id="review" class="rv-field fifth-col1">
                     <div class="rv-ta1">
@@ -186,10 +178,6 @@
                             <label>ReviewNum</label>
                             <input type="text" class="form-control " name="reviewNum">
                         </div>
-                        <div class="form-group" style="display:none;">
-                            <label>MemberNum</label>
-                            <input type="text" class="form-control " id="modal-rv-memberNum" name="modal-rv-memberNum">
-                        </div>
                         <div class="form-group" style="margin-bottom:30px;">
                             <span class="span21">닉네임</span>
                             <input type="text" class="form-control" name="reviewNickname">
@@ -207,7 +195,6 @@
                 </div>
             </div>
         </div>
-
 
         <!--        waiting modal view-->
         <div class="modal waitingModal" tabindex="-1" role="dialog">
@@ -246,6 +233,7 @@
                 </div>
             </div>
         </div>
+
         <!--      아래 each구문 지도 혼잡도 좌석 수 뽑아오는 구문이니 지우시면 안됩니다 히든으로 가려놨습니다-->
         <table>
             <tbody>

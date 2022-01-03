@@ -1,4 +1,3 @@
-/* 이하 모달 css------------------ */
 .waiting-register21 {
     width: 120px;
     height: 40px;
@@ -89,7 +88,7 @@
     display: none;
 }
 
-b.reviewNum, b.rv-memberNum {
+b.reviewNum {
     display: none;
 }
 
