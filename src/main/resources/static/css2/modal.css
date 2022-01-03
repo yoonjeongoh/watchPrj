@@ -88,7 +88,7 @@
     display: none;
 }
 
-b.reviewNum {
+b.reviewNum, b.rv-memberNum {
     display: none;
 }
 

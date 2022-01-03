@@ -2,34 +2,8 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <th:blotck th:replace="~{/layout/base :: setContent(~{this::content})}">
     <th:block th:fragment="content">
+        <link th:href="@{/css2/postable.css}" rel="stylesheet"/>
         <link id="contextPathHolder" th:data-contextPath="${#httpServletRequest.getContextPath()}"/>
-        <style>
-        .flex-container{
-            display: inline-flex;
-        }
-         .flextb4{
-            width: 150px;
-            height: 150px;
-            margin: 20px;
-            background-color: #75736e;
-        }
-
-        .table {
-            display: none;
-        }
-        .btn_orders{
-        position:absolute;
-        margin-top:37px;
-        margin-left:25px;
-        }
-        .btn_order{
-            border-radius: 5px;
-            font-size: 13pt;
-            background-color:#FECA60;
-        }
-
-
-        </style>
         <!--        th:each="num: ${#numbers.sequence(1,5)}"-->
 
         <!--        <form id="action-form" class="menu_form" th:action="@{/pos/postable}" method="post">-->
@@ -37,140 +11,109 @@
         <form class="posForm" th:action="@{/pos/postable2}" method="post" id="pos_form" name="p">
             <div class="flex-container" style="margin-left:450px;">
                 <div th:each="order: ${order}">
-                    <div style="text-align:left;margin-left:20px;">
-                    포스 번호 : <span th:value="${order.posTableNum}">[[${order.posTableNum}]]</span><br>
-                    주문 테이블 갯수 : <input size="5px" type="text" th:value="${order.orderCount}" id="orderCount" name="orderCount" readonly>
-                    <div th:each="dto : ${dto}">
-                        가게 번호 : <span th:value="${dto.storeNum}" name="storeNum">[[${dto.storeNum}]]</span><br>
-                        가게 이름 : <span th:value="${dto.storeName}" name="storeNum">[[${dto.storeName}]]</span>
-                    </div>
-                        <button class="btn_order" id="btn_submit">확인</button>
-                    </div>
-                    <div class="flex-container">
-                        <div>
-                            <div class="flextb4" id="tb1">1번 테이블
-                                <div class="btn_orders">
-                                <button class="btn_order" id="btn1_1">주문</button>
-                                <button class="btn_order" id="btn1_2">결제</button>
-                                </div>
-                                <input type="text" name="table1" class="table" id="table1" th:value="${order.table1}"><br>
-                            </div>
-
-                            <div class="flextb4" id="tb2">2번 테이블
-                                <div class="btn_orders">
-                                <button class="btn_order" id="btn2_1">주문</button>
-                                <button class="btn_order" id="btn2_2">결제</button>
-                                </div>
-                                <input type="text" name="table2" class="table" id="table2" th:value="${order.table2}"><br>
-                            </div>
-
-                            <div class="flextb4" id="tb3">3번 테이블
-                                <div class="btn_orders">
-                                <button class="btn_order" id="btn3_1">주문</button>
-                                <button class="btn_order" id="btn3_2">결제</button>
-                                </div>
-                                <input type="text" name="table3" class="table"id="table3" th:value="${order.table3}"><br>
-                            </div>
+                    <div class="pos-info">
+                        포스 번호 : <span th:value="${order.posTableNum}">[[${order.posTableNum}]]</span><br>
+                        <div th:each="dto : ${dto}">
+                            가게 번호 : <span th:value="${dto.storeNum}" name="storeNum">[[${dto.storeNum}]]</span><br>
+                            가게 이름 : <span th:value="${dto.storeName}" name="storeNum">[[${dto.storeName}]]</span>
                         </div>
-                        <div>
-                            <div class="flextb4" id="tb4">4번 테이블
-                                <div class="btn_orders">
-                                <button class="btn_order" id="btn4_1">주문</button>
-                                <button class="btn_order" id="btn4_2">결제</button>
-                                </div>
-                                <input type="text" name="table4" class="table" id="table4" th:value="${order.table4}"><br>
+                        주문 테이블수 : <input type="text" th:value="${order.orderCount}" id="orderCount" name="orderCount" readonly><br>
+                        <button id="btn_submit">확인</button>
+                    </div>
+                <div class="flex-container">
+                    <div>
+                        <div class="flextb4" id="tb1">
+                            <span class="span-tables">1번 테이블</span>
+                            <div class="btn_orders">
+                            <button class="btn_order" id="btn1_1">주문</button>
+                            <button class="btn_order" id="btn1_2">결제</button>
                             </div>
-
-                            <div class="flextb4" id="tb5">5번 테이블
-                                <div class="btn_orders">
-                                <button class="btn_order" id="btn5_1">주문</button>
-                                <button class="btn_order" id="btn5_2">결제</button>
-                                </div>
-                                <input type="text" name="table5" class="table" id="table5" th:value="${order.table5}"><br>
-                            </div>
-
-                            <div class="flextb4" id="tb6">6번 테이블
-                                <div class="btn_orders">
-                                <button class="btn_order" id="btn6_1">주문</button>
-                                <button class="btn_order" id="btn6_2">결제</button>
-                                </div>
-                                <input type="text" name="table6" class="table" id="table6" th:value="${order.table6}"><br>
-                            </div>
+                            <input type="text" name="table1" class="table" id="table1" th:value="${order.table1}"><br>
                         </div>
-                        <div>
-                            <div class="flextb4" id="tb7">7번 테이블
-                                <div class="btn_orders">
-                                <button class="btn_order" id="btn7_1">주문</button>
-                                <button class="btn_order" id="btn7_2">결제</button>
-                                </div>
-                                <input type="text" name="table7" class="table" id="table7" th:value="${order.table7}"><br>
-                            </div>
 
-                            <div class="flextb4" id="tb8">8번 테이블
-                                <div class="btn_orders">
-                                <button class="btn_order" id="btn8_1">주문</button>
-                                <button class="btn_order" id="btn8_2">결제</button>
-                                </div>
-                                <input type="text" name="table8" class="table" id="table8" th:value="${order.table8}"><br>
+                        <div class="flextb4" id="tb2">
+                            <span class="span-tables">2번 테이블</span>
+                            <div class="btn_orders">
+                            <button class="btn_order" id="btn2_1">주문</button>
+                            <button class="btn_order" id="btn2_2">결제</button>
                             </div>
+                            <input type="text" name="table2" class="table" id="table2" th:value="${order.table2}"><br>
+                        </div>
 
-                            <div class="flextb4" id="tb9">9번 테이블
-                                <div class="btn_orders">
-                                <button class="btn_order" id="btn9_1">주문</button>
-                                <button class="btn_order" id="btn9_2">결제</button>
-                                </div>
-                                <input type="text" name="table9" class="table" id="table9" th:value="${order.table9}"><br>
+                        <div class="flextb4" id="tb3">
+                            <span class="span-tables">3번 테이블</span>
+
+                            <div class="btn_orders">
+                            <button class="btn_order" id="btn3_1">주문</button>
+                            <button class="btn_order" id="btn3_2">결제</button>
                             </div>
+                            <input type="text" name="table3" class="table"id="table3" th:value="${order.table3}"><br>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flextb4" id="tb4">
+                            <span class="span-tables">4번 테이블</span>
+
+                            <div class="btn_orders">
+                            <button class="btn_order" id="btn4_1">주문</button>
+                            <button class="btn_order" id="btn4_2">결제</button>
+                            </div>
+                            <input type="text" name="table4" class="table" id="table4" th:value="${order.table4}"><br>
+                        </div>
+
+                        <div class="flextb4" id="tb5">
+                            <span class="span-tables">5번 테이블</span>
+
+                            <div class="btn_orders">
+                            <button class="btn_order" id="btn5_1">주문</button>
+                            <button class="btn_order" id="btn5_2">결제</button>
+                            </div>
+                            <input type="text" name="table5" class="table" id="table5" th:value="${order.table5}"><br>
+                        </div>
+
+                        <div class="flextb4" id="tb6">
+                            <span class="span-tables">6번 테이블</span>
+
+                            <div class="btn_orders">
+                            <button class="btn_order" id="btn6_1">주문</button>
+                            <button class="btn_order" id="btn6_2">결제</button>
+                            </div>
+                            <input type="text" name="table6" class="table" id="table6" th:value="${order.table6}"><br>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flextb4" id="tb7">
+                            <span class="span-tables">7번 테이블</span>
+
+                            <div class="btn_orders">
+                            <button class="btn_order" id="btn7_1">주문</button>
+                            <button class="btn_order" id="btn7_2">결제</button>
+                            </div>
+                            <input type="text" name="table7" class="table" id="table7" th:value="${order.table7}"><br>
+                        </div>
+
+                        <div class="flextb4" id="tb8">
+                            <span class="span-tables">8번 테이블</span>
+                            <div class="btn_orders">
+                            <button class="btn_order" id="btn8_1">주문</button>
+                            <button class="btn_order" id="btn8_2">결제</button>
+                            </div>
+                            <input type="text" name="table8" class="table" id="table8" th:value="${order.table8}"><br>
+                        </div>
+
+                        <div class="flextb4" id="tb9">
+                            <span class="span-tables">9번 테이블</span>
+                            <div class="btn_orders">
+                            <button class="btn_order" id="btn9_1">주문</button>
+                            <button class="btn_order" id="btn9_2">결제</button>
+                            </div>
+                            <input type="text" name="table9" class="table" id="table9" th:value="${order.table9}"><br>
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
-<!--        <div>-->
-<!--            1번 테이블-->
-<!--            <button class="btn_order" id="btn1_1">주문</button>-->
-<!--            <button class="btn_order" id="btn1_2">결제</button>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            2번 테이블-->
-<!--            <button class="btn_order" id="btn2_1">주문</button>-->
-<!--            <button class="btn_order" id="btn2_2">결제</button>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            3번 테이블-->
-<!--            <button class="btn_order" id="btn3_1">주문</button>-->
-<!--            <button class="btn_order" id="btn3_2">결제</button>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            4번 테이블-->
-<!--            <button class="btn_order" id="btn4_1">주문</button>-->
-<!--            <button class="btn_order" id="btn4_2">결제</button>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            5번 테이블-->
-<!--            <button class="btn_order" id="btn5_1">주문</button>-->
-<!--            <button class="btn_order" id="btn5_2">결제</button>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            6번 테이블-->
-<!--            <button class="btn_order" id="btn6_1">주문</button>-->
-<!--            <button class="btn_order" id="btn6_2">결제</button>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            7번 테이블-->
-<!--            <button class="btn_order" id="btn7_1">주문</button>-->
-<!--            <button class="btn_order" id="btn7_2">결제</button>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            8번 테이블-->
-<!--            <button class="btn_order" id="btn8_1">주문</button>-->
-<!--            <button class="btn_order" id="btn8_2">결제</button>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--            9번 테이블-->
-<!--            <button class="btn_order" id="btn9_1">주문</button>-->
-<!--            <button class="btn_order" id="btn9_2">결제</button>-->
-<!--        </div>-->
+        </div>
+    </form>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"
                 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
                 crossorigin="anonymous"></script>

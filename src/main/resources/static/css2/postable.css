@@ -1,0 +1,62 @@
+button:focus, input:focus {
+    outline: none;
+}
+
+button {
+    border: 0;
+    border-radius: 10px;
+}
+
+#btn_submit {
+    margin-top: 15px;
+    width: 148px;
+    height: 40px;
+    background-color: #FECA60;
+}
+
+.flex-container{
+    display: inline-flex;
+}
+
+.flextb4{
+    width: 150px;
+    height: 150px;
+    margin: 20px 0 0 20px;
+    background-color: #75736e;
+}
+
+.table {
+    display: none;
+}
+
+.btn_orders{
+    position:absolute;
+    margin-top:35px;
+    margin-left:7px;
+}
+
+.btn_order{
+    width: 65px;
+    height: 35px;
+    font-size: 13pt;
+    background-color: #FECA60;
+}
+
+.pos-info {
+    text-align: left;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+#orderCount {
+    background: none;
+    border: 0;
+}
+
+.span-tables {
+    display: inline-block;
+    width: 100%;
+    margin-top: 5px;
+    text-align: center;
+    font-weight: bold;
+}

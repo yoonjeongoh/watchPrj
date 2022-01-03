@@ -4,9 +4,9 @@
 
       function drawChart() {
             var use = $('#orderCountBasket2').attr('value');
-                console.log(use);
+//                console.log(use);
             var left = 9-use;
-            console.log(left);
+//            console.log(left);
         new Chart(document.getElementById("piechart"), {
             type: 'pie',
             data: {
@@ -21,10 +21,8 @@
             responsive:false,
               title: {
                 display: true,
-
               }
-
             }
         });
-}
+    }
 }
