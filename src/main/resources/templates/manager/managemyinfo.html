@@ -89,7 +89,7 @@
                                 </thead>
                                 <tbody>
                                 <tr th:each="LYJ :${waitingDTO.dtoList}" class="tr-list">
-                                    <th scope="row">[[${LYJ.memberName}]]</th>
+                                    <th scope="row">[[${LYJ.memberNickname}]]</th>
                                     <td>[[${LYJ.partyMember}]]</td>
                                     <td>[[${LYJ.memberMobile}]]</td>
                                     <td>[[${#temporals.format(LYJ.regDate, 'yyyy/MM/dd')}]]</td>
