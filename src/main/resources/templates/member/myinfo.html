@@ -38,11 +38,19 @@
                                     <div class="profile-usertitle-job">[[${member.memberNickname}]]</div>
                                 </div>
                                 <div class="profile-usermenu">
-                                            <button class="btn11 goInfoCorrect"
-                                                    th:onCLick="|location.href='@{/member/myinfocorrect}'|">
-                                                내 정보 수정
-                                            </button>
+                                    <button class="btn11 goInfoCorrect"
+                                            th:onCLick="|location.href='@{/member/myinfocorrect}'|">
+                                        내 정보 수정
+                                    </button>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="card gedf-card">
+                            <div class="card-header">
+                                <div class="h5 m-0">찜한 가게</div>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">{{가게 이름}}</p>
                             </div>
                         </div>
                     </div>
@@ -76,7 +84,7 @@
                                     <th scope="row" class="waiting-body wt-storeName">[[${STB.storeName}]]</th>
                                     <td class="waiting-body wt-nickName">[[${STB.memberNickname}]]</td>
                                     <td class="waiting-body wt-partyMember">[[${STB.partyMember}]]</td>
-                                    <td class="waiting-body">[[${#temporals.format(STB.regDate, 'yyyy/MM/dd hh:mm')}]]
+                                    <td class="waiting-body">[[${#temporals.format(STB.regDate, 'yyyy/MM/dd HH:mm')}]]
                                     </td>
                                     <td class="waiting-body wt-memberMobile" style="display:none;">
                                         [[${STB.memberMobile}]]
@@ -138,16 +146,6 @@
 
 
                         </div>
-                        <!--
-                                                    <div class="card gedf-card">
-                                                        <div class="card-header">
-                                                            <div class="h5 m-0">찜한 가게</div>
-                                                        </div>
-                                                        <div class="card-body">
-                                                            <p class="card-text">{{가게 이름}}</p>
-                                                        </div>
-                                                    </div>
-                        -->
 
                     </div>
                 </div>
@@ -219,6 +217,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
+                        <button type="button" class="btn btn-info go-store21">가게보기</button>
                         <button type="button" class="btn btn-info go-modify21">수정하기</button>
                         <button type="button" class="btn btn-info go-cancel21">취소하기</button>
                     </div>

@@ -18,6 +18,7 @@ $(document).ready(function(e){
         $('.waitingModal').modal('show');
     });
 
+    //대기 모달 닫기
     $(".waiting-close21").click(function(){
         $('.waitingModal').modal('hide')
     });
@@ -28,7 +29,7 @@ $(document).ready(function(e){
         var waitingMobile = $("#modal-memberMobile").val();
         var waitingMemberNum = $("#modal-memberNum").val();
         var waitingNickname = $("#memberNickname").val();
-        var waitingStoreNum = $(".wt-storeNum").val();
+        var waitingStoreNum = $("#modal-storeNum").val();
         var waitingPartyMember = $("#partyMember");
 
         var data = {
@@ -83,11 +84,18 @@ $(document).ready(function(e){
             }
     });
     $('.waitingModal').modal('hide');
-
     });
 
+    //모달창에서 가게로 이동하기
+    $(".go-store21").on("click", function(){
+        var storeNum = $("#modal-storeNum").val();
+        console.log("storenum: " + storeNum);
 
+        var url = contextPath + '/store/detail/' + '?storeNum=' + storeNum;
+        $('.waitingModal').modal('hide');
 
+        location.href=url;
+    });
 
 }); //script end
 
