@@ -22,19 +22,13 @@
     padding-right: 10px;
 }
 
-.go-modify21 {
+.go-waiting21, .go-cancel21, .go-modify21, .go-store21  {
     background-color: #fdb53c;
     border-color: #fdb53c;
     color: #f2f1ed;
 }
 
-.go-waiting21, .go-cancel21 {
-    background-color: #fdb53c;
-    border-color: #fdb53c;
-    color: #f2f1ed;
-}
-
-.go-modify21:hover, .go-waiting21:hover {
+.go-modify21:hover, .go-waiting21:hover, .go-modify21:hover, .go-store21:hover {
     background-color: #fdad3c;
     border-color: #fdad3c;
 }

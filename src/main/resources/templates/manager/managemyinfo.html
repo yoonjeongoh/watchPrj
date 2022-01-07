@@ -37,6 +37,9 @@
                                                 <div class="profile-usertitle-name">
                                                     <h3>[[${member.storeName}]]</h3>
                                                 </div>
+                                                <div class="likeCount">
+                                                    <span>내 가게 좋아요 수: </span>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="profile-usermenu" style="text-align:center;">
@@ -92,7 +95,7 @@
                                     <th scope="row">[[${LYJ.memberNickname}]]</th>
                                     <td>[[${LYJ.partyMember}]]</td>
                                     <td>[[${LYJ.memberMobile}]]</td>
-                                    <td>[[${#temporals.format(LYJ.regDate, 'yyyy/MM/dd')}]]</td>
+                                    <td>[[${#temporals.format(LYJ.regDate, 'yyyy/MM/dd HH:mm')}]]</td>
                                 </tr>
                                 </tbody>
 
