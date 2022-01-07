@@ -13,8 +13,8 @@
                 <div class="top-card1">
                     <div class="card1" th:each="menuImage: ${dto.menuImageDTOList}">
                         <div>
-                        <img th:if="${menuImage.menuPath != null}"
-                             th:src="|/watchtable/menuDisplay?fileName=${menuImage.getImageURL()}|">
+                            <img th:if="${menuImage.menuPath != null}"
+                                 th:src="|/watchtable/menuDisplay?fileName=${menuImage.getImageURL()}|">
                         </div>
                     </div>
                 </div>
@@ -101,68 +101,9 @@
                 crossorigin="anonymous"></script>
 
         <script th:src="@{/js/review.js}"></script>
+        <script th:src="@{/js/waiting.js}"></script>
 
         <script>
-        $(document).ready(function(e){
-            var contextPath = $('#contextPathHolder').attr('data-contextPath') ? $('#contextPathHolder').attr('data-contextPath') : '';
-            var memberNum = [[${member.memberNum}]];
-            var storeNum = [[${dto.storeNum}]];
-
-            //대기등록 모달
-            //var storeName = [[${dto.storeName}]];
-            //var memberNickame = [[${member.memberNickname}]];
-            var partyMember = $('select[name="partyMember"]');
-
-            var memberMobile = $('.memberMobile');
-            var memberNickname = $('.memberNickname');
-
-            $(".waiting-register21").click(function(){
-            $('.waitingModal').modal('show')
-                    $('.memberNickname').val();
-                    $('.memberMobile').val();
-                    $('.partyMember').val();
-                });
-
-            $(".waiting-close21").click(function(){
-                $('.waitingModal').modal('hide')
-                    $('.memberNickname').val();
-                    $('.memberMobile').val();
-                    $('.partyMember').val();
-            });
-
-            //대기등록 데이터 넘기기
-            $(".go-waiting21").click(function(){
-                //alert("benny");
-                var data = {
-                    memberNum: memberNum,
-                    memberName: memberNickname.val(),
-                    memberMobile: memberMobile.val(),
-                    storeNum: storeNum,
-                    //storeName: storeName,
-                    partyMember: partyMember.val()
-                    };
-                console.log("waiting111>>>>"+data);
-
-                $.ajax({
-                    url: contextPath+'/addWaiting/'+storeNum,
-                    type:"POST",
-                    data:JSON.stringify(data),
-                    contentType:"application/json; charset=utf-8",
-                    dataType:"json",
-                    success: function(data){
-                        console.log("waiting222>>>> "+data);
-                        var waitingNum = parseInt(data);
-                        console.log("waiting333>>>>"+waitingNum);
-                        self.location.reload();
-                     },
-                    error:function(data){
-        		    alert("errorrrrrrrrrrrrrrrr");
-                    }
-                });
-                $('.waitingModal').modal('hide')
-            });
-
-       }); //end script
         </script>
 
         <!--review modal view-->

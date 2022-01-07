@@ -7,6 +7,6 @@
     cursor: pointer;
 }
 
-td:hover {
+td:hover, th:hover {
     cursor: pointer;
 }

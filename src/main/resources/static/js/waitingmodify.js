@@ -8,7 +8,7 @@ $(document).ready(function(e){
     $(".waiting-table").on("click",".waiting-box", function(){
     //console.log("click_modal");
         $('#storeName').val($(this).find('.wt-storeName').html());
-        console.log(this);
+        console.log("1"+this);
         $("#memberNickname").val($(this).find('.wt-nickName').html());
         $("#memberMobile").val($(this).find('.wt-memberMobile').html());
         $("#partyMember").val($(this).find('.wt-partyMember').html());

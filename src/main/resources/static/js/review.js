@@ -1,3 +1,4 @@
+//detail에서 쓰는 스크립트
 $(document).ready(function(e){
     var contextPath = $('#contextPathHolder').attr('data-contextPath') ? $('#contextPathHolder').attr('data-contextPath') : '';
     var reviewMemberNum = $('#js-memberNum').text();
@@ -17,7 +18,7 @@ $(document).ready(function(e){
             storeNum: storeNum,
             text: review.val()
             };
-        //console.log(">>>>"+data);
+        console.log(">>>>"+data);
 
         $.ajax({
             url: contextPath+'/addReview/'+storeNum,
@@ -135,4 +136,7 @@ $(document).ready(function(e){
         })
     $('.reviewModal').modal('hide');
     });
+
 }); //end script
+
+
