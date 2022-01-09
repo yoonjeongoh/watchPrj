@@ -59,4 +59,6 @@ public class StoreDTO {
     private PosTableDTO posTableDTO = new PosTableDTO();
     private List<StoreImageDTO> storeImageDTOList = new ArrayList<>();
     private List<MenuImageDTO> menuImageDTOList = new ArrayList<>();
+
+    private Long likesNum;
 }

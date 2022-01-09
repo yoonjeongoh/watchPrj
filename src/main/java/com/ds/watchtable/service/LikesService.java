@@ -6,17 +6,20 @@ import com.ds.watchtable.entity.Member;
 import com.ds.watchtable.entity.Store;
 
 public interface LikesService {
+    //좋아요 추가
+    Long registerLikes(LikesDTO likesDTO);
+
 
     default Likes dtoToEntity(LikesDTO likesDTO) {
         Likes likes = Likes.builder()
-                .likesNum(likesDTO.getLikesNum())
-                .member(Member.builder()
-                        .memberNum(likesDTO.getMemberNum())
-                        .build())
-                .store(Store.builder()
-                        .storeNum(likesDTO.getStoreNum())
-                        .build())
-                .build();
+            .likesNum(likesDTO.getLikesNum())
+            .member(Member.builder()
+                    .memberNum(likesDTO.getMemberNum())
+                    .build())
+            .store(Store.builder()
+                    .storeNum(likesDTO.getStoreNum())
+                    .build())
+            .build();
         return likes;
     }
 
