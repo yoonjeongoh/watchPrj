@@ -24,6 +24,7 @@
                 <a sec:authorize="hasRole('USER')" class="nav-link" th:href="@{/member/myinfo}">내정보</a>
                 <a sec:authorize="!isAuthenticated()" class="nav-link" th:href="@{/join/login}">로그인</a>
                 <a sec:authorize="!isAuthenticated()" class="nav-link" th:href="@{/join/joinselect}">회원가입</a>
+                <a sec:authorize="hasRole('MANAGER')" th:href="@{/store/detail}" class="nav-link">내 가게보기</a>
                 <a sec:authorize="hasRole('MANAGER')" th:href="@{/manager/managemyinfo}" class="nav-link">내 가게정보</a>
                 <a sec:authorize="hasRole('MANAGER')" th:href="@{/manager/manageinfocorrect}" class="nav-link">가게정보수정</a>
                 <a sec:authorize="hasRole('MANAGER')" th:href="@{/pos/postable}" class="nav-link">POS</a>
