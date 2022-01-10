@@ -4,6 +4,7 @@
     <th:block th:fragment="content">
         <link th:href="@{/css2/join.css}" rel="stylesheet"/>
         <link th:href="@{/css2/styles.css}" rel="stylesheet"/>
+        <link th:href="@{/css2/modal.css}" rel="stylesheet"/>
 
         <!--        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
         <!--        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>-->
@@ -141,8 +142,10 @@
         </div>
         </div>
         <div class="end-pg"></div>
-        <script th:inline="javascript">
 
+        <script th:src="@{/js/callWaiting.js}"></script>
+
+        <script th:inline="javascript">
             function goStore(storeNum){
                 //alert('read');
                 /*[+
@@ -151,7 +154,62 @@
                 +]*/
                 location.href=url;
             }
-
         </script>
+
+
+        <!--        waiting modal view-->
+        <div class="modal waitingModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">대기 중인 손님</h5>
+                        <button type="button" class="btn btn-close waiting-close21" data-dismiss="modal"
+                                aria-label="Close"/>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group" style="margin-bottom:30px; display:none;">
+                            <span class="span21">waitingNum</span>
+                            <input class="form-control" type="text" id="modal-waitingNum" name="waitingNum">
+                        </div>
+                        <div class="form-group" style="margin-bottom:30px; display:none;">
+                            <span class="span21">storeNum</span>
+                            <input class="form-control" type="text" id="modal-storeNum" name="storeNum">
+                        </div>
+                        <div class="form-group" style="margin-bottom:30px; display:none;">
+                            <span class="span21">memberNum</span>
+                            <input class="form-control" type="text" id="modal-memberNum" name="memberNum">
+                        </div>
+                        <div class="form-group" style="margin-bottom:30px;">
+                            <span class="span21">상호명</span>
+                            <input class="form-control" type="text-name" id="storeName" name="storeName" readonly>
+                        </div>
+                        <div class="form-group" style="margin-bottom:30px;">
+                            <span class="span21">닉네임</span>
+                            <input class="form-control" type="text-name" id="memberNickname" readonly>
+                        </div>
+                        <div class="form-group" style="margin-bottom:30px;">
+                            <span class="span21">연락처</span>
+                            <input class="form-control" type="text-mobile" id="modal-memberMobile" readonly>
+                        </div>
+                        <div class="form-group" style="margin-bottom:30px;">
+                            <span class="span21">인원수</span>
+                            <select class="sel21" name="partyMember" id="partyMember">
+                                <option class="op21" name="partyMember">1</option>
+                                <option class="op21" name="partyMember">2</option>
+                                <option class="op21" name="partyMember">3</option>
+                                <option class="op21" name="partyMember">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-info">연락하기</button>
+                        <button type="button" class="btn btn-info">입장완료</button>
+                        <button type="button" class="btn btn-info">취소하기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </th:block>
 </th:blotck>
