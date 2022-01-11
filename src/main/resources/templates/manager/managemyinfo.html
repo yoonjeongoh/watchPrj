@@ -82,7 +82,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <table class="table table-striped">
+                            <table class="table table-striped waiting-table">
                                 <thead>
                                 <tr>
                                     <th scope="col">대기자명</th>
@@ -92,7 +92,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr th:each="LYJ :${waitingDTO.dtoList}" class="tr-list">
+                                <tr th:each="LYJ :${waitingDTO.dtoList}" class="tr-list waiting-box">
                                     <th scope="row">[[${LYJ.memberNickname}]]</th>
                                     <td>[[${LYJ.partyMember}]]</td>
                                     <td>[[${LYJ.memberMobile}]]</td>
@@ -202,9 +202,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-info">연락하기</button>
-                        <button type="button" class="btn btn-info">입장완료</button>
-                        <button type="button" class="btn btn-info">취소하기</button>
+                        <button type="button" class="btn btn-info modal-btn">연락하기</button>
+                        <button type="button" class="btn btn-info modal-btn">입장완료</button>
+                        <button type="button" class="btn btn-info modal-btn">취소하기</button>
                     </div>
                 </div>
             </div>
